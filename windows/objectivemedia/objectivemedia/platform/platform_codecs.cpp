@@ -619,7 +619,7 @@ Codec_Errors G7231AudioEncoder::Open(MediaFormat* encFormat, CodecData* encData)
 	try
 	{
 		avcodec_register_all(); //initialize codecs.
-		//av_log_set_callback(&avlog_cb);
+		av_log_set_callback(&avlog_cb);
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
 		AudioMediaFormat* vf = (AudioMediaFormat*)encFormat;
@@ -744,7 +744,7 @@ Codec_Errors G7231AudioEncoder::Decode(void* inSample, long insize, void** outSa
 }
 
 G7231AudioEncoder::~G7231AudioEncoder(){
-	Close(); //free the objects by calling close.
+	//Close(); //free the objects by calling close.
 }
 
 /////////////////////////////////////////////////////////////
@@ -770,7 +770,7 @@ Codec_Errors G7231AudioDecoder::Open(MediaFormat* encFormat, CodecData* encData)
 	try
 	{
 		avcodec_register_all(); //initialize codecs.
-		av_log_set_callback((void(*)(void*, int, const char*, char*))&avlog_cb);
+		av_log_set_callback(&avlog_cb);
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
 		AudioMediaFormat* vf = (AudioMediaFormat*)encFormat;
@@ -878,5 +878,5 @@ Codec_Errors G7231AudioDecoder::Decode(void* inSample, long insize, void** outSa
 }
 
 G7231AudioDecoder::~G7231AudioDecoder(){
-	Close(); //free the objects by calling close.
+	//Close(); //free the objects by calling close.
 }

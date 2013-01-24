@@ -22,9 +22,12 @@
     <ProjectGuid>{51482488-3D24-4398-BD2B-5ECA2BFA5C1D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>objectivemedia</RootNamespace>
-    <SccProjectName>"$/mti_jni_media.root/mti_jni_media", YPLAAAAA</SccProjectName>
-    <SccLocalPath>..</SccLocalPath>
-    <SccProvider>MSSCCI:Microsoft Visual SourceSafe</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
     <ProjectName>objectivemedia</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,11 +73,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>$(ProjectName)_$(PlatformName)</TargetName>
+    <TargetName>$(ProjectName)_win32</TargetName>
+    <IntDir>c:\objectivemedia\build\$(Configuration)\win32\obj\</IntDir>
+    <OutDir>c:\objectivemedia\build\$(Configuration)\win32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <TargetName>$(ProjectName)_$(PlatformName)</TargetName>
+    <TargetName>$(ProjectName)_Win64</TargetName>
+    <OutDir>c:\objectivemedia\build\$(Configuration)\win64\</OutDir>
+    <IntDir>c:\objectivemedia\build\$(Configuration)\win64\obj\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -96,7 +103,8 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>libgcc.a;libmingwex.a;libquartz.a;libwinmm.a;libstrmiids.a;libavcodec.a;libavutil.a;libavformat.a;libavfilter.a;libswscale.a;jvm.lib;libole32.a</AdditionalDependencies>
-      <ModuleDefinitionFile>Export.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
       <AdditionalLibraryDirectories>c:\ffmpeg\build\x86\lib;c:\mingw\lib;C:\Program Files\Java\jdk1.6.0_24\lib;c:\mingw\lib\gcc\mingw32\4.6.2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="H263VideoEncoder">
+    <Position X="0.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAIAAAAAAgAAAAAAAAAAAAAAAAQACAAAA=</HashCode>
+      <FileName>platform_codecs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="H263VideoDecoder">
+    <Position X="0.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAABAIAAAAAAAAAAAAAAAAAAAAAAAQACAAIA=</HashCode>
+      <FileName>platform_codecs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VC1VideoDecoder">
+    <Position X="0.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIACQAAAAAAAAAAAAAAAAAAAAQACAAAA=</HashCode>
+      <FileName>platform_codecs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G7231AudioEncoder">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIAABAAAAAAAAEAAAAAAAAAAAQACAAAA=</HashCode>
+      <FileName>platform_codecs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G7231AudioDecoder">
+    <Position X="3.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIBAIAAAAAAAIAAAAAAAAAAAAAAAQACAAAA=</HashCode>
+      <FileName>platform_codecs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodecData">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>platform_codecs_defs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Codec">
+    <Position X="8.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAABQIAQAAAAAAAAAEAAAAAAIAAAAQgSIEAE=</HashCode>
+      <FileName>platform_codecs_defs.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeviceListener">
+    <Position X="7.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Device">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAIQAEAAAAAAAAAABAAAiAAAAKAACAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoMediaFormat">
+    <Position X="9.25" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAACAEAAAEAQAAAAAIEAACAAEAAAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioMediaFormat">
+    <Position X="7" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAMAAAAAAgAAAAAAAAAAEAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputDevice">
+    <Position X="5.25" Y="10" Width="1.5" />
+    <InheritanceLine Type="Device" FixedFromPoint="true">
+      <Path>
+        <Point X="4" Y="9.228" />
+        <Point X="4" Y="9.375" />
+        <Point X="6" Y="9.375" />
+        <Point X="6" Y="10" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutputDevice">
+    <Position X="1.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoInputDevice">
+    <Position X="4.75" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABIAAAAAgAAAAAAABAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioInputDevice">
+    <Position X="6.75" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAYAAAAAAAAIAAAABAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoOutputDevice">
+    <Position X="0.5" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQIBBAAAAAAAAEAABIAAAAAAAAAAGIQAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioOutputDevice">
+    <Position X="2.75" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQIBAAAAAAAAAAAAJAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>platform_devices.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MediaFormat">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>platform_includes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="VideoInputDeviceContext">
+    <Position X="16" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAgAQAAAQAAAAAAgAAAEAAAwAIAAAAAAACAA=</HashCode>
+      <FileName>platform_devices.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AudioInputDeviceContext">
+    <Position X="8.75" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAgAQAAAQAAAAAAgAAAEAAAwAIAAAAAAACAA=</HashCode>
+      <FileName>platform_devices.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="VideoOutputDeviceContext">
+    <Position X="13.5" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAACAEAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>platform_devices.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AudioOutputDeviceContext">
+    <Position X="11" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQIAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>platform_devices.cpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Codec_Errors">
+    <Position X="12.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAEAAAAAEAEAEAAAACAAAAAEAAAAAAAAACAAA=</HashCode>
+      <FileName>platform_codecs_defs.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Device_Errors">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAgAAAAAAAAAAAAAAoAAACQAAAAAQAAAgEAAABA=</HashCode>
+      <FileName>platform_includes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VideoPixelFormat">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEBAhEgABAAAAAEBKAAQAAAAIgAAAAAQBAABFAIIEA=</HashCode>
+      <FileName>platform_includes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

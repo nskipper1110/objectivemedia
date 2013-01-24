@@ -112,10 +112,10 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 				  retval = Codec_Errors::CODEC_NO_OUTPUT;
 			  }
 			  else{
-				  Sample_To_CodecResult(Env, outSample, outsize, decSample, timestamp);
+				  Sample_To_CodecResult(Env, outSample, 480, decSample, timestamp);
 			
 			  }
-			  av_free(outSample);
+			  //av_free(outSample);
 		  }
 	  }
 
