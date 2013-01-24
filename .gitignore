@@ -11,3 +11,8 @@
 *.lai
 *.la
 *.a
+/Java/com.mti.primitives/com.mti.primitives/nbproject/private/
+/Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/nbproject/private/
+/Java/com.mti.primitives/com.mti.primitives/build/
+/Java/com.mti.primitives/com.mti.primitives/dist/
+/Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/build/
