@@ -2,15 +2,20 @@
 *.slo
 *.lo
 *.o
-
+*.obj
 # Compiled Dynamic libraries
 *.so
 *.dylib
-
+*.dll
 # Compiled Static libraries
 *.lai
 *.la
 *.a
+*.lib
+# Project Files
+*.sdf
+*.suo
+*.scc
 /Java/com.mti.primitives/com.mti.primitives/nbproject/private/
 /Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/nbproject/private/
 /Java/com.mti.primitives/com.mti.primitives/build/
