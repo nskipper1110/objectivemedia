@@ -17,21 +17,8 @@
  * License along with ObjectiveMedia; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
-#include "../stdafx.h"
 #include "platform_devices.h"
-#include <dshow.h>
-#include <strmif.h>
-#include <uuids.h>
-#include <dshowasf.h>
-#include "qedit.h"
-#include <Dmodshow.h>
 #include <stdio.h>
-#include "CMediaBuffer.h"
-#include <queue>
-#include "macros.h"
-#include "dxgrabber.h"
-#include "fourcc.h"
-#include <MMSystem.h>
 /********************************************
 Windows Specific Structures and functions
 ********************************************/

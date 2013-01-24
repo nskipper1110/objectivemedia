@@ -39,7 +39,6 @@ extern "C"{
 	#include <libavutil/samplefmt.h>
 }
 
-using namespace std;
 
 #ifndef DEVICE_DEFS
 #define DEVICE_DEFS
