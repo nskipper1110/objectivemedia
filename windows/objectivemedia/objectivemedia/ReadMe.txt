@@ -1,48 +1,30 @@
 ========================================================================
-    DYNAMIC LINK LIBRARY : mti_jni_media Project Overview
+    DYNAMIC LINK LIBRARY : objectivemedia Project Overview
 ========================================================================
 
-AppWizard has created this mti_jni_media DLL for you.
+The ObjectiveMedia project is a library aimed at providing an object oriented approach to multimedia programming,
+with cross platform functionality and support for OO languages like Java as it's primary goals. The source code
+provided in this project represents the Microsoft Windows implementation of this library.
 
-This file contains a summary of what you will find in each of the files that
-make up your mti_jni_media application.
+All code provided under this project is provided under the GNU Lesser General Public License (LGPL) v 2.1. Copyright(C)
+is reserved by Nathan Skipper and Montgomery Technology, Inc.
 
+This project makes use of the FFMPEG project. More information about FFMPEG can be found at www.ffmpeg.org. The source code
+and scripts used to compile FFMPEG can be found under the ./FFMPEG folder on this repository.
 
-mti_jni_media.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+Dependencies:
+This project is dependent on static libraries from FFMPEG (compiled separately) and Java JDK JNI. This project is configured
+to assume that FFMPEG includes and libraries are located under "C:\ffmpeg\build\x86" or "C:\ffmpeg\build\x64", depending
+on the selected build configuration. JDK dependencies are assumed to be under "C:\program files\java\jdk...".
 
-mti_jni_media.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+This project seeks to make use of MinGW static libraries and includes where possible instead of Microsoft SDK includes. This
+is done to minimize platform dependencies.
 
-mti_jni_media.cpp
-    This is the main DLL source file.
+Structure:
+The project code is broken down into three major categories: platform, jni, and api (yet to come). Code under "platform" provides
+functionality for accessing media devices specific to the OS/Arch used. Code in this category should remain as generic as possible, until specific
+OS features must be accessed.
 
-	When created, this DLL does not export any symbols. As a result, it
-	will not produce a .lib file when it is built. If you wish this project
-	to be a project dependency of some other project, you will either need to
-	add code to export some symbols from the DLL so that an export library
-	will be produced, or you can set the Ignore Input Library property to Yes
-	on the General propert page of the Linker folder in the project's Property
-	Pages dialog box.
+Code under "jni" should provide functionality for relating the platform code to Java Native Interface.
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named mti_jni_media.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+Code under "api" should provide functionality for relating the platform code to Win32 DLL access.
