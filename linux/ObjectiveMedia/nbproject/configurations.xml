@@ -4,6 +4,28 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="jni" projectFiles="true">
+        <itemPath>jni/com_mti_primitives_codecs.h</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_G7231AudioDecoder.h</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_G7231AudioEncoder.h</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_H263VideoDecoder.h</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_H263VideoEncoder.h</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_VC1VideoDecoder.h</itemPath>
+        <itemPath>jni/com_mti_primitives_devices.h</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_AudioInputDevice.h</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_AudioOutputDevice.h</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_VideoInputDevice.h</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_VideoOutputDevice.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="platform" projectFiles="true">
+        <itemPath>platform/platform.h</itemPath>
+        <itemPath>platform/platform_codecs.h</itemPath>
+        <itemPath>platform/platform_codecs_defs.h</itemPath>
+        <itemPath>platform/platform_devices.h</itemPath>
+        <itemPath>platform/platform_includes.h</itemPath>
+        <itemPath>platform/platform_storage.h</itemPath>
+      </logicalFolder>
+      <itemPath>dbg.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +34,21 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="jni" projectFiles="true">
+        <itemPath>jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_H263VideoDecoder.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_H263VideoEncoder.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_AudioInputDevice.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_VideoInputDevice.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_VideoOutputDevice.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="platform" projectFiles="true">
+        <itemPath>platform/platform_codecs.cpp</itemPath>
+        <itemPath>platform/platform_devices.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>dbg.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -27,26 +64,37 @@
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="5">
+    <conf name="Debug" type="2">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
       </toolsSet>
-      <qt>
-        <modules>core gui</modules>
-      </qt>
       <compileType>
+        <cTool>
+          <architecture>1</architecture>
+        </cTool>
+        <ccTool>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../../ffmpeg/build/x86/include</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/lib</pElem>
+            <pElem>../../../ffmpeg/build/x86/lib</pElem>
+          </linkerAddLib>
+          <additionalDep>libavcodec.a libavfilter.a libavformat.a libavutil.a libavdevice.a libswresample.a libswscale.a</additionalDep>
+        </linkerTool>
       </compileType>
     </conf>
-    <conf name="Release" type="5">
+    <conf name="Release" type="2">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
       </toolsSet>
-      <qt>
-        <buildMode>1</buildMode>
-        <modules>core gui</modules>
-      </qt>
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>

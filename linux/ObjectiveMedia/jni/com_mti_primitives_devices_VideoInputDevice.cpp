@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 #include "com_mti_primitives_devices.h"
-
+using namespace std;
 static VideoInputDevice* videoInputDevice = NULL;
 static JavaVM* CallbackJVM = NULL;
 static jobject MyListener = NULL;
@@ -73,10 +73,10 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
 	  try{
 		  if(Env->GetJavaVM(&CallbackJVM) != 0)
 		  {
-			  retval = (jint)Device_Errors::NOT_SUPPORTED;
+			  retval = (jint)NOT_SUPPORTED;
 		  }
 		  else if(listener == NULL){
-			  retval = (jint)Device_Errors::INVALID_DATA;
+			  retval = (jint)INVALID_DATA;
 		  }
 		  else{
 			  MyListener = Env->NewGlobalRef(listener);
@@ -84,7 +84,7 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
 			  VideoInputDevice* tempDevice = new VideoInputDevice();
 			  Java_To_VideoInputDevice(Env, sender, tempDevice);
 			  vector<Device*> deviceList;
-			  if(tempDevice->GetDevices(deviceList) == Device_Errors::SUCCEEDED){
+			  if(tempDevice->GetDevices(deviceList) == SUCCEEDED){
 				  videoInputDevice = (VideoInputDevice*)deviceList[tempDevice->DeviceIndex];
 				  for(int x = 0; x < deviceList.size(); x++)
 				  {
@@ -107,13 +107,13 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
 				  DbgOut(dbg_buffer);
 			  }
 			  else{
-				  retval = (jint)Device_Errors::NO_DEVICES;
+				  retval = (jint)NO_DEVICES;
 			  }
 			  
 		  }
 	  }
 	  catch(...){
-		  retval = (jint)Device_Errors::UNEXPECTED;
+		  retval = (jint)UNEXPECTED;
 	  }
 	  return retval;
 }
@@ -142,12 +142,12 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
  */
 JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_PlatformGetDevices
   (JNIEnv * Env, jobject sender, jobjectArray deviceList){
-	  Device_Errors retval = Device_Errors::SUCCEEDED;
+	  Device_Errors retval = SUCCEEDED;
 
 	  VideoInputDevice* vd = new VideoInputDevice();
-	  vector<Device*> devList;
+	  std::vector<Device*> devList;
 	  retval = vd->GetDevices(devList);
-	  if(retval == Device_Errors::SUCCEEDED)
+	  if(retval == SUCCEEDED)
 	  {
 		  int size = Env->GetArrayLength(deviceList);
 		  for(int x = 0; x < size; x++)

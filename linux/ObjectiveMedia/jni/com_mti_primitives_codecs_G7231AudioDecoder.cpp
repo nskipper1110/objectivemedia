@@ -41,14 +41,14 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 			  }
 		  }
 		  else{
-			  retval = Codec_Errors::CODEC_INVALID_INPUT;
+			  retval = CODEC_INVALID_INPUT;
 			  delete(cformat);
 			  delete(cdata);
 		  }
 		  
 	  }
 	  else{
-		  retval = Codec_Errors::CODEC_INVALID_INPUT;
+		  retval = CODEC_INVALID_INPUT;
 	  }
 	  
 	  return retval;
@@ -79,7 +79,7 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
  */
 JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_PlatformEncode
   (JNIEnv * Env, jobject sender, jbyteArray Sample, jobject encSample, jlong timestamp){
-	  return Codec_Errors::CODEC_NOT_SUPPORTED;
+	  return CODEC_NOT_SUPPORTED;
 }
 
 /*
@@ -91,10 +91,10 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
   (JNIEnv * Env, jobject sender, jbyteArray encSample, jobject decSample, jlong timestamp){
 	  jint retval = 0;
 	  if(encSample == NULL){
-		  retval = Codec_Errors::CODEC_INVALID_INPUT;
+		  retval = CODEC_INVALID_INPUT;
 	  }
 	  else if(G7231Decoder == NULL){
-		  retval = Codec_Errors::CODEC_CODEC_NOT_OPENED;
+		  retval = CODEC_CODEC_NOT_OPENED;
 	  }
 	  else{
 		  jbyte* inSample;
@@ -109,7 +109,7 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 			  
 			  if(decSample == NULL)
 			  {
-				  retval = Codec_Errors::CODEC_NO_OUTPUT;
+				  retval = CODEC_NO_OUTPUT;
 			  }
 			  else{
 				  Sample_To_CodecResult(Env, outSample, 480, decSample, timestamp);

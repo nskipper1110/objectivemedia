@@ -31,8 +31,10 @@ Revision History:
 #pragma once
 #include "../dbg.h"
 #include <stdio.h>
+#include <stdarg.h>
 #include <stdlib.h>
 #include <string>
+#include <cstring>
 #include <vector>
 #define   SAFERELEASE(x)            if((x)){ (x)->Release(); (x) = NULL;}
 #define   SAFEDELETE(x)             if((x)){ delete [] (x);  (x) = NULL;}
@@ -43,6 +45,7 @@ Revision History:
 Description: The Device_Error enumerator provides a list of possible errors that might
 be experienced when calling a function within this namespace.
 ***************************************************************************************/
+
 typedef enum Device_Errors{
 	SUCCEEDED=0, //call to the function was successful.
 	NO_DEVICES=1, //there are no devices available
@@ -97,15 +100,16 @@ public:
 
 static void avlog_cb(void * ptr, int level, const char * szFmt, va_list varg) {
     char* mymsg = new char[strlen(szFmt) + 250];
-	//va_start(varg);
-	vsprintf(mymsg, szFmt, varg);
-	va_end(varg);
-	sprintf(dbg_buffer, "*****START FFMPEG LOG ENTRY*****\n");
-	DbgOut(dbg_buffer);
-	sprintf(dbg_buffer, mymsg);
-	DbgOut(dbg_buffer);
-	sprintf(dbg_buffer, "*****STOP FFMPEG LOG ENTRY*****\n");
-	DbgOut(dbg_buffer);
+    //va_start(varg);
+    
+    vsprintf(mymsg, szFmt, varg);
+    va_end(varg);
+    sprintf(dbg_buffer, "*****START FFMPEG LOG ENTRY*****\n");
+    DbgOut(dbg_buffer);
+    sprintf((char*)dbg_buffer, (const char*)mymsg);
+    DbgOut(dbg_buffer);
+    sprintf(dbg_buffer, "*****STOP FFMPEG LOG ENTRY*****\n");
+    DbgOut(dbg_buffer);
 }
 
 

@@ -20,14 +20,15 @@
 
 #ifndef CODEC_DEFS
 #define CODEC_DEFS
+
+
 extern "C"{
-#include <libavcodec/avcodec.h>
-#include <libavutil/mathematics.h>
-#include <libavutil/samplefmt.h>
-#include <libavformat/avformat.h>
+	#include <libavutil/imgutils.h>
+	#include <libavutil/opt.h>
+	#include <libavcodec/avcodec.h>
+	#include <libavutil/mathematics.h>
+	#include <libavutil/samplefmt.h>
 #include <libswscale/swscale.h>
-#include <libavutil/imgutils.h>
-#include <libavutil/opt.h>
 }
 #include "platform_includes.h"
 
@@ -40,7 +41,7 @@ typedef enum Codec_Errors{
 	CODEC_INVALID_INPUT = 5,
 	CODEC_NO_OUTPUT = 6,
 	CODEC_UNEXPECTED = 7
-};
+}Codec_Errors;
 
 class CodecData{
 public:

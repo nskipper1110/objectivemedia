@@ -68,9 +68,9 @@ All other device implementations are a child of this class.
 ***************************************************************************************/
 class Device{
 public:
-	string DeviceName; //The name of the device.
+	std::string DeviceName; //The name of the device.
 	int DeviceIndex; //The 0-based index of the device in the list of devices.
-	vector <MediaFormat*> Formats; //An array of MediaFormats that are supported by this device.
+	std::vector <MediaFormat*> Formats; //An array of MediaFormats that are supported by this device.
 	int FormatCount; //The number of formats in the Formats array.
 	DeviceListener* Listener; //A pointer to a Listener object that will receive callbacks.
 	void* DeviceContext;
@@ -82,9 +82,9 @@ public:
 	/*The Close function closes the device and deallocates all resources used by the device.*/
 	virtual Device_Errors Close() = 0;
 	/*The GetDevices function provides an array of Devices available on the machine.*/
-	virtual Device_Errors GetDevices(vector<Device*> &devList) = 0;
+	virtual Device_Errors GetDevices(std::vector<Device*> &devList) = 0;
 	/*The ToString function represents the object as a string, typically by returning the name*/
-	virtual string ToString(){
+	virtual std::string ToString(){
 		return DeviceName;	
 	};
 	static void FreeBuffer(void* buffer){
@@ -313,7 +313,7 @@ public:
 	//see Device header.
 	Device_Errors Close();
 	//see Device header.
-	Device_Errors GetDevices(vector<Device*> &deviceList);
+	Device_Errors GetDevices(std::vector<Device*> &deviceList);
 	~VideoInputDevice();
 protected:
 	
@@ -331,7 +331,7 @@ public:
 	//See Device header.
 	virtual Device_Errors Close();
 	//See Device header.
-	virtual Device_Errors GetDevices(vector<Device*> &deviceList);
+	virtual Device_Errors GetDevices(std::vector<Device*> &deviceList);
 	~AudioInputDevice();
 protected:
 	
@@ -358,7 +358,7 @@ public:
 	//See Device Header
 	virtual Device_Errors Close();
 	//See Device Header
-	virtual Device_Errors GetDevices(vector<Device*> &deviceList);
+	virtual Device_Errors GetDevices(std::vector<Device*> &deviceList);
 
 	~VideoOutputDevice();
 protected:
@@ -381,7 +381,7 @@ public:
 	//See Device header.
 	virtual Device_Errors Close();
 	//See Device header.
-	virtual Device_Errors GetDevices(vector<Device*> &deviceList);
+	virtual Device_Errors GetDevices(std::vector<Device*> &deviceList);
 	~AudioOutputDevice();
 protected:
 	AudioMediaFormat* CurrentFormat;

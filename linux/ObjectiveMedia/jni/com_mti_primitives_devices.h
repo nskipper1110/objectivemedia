@@ -189,7 +189,7 @@ static void Java_To_VideoInputDevice(JNIEnv* Env, jobject jvideo, VideoInputDevi
 				jstring jname = (jstring)Env->GetObjectField(jvideo, namefld);
 				jint jindex = Env->GetIntField(jvideo, indexfld);
 				cvideo->DeviceIndex = (int)jindex;
-				cvideo->DeviceName = Env->GetStringUTFChars(jname,false);
+				cvideo->DeviceName = Env->GetStringUTFChars(jname,NULL);
 			}
 		}
 	}
