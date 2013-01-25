@@ -46,6 +46,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o \
 	${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o
 
+# Test Directory
+TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
+
+# Test Files
+TESTFILES= \
+	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
 CFLAGS=-m32
@@ -61,25 +67,25 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/lib/jvm/java-6-openjdk-amd64/lib -L../../../ffmpeg/build/x86/lib
+LDLIBSOPTIONS=-L/usr/lib/jvm/java-6-openjdk/lib -L../../../ffmpeg/build/x86/lib ../../../ffmpeg/build/x86/lib/libavcodec.a ../../../ffmpeg/build/x86/lib/libavdevice.a ../../../ffmpeg/build/x86/lib/libavfilter.a ../../../ffmpeg/build/x86/lib/libavformat.a ../../../ffmpeg/build/x86/lib/libavutil.a ../../../ffmpeg/build/x86/lib/libswresample.a ../../../ffmpeg/build/x86/lib/libswscale.a -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libavcodec.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavcodec.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libavfilter.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavdevice.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libavformat.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavfilter.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libavutil.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavformat.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libavdevice.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavutil.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libswresample.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libswresample.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: libswscale.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libswscale.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -88,60 +94,225 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ${OBJECTFILES}
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o: jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp
 
 ${OBJECTDIR}/platform/platform_codecs.o: platform/platform_codecs.cpp 
 	${MKDIR} -p ${OBJECTDIR}/platform
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp
 
 ${OBJECTDIR}/platform/platform_devices.o: platform/platform_devices.cpp 
 	${MKDIR} -p ${OBJECTDIR}/platform
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp
 
 ${OBJECTDIR}/dbg.o: dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/dbg.o dbg.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/dbg.o dbg.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o: jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o: jni/com_mti_primitives_devices_AudioInputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o: jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o: jni/com_mti_primitives_devices_VideoInputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o: jni/com_mti_primitives_devices_VideoOutputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o: jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o: jni/com_mti_primitives_codecs_H263VideoDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
-	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp
+	$(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp
 
 # Subprojects
 .build-subprojects:
+
+# Build Test Targets
+.build-tests-conf: .build-conf ${TESTFILES}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testVideoInputDevice.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+
+
+${TESTDIR}/tests/testVideoInputDevice.o: tests/testVideoInputDevice.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
+
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o;\
+	fi
+
+${OBJECTDIR}/platform/platform_codecs_nomain.o: ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp 
+	${MKDIR} -p ${OBJECTDIR}/platform
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/platform/platform_codecs.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs_nomain.o platform/platform_codecs.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/platform/platform_codecs.o ${OBJECTDIR}/platform/platform_codecs_nomain.o;\
+	fi
+
+${OBJECTDIR}/platform/platform_devices_nomain.o: ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp 
+	${MKDIR} -p ${OBJECTDIR}/platform
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/platform/platform_devices.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices_nomain.o platform/platform_devices.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/platform/platform_devices.o ${OBJECTDIR}/platform/platform_devices_nomain.o;\
+	fi
+
+${OBJECTDIR}/dbg_nomain.o: ${OBJECTDIR}/dbg.o dbg.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/dbg.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/dbg_nomain.o dbg.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/dbg.o ${OBJECTDIR}/dbg_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o jni/com_mti_primitives_devices_AudioInputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o jni/com_mti_primitives_devices_VideoInputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o;\
+	fi
+
+# Run Test Targets
+.test-conf:
+	@if [ "${TEST}" = "" ]; \
+	then  \
+	    ${TESTDIR}/TestFiles/f1 || true; \
+	else  \
+	    ./${TEST} || true; \
+	fi
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}

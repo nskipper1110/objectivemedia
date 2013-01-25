@@ -22,6 +22,14 @@ CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/libObjectiveMedia.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Release=libObjectiveMedia.so.tar
 CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/libObjectiveMedia.so.tar
+# Debug64 configuration
+CND_PLATFORM_Debug64=GNU-Linux-x86
+CND_ARTIFACT_DIR_Debug64=dist/Debug64/GNU-Linux-x86
+CND_ARTIFACT_NAME_Debug64=libObjectiveMedia.so
+CND_ARTIFACT_PATH_Debug64=dist/Debug64/GNU-Linux-x86/libObjectiveMedia.so
+CND_PACKAGE_DIR_Debug64=dist/Debug64/GNU-Linux-x86/package
+CND_PACKAGE_NAME_Debug64=libObjectiveMedia.so.tar
+CND_PACKAGE_PATH_Debug64=dist/Debug64/GNU-Linux-x86/package/libObjectiveMedia.so.tar
 #
 # include compiler specific variables
 #

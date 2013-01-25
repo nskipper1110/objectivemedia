@@ -54,6 +54,12 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="VideoInputDeviceTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/testVideoInputDevice.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -77,18 +83,46 @@
           <architecture>1</architecture>
           <incDir>
             <pElem>../../../ffmpeg/build/x86/include</pElem>
-            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
-            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk/include/linux</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk/include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
-            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/lib</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk/lib</pElem>
             <pElem>../../../ffmpeg/build/x86/lib</pElem>
           </linkerAddLib>
-          <additionalDep>libavcodec.a libavfilter.a libavformat.a libavutil.a libavdevice.a libswresample.a libswscale.a</additionalDep>
+          <linkerLibItems>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavcodec.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavdevice.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavfilter.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavformat.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavutil.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libswresample.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libswscale.a</linkerLibFileItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -109,6 +143,69 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+    </conf>
+    <conf name="Debug64" type="2">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <architecture>2</architecture>
+        </cTool>
+        <ccTool>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../../../ffmpeg/build/x86/include</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk/include/linux</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/lib/jvm/java-6-openjdk/lib</pElem>
+            <pElem>../../../ffmpeg/build/x86/lib</pElem>
+          </linkerAddLib>
+        </linkerTool>
+      </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
     </conf>
   </confs>
 </configurationDescriptor>
