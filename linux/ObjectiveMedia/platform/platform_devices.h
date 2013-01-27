@@ -32,18 +32,49 @@ Revision History:
 
 #include "platform_includes.h"
 extern "C"{
-	#include <libavutil/imgutils.h>
-	#include <libavutil/opt.h>
-	#include <libavcodec/avcodec.h>
-	#include <libavutil/mathematics.h>
-	#include <libavutil/samplefmt.h>
+#include <libavutil/imgutils.h>
+#include <libavutil/opt.h>
+#include <libavcodec/avcodec.h>
+#include <libavutil/mathematics.h>
+#include <libavutil/samplefmt.h>
+#include <libswscale/swscale.h>
 }
 
 
 #ifndef DEVICE_DEFS
 #define DEVICE_DEFS
 #endif
+static AVFrame *alloc_picture(enum PixelFormat pix_fmt, int width, int height)
+    {
+            AVFrame *picture;
+            unsigned char*picture_buf;
+            int size;
 
+            picture = avcodec_alloc_frame();
+            if (!picture)
+                    return NULL;
+            size        = avpicture_get_size(pix_fmt, width, height);
+            picture_buf = (unsigned char*)av_malloc(size);
+            if (!picture_buf) {
+                    av_free(picture);
+                    return NULL;
+            }
+            avpicture_fill((AVPicture *)picture, picture_buf,
+                                       pix_fmt, width, height);
+            return picture;
+    }
+
+    static AVFrame *alloc_and_fill_picture(enum PixelFormat pix_fmt, int width, int height, void* buf)
+    {
+            AVFrame *picture;
+            picture = avcodec_alloc_frame();
+            if (!picture)
+                    return NULL;
+
+            avpicture_fill((AVPicture *)picture, (unsigned char*)buf,
+                                       pix_fmt, width, height);
+            return picture;
+    }
 
 /**************************************************************************************
 Description: The DeviceListener class serves as a base class for any user class that
@@ -236,7 +267,7 @@ public:
 			retval = PIX_FMT_UYVY422;
 			break;
 		case YUYV: //16 bit
-			retval = PIX_FMT_UYVY422;
+			retval = PIX_FMT_YUYV422;
 			break;
 		case IF09: //9.5 bits
 			retval = PIX_FMT_YUV410P;

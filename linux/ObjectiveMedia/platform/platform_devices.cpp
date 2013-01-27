@@ -68,6 +68,34 @@ typedef struct VideoInputDeviceContext{
     bool Stopped;
     VideoInputBuffer* Buffers;
     unsigned int BufferCount;
+    AVFrame* TempFrame;
+    SwsContext* ScaleContext;
+    VideoInputDeviceContext(){
+        DeviceHandle = -1;
+        ImageSize = 0;
+        Format = NULL;
+        CaptureThread = -1;
+        Listener = NULL;
+        Stopped = false;
+        Buffers = NULL;
+        BufferCount = 0;
+        TempFrame = NULL;
+        ScaleContext = NULL;
+    };
+    ~VideoInputDeviceContext(){
+        if(Buffers != NULL)
+            free(Buffers);
+        BufferCount = 0;
+        if(TempFrame != NULL){
+            if(TempFrame->data[0] != NULL)
+                av_free(TempFrame->data[0]);
+            av_free(TempFrame);
+        }
+        TempFrame = NULL;
+        if(ScaleContext != NULL){
+            av_free(ScaleContext);
+        }
+    }
 }VideoInputDeviceContext;
 
 #define StandardFormatCount 60
@@ -179,7 +207,7 @@ __u32 GetBPPFCC(VideoPixelFormat fmt){
             retval = V4L2_PIX_FMT_UYVY;
             break;
         case YV12:
-            retval = V4L2_PIX_FMT_NV12;
+            retval = V4L2_PIX_FMT_YUV420;
             break;
         case UNKNOWN:
             retval = V4L2_PIX_FMT_H264;
@@ -279,10 +307,10 @@ VideoInputDevice::VideoInputDevice(){
 	FormatCount = 0;
 }
 
-static void *VideoInputDevice_Thread(void* ptr){
+ void *VideoInputDevice_Thread(void* ptr){
     VideoInputDeviceContext* context = (VideoInputDeviceContext*) ptr;
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
-    long sleepTime = 1000*((double) 1000/context->Format->FPS);
+    long sleepTime = 1000000*((double) 1000/(double)context->Format->FPS);
     while(!context->Stopped){
         v4l2_buffer buf;
         memset (&buf, 0, sizeof(buf));
@@ -292,17 +320,38 @@ static void *VideoInputDevice_Thread(void* ptr){
 
         if (0 == ioctl (context->DeviceHandle, VIDIOC_DQBUF, &buf)) {
             if(context->Listener != NULL)
-                context->Listener->SampleCaptured(NULL, context->Buffers[buf.index].Buffer, buf.length, 0);
+            {
+                void* buffer = context->Buffers[buf.index].Buffer;
+                int bufsize = buf.length;
+                if(context->ScaleContext != NULL){
+                    VideoMediaFormat* vf = context->Format;
+                    AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat), vf->Width, vf->Height, buffer);
+                    if(source != NULL){
+                        int outheight = sws_scale(context->ScaleContext, source->data, source->linesize,0, vf->Height, context->TempFrame->data, context->TempFrame->linesize);
+                        //set the outgoing reference.
+                        if(outheight > 0)
+                        {
+                            buffer = context->TempFrame->data[0];
+                                //calculate and set the outgoing frame size, in bytes.
+                            bufsize = vf->Width * vf->Height * VideoMediaFormat::GetPixelBits(RGB24) / 8;
+                        }
+                        av_free(source);
+                    }
+                }
+                context->Listener->SampleCaptured(NULL, buffer, bufsize, 0);
+            }
             ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }
 
         
 
-        timespec* tv = new timespec();
-        tv->tv_nsec = sleepTime;
-        tv->tv_sec = 0;
-        nanosleep(tv, NULL);
+        timespec tv;
+        tv.tv_nsec = sleepTime;
+        tv.tv_sec = 0;
+        
+        nanosleep(&tv, NULL);
     }
+    pthread_exit(NULL);
 }
 
 Device_Errors VideoInputDevice::Open(MediaFormat* format){
@@ -315,6 +364,19 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         file = file + index;
         VideoMediaFormat* vformat = (VideoMediaFormat*)format;
         VideoInputDeviceContext* context = new VideoInputDeviceContext();
+        
+        if(vformat->AVPixelFormat == ANY){
+            for(int x = 0; x < Formats.size(); x++){
+                VideoMediaFormat* f = (VideoMediaFormat*)Formats[x];
+                if(vformat->Width == f->Width && vformat->Height == f->Height){
+                    vformat->PixelFormat = f->PixelFormat;
+                    PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
+                    context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
+                    context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
+                    break;
+                }
+            }
+        }
         context->DeviceHandle = -1;
         context->Format = vformat;
         context->DeviceHandle = open(file.c_str(), O_RDWR | O_NONBLOCK);
@@ -418,19 +480,26 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
                         //v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 
                         if(-1 == ioctl (context->DeviceHandle, VIDIOC_STREAMON, &rawfmt.type))
-                            cout << "Stream on failed " << errno << endl;
+                        {
+                            retval = NOT_SUPPORTED;
+                        }
+                        else{
+                            int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
+                            if(r != 0){
+                                retval = NOT_SUPPORTED;
+                            }
+                        }
                     }
 
                     
                 }
                 
-                int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
-                if(r != 0){
-                    retval = NOT_SUPPORTED;
-                }
+                
             }
         }
-        
+        if(retval != SUCCEEDED){
+            Close();
+        }
     }
     catch(...){
         retval = UNEXPECTED;
@@ -445,7 +514,12 @@ Device_Errors VideoInputDevice::Close(){
 		if(DeviceContext != NULL)
 		{
 			VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
-			
+                        context->Stopped = true;
+                        pthread_join(context->CaptureThread, NULL);
+                        close(context->DeviceHandle);
+                        
+                        delete(context);
+                        DeviceContext = NULL;
 		}
 		SAFEDELETE(DeviceContext);
 	}

@@ -12,8 +12,8 @@ CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
-OUTPUT_BASENAME=libObjectiveMedia.so
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so
+OUTPUT_BASENAME=ObjectiveMedia_lin32.so
 PACKAGE_TOP_DIR=libObjectiveMedia.so/
 
 # Functions

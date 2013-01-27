@@ -88,6 +88,7 @@
           </incDir>
         </ccTool>
         <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so</output>
           <linkerAddLib>
             <pElem>/usr/lib/jvm/java-6-openjdk/lib</pElem>
             <pElem>../../../ffmpeg/build/x86/lib</pElem>
@@ -110,10 +111,24 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -149,10 +164,24 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -170,33 +199,81 @@
       </toolsSet>
       <compileType>
         <cTool>
-          <architecture>2</architecture>
+          <stripSymbols>true</stripSymbols>
+          <incDir>
+            <pElem>../../../ffmpeg/build/x64/include</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
+          </incDir>
         </cTool>
         <ccTool>
-          <architecture>2</architecture>
+          <stripSymbols>true</stripSymbols>
           <incDir>
-            <pElem>../../../ffmpeg/build/x86/include</pElem>
-            <pElem>/usr/lib/jvm/java-6-openjdk/include/linux</pElem>
-            <pElem>/usr/lib/jvm/java-6-openjdk/include</pElem>
+            <pElem>../../../ffmpeg/build/x64/include</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so</output>
           <linkerAddLib>
-            <pElem>/usr/lib/jvm/java-6-openjdk/lib</pElem>
-            <pElem>../../../ffmpeg/build/x86/lib</pElem>
+            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/lib</pElem>
+            <pElem>../../../ffmpeg/build/x64/lib</pElem>
           </linkerAddLib>
+          <commandlineTool>g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavcodec.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavdevice.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavfilter.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavformat.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavutil.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libswresample.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libswscale.a</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-Wl,-Bsymbolic</commandLine>
         </linkerTool>
       </compileType>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../../ffmpeg/build/x64/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavcodec.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavdevice.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavfilter.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavformat.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavutil.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libswresample.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libswscale.a</linkerLibFileItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>

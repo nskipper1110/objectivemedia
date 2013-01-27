@@ -60,15 +60,14 @@ Codec_Errors H263VideoEncoder::Open(MediaFormat* encFormat, CodecData* encData){
 			//if we found the encoder, then instantiate the context and set config.
 			FFEncoderContext = avcodec_alloc_context3(FFEncoder);
 			FFEncoderContext->codec_type = AVMEDIA_TYPE_VIDEO;
-			FFEncoderContext->bit_rate = encData->BitRate / (vf->FPS * 2);
+			FFEncoderContext->bit_rate = ((double)encData->BitRate/8) / 30;//(double)vf->FPS;
 			sprintf(dbg_buffer, "\tBit Rate = %d\n", FFEncoderContext->bit_rate);
 			DbgOut(dbg_buffer);
 			FFEncoderContext->width = vf->Width;
 			FFEncoderContext->height = vf->Height;
-			FFEncoderContext->rc_max_rate = FFEncoderContext->bit_rate;
-			FFEncoderContext->rc_min_rate = FFEncoderContext->bit_rate;
-			FFEncoderContext->rc_buffer_size = FFEncoderContext->bit_rate * vf->FPS;
-			
+//			FFEncoderContext->rc_max_rate = FFEncoderContext->bit_rate;
+//			FFEncoderContext->rc_min_rate = FFEncoderContext->bit_rate;
+//			FFEncoderContext->rc_buffer_size = FFEncoderContext->bit_rate * vf->FPS;
 			AVRational fps;
 			fps.num = vf->FPS;
 			fps.den = 1;

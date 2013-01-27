@@ -66,37 +66,7 @@ public:
 	AVFrame* TempFrame;
 	SwsContext* ScaleContext;
 
-	static AVFrame *alloc_picture(enum PixelFormat pix_fmt, int width, int height)
-	{
-		AVFrame *picture;
-		unsigned char*picture_buf;
-		int size;
-
-		picture = avcodec_alloc_frame();
-		if (!picture)
-			return NULL;
-		size        = avpicture_get_size(pix_fmt, width, height);
-		picture_buf = (unsigned char*)av_malloc(size);
-		if (!picture_buf) {
-			av_free(picture);
-			return NULL;
-		}
-		avpicture_fill((AVPicture *)picture, picture_buf,
-					   pix_fmt, width, height);
-		return picture;
-	}
-
-	static AVFrame *alloc_and_fill_picture(enum PixelFormat pix_fmt, int width, int height, void* buf)
-	{
-		AVFrame *picture;
-		picture = avcodec_alloc_frame();
-		if (!picture)
-			return NULL;
-		
-		avpicture_fill((AVPicture *)picture, (unsigned char*)buf,
-					   pix_fmt, width, height);
-		return picture;
-	}
+	
 
 	Codec_Errors Open(MediaFormat* encFormat, CodecData* encData);
 	Codec_Errors Close();

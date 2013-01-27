@@ -30,5 +30,5 @@ void WriteErrorMsg(char* file, char* text)
 }
 
 void DbgOut(char* msg){
-	WriteErrorMsg("C:\\debug\\com_objectivemedia_dbg.txt", msg);
+	WriteErrorMsg("/home/nathan/com_objectivemedia_dbg.txt", msg);
 }

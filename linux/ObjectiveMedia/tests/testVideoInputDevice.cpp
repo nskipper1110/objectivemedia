@@ -45,22 +45,32 @@ void testVideoInputDevice_GetDevices() {
     }
 }
 
+class MyDeviceListener : public DeviceListener{
+    void SampleCaptured(void* sender, void* sample, long size, long long timestamp){
+        
+    }
+};
+
 void testVideoInputDevice_Open() {
     std::cout << "testVideoInputDevice_Open (VideoInputDeviceTests)" << std::endl;
     VideoInputDevice* dev = new VideoInputDevice();
     VideoMediaFormat* format = new VideoMediaFormat();
-    format->PixelFormat = (VideoPixelFormat)72;
+    format->PixelFormat = ANY;
     format->Width = 640;
     format->Height = 480;
+    std::vector<Device*> devices;
+    dev->GetDevices(devices);
+    dev=(VideoInputDevice*)devices[0];
+    dev->Listener = new MyDeviceListener();
     dev->Open(format);
-    long wait = 1;
-    while(true)
-    {
-        timespec* tv = new timespec();
-        tv->tv_nsec = 0;
-        tv->tv_sec = 1;
-        nanosleep(tv, NULL);
-    }
+    long wait = 15;
+    
+    timespec* tv = new timespec();
+    tv->tv_nsec = 0;
+    tv->tv_sec = wait;
+    nanosleep(tv, NULL);
+    
+    dev->Close();
         
 }
 

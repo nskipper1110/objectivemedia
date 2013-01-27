@@ -71,25 +71,25 @@ LDLIBSOPTIONS=-L/usr/lib/jvm/java-6-openjdk/lib -L../../../ffmpeg/build/x86/lib 
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavcodec.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libavcodec.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavdevice.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libavdevice.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavfilter.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libavfilter.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavformat.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libavformat.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libavutil.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libavutil.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libswresample.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libswresample.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ../../../ffmpeg/build/x86/lib/libswscale.a
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ../../../ffmpeg/build/x86/lib/libswscale.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so: ${OBJECTFILES}
+	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/lin32
+	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o: jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
@@ -159,7 +159,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testVideoInputDevice.o ${OBJECTFILES:%
 ${TESTDIR}/tests/testVideoInputDevice.o: tests/testVideoInputDevice.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I../../../ffmpeg/build/x86/include -I/usr/lib/jvm/java-6-openjdk/include/linux -I/usr/lib/jvm/java-6-openjdk/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
 
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
@@ -317,7 +317,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o: ${OBJECTDI
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
+	${RM} ${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so
 
 # Subprojects
 .clean-subprojects:
