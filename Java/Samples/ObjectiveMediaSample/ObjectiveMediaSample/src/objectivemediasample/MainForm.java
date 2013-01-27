@@ -51,25 +51,26 @@ public class MainForm extends javax.swing.JFrame {
                 CodecResult decResult = new CodecResult();
                 if(CurrentVideoEncoder != null){
                     if(CurrentVideoEncoder.Encode(sample, decResult, timestamp) == Codec_Errors.CODEC_SUCCEEDED){
-                        if(StartTime == 0) {
-                            StartTime = System.currentTimeMillis();
-                            CurrentTime = StartTime;
+                        if(decResult.Result != null)
+                        {
+                            if(StartTime == 0) {
+                                StartTime = System.currentTimeMillis();
+                                CurrentTime = StartTime;
+                            }
+                            FrameCount++;
+                            TotalBits += (decResult.Result.length * 8);
+                            if(System.currentTimeMillis() - CurrentTime >= 1000){
+
+                                CurrentTime = System.currentTimeMillis();
+                                long FrameRate = FrameCount;
+                                long BitRate = TotalBits;
+                                lblH263FrameRate.setText(FrameRate + "");
+                                lblH263BitRate.setText(BitRate + "");
+                                FrameCount = 0;
+                                TotalBits = 0;
+                            }
                         }
-                        FrameCount++;
-                        TotalBits += (decResult.Result.length * 8);
-                        if(System.currentTimeMillis() - CurrentTime >= 1000){
-                            
-                            long TotalSecs = (System.currentTimeMillis() - CurrentTime) / 1000;
-                            CurrentTime = System.currentTimeMillis();
-                            long FrameRate = FrameCount/TotalSecs;
-                            long avgframe = TotalBits/FrameCount;
-                            long BitRate = avgframe * FrameRate;
-                            lblH263FrameRate.setText(FrameRate + "");
-                            lblH263BitRate.setText(BitRate + "");
-                            FrameCount = 0;
-                            TotalBits = 0;
-                        }
-                        if(CurrentVideoDecoder != null)
+                        if(CurrentVideoDecoder != null && decResult.Result != null)
                         {
                             if(CurrentVideoDecoder.Decode(decResult.Result, decResult, timestamp) != Codec_Errors.CODEC_SUCCEEDED){
                                 decSample = sample;

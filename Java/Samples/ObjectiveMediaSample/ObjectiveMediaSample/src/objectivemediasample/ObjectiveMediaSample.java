@@ -50,8 +50,33 @@ public class ObjectiveMediaSample {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Primitives.LibraryPath = "C:\\objectivemedia\\build\\debug\\win64\\";
-                Primitives.NativeLibraries.add("objectivemedia_win64.dll");
+                String separator = System.getProperty("file.separator");
+                String binpath = System.getProperty("java.home");
+                String archtype = System.getProperty("os.arch");
+                String osname = System.getProperty("os.name");
+                String osversion = System.getProperty("os.version");
+                String userhome = System.getProperty("user.home");
+                if(osname.toLowerCase().contains("linux")){
+                    if(archtype.contains("amd64")){
+                        Primitives.LibraryPath = userhome + "/objectivemedia/linux/ObjectiveMedia/dist/Debug64/lin64/";
+                        Primitives.NativeLibraries.add("ObjectiveMedia_lin64.so");
+                        
+                    }
+                    else{
+                        Primitives.LibraryPath = userhome + "/objectivemedia/linux/objectivemedia/dist/debug/lin32/";
+                        Primitives.NativeLibraries.add("libobjectivemedia.so");
+                    }
+                }
+                else if(osname.toLowerCase().contains("win")){
+                    if(archtype.contains("amd64")){
+                        Primitives.LibraryPath = "C:\\objectivemedia\\build\\debug\\win64\\";
+                        Primitives.NativeLibraries.add("objectivemedia_win64.dll");
+                    }
+                    else{
+                        Primitives.LibraryPath = "C:\\objectivemedia\\build\\debug\\win32\\";
+                        Primitives.NativeLibraries.add("objectivemedia_win32.dll");
+                    }
+                }
                 Primitives.InitializePrimitives();
                 MainForm fm = new MainForm();
                 fm.setSize(680, 600);
