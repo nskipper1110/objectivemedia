@@ -39,6 +39,7 @@ using namespace std;
 #include <sys/time.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
+#include <sys/soundcard.h>
 
 #include <asm/types.h>          /* for videodev2.h */
 
@@ -53,6 +54,12 @@ typedef struct StandardVideoFormat{
     int Height;
     int PixelFormat;
 }StandardVideoFormat;
+
+typedef struct StandardAudioFormat{
+    int SampleRate;
+    int BitsPerSample;
+    int Channels;
+};
 
 typedef struct VideoInputBuffer{
     void* Buffer;
@@ -97,6 +104,26 @@ typedef struct VideoInputDeviceContext{
         }
     }
 }VideoInputDeviceContext;
+
+typedef struct AudioInputDeviceContext{
+    int DeviceHandle;
+    AudioMediaFormat* Format;
+    pthread_t CaptureThread;
+    DeviceListener* Listener;
+    bool Stopped;
+    
+    AudioInputDeviceContext(){
+        DeviceHandle = -1;
+        Format = NULL;
+        CaptureThread = -1;
+        Listener = NULL;
+        Stopped = false;
+        
+    }
+    ~AudioInputDeviceContext(){
+        
+    }
+}AudioInputDeviceContext;
 
 #define StandardFormatCount 60
 StandardVideoFormat StandardFormats[] = 
@@ -184,6 +211,13 @@ StandardVideoFormat StandardFormats[] =
     {720,480,UNKNOWN},
     {1024,768,UNKNOWN},
 };
+#define StandardAudioFormatCount 4
+StandardAudioFormat StandardAudioFormats[] = {
+    {8000, 8, 1},
+    {8000, 16, 1},
+    {11025, 8, 1},
+    {11025, 16, 1}
+};
 
 __u32 GetBPPFCC(VideoPixelFormat fmt){
     __u32 retval = V4L2_PIX_FMT_BGR24;
@@ -260,9 +294,6 @@ xioctl                          (int                    fd,
 }
 
 
-typedef struct AudioInputDeviceContext{
-	
-}AudioInputDeviceContext;
 
 typedef struct VideoOutputDeviceContext{
 	
@@ -310,7 +341,8 @@ VideoInputDevice::VideoInputDevice(){
  void *VideoInputDevice_Thread(void* ptr){
     VideoInputDeviceContext* context = (VideoInputDeviceContext*) ptr;
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
-    long sleepTime = 1000000*((double) 1000/(double)context->Format->FPS);
+    double adjfps = context->Format->FPS;
+    long sleepTime = 1000000*((double) 1000/adjfps);
     while(!context->Stopped){
         v4l2_buffer buf;
         memset (&buf, 0, sizeof(buf));
@@ -417,6 +449,7 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             rawfmt.fmt.pix.width = vformat->Width;
             rawfmt.fmt.pix.height = vformat->Height;
             rawfmt.fmt.pix.field = V4L2_FIELD_ANY;
+            
             rawfmt.fmt.pix.pixelformat = (__u32)GetBPPFCC((VideoPixelFormat)vformat->PixelFormat);
             if(ioctl(context->DeviceHandle, VIDIOC_S_FMT, &rawfmt) == -1)
             {
@@ -530,7 +563,7 @@ Device_Errors VideoInputDevice::Close(){
 }
 
 Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
-	Device_Errors retval = SUCCEEDED;
+    Device_Errors retval = SUCCEEDED;
     try{
         DIR *dp;
         struct dirent *dirp;
@@ -656,16 +689,71 @@ Device_Errors AudioInputDevice::Close(){
 }
 
 Device_Errors AudioInputDevice::GetDevices(std::vector<Device*> &deviceList){
-	Device_Errors retval = SUCCEEDED;
-	try
-	{
-		
-	}
-	catch(...)
-	{
-		retval = UNEXPECTED;
-	}
-	return retval;
+    Device_Errors retval = SUCCEEDED;
+    try{
+        DIR *dp;
+        struct dirent *dirp;
+        if((dp  = opendir("/dev/")) == NULL) {
+            retval = NO_DEVICES;
+        }
+        else{
+            int index = 0;
+            while ((dirp = readdir(dp)) != NULL) {
+                string file(dirp->d_name);
+                //std::cout << file << std::endl;
+                if(file.find("audio", 0) != file.npos)
+                {
+                    file = "/dev/" + file;
+                    int fd = open(file.c_str(), O_RDWR);
+                    if(fd != -1)
+                    {
+                        v4l2_capability argp;
+                        if(ioctl(fd, VIDIOC_QUERYCAP, &argp) == 0)
+                        {
+                            if(argp.capabilities & V4L2_CAP_STREAMING)
+                            {
+                                VideoInputDevice* vid = new VideoInputDevice();
+                                vid->DeviceIndex = index;
+                                string name((char*)argp.card);
+                                vid->DeviceName = name;
+                                
+                                for(int x=0; x < StandardFormatCount; x++)
+                                {
+                                    v4l2_format rawfmt;
+                                    memset(&rawfmt, 0, sizeof(v4l2_format));
+                                    rawfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                                    
+                                    rawfmt.fmt.pix.width = StandardFormats[x].Width;
+                                    rawfmt.fmt.pix.height = StandardFormats[x].Height;
+                                    rawfmt.fmt.pix.pixelformat = (__u32)GetBPPFCC((VideoPixelFormat)StandardFormats[x].PixelFormat);
+                                    if(ioctl(fd, VIDIOC_TRY_FMT, &rawfmt) == 0)
+                                    {
+                                        VideoMediaFormat* fmt = new VideoMediaFormat();
+                                        fmt->Width = rawfmt.fmt.pix.width;
+                                        fmt->Height = rawfmt.fmt.pix.height;
+                                        fmt->PixelFormat = (VideoPixelFormat)StandardFormats[x].PixelFormat;
+                                        vid->Formats.push_back(fmt);
+                                        vid->FormatCount = vid->Formats.size();
+                                    }
+                                }
+                                deviceList.push_back(vid);
+                            }
+                        }
+                        
+                        close(fd);
+                    }
+                    
+                    index++;
+                }
+            }
+            closedir(dp);
+        }
+    }
+    catch(...)
+    {
+        retval = UNEXPECTED;
+    }
+    return retval;
 }
 
 AudioInputDevice::~AudioInputDevice()

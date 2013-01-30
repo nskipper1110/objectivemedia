@@ -60,7 +60,7 @@ Codec_Errors H263VideoEncoder::Open(MediaFormat* encFormat, CodecData* encData){
 			//if we found the encoder, then instantiate the context and set config.
 			FFEncoderContext = avcodec_alloc_context3(FFEncoder);
 			FFEncoderContext->codec_type = AVMEDIA_TYPE_VIDEO;
-			FFEncoderContext->bit_rate = ((double)encData->BitRate/8) / 30;//(double)vf->FPS;
+			FFEncoderContext->bit_rate = ((double)encData->BitRate/8) / (double)vf->FPS;
 			sprintf(dbg_buffer, "\tBit Rate = %d\n", FFEncoderContext->bit_rate);
 			DbgOut(dbg_buffer);
 			FFEncoderContext->width = vf->Width;
@@ -860,13 +860,15 @@ Codec_Errors G7231AudioDecoder::Decode(void* inSample, long insize, void** outSa
 				retval = CODEC_INVALID_INPUT;
 			}
 			else if(got_it > 0){
-				*outSample = frame->data[0];
+				
 				*outsize = frame->linesize[0];
+                                *outSample =  frame->data[0];
 			}
 			else{
 				retval = CODEC_NO_OUTPUT;
 			}
-			av_free(frame);
+                        //av_free(frame->data);
+			avcodec_free_frame(&frame);
 		}
 	}
 	catch(...){

@@ -10,10 +10,18 @@ extern "C" {
 /*
  * Class:     com_mti_primitives_devices_AudioInputDevice
  * Method:    PlatformOpen
- * Signature: (ILcom/mti/primitives/devices/DeviceListener;III)I
+ * Signature: (Lcom/mti/primitives/devices/AudioMediaFormat;)I
  */
 JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_AudioInputDevice_PlatformOpen
-  (JNIEnv *, jobject, jint, jobject, jint, jint, jint);
+  (JNIEnv *, jobject, jobject);
+
+/*
+ * Class:     com_mti_primitives_devices_AudioInputDevice
+ * Method:    PlatformGetDevices
+ * Signature: (Ljava/util/List;)I
+ */
+JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_AudioInputDevice_PlatformGetDevices
+  (JNIEnv *, jobject, jobject);
 
 /*
  * Class:     com_mti_primitives_devices_AudioInputDevice
@@ -22,14 +30,6 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_AudioInputDevice_Platform
  */
 JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_AudioInputDevice_PlatformClose
   (JNIEnv *, jobject);
-
-/*
- * Class:     com_mti_primitives_devices_AudioInputDevice
- * Method:    PlatformGetDevices
- * Signature: ([Lcom/mti/primitives/devices/AudioInputDevice;)I
- */
-JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_AudioInputDevice_PlatformGetDevices
-  (JNIEnv *, jobject, jobjectArray);
 
 #ifdef __cplusplus
 }

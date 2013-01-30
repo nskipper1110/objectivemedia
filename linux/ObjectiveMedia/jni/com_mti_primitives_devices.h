@@ -73,6 +73,71 @@ static void Add_jVideoMediaFormat_To_jVideoInputDevice(JNIEnv* Env, jobject jinp
 	}
 }
 
+static jobject New_jAudioMediaFormat(JNIEnv* Env, AudioMediaFormat* cformat){
+	jobject format = NULL;
+	if(Env != NULL && cformat != NULL){
+		jclass cls = Env->FindClass("com/mti/primitives/devices/AudioMediaFormat");
+		if(cls != NULL){
+			jmethodID constructor = Env->GetMethodID(cls, "<init>", "(III)V");
+			if(constructor != NULL){
+                                format = Env->NewObject(cls, constructor, cformat->BitsPerSample, cformat->Channels, cformat->SampleRate);
+			}
+		}
+	}
+
+	return format;
+}
+
+static void Add_jAudioMediaFormat_To_jAudioInputDevice(JNIEnv* Env, jobject jinputDevice, AudioMediaFormat* cformat){
+	if(Env != NULL && jinputDevice != NULL && cformat != NULL){
+		jclass cls = Env->GetObjectClass(jinputDevice);
+		if(cls != NULL){
+			jfieldID formatsID = Env->GetFieldID(cls, "Formats", "Ljava/util/List;");
+			if(formatsID != NULL){
+				jobject formats = Env->GetObjectField(jinputDevice, formatsID);
+				if(formats != NULL){
+					jclass formatscls = Env->GetObjectClass(formats);
+					if(formatscls != NULL){
+						jmethodID addmethod = Env->GetMethodID(formatscls, "add", "(Ljava/lang/Object;)Z");
+						if(addmethod != NULL){
+							jobject jformat = New_jAudioMediaFormat(Env, cformat);
+							if(jformat != NULL){
+								Env->CallBooleanMethod(formats, addmethod, jformat);
+							}
+						}
+					}	
+				}
+			}
+		}
+		
+	}
+}
+
+static void Add_jAudioMediaFormat_To_jAudioOutputDevice(JNIEnv* Env, jobject joutputDevice, AudioMediaFormat* cformat){
+	if(Env != NULL && joutputDevice != NULL && cformat != NULL){
+		jclass cls = Env->GetObjectClass(joutputDevice);
+		if(cls != NULL){
+			jfieldID formatsID = Env->GetFieldID(cls, "Formats", "Ljava/util/List;");
+			if(formatsID != NULL){
+				jobject formats = Env->GetObjectField(joutputDevice, formatsID);
+				if(formats != NULL){
+					jclass formatscls = Env->GetObjectClass(formats);
+					if(formatscls != NULL){
+						jmethodID addmethod = Env->GetMethodID(formatscls, "add", "(Ljava/lang/Object;)Z");
+						if(addmethod != NULL){
+							jobject jformat = New_jAudioMediaFormat(Env, cformat);
+							if(jformat != NULL){
+								Env->CallBooleanMethod(formats, addmethod, jformat);
+							}
+						}
+					}	
+				}
+			}
+		}
+		
+	}
+}
+
 static VideoMediaFormat* New_VideoMediaFormat(JNIEnv* Env, jobject jformat){
 	VideoMediaFormat* cformat = NULL;
 	if(Env != NULL && jformat != NULL){
@@ -173,6 +238,25 @@ static jobject New_jVideoInputDevice(JNIEnv* Env, VideoInputDevice* cvideo){
 	return retobj;
 }
 
+static jobject New_jAudioInputDevice(JNIEnv* Env, AudioInputDevice* caudio){
+	jobject retobj = NULL;
+	jclass cls = Env->FindClass("com/mti/primitives/devices/AudioInputDevice");
+	if(cls != NULL){
+		jmethodID method = Env->GetMethodID(cls, "<init>", "(ILjava/lang/String;)V");
+		if(method != NULL){
+			jstring str = Env->NewStringUTF(caudio->DeviceName.c_str());
+			retobj = Env->NewObject(cls, method, caudio->DeviceIndex, str);
+			if(retobj != NULL){
+				for(int x = 0; x < caudio->Formats.size(); x++)
+				{
+					Add_jAudioMediaFormat_To_jAudioInputDevice(Env, retobj, (AudioMediaFormat*)caudio->Formats[x]);
+				}
+			}
+		}
+	}
+	return retobj;
+}
+
 /**
 * Converts a Java VideoInputDevice object to a c++ videoinputdevice object. Both must be instantiated.
 * jvideo: the Java VideoInputDevice object to use as the template for the C++ object.
@@ -190,6 +274,23 @@ static void Java_To_VideoInputDevice(JNIEnv* Env, jobject jvideo, VideoInputDevi
 				jint jindex = Env->GetIntField(jvideo, indexfld);
 				cvideo->DeviceIndex = (int)jindex;
 				cvideo->DeviceName = Env->GetStringUTFChars(jname,NULL);
+			}
+		}
+	}
+}
+
+static void Java_To_AudioInputDevice(JNIEnv* Env, jobject jaudio, AudioInputDevice* caudio){
+	if(Env != NULL && jaudio != NULL && caudio != NULL)
+	{
+		jclass cls = Env->GetObjectClass(jaudio);
+		if(cls != NULL){
+			jfieldID indexfld = Env->GetFieldID(cls, "DeviceIndex", "I");
+			jfieldID namefld = Env->GetFieldID(cls, "DeviceName", "Ljava/lang/String;");
+			if(indexfld != NULL && namefld != NULL){
+				jstring jname = (jstring)Env->GetObjectField(jaudio, namefld);
+				jint jindex = Env->GetIntField(jaudio, indexfld);
+				caudio->DeviceIndex = (int)jindex;
+				caudio->DeviceName = Env->GetStringUTFChars(jname,NULL);
 			}
 		}
 	}

@@ -104,7 +104,8 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 		  Env->GetByteArrayRegion(encSample,0,inlen,inSample);
 		  long outsize = 0;
 		  retval = G7231Decoder->Decode((void*)inSample,inlen, (void**)&outSample,&outsize, timestamp);
-		  delete(inSample);
+                  
+                  delete(inSample);
 		  if(retval == 0){
 			  
 			  if(decSample == NULL)
@@ -115,7 +116,7 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 				  Sample_To_CodecResult(Env, outSample, 480, decSample, timestamp);
 			
 			  }
-			  //av_free(outSample);
+			  //free(outSample);
 		  }
 	  }
 
