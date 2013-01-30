@@ -48,15 +48,18 @@ public final class AudioInputDevice extends InputDevice{
                         break;
                     }
                     else{
-                        int bufSize = 240 * CurrentFormat.BitsPerSample / 8 * CurrentFormat.Channels;
-                        byte[] buffer = new byte[bufSize];
-                        int ret = MyLine.read(buffer, 0, bufSize);
-                        if(ret > 0)
-                        {
-                            Listener.SampleCaptured(Boss, buffer, System.currentTimeMillis() - StartTime);
+                        if(MyLine.available() > 0){
+                            int bufSize = 240 * CurrentFormat.BitsPerSample / 8 * CurrentFormat.Channels;
+                            byte[] buffer = new byte[bufSize];
+                            int ret = MyLine.read(buffer, 0, bufSize);
+                            if(ret > 0)
+                            {
+                                Listener.SampleCaptured(Boss, buffer, System.currentTimeMillis() - StartTime);
+                            }
                         }
                     }
-                    Thread.sleep(1);
+                    double delay = ((double)CurrentFormat.SampleRate / 240) * 0.50;
+                    Thread.sleep((int)delay);
                 }catch(Exception e){
                     String a = e.getMessage();
                     a = a;
@@ -100,6 +103,11 @@ public final class AudioInputDevice extends InputDevice{
     }
     
     
+    private native int PlatformOpen(AudioMediaFormat format);
+    
+    private native int PlatformGetDevices(java.util.List<Device> deviceList);
+    
+    private native int PlatformClose();
     /**
      * Opens the audio input device and allocates resources for use.
      * @param format - The format to use when opening the device.
