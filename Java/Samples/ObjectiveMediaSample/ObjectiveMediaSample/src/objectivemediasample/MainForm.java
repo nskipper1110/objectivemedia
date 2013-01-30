@@ -58,16 +58,19 @@ public class MainForm extends javax.swing.JFrame {
                                 CurrentTime = StartTime;
                             }
                             FrameCount++;
-                            TotalBits += (decResult.Result.length * 8);
+                            TotalBits += decResult.Result.length;
                             if(System.currentTimeMillis() - CurrentTime >= 1000){
-
+                                double time = CurrentTime - StartTime;
+                                time = time/1000;
                                 CurrentTime = System.currentTimeMillis();
                                 long FrameRate = FrameCount;
-                                long BitRate = TotalBits;
+                                
+                                double BitRate = (TotalBits*8);
+                                BitRate = BitRate/time;
                                 lblH263FrameRate.setText(FrameRate + "");
-                                lblH263BitRate.setText(BitRate + "");
+                                lblH263BitRate.setText(((int)BitRate) + "");
                                 FrameCount = 0;
-                                TotalBits = 0;
+                                
                             }
                         }
                         if(CurrentVideoDecoder != null && decResult.Result != null)
@@ -116,7 +119,11 @@ public class MainForm extends javax.swing.JFrame {
                     }
                 }
             }
-            AudioQueue.add(sample);
+            
+            if(CurrentAudioOutputDevice != null)
+                CurrentAudioOutputDevice.Present(sample, 0);
+            if(chkAudioDisplay.isSelected()) PresentAudio(sample);
+            //AudioQueue.add(sample);
         }
     }
     
@@ -194,7 +201,7 @@ public class MainForm extends javax.swing.JFrame {
         boolean retval = true;
         CurrentVideoOutputDevice = new VideoOutputDevice(0, "");
         VideoMediaFormat vf = new VideoMediaFormat(CurrentVideoInputFormat.FPS, CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.ANY);
-        CurrentVideoOutputDevice.Open(vf, VideoView, true);
+        CurrentVideoOutputDevice.Open(vf, VideoView, false);
         return retval;
     }
     
@@ -361,8 +368,9 @@ public class MainForm extends javax.swing.JFrame {
                     }
                 }
             };
-            AudioTimer = new javax.swing.Timer(1, l);
-            AudioTimer.start();
+            double time = (double)CurrentAudioInputFormat.SampleRate/240*0.75;
+            AudioTimer = new javax.swing.Timer((int)time, l);
+            //AudioTimer.start();
             CurrentAudioInputDevice.Open(CurrentAudioInputFormat);
         }
         return retval;
@@ -800,7 +808,13 @@ public class MainForm extends javax.swing.JFrame {
 
     private void lstAvailableAudioInputFormatsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAvailableAudioInputFormatsValueChanged
         AudioMediaFormat format = (AudioMediaFormat) lstAvailableAudioInputFormats.getSelectedValue();
-        CurrentAudioInputFormat = format;
+        if(format.SampleRate < 0){
+            CurrentAudioInputFormat = new AudioMediaFormat(format.BitsPerSample, format.Channels, 8000);
+        }
+        else{
+            CurrentAudioInputFormat = format;
+        }
+        
     }//GEN-LAST:event_lstAvailableAudioInputFormatsValueChanged
 
     private void lstAvailableAudioInputDevicesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAvailableAudioInputDevicesValueChanged
