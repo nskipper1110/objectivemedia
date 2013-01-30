@@ -50,33 +50,33 @@ public class ObjectiveMediaSample {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String separator = System.getProperty("file.separator");
-                String binpath = System.getProperty("java.home");
+                java.util.Map<String, String> EnvVars = System.getenv();
+                
                 String archtype = System.getProperty("os.arch");
-                String osname = System.getProperty("os.name");
-                String osversion = System.getProperty("os.version");
                 String userhome = System.getProperty("user.home");
-                if(osname.toLowerCase().contains("linux")){
-                    if(archtype.contains("amd64")){
-                        Primitives.LibraryPath = userhome + "/objectivemedia/linux/ObjectiveMedia/dist/Debug64/lin64/";
-                        Primitives.NativeLibraries.add("ObjectiveMedia_lin64.so");
-                        
-                    }
-                    else{
-                        Primitives.LibraryPath = userhome + "/objectivemedia/linux/objectivemedia/dist/debug/lin32/";
-                        Primitives.NativeLibraries.add("libobjectivemedia.so");
-                    }
+                String libPath64 = userhome + "/objectivemedia/linux/ObjectiveMedia/dist/Debug64/lin64/";
+                String libFile64 = "ObjectiveMedia_lin64.so";
+                String libPath32 = userhome + "/objectivemedia/linux/objectivemedia/dist/debug/lin32/";
+                String libFile32 = "ObjectiveMedia_lin32.so";
+                if(EnvVars.containsKey("OBJECTIVEMEDIAPATH64"))
+                    libPath64 = EnvVars.get("OBJECTIVEMEDIAPATH64");
+                if(EnvVars.containsKey("OBJECTIVEMEDIAPATH32"))
+                    libPath32 = EnvVars.get("OBJECTIVEMEDIAPATH32");
+                if(EnvVars.containsKey("OBJECTIVEMEDIAFILE64"))
+                    libFile64 = EnvVars.get("OBJECTIVEMEDIAFILE64");
+                if(EnvVars.containsKey("OBJECTIVEMEDIAFILE32"))
+                    libFile32 = EnvVars.get("OBJECTIVEMEDIAFILE32");
+                
+                if(archtype.contains("amd64")){
+                    Primitives.LibraryPath = libPath64;
+                    Primitives.NativeLibraries.add(libFile64);
+
                 }
-                else if(osname.toLowerCase().contains("win")){
-                    if(archtype.contains("amd64")){
-                        Primitives.LibraryPath = "C:\\objectivemedia\\build\\debug\\win64\\";
-                        Primitives.NativeLibraries.add("objectivemedia_win64.dll");
-                    }
-                    else{
-                        Primitives.LibraryPath = "C:\\objectivemedia\\build\\debug\\win32\\";
-                        Primitives.NativeLibraries.add("objectivemedia_win32.dll");
-                    }
+                else{
+                    Primitives.LibraryPath = userhome + libPath32;
+                    Primitives.NativeLibraries.add(libFile32);
                 }
+                
                 Primitives.InitializePrimitives();
                 MainForm fm = new MainForm();
                 fm.setSize(680, 600);
