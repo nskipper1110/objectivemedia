@@ -66,14 +66,19 @@ public class ObjectiveMediaSample {
                     libFile64 = EnvVars.get("OBJECTIVEMEDIAFILE64");
                 if(EnvVars.containsKey("OBJECTIVEMEDIAFILE32"))
                     libFile32 = EnvVars.get("OBJECTIVEMEDIAFILE32");
-                
+                System.out.println("ObjectiveMediaSample Running...");
+                System.out.println("Architecture " + archtype);
+                System.out.println("Environment Variables: ");
+                System.out.println(EnvVars.toString());
                 if(archtype.contains("amd64")){
+                    System.out.println("Loading " + libFile64 + " from " + libPath64);
                     Primitives.LibraryPath = libPath64;
                     Primitives.NativeLibraries.add(libFile64);
 
                 }
                 else{
-                    Primitives.LibraryPath = userhome + libPath32;
+                    System.out.println("Loading " + libFile32 + " from " + libPath32);
+                    Primitives.LibraryPath = libPath32;
                     Primitives.NativeLibraries.add(libFile32);
                 }
                 
