@@ -417,6 +417,21 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             retval = INVALID_DEVICE;
         }
         else{
+            v4l2_input input;
+            memset(&input, 0, sizeof(input));
+            int counter = 0;
+            input.index = counter;
+            while(ioctl(context->DeviceHandle, VIDIOC_ENUMINPUT, &input) != -1){
+                counter++;
+                input.index = counter;
+            }
+            if(counter > 1){
+                input.index = 1;
+                ioctl(context->DeviceHandle, VIDIOC_S_INPUT, &input);
+            }
+            
+            v4l2_std_id std_id = V4L2_STD_NTSC;
+            ioctl (context->DeviceHandle, VIDIOC_S_STD, &std_id);
             v4l2_cropcap cropcap;
             v4l2_crop crop;
             
@@ -549,8 +564,13 @@ Device_Errors VideoInputDevice::Close(){
 			VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
                         context->Stopped = true;
                         pthread_join(context->CaptureThread, NULL);
+                        enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                        ioctl(context->DeviceHandle, VIDIOC_STREAMOFF, &type);
+                        for (int i = 0; i < context->BufferCount; ++i)
+                                munmap(context->Buffers[i].Buffer, context->Buffers[i].Length);
                         close(context->DeviceHandle);
-                        
+                        free(context->Buffers);
+                        context->Buffers = NULL;
                         delete(context);
                         DeviceContext = NULL;
 		}
@@ -587,7 +607,11 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
                             if(argp.capabilities & V4L2_CAP_STREAMING)
                             {
                                 VideoInputDevice* vid = new VideoInputDevice();
-                                vid->DeviceIndex = index;
+                                const char* text = file.c_str();
+                                int len = strlen(text);
+                                int i = (int) text[len - 1];
+                                i = i - 48;
+                                vid->DeviceIndex = i;
                                 string name((char*)argp.card);
                                 vid->DeviceName = name;
                                 

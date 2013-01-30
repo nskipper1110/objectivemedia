@@ -85,11 +85,14 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
 			  Java_To_VideoInputDevice(Env, sender, tempDevice);
 			  vector<Device*> deviceList;
 			  if(tempDevice->GetDevices(deviceList) == SUCCEEDED){
-				  videoInputDevice = (VideoInputDevice*)deviceList[tempDevice->DeviceIndex];
 				  for(int x = 0; x < deviceList.size(); x++)
 				  {
-					  if(x != videoInputDevice->DeviceIndex)
+					  if(((VideoInputDevice*)deviceList[x])->DeviceIndex != tempDevice->DeviceIndex)
 						  delete deviceList[x];
+                                          else
+                                          {
+                                              videoInputDevice = (VideoInputDevice*)deviceList[x];
+                                          }
 				  }
 				  deviceList.clear();
 				  VideoInputDeviceListener* clistener = new VideoInputDeviceListener();
