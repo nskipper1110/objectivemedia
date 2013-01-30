@@ -52,11 +52,7 @@ public class ObjectiveMediaSample {
             public void run() {
                 java.util.Map<String, String> EnvVars = System.getenv();
                 
-                String separator = System.getProperty("file.separator");
-                String binpath = System.getProperty("java.home");
                 String archtype = System.getProperty("os.arch");
-                String osname = System.getProperty("os.name");
-                String osversion = System.getProperty("os.version");
                 String userhome = System.getProperty("user.home");
                 String libPath64 = userhome + "/objectivemedia/linux/ObjectiveMedia/dist/Debug64/lin64/";
                 String libFile64 = "ObjectiveMedia_lin64.so";
