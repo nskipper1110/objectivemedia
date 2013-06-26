@@ -159,7 +159,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testVideoInputDevice.o ${OBJECTFILES:%
 ${TESTDIR}/tests/testVideoInputDevice.o: tests/testVideoInputDevice.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -s -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I../../../ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
+	$(COMPILE.cc) -g -s -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I../../../ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
 
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 

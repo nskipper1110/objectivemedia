@@ -145,7 +145,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testVideoInputDevice.o ${OBJECTFILES:%
 ${TESTDIR}/tests/testVideoInputDevice.o: tests/testVideoInputDevice.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
 
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
