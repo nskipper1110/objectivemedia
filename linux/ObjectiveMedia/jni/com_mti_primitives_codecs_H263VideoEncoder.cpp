@@ -87,21 +87,17 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_H263VideoEncoder_PlatformE
 		  retval = CODEC_CODEC_NOT_OPENED;
 	  }
 	  else{
-		  jbyte* inSample;
+		  jbyte* inSample = Env->GetByteArrayElements(Sample, NULL);
 		  long inlen = Env->GetArrayLength(Sample);
-//                  sprintf(dbg_buffer, "H263 Encoding sample of size %d\n", inlen);
-//                  DbgOut(dbg_buffer);
-                  
+
 		  jbyte* outSample;
-		  inSample = new jbyte[inlen];
-		  Env->GetByteArrayRegion(Sample,0,inlen,inSample);
-//                  sprintf(dbg_buffer, "H263 Encoding Got the java input array\n");
-//                  DbgOut(dbg_buffer);
+		  //inSample = new jbyte[inlen];
+		  //Env->GetByteArrayRegion(Sample,0,inlen,inSample);
+
 		  long outsize = 0;
 		  retval = H263Encoder->Encode((void*)inSample,inlen, (void**)&outSample,&outsize, timestamp);
-//                  sprintf(dbg_buffer, "H263 Encoding returned %d with output size of %d\n", retval, outsize);
-//                  DbgOut(dbg_buffer);
-		  delete(inSample);
+
+		  Env->ReleaseByteArrayElements(Sample, inSample, JNI_ABORT);//delete(inSample);
 		  if(retval == 0){
 			  
 			  if(encSample == NULL)
@@ -109,12 +105,8 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_H263VideoEncoder_PlatformE
 				  retval = CODEC_NO_OUTPUT;
 			  }
 			  else{
-//                                  sprintf(dbg_buffer, "H263 Encoding getting sample result output\n");
-//                                  DbgOut(dbg_buffer);
 				  Sample_To_CodecResult(Env, outSample, outsize, encSample, timestamp);
-                                  //sprintf(dbg_buffer, "H263 Encoding got the result object\n");
-                                  //DbgOut(dbg_buffer);
-			
+                                  
 			  }
 			  av_free(outSample);
 		  }

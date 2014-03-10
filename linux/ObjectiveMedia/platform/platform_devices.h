@@ -240,13 +240,13 @@ public:
 			retval = PIX_FMT_BGR24;
 			break;
 		case RGB32: //32 bit
-			retval = PIX_FMT_BGR0;
+			retval = PIX_FMT_ARGB;
 			break;
 		case ARGB32: //32 bit
 			retval = PIX_FMT_BGRA;
 			break;
 		case AYUV: //32 bit
-			retval = PIX_FMT_YUVA444P;
+			retval = PIX_FMT_YUV422P16BE;
 			break;
 		case UYVY: //16 bit
 			retval = PIX_FMT_UYVY422;

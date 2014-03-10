@@ -10,10 +10,11 @@ CND_PLATFORM=GNU-Linux-x86
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
+CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
-OUTPUT_BASENAME=libObjectiveMedia.so
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.${CND_DLIB_EXT}
+OUTPUT_BASENAME=libObjectiveMedia.${CND_DLIB_EXT}
 PACKAGE_TOP_DIR=libObjectiveMedia.so/
 
 # Functions

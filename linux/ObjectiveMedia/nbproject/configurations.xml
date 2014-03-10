@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="80">
+<configurationDescriptor version="89">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -74,6 +74,8 @@
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
@@ -82,7 +84,7 @@
         <ccTool>
           <architecture>1</architecture>
           <incDir>
-            <pElem>../../../ffmpeg/build/x86/include</pElem>
+            <pElem>/home/nathan/ffmpeg/build/x86/include</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk/include/linux</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk/include</pElem>
           </incDir>
@@ -91,20 +93,23 @@
           <output>${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so</output>
           <linkerAddLib>
             <pElem>/usr/lib/jvm/java-6-openjdk/lib</pElem>
-            <pElem>../../../ffmpeg/build/x86/lib</pElem>
+            <pElem>/home/nathan/ffmpeg/build/x86/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavcodec.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavdevice.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavfilter.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavformat.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libavutil.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libswresample.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x86/lib/libswscale.a</linkerLibFileItem>
             <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibLibItem>avcodec</linkerLibLibItem>
+            <linkerLibLibItem>avfilter</linkerLibLibItem>
+            <linkerLibLibItem>avformat</linkerLibLibItem>
+            <linkerLibLibItem>avutil</linkerLibLibItem>
+            <linkerLibLibItem>swresample</linkerLibLibItem>
+            <linkerLibLibItem>swscale</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="dbg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="dbg.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -142,11 +147,120 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
+      <item path="jni/com_mti_primitives_codecs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioEncoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoEncoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoEncoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_VC1VideoDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioInputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioInputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoInputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoInputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoOutputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="platform/platform.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs_defs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_devices.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="platform/platform_devices.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_includes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_storage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testVideoInputDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
@@ -162,6 +276,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="dbg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="dbg.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -199,17 +317,126 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
+      <item path="jni/com_mti_primitives_codecs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioEncoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoEncoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoEncoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_VC1VideoDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioInputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioInputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoInputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoInputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoOutputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="platform/platform.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs_defs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_devices.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="platform/platform_devices.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_includes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_storage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testVideoInputDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
     <conf name="Debug64" type="2">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
           <stripSymbols>true</stripSymbols>
           <incDir>
-            <pElem>../../../ffmpeg/build/x64/include</pElem>
+            <pElem>/home/nathan/ffmpeg/build/x64/include</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
           </incDir>
@@ -217,7 +444,7 @@
         <ccTool>
           <stripSymbols>true</stripSymbols>
           <incDir>
-            <pElem>../../../ffmpeg/build/x64/include</pElem>
+            <pElem>/home/nathan/ffmpeg/build/x64/include</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
           </incDir>
@@ -226,21 +453,24 @@
           <output>${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so</output>
           <linkerAddLib>
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/lib</pElem>
-            <pElem>../../../ffmpeg/build/x64/lib</pElem>
+            <pElem>/home/nathan/ffmpeg/build/x64/lib</pElem>
           </linkerAddLib>
           <commandlineTool>g++</commandlineTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavcodec.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavdevice.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavfilter.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavformat.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libavutil.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libswresample.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../ffmpeg/build/x64/lib/libswscale.a</linkerLibFileItem>
+            <linkerLibLibItem>swscale</linkerLibLibItem>
+            <linkerLibLibItem>swresample</linkerLibLibItem>
+            <linkerLibLibItem>avcodec</linkerLibLibItem>
+            <linkerLibLibItem>avfilter</linkerLibLibItem>
+            <linkerLibLibItem>avformat</linkerLibLibItem>
+            <linkerLibLibItem>avutil</linkerLibLibItem>
           </linkerLibItems>
           <commandLine>-Wl,-Bsymbolic</commandLine>
         </linkerTool>
       </compileType>
+      <item path="dbg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="dbg.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles">
         <linkerTool>
           <linkerAddLib>
@@ -295,6 +525,113 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
+      <item path="jni/com_mti_primitives_codecs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_G7231AudioEncoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoEncoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_H263VideoEncoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_codecs_VC1VideoDecoder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioInputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioInputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_AudioOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoInputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoInputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoOutputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_VideoOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="platform/platform.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_codecs_defs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_devices.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="platform/platform_devices.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_includes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="platform/platform_storage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testVideoInputDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

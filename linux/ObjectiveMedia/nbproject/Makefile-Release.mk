@@ -22,6 +22,7 @@ AS=as
 
 # Macros
 CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -34,17 +35,17 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o \
-	${OBJECTDIR}/platform/platform_codecs.o \
-	${OBJECTDIR}/platform/platform_devices.o \
 	${OBJECTDIR}/dbg.o \
+	${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o \
+	${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o \
+	${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o \
+	${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o \
 	${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o \
 	${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o \
-	${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o \
 	${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o \
 	${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o \
-	${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o \
-	${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o
+	${OBJECTDIR}/platform/platform_codecs.o \
+	${OBJECTDIR}/platform/platform_devices.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -71,31 +72,36 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o: jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp
-
-${OBJECTDIR}/platform/platform_codecs.o: platform/platform_codecs.cpp 
-	${MKDIR} -p ${OBJECTDIR}/platform
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp
-
-${OBJECTDIR}/platform/platform_devices.o: platform/platform_devices.cpp 
-	${MKDIR} -p ${OBJECTDIR}/platform
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
 ${OBJECTDIR}/dbg.o: dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/dbg.o dbg.cpp
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o: jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o: jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o: jni/com_mti_primitives_codecs_H263VideoDecoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o: jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o: jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
@@ -107,11 +113,6 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o: jni/com_mti_prim
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp
 
-${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o: jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp
-
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o: jni/com_mti_primitives_devices_VideoInputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
@@ -122,15 +123,15 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o: jni/com_mti_pri
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp
 
-${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o: jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
+${OBJECTDIR}/platform/platform_codecs.o: platform/platform_codecs.cpp 
+	${MKDIR} -p ${OBJECTDIR}/platform
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp
 
-${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o: jni/com_mti_primitives_codecs_H263VideoDecoder.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
+${OBJECTDIR}/platform/platform_devices.o: platform/platform_devices.cpp 
+	${MKDIR} -p ${OBJECTDIR}/platform
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp
 
 # Subprojects
 .build-subprojects:
@@ -148,45 +149,6 @@ ${TESTDIR}/tests/testVideoInputDevice.o: tests/testVideoInputDevice.cpp
 	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
 
 
-${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o;\
-	fi
-
-${OBJECTDIR}/platform/platform_codecs_nomain.o: ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp 
-	${MKDIR} -p ${OBJECTDIR}/platform
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/platform/platform_codecs.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs_nomain.o platform/platform_codecs.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/platform/platform_codecs.o ${OBJECTDIR}/platform/platform_codecs_nomain.o;\
-	fi
-
-${OBJECTDIR}/platform/platform_devices_nomain.o: ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp 
-	${MKDIR} -p ${OBJECTDIR}/platform
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/platform/platform_devices.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices_nomain.o platform/platform_devices.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/platform/platform_devices.o ${OBJECTDIR}/platform/platform_devices_nomain.o;\
-	fi
-
 ${OBJECTDIR}/dbg_nomain.o: ${OBJECTDIR}/dbg.o dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/dbg.o`; \
@@ -200,32 +162,6 @@ ${OBJECTDIR}/dbg_nomain.o: ${OBJECTDIR}/dbg.o dbg.cpp
 	    ${CP} ${OBJECTDIR}/dbg.o ${OBJECTDIR}/dbg_nomain.o;\
 	fi
 
-${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o;\
-	fi
-
-${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o jni/com_mti_primitives_devices_AudioInputDevice.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o;\
-	fi
-
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o`; \
@@ -237,32 +173,6 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o: ${OBJECTD
 	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o;\
-	fi
-
-${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o jni/com_mti_primitives_devices_VideoInputDevice.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o;\
-	fi
-
-${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp 
-	${MKDIR} -p ${OBJECTDIR}/jni
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o;\
 	fi
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp 
@@ -291,6 +201,97 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o: ${OBJECTDI
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o;\
 	fi
 
+${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o jni/com_mti_primitives_devices_AudioInputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o jni/com_mti_primitives_devices_VideoInputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/platform/platform_codecs_nomain.o: ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp 
+	${MKDIR} -p ${OBJECTDIR}/platform
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/platform/platform_codecs.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_codecs_nomain.o platform/platform_codecs.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/platform/platform_codecs.o ${OBJECTDIR}/platform/platform_codecs_nomain.o;\
+	fi
+
+${OBJECTDIR}/platform/platform_devices_nomain.o: ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp 
+	${MKDIR} -p ${OBJECTDIR}/platform
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/platform/platform_devices.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/platform/platform_devices_nomain.o platform/platform_devices.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/platform/platform_devices.o ${OBJECTDIR}/platform/platform_devices_nomain.o;\
+	fi
+
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
@@ -303,7 +304,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o: ${OBJECTDI
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.so
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libObjectiveMedia.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:

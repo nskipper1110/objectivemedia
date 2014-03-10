@@ -87,14 +87,14 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioEncoder_Platform
 		  retval = CODEC_CODEC_NOT_OPENED;
 	  }
 	  else{
-		  jbyte* inSample;
+		  jbyte* inSample = Env->GetByteArrayElements(Sample, NULL);
 		  long inlen = Env->GetArrayLength(Sample);
 		  jbyte* outSample;
-		  inSample = new jbyte[inlen];
-		  Env->GetByteArrayRegion(Sample,0,inlen,inSample);
+		  //inSample = new jbyte[inlen];
+		  //Env->GetByteArrayRegion(Sample,0,inlen,inSample);
 		  long outsize = 0;
 		  retval = G7231Encoder->Encode((void*)inSample,inlen, (void**)&outSample,&outsize, timestamp);
-		  delete(inSample);
+		  Env->ReleaseByteArrayElements(Sample, inSample, JNI_ABORT);//delete(inSample);
 		  if(retval == 0){
 			  
 			  if(encSample == NULL)
