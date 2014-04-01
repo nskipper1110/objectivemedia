@@ -421,129 +421,140 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             memset(&input, 0, sizeof(input));
             int counter = 0;
             input.index = counter;
-            while(ioctl(context->DeviceHandle, VIDIOC_ENUMINPUT, &input) != -1){
-                counter++;
-                input.index = counter;
-            }
-            if(counter > 1){
-                input.index = 1;
-                ioctl(context->DeviceHandle, VIDIOC_S_INPUT, &input);
-            }
             
-            v4l2_std_id std_id = V4L2_STD_NTSC;
-            ioctl (context->DeviceHandle, VIDIOC_S_STD, &std_id);
-            v4l2_cropcap cropcap;
-            v4l2_crop crop;
-            
-            memset (&cropcap, 0, sizeof(cropcap));
+            if(ioctl(context->DeviceHandle, VIDIOC_ENUMINPUT, &input) != -1){
+                if((input.status & V4L2_IN_ST_HFLIP) != 0){
+                    input.status = input.status ^ V4L2_IN_ST_HFLIP;
+                }
+                if((input.status & V4L2_IN_ST_VFLIP) != 0){
+                    input.status = input.status ^ V4L2_IN_ST_VFLIP;
+                }
+                if(ioctl(context->DeviceHandle, VIDIOC_S_INPUT, &input) != -1){
+                    v4l2_std_id std_id = V4L2_STD_NTSC;
+                    ioctl (context->DeviceHandle, VIDIOC_S_STD, &std_id);
+                    v4l2_cropcap cropcap;
+                    v4l2_crop crop;
 
-            cropcap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                    memset (&cropcap, 0, sizeof(cropcap));
 
-            if (0 == ioctl (context->DeviceHandle, VIDIOC_CROPCAP, &cropcap)) {
-                    crop.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                    crop.c = cropcap.defrect; /* reset to default */
+                    cropcap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 
-                    if (-1 == ioctl (context->DeviceHandle, VIDIOC_S_CROP, &crop)) {
-                            switch (errno) {
-                            case EINVAL:
-                                    /* Cropping not supported. */
-                                    break;
-                            default:
-                                    /* Errors ignored. */
-                                    break;
-                            }
-                    }
-            } else {        
-                    /* Errors ignored. */
-            }
-            
-            v4l2_format rawfmt;
-            memset(&rawfmt, 0, sizeof(v4l2_format));
-            rawfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-            
-            rawfmt.fmt.pix.width = vformat->Width;
-            rawfmt.fmt.pix.height = vformat->Height;
-            rawfmt.fmt.pix.field = V4L2_FIELD_ANY;
-            
-            rawfmt.fmt.pix.pixelformat = (__u32)GetBPPFCC((VideoPixelFormat)vformat->PixelFormat);
-            if(ioctl(context->DeviceHandle, VIDIOC_S_FMT, &rawfmt) == -1)
-            {
-                retval = INVALID_FORMAT;
-            }
-            else{
-                context->Listener = Listener;
-                DeviceContext = context;
-                context->Stopped = false;
-                context->ImageSize = rawfmt.fmt.pix.sizeimage;
-                
-                v4l2_requestbuffers req;
+                    if (0 == ioctl (context->DeviceHandle, VIDIOC_CROPCAP, &cropcap)) {
+                            crop.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                            crop.c = cropcap.defrect; /* reset to default */
 
-                memset (&req,0, sizeof(req));
-
-                req.count               = 4;
-                req.type                = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                req.memory              = V4L2_MEMORY_MMAP;
-
-                if (0 == ioctl (context->DeviceHandle, VIDIOC_REQBUFS, &req)) {
-                        if (req.count >= 2) {
-                           context->Buffers = (VideoInputBuffer*)calloc (req.count, sizeof (*context->Buffers));
-
-                            for (context->BufferCount = 0; context->BufferCount < req.count; ++context->BufferCount) {
-                                    v4l2_buffer buf;
-
-                                    memset (&buf, 0, sizeof(buf));
-
-                                    buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                                    buf.memory      = V4L2_MEMORY_MMAP;
-                                    buf.index       = context->BufferCount;
-
-                                    if (0 == ioctl (context->DeviceHandle, VIDIOC_QUERYBUF, &buf))
-                                    {
-                                        context->Buffers[context->BufferCount].Length = buf.length;
-                                        context->Buffers[context->BufferCount].Buffer =
-                                                mmap (NULL /* start anywhere */,
-                                                      buf.length,
-                                                      PROT_READ | PROT_WRITE /* required */,
-                                                      MAP_SHARED /* recommended */,
-                                                      context->DeviceHandle, buf.m.offset);
-                                        if(MAP_FAILED == context->Buffers[context->BufferCount].Buffer)
+                            if (-1 == ioctl (context->DeviceHandle, VIDIOC_S_CROP, &crop)) {
+                                    switch (errno) {
+                                    case EINVAL:
+                                            /* Cropping not supported. */
+                                            break;
+                                    default:
+                                            /* Errors ignored. */
                                             break;
                                     }
-
-                                    
-                            } 
-                           for (int i = 0; i < context->BufferCount; ++i) {
-                                struct v4l2_buffer buf;
-
-                                memset (&buf, 0, sizeof(buf));
-
-                                buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                                buf.memory      = V4L2_MEMORY_MMAP;
-                                buf.index       = i;
-
-                                if(-1 == ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf))
-                                    printf("QBuf Failed");
-                        }
-
-                        //v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-
-                        if(-1 == ioctl (context->DeviceHandle, VIDIOC_STREAMON, &rawfmt.type))
-                        {
-                            retval = NOT_SUPPORTED;
-                        }
-                        else{
-                            int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
-                            if(r != 0){
-                                retval = NOT_SUPPORTED;
                             }
-                        }
+                    } else {        
+                            /* Errors ignored. */
                     }
 
-                    
+                    v4l2_format rawfmt;
+                    memset(&rawfmt, 0, sizeof(v4l2_format));
+                    rawfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+
+                    rawfmt.fmt.pix.width = vformat->Width;
+                    rawfmt.fmt.pix.height = vformat->Height;
+                    rawfmt.fmt.pix.field = V4L2_FIELD_ANY;
+
+                    rawfmt.fmt.pix.pixelformat = (__u32)GetBPPFCC((VideoPixelFormat)vformat->PixelFormat);
+                    if(ioctl(context->DeviceHandle, VIDIOC_S_FMT, &rawfmt) == -1)
+                    {
+                        retval = INVALID_FORMAT;
+                    }
+                    else{
+                        context->Listener = Listener;
+                        DeviceContext = context;
+                        context->Stopped = false;
+                        context->ImageSize = rawfmt.fmt.pix.sizeimage;
+
+                        v4l2_requestbuffers req;
+
+                        memset (&req,0, sizeof(req));
+
+                        req.count               = 4;
+                        req.type                = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                        req.memory              = V4L2_MEMORY_MMAP;
+
+                        if (0 == ioctl (context->DeviceHandle, VIDIOC_REQBUFS, &req)) {
+                                if (req.count >= 2) {
+                                   context->Buffers = (VideoInputBuffer*)calloc (req.count, sizeof (*context->Buffers));
+
+                                    for (context->BufferCount = 0; context->BufferCount < req.count; ++context->BufferCount) {
+                                            v4l2_buffer buf;
+
+                                            memset (&buf, 0, sizeof(buf));
+
+                                            buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                                            buf.memory      = V4L2_MEMORY_MMAP;
+                                            buf.index       = context->BufferCount;
+
+                                            if (0 == ioctl (context->DeviceHandle, VIDIOC_QUERYBUF, &buf))
+                                            {
+                                                context->Buffers[context->BufferCount].Length = buf.length;
+                                                context->Buffers[context->BufferCount].Buffer =
+                                                        mmap (NULL /* start anywhere */,
+                                                              buf.length,
+                                                              PROT_READ | PROT_WRITE /* required */,
+                                                              MAP_SHARED /* recommended */,
+                                                              context->DeviceHandle, buf.m.offset);
+                                                if(MAP_FAILED == context->Buffers[context->BufferCount].Buffer)
+                                                    break;
+                                            }
+
+
+                                    } 
+                                   for (int i = 0; i < context->BufferCount; ++i) {
+                                        struct v4l2_buffer buf;
+
+                                        memset (&buf, 0, sizeof(buf));
+
+                                        buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+                                        buf.memory      = V4L2_MEMORY_MMAP;
+                                        buf.index       = i;
+
+                                        if(-1 == ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf))
+                                            printf("QBuf Failed");
+                                }
+
+                                //v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+
+                                if(-1 == ioctl (context->DeviceHandle, VIDIOC_STREAMON, &rawfmt.type))
+                                {
+                                    retval = NOT_SUPPORTED;
+                                }
+                                else{
+                                    int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
+                                    if(r != 0){
+                                        retval = NOT_SUPPORTED;
+                                    }
+                                }
+                            }
+
+
+                        }
+
+
+                    }
                 }
-                
-                
+                else{
+                    retval = INVALID_DEVICE;
+                }
             }
+            else{
+                retval = INVALID_DEVICE;
+            }
+            
+            
+            
         }
         if(retval != SUCCEEDED){
             Close();
