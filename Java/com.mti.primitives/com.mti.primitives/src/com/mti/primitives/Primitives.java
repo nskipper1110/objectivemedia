@@ -18,7 +18,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 package com.mti.primitives;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.util.Vector;
+import java.io.BufferedInputStream;
 /**
  *
  * @author nathan
@@ -65,7 +70,7 @@ public abstract class Primitives {
             String archtype = System.getProperty("os.arch");
             String osname = System.getProperty("os.name");
             String osversion = System.getProperty("os.version");
-            
+            LibraryPath = System.getProperty("user.home");
             System.out.println("***********************************************");
             System.out.println("** ObjectiveMedia Java Implementation");
             System.out.println("** Version " + Version);
@@ -82,10 +87,49 @@ public abstract class Primitives {
             System.out.println("\tLoading JNI Libraries");
             if(!LibraryPath.endsWith(separator))
                 LibraryPath = LibraryPath + separator;
+            LibraryPath += "objectivemedia" + separator;
+            java.io.File libfolder = new java.io.File(LibraryPath);
+            if(!libfolder.exists()){
+                libfolder.mkdir();
+            }
+            String resourcePath = "os/win/x64/";
+            if(osname.toLowerCase().contains("win")){
+                if(archtype.contains("amd")){
+                    resourcePath = "os/win/x64/";
+                    DependencyPaths.add("msvcp100.dll");
+                    DependencyPaths.add("msvcr100.dll");
+                    NativeLibraries.add("objectivemedia_Win64.dll");
+                }
+                else{
+                    resourcePath = "os/win/x86/";
+                    DependencyPaths.add("msvcp100.dll");
+                    DependencyPaths.add("msvcr100.dll");
+                    NativeLibraries.add("objectivemedia_Win32.dll");
+                }
+            }
+            else if(osname.toLowerCase().contains("lin")){
+                if(archtype.contains("amd")){
+                    resourcePath = "os/lin/x64/";
+                    NativeLibraries.add("ObjectiveMedia_lin64.so");
+                }
+                else{
+                    resourcePath = "os/lin/x86/";
+                    NativeLibraries.add("ObjectiveMedia_lin32.so");
+                }
+            }
+            for(int x = 0; x < DependencyPaths.size(); x++){
+                String dst = LibraryPath + DependencyPaths.get(x);
+                String src = resourcePath + DependencyPaths.get(x);
+                //System.out.println("\t\t Copying " + src + " to " + dst);
+                CopyURL(src, dst);
+            }
             for(int x = 0; x < NativeLibraries.size(); x++){
-                String path = LibraryPath + NativeLibraries.get(x);
-                System.out.println("\t\t Loading " + path);
-                System.load(path);
+                String dst = LibraryPath + NativeLibraries.get(x);
+                String src = resourcePath + NativeLibraries.get(x);
+                //System.out.println("\t\t Copying " + src + " to " + dst);
+                CopyURL(src, dst);
+                System.out.println("\t\t Loading " + dst);
+                System.load(dst);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -93,5 +137,37 @@ public abstract class Primitives {
             retval = false;
         }
         return retval;
+    }
+    
+    public static boolean CopyURL(String murl, String dest)
+    {
+        boolean retval = false;
+        System.out.println("Copying " + murl + " to " + dest);
+          try
+          {
+              BufferedInputStream is = new BufferedInputStream(Primitives.class.getResourceAsStream(murl));
+              
+              // Print info about resource
+              FileOutputStream fos=null;
+
+              fos = new FileOutputStream(dest);
+              byte[] b = new byte[is.available()];
+              is.read(b);
+              fos.write(b);
+
+              is.close();
+              fos.close();
+              retval = true;
+          }
+          catch (MalformedURLException e)
+          { 
+              System.err.println(e.toString()); 
+          }
+          catch (IOException e)
+          { 
+              System.err.println(e.toString());
+          }
+        return retval;
+
     }
 }

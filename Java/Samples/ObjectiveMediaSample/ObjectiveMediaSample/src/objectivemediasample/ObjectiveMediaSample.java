@@ -45,42 +45,10 @@ public class ObjectiveMediaSample {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                java.util.Map<String, String> EnvVars = System.getenv();
-                
-                String archtype = System.getProperty("os.arch");
-                String userhome = System.getProperty("user.home");
-                String libPath64 = userhome + "/objectivemedia/linux/ObjectiveMedia/dist/Debug64/lin64/";
-                String libFile64 = "ObjectiveMedia_lin64.so";
-                String libPath32 = userhome + "/objectivemedia/linux/objectivemedia/dist/debug/lin32/";
-                String libFile32 = "ObjectiveMedia_lin32.so";
-                if(EnvVars.containsKey("OBJECTIVEMEDIAPATH64"))
-                    libPath64 = EnvVars.get("OBJECTIVEMEDIAPATH64");
-                if(EnvVars.containsKey("OBJECTIVEMEDIAPATH32"))
-                    libPath32 = EnvVars.get("OBJECTIVEMEDIAPATH32");
-                if(EnvVars.containsKey("OBJECTIVEMEDIAFILE64"))
-                    libFile64 = EnvVars.get("OBJECTIVEMEDIAFILE64");
-                if(EnvVars.containsKey("OBJECTIVEMEDIAFILE32"))
-                    libFile32 = EnvVars.get("OBJECTIVEMEDIAFILE32");
-                System.out.println("ObjectiveMediaSample Running...");
-                System.out.println("Architecture " + archtype);
-                System.out.println("Environment Variables: ");
-                System.out.println(EnvVars.toString());
-                if(archtype.contains("amd64")){
-                    System.out.println("Loading " + libFile64 + " from " + libPath64);
-                    Primitives.LibraryPath = libPath64;
-                    Primitives.NativeLibraries.add(libFile64);
 
-                }
-                else{
-                    System.out.println("Loading " + libFile32 + " from " + libPath32);
-                    Primitives.LibraryPath = libPath32;
-                    Primitives.NativeLibraries.add(libFile32);
-                }
                 
                 Primitives.InitializePrimitives();
                 MainForm fm = new MainForm();
