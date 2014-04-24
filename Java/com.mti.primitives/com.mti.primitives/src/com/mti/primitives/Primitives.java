@@ -96,15 +96,17 @@ public abstract class Primitives {
             if(osname.toLowerCase().contains("win")){
                 if(archtype.contains("amd")){
                     resourcePath = "os/win/x64/";
-                    DependencyPaths.add("msvcp100.dll");
-                    DependencyPaths.add("msvcr100.dll");
-                    NativeLibraries.add("objectivemedia_Win64.dll");
+                    DependencyPaths.add("msvcr100d.dll");
+                    DependencyPaths.add("msvcp100d.dll");
+                    
+                    NativeLibraries.add("objectivemedia_win64.dll");
                 }
                 else{
                     resourcePath = "os/win/x86/";
-                    DependencyPaths.add("msvcp100.dll");
-                    DependencyPaths.add("msvcr100.dll");
-                    NativeLibraries.add("objectivemedia_Win32.dll");
+                    DependencyPaths.add("msvcr100d.dll");
+                    DependencyPaths.add("msvcp100d.dll");
+                    
+                    NativeLibraries.add("objectivemedia_win32.dll");
                 }
             }
             else if(osname.toLowerCase().contains("lin")){
@@ -120,8 +122,10 @@ public abstract class Primitives {
             for(int x = 0; x < DependencyPaths.size(); x++){
                 String dst = LibraryPath + DependencyPaths.get(x);
                 String src = resourcePath + DependencyPaths.get(x);
-                //System.out.println("\t\t Copying " + src + " to " + dst);
+                System.out.println("\t\t Copying " + src + " to " + dst);
                 CopyURL(src, dst);
+                System.out.println("\t\t Loading " + dst);
+                System.load(dst);
             }
             for(int x = 0; x < NativeLibraries.size(); x++){
                 String dst = LibraryPath + NativeLibraries.get(x);
