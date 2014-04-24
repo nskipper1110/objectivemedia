@@ -909,8 +909,8 @@ Device_Errors AudioOutputDevice::Present(void* sample, long size, long long time
 Device_Errors AudioOutputDevice::Open(MediaFormat* format){
 	Device_Errors retval = SUCCEEDED;
 	try{
-		AudioOutputDeviceContext* context = new AudioOutputDeviceContext();
-		AudioMediaFormat* aformat = (AudioMediaFormat*)format;
+            AudioOutputDeviceContext* context = new AudioOutputDeviceContext();
+            AudioMediaFormat* aformat = (AudioMediaFormat*)format;
 		
 	}
 	catch(...)

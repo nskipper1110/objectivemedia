@@ -38,6 +38,7 @@ extern "C"{
 #include <libavutil/mathematics.h>
 #include <libavutil/samplefmt.h>
 #include <libswscale/swscale.h>
+#include <libavformat/avformat.h>
 }
 
 
