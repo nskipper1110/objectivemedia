@@ -33,12 +33,18 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 		  AudioMediaFormat* cformat = New_AudioMediaFormat(Env, format);
 		  CodecData* cdata = New_CodecData(Env, codecData);
 		  if(cformat != NULL && cdata != NULL){
-			  G7231Decoder = new G7231AudioDecoder();
-			  retval = G7231Decoder->Open(cformat, cdata);
-			  if(retval != 0){
-				  delete(cformat);
-				  delete(cdata);
-			  }
+                      jclass ccls = Env->GetObjectClass(sender);
+                      ccls = Env->GetSuperclass(ccls);
+                      jfieldID fld = Env->GetFieldID(ccls, "Primitive", "J");
+                      G7231AudioDecoder* pG7231Decoder = new G7231AudioDecoder();
+                      //H263Decoder = new H263VideoDecoder();
+                      jlong pint = (jlong)pG7231Decoder;
+                      Env->SetLongField(sender, fld, pint);
+                      retval = pG7231Decoder->Open(cformat, cdata);
+                      if(retval != 0){
+                              delete(cformat);
+                              delete(cdata);
+                      }
 		  }
 		  else{
 			  retval = CODEC_INVALID_INPUT;
@@ -62,12 +68,17 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_PlatformClose
   (JNIEnv * Env, jobject sender){
 	  jint retval = 0;
-	  if(G7231Decoder != NULL){
-		  retval = G7231Decoder->Close();
-		  delete(G7231Decoder->CurrentFormat);
-		  delete(G7231Decoder->CurrentData);
-		  delete(G7231Decoder);
-		  G7231Decoder = NULL;
+          jclass ccls = Env->GetObjectClass(sender);
+          ccls = Env->GetSuperclass(ccls);
+          jfieldID fld = Env->GetFieldID(ccls, "Primitive", "J");
+          G7231AudioDecoder* pG7231Decoder = (G7231AudioDecoder*)Env->GetLongField(sender, fld);
+	  if(pG7231Decoder != NULL){
+		  retval = pG7231Decoder->Close();
+		  delete(pG7231Decoder->CurrentFormat);
+		  delete(pG7231Decoder->CurrentData);
+		  delete(pG7231Decoder);
+		  pG7231Decoder = NULL;
+                  Env->SetLongField(sender, fld, 0);
 	  }
 	  return retval;
 }
@@ -90,20 +101,26 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_Platform
 JNIEXPORT jint JNICALL Java_com_mti_primitives_codecs_G7231AudioDecoder_PlatformDecode
   (JNIEnv * Env, jobject sender, jbyteArray encSample, jobject decSample, jlong timestamp){
 	  jint retval = 0;
+          jclass ccls = Env->GetObjectClass(sender);
+          ccls = Env->GetSuperclass(ccls);
+          jfieldID fld = Env->GetFieldID(ccls, "Primitive", "J");
+          G7231AudioDecoder* pG7231Decoder = (G7231AudioDecoder*)Env->GetLongField(sender, fld);
+	  
 	  if(encSample == NULL){
 		  retval = CODEC_INVALID_INPUT;
 	  }
-	  else if(G7231Decoder == NULL){
+	  else if(pG7231Decoder == NULL){
 		  retval = CODEC_CODEC_NOT_OPENED;
 	  }
 	  else{
+                  
 		  jbyte* inSample = Env->GetByteArrayElements(encSample, NULL);
 		  long inlen = Env->GetArrayLength(encSample);
 		  jbyte* outSample;
 		  //inSample = new jbyte[inlen];
 		  //Env->GetByteArrayRegion(encSample,0,inlen,inSample);
 		  long outsize = 0;
-		  retval = G7231Decoder->Decode((void*)inSample,inlen, (void**)&outSample,&outsize, timestamp);
+		  retval = pG7231Decoder->Decode((void*)inSample,inlen, (void**)&outSample,&outsize, timestamp);
                   
                   Env->ReleaseByteArrayElements(encSample, inSample, JNI_ABORT);//delete(inSample);
 		  if(retval == 0){

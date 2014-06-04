@@ -423,12 +423,8 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             input.index = counter;
             
             if(ioctl(context->DeviceHandle, VIDIOC_ENUMINPUT, &input) != -1){
-                if((input.status & V4L2_IN_ST_HFLIP) != 0){
-                    input.status = input.status ^ V4L2_IN_ST_HFLIP;
-                }
-                if((input.status & V4L2_IN_ST_VFLIP) != 0){
-                    input.status = input.status ^ V4L2_IN_ST_VFLIP;
-                }
+                ioctl(context->DeviceHandle, VIDIOC_G_INPUT, &input);
+                
                 if(ioctl(context->DeviceHandle, VIDIOC_S_INPUT, &input) != -1){
                     v4l2_std_id std_id = V4L2_STD_NTSC;
                     ioctl (context->DeviceHandle, VIDIOC_S_STD, &std_id);
