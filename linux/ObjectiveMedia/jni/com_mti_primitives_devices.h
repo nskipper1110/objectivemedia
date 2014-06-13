@@ -19,7 +19,7 @@
  */
 
 #include "com_mti_primitives_devices_VideoInputDevice.h"
-
+#include "com_mti_primitives_devices_FileOutputDevice.h"
 #include "../platform/platform_devices.h"
 
 static jobject New_jVideoMediaFormat(JNIEnv* Env, VideoMediaFormat* cformat){

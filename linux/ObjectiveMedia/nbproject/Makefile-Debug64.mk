@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o \
 	${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o \
 	${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o \
+	${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o \
 	${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o \
 	${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o \
 	${OBJECTDIR}/platform/platform_codecs.o \
@@ -112,6 +113,11 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o: jni/com_mti_prim
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} $@.d
 	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o: jni/com_mti_primitives_devices_FileOutputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	${RM} $@.d
+	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o jni/com_mti_primitives_devices_FileOutputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o: jni/com_mti_primitives_devices_VideoInputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
@@ -238,6 +244,19 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o: ${OBJECTD
 	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o jni/com_mti_primitives_devices_AudioInputDevice.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o;\
+	fi
+
+${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o jni/com_mti_primitives_devices_FileOutputDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/jni
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o jni/com_mti_primitives_devices_FileOutputDevice.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o;\
 	fi
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o: ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp 

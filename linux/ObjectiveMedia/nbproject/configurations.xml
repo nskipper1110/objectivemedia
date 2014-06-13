@@ -14,6 +14,7 @@
         <itemPath>jni/com_mti_primitives_devices.h</itemPath>
         <itemPath>jni/com_mti_primitives_devices_AudioInputDevice.h</itemPath>
         <itemPath>jni/com_mti_primitives_devices_AudioOutputDevice.h</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_FileOutputDevice.h</itemPath>
         <itemPath>jni/com_mti_primitives_devices_VideoInputDevice.h</itemPath>
         <itemPath>jni/com_mti_primitives_devices_VideoOutputDevice.h</itemPath>
       </logicalFolder>
@@ -42,6 +43,7 @@
         <itemPath>jni/com_mti_primitives_codecs_H263VideoEncoder.cpp</itemPath>
         <itemPath>jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp</itemPath>
         <itemPath>jni/com_mti_primitives_devices_AudioInputDevice.cpp</itemPath>
+        <itemPath>jni/com_mti_primitives_devices_FileOutputDevice.cpp</itemPath>
         <itemPath>jni/com_mti_primitives_devices_VideoInputDevice.cpp</itemPath>
         <itemPath>jni/com_mti_primitives_devices_VideoOutputDevice.cpp</itemPath>
       </logicalFolder>
@@ -219,6 +221,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="jni/com_mti_primitives_devices_FileOutputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_FileOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="jni/com_mti_primitives_devices_VideoInputDevice.cpp"
             ex="false"
             tool="1"
@@ -387,6 +399,16 @@
             flavor2="0">
       </item>
       <item path="jni/com_mti_primitives_devices_AudioOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_FileOutputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_FileOutputDevice.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -597,6 +619,16 @@
             flavor2="0">
       </item>
       <item path="jni/com_mti_primitives_devices_AudioOutputDevice.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_FileOutputDevice.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="jni/com_mti_primitives_devices_FileOutputDevice.h"
             ex="false"
             tool="3"
             flavor2="0">

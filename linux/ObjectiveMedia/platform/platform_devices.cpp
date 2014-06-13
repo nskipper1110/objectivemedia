@@ -343,6 +343,7 @@ VideoInputDevice::VideoInputDevice(){
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
     double adjfps = context->Format->FPS;
     long sleepTime = 1000000*((double) 1000/adjfps);
+    long long StartTicks = 0;
     while(!context->Stopped){
         v4l2_buffer buf;
         memset (&buf, 0, sizeof(buf));
@@ -370,7 +371,14 @@ VideoInputDevice::VideoInputDevice(){
                         av_free(source);
                     }
                 }
-                context->Listener->SampleCaptured(NULL, buffer, bufsize, 0);
+                struct timeval tv;
+                struct timezone tz;
+                gettimeofday(&tv, &tz);
+                if(StartTicks == 0){
+                    StartTicks = tv.tv_usec / 1000;
+                }
+                long long timestamp = (tv.tv_usec/1000) - StartTicks;
+                context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
             }
             ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }
