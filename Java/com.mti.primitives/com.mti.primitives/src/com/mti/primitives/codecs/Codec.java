@@ -40,6 +40,12 @@ public abstract class Codec {
      * The current media format used by the codec.
      */
     public MediaFormat CurrentFormat;
+    
+    /**
+     * Placeholder for the pointer to the primitive codec.
+     * 
+     */
+    public long Primitive = 0;
     /**
      * Initiates the basic fields.
      */

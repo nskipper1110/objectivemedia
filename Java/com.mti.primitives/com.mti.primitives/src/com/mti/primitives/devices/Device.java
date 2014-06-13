@@ -46,6 +46,8 @@ public abstract class Device {
      */
     public DeviceListener Listener;
     
+    public long Primitive = 0;
+    
     /**
      * Instantiates a new Device object with the given parameters.
      * @param deviceIndex - The index of the device in the list of available devices.
