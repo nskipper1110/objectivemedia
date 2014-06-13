@@ -38,6 +38,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private java.util.concurrent.ConcurrentLinkedQueue<byte[]> AudioQueue = new java.util.concurrent.ConcurrentLinkedQueue<byte[]>();
     private javax.swing.Timer AudioTimer = null;
+    private FileOutputDevice FileOutput = null;
     private class MyVideoDeviceListener implements DeviceListener{
         private long FrameCount = 0;
         private long StartTime = 0;
@@ -48,6 +49,9 @@ public class MainForm extends javax.swing.JFrame {
             {
                 byte[] encSample = new byte[1];
                 byte[] decSample = null;
+                if(FileOutput != null){
+                    FileOutput.PresentVideo(sample, timestamp);
+                }
                 CodecResult decResult = new CodecResult();
                 if(CurrentVideoEncoder != null){
                     if(CurrentVideoEncoder.Encode(sample, decResult, timestamp) == Codec_Errors.CODEC_SUCCEEDED){
@@ -102,6 +106,10 @@ public class MainForm extends javax.swing.JFrame {
         long CurrentTime = 0;
         long TotalBits = 0;
         public void SampleCaptured(Device sender, byte[] sample, long timestamp){
+            if(FileOutput != null){
+                FileOutput.PresentAudio(sample, timestamp);
+            }
+            
             if(CurrentAudioEncoder != null && CurrentAudioDecoder != null){
                 CodecResult result = new CodecResult();
                 if(CurrentAudioEncoder.Encode(sample, result, timestamp) == Codec_Errors.CODEC_SUCCEEDED){
@@ -462,6 +470,7 @@ public class MainForm extends javax.swing.JFrame {
         TestAudioCodec = new javax.swing.JCheckBox();
         btnRun = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
+        RecordToFile = new javax.swing.JCheckBox();
         jPanel12 = new javax.swing.JPanel();
         VideoView = new javax.swing.JPanel();
         AudioView = new javax.swing.JPanel();
@@ -512,7 +521,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -521,7 +530,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 127, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Video In", jPanel3);
@@ -612,7 +621,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblH263BitRate)
                     .addComponent(lblH263FrameRate))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -631,7 +640,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtH263FrameSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("H.263", jPanel7);
@@ -653,7 +662,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(cmbG7231BitRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblG7231BitRate)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -663,7 +672,7 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmbG7231BitRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblG7231BitRate))
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addContainerGap(453, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("G.723.1", jPanel8);
@@ -699,6 +708,8 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        RecordToFile.setText("Record To File");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -716,8 +727,10 @@ public class MainForm extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(btnRun)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnStop)))
-                .addGap(0, 62, Short.MAX_VALUE))
+                        .addComponent(btnStop)
+                        .addGap(18, 18, 18)
+                        .addComponent(RecordToFile)))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -732,7 +745,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRun)
-                    .addComponent(btnStop))
+                    .addComponent(btnStop)
+                    .addComponent(RecordToFile))
                 .addGap(0, 21, Short.MAX_VALUE))
         );
 
@@ -748,11 +762,11 @@ public class MainForm extends javax.swing.JFrame {
         VideoView.setLayout(VideoViewLayout);
         VideoViewLayout.setHorizontalGroup(
             VideoViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 263, Short.MAX_VALUE)
         );
         VideoViewLayout.setVerticalGroup(
             VideoViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 217, Short.MAX_VALUE)
+            .addGap(0, 286, Short.MAX_VALUE)
         );
 
         jPanel12.add(VideoView, java.awt.BorderLayout.CENTER);
@@ -763,11 +777,11 @@ public class MainForm extends javax.swing.JFrame {
         AudioView.setLayout(AudioViewLayout);
         AudioViewLayout.setHorizontalGroup(
             AudioViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 263, Short.MAX_VALUE)
         );
         AudioViewLayout.setVerticalGroup(
             AudioViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 77, Short.MAX_VALUE)
+            .addGap(0, 81, Short.MAX_VALUE)
         );
 
         jPanel12.add(AudioView, java.awt.BorderLayout.PAGE_START);
@@ -782,6 +796,10 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
+        if(RecordToFile.isSelected()){
+            
+        }
+        
         if(TestVideo.isSelected())
         {
             
@@ -794,6 +812,20 @@ public class MainForm extends javax.swing.JFrame {
         if(TestAudio.isSelected()){
             boolean ran = RunAudioTest();
         }
+        
+        if(RecordToFile.isSelected() && CurrentAudioInputFormat != null && CurrentVideoInputFormat != null){
+            FileOutput = new FileOutputDevice(0, "MyFile");
+            String file = System.getProperty("user.dir");
+            String sep = System.getProperty("file.separator");
+            if(!file.endsWith(sep)){
+                file += sep;
+            }
+            file += "Desktop" + sep + "test.wmv";
+            System.out.println("Opening " + file + " with the following formats " + CurrentVideoInputFormat.toString() + " " + CurrentAudioInputFormat.toString());
+            FileMediaFormat fileFormat = new FileMediaFormat(file, CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, CurrentAudioInputFormat.SampleRate, CurrentAudioInputFormat.BitsPerSample, CurrentAudioInputFormat.Channels);
+            FileOutput.Open(fileFormat);
+        }
+        
     }//GEN-LAST:event_btnRunActionPerformed
 
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
@@ -803,6 +835,10 @@ public class MainForm extends javax.swing.JFrame {
         
         CloseAudioInputDevice();
         CloseAudioOutputDevice();
+        if(FileOutput != null){
+            FileOutput.Close();
+            FileOutput = null;
+        }
         
     }//GEN-LAST:event_btnStopActionPerformed
 
@@ -849,6 +885,7 @@ public class MainForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AudioView;
+    private javax.swing.JCheckBox RecordToFile;
     private javax.swing.JCheckBox TestAudio;
     private javax.swing.JCheckBox TestAudioCodec;
     private javax.swing.JCheckBox TestVideo;
