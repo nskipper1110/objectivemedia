@@ -88,14 +88,15 @@
           <architecture>1</architecture>
           <incDir>
             <pElem>/home/nathan/ffmpeg/build/x86/include</pElem>
-            <pElem>/usr/lib/jvm/java-6-openjdk/include/linux</pElem>
-            <pElem>/usr/lib/jvm/java-6-openjdk/include</pElem>
+            <pElem>/usr/lib/jvm/java-7-openjdk-amd64/include/linux</pElem>
+            <pElem>/usr/lib/jvm/java-7-openjdk-amd64/include</pElem>
           </incDir>
+          <commandLine>-D__STDC_CONSTANT_MACROS</commandLine>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so</output>
           <linkerAddLib>
-            <pElem>/usr/lib/jvm/java-6-openjdk/lib</pElem>
+            <pElem>/usr/lib/jvm/java-7-openjdk-amd64/lib</pElem>
             <pElem>/home/nathan/ffmpeg/build/x86/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
@@ -475,11 +476,12 @@
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include/linux</pElem>
             <pElem>/usr/lib/jvm/java-6-openjdk-amd64/include</pElem>
           </incDir>
+          <commandLine>-D__STDC_CONSTANT_MACROS</commandLine>
         </ccTool>
         <linkerTool>
           <output>${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so</output>
           <linkerAddLib>
-            <pElem>/usr/lib/jvm/java-6-openjdk-amd64/lib</pElem>
+            <pElem>/usr/lib/jvm/java-7-openjdk-amd64/lib</pElem>
             <pElem>/home/nathan/ffmpeg/build/x64/lib</pElem>
           </linkerAddLib>
           <commandlineTool>g++</commandlineTool>
