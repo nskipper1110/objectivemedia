@@ -405,16 +405,28 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         VideoMediaFormat* vformat = (VideoMediaFormat*)format;
         VideoInputDeviceContext* context = new VideoInputDeviceContext();
         
-        if(vformat->AVPixelFormat == ANY){
+        if(vformat->AVPixelFormat != RGB24){
             for(int x = 0; x < Formats.size(); x++){
                 VideoMediaFormat* f = (VideoMediaFormat*)Formats[x];
-                if(vformat->Width == f->Width && vformat->Height == f->Height){
-                    vformat->PixelFormat = f->PixelFormat;
-                    PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
-                    context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
-                    context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
-                    break;
+                if(vformat->AVPixelFormat == ANY){
+                    if(vformat->Width == f->Width && vformat->Height == f->Height){
+                        vformat->PixelFormat = f->PixelFormat;
+                        PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
+                        context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
+                        context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
+                        break;
+                    }
                 }
+                else{
+                    if(vformat->Width == f->Width && vformat->Height == f->Height && vformat->AVPixelFormat == f->AVPixelFormat){
+                        vformat->PixelFormat = f->PixelFormat;
+                        PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
+                        context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
+                        context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
+                        break;
+                    }
+                }
+                
             }
         }
         context->DeviceHandle = -1;

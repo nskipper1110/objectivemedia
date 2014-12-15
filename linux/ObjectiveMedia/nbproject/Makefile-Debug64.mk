@@ -69,7 +69,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/lib/jvm/java-7-openjdk-amd64/lib -L/home/nathan/ffmpeg/build/x64/lib -lswscale -lswresample -lavcodec -lavfilter -lavformat -lavutil
+LDLIBSOPTIONS=-L/usr/lib/jvm/java-7-openjdk-amd64/lib -L/home/nathan/ffmpeg-new/build/x64/lib -lswscale -lswresample -lavcodec -lavfilter -lavformat -lavutil
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

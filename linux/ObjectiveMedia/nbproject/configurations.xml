@@ -482,7 +482,7 @@
           <output>${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so</output>
           <linkerAddLib>
             <pElem>/usr/lib/jvm/java-7-openjdk-amd64/lib</pElem>
-            <pElem>/home/nathan/ffmpeg/build/x64/lib</pElem>
+            <pElem>/home/nathan/ffmpeg-new/build/x64/lib</pElem>
           </linkerAddLib>
           <commandlineTool>g++</commandlineTool>
           <linkerLibItems>
