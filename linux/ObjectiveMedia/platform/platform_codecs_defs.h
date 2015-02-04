@@ -21,15 +21,17 @@
 #ifndef CODEC_DEFS
 #define CODEC_DEFS
 
-
 extern "C"{
 	#include <libavutil/imgutils.h>
 	#include <libavutil/opt.h>
 	#include <libavcodec/avcodec.h>
 	#include <libavutil/mathematics.h>
 	#include <libavutil/samplefmt.h>
-#include <libswscale/swscale.h>
+        #include <libswscale/swscale.h>
 }
+
+
+
 #include "platform_includes.h"
 
 typedef enum Codec_Errors{

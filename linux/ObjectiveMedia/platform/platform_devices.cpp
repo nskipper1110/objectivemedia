@@ -39,8 +39,12 @@ using namespace std;
 #include <sys/time.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
+#ifndef __ANDROID__
 #include <sys/soundcard.h>
-
+#else
+#include <android/log.h>
+#define APPNAME "com.mti.primitives.devices"
+#endif
 #include <asm/types.h>          /* for videodev2.h */
 
 #include <linux/videodev2.h>
@@ -243,9 +247,11 @@ __u32 GetBPPFCC(VideoPixelFormat fmt){
         case YV12:
             retval = V4L2_PIX_FMT_YUV420;
             break;
+#ifndef __ANDROID__
         case UNKNOWN:
             retval = V4L2_PIX_FMT_H264;
             break;
+#endif
         default:
             retval = V4L2_PIX_FMT_BGR24;
     }
@@ -611,6 +617,9 @@ Device_Errors VideoInputDevice::Close(){
 
 Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
     Device_Errors retval = SUCCEEDED;
+#ifdef __ANDROID__
+     __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "VideoInputDevice.GetDevices++");
+#endif
     try{
         DIR *dp;
         struct dirent *dirp;
@@ -622,17 +631,34 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
             while ((dirp = readdir(dp)) != NULL) {
                 string file(dirp->d_name);
                 //std::cout << file << std::endl;
+
                 if(file.find("video", 0) != file.npos)
                 {
+                    
+#ifdef __ANDROID__
+                    __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "Examining Video Input Device at %s\n", file.c_str());
+#endif
                     file = "/dev/" + file;
                     int fd = open(file.c_str(), O_RDWR);
                     if(fd != -1)
                     {
+#ifdef __ANDROID__
+                        __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "Opened VID at %s\n", file.c_str());
+#endif
                         v4l2_capability argp;
                         if(ioctl(fd, VIDIOC_QUERYCAP, &argp) == 0)
                         {
-                            if(argp.capabilities & V4L2_CAP_STREAMING)
+                            bool streamcheck = argp.capabilities & V4L2_CAP_STREAMING;
+                            
+#ifdef __ANDROID__
+                            //streamcheck = true;
+                            __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "Got args for %s, capabilities are %d\n", file.c_str(), argp.capabilities);
+#endif
+                            if(streamcheck)
                             {
+#ifdef __ANDROID__
+                    __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "%s has streaming cap\n", file.c_str());
+#endif
                                 VideoInputDevice* vid = new VideoInputDevice();
                                 const char* text = file.c_str();
                                 int len = strlen(text);
@@ -641,7 +667,9 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
                                 vid->DeviceIndex = i;
                                 string name((char*)argp.card);
                                 vid->DeviceName = name;
-                                
+#ifdef __ANDROID__
+                                __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "VID %s %d\n", name.c_str(), i);
+#endif
                                 for(int x=0; x < StandardFormatCount; x++)
                                 {
                                     v4l2_format rawfmt;
@@ -667,7 +695,11 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
                         
                         close(fd);
                     }
-                    
+#ifdef __ANDROID__
+                    else{
+                        __android_log_print(ANDROID_LOG_DEBUG, APPNAME,"Cannot open '%s': %d, %s", file.c_str(), errno, strerror (errno));
+                    }
+#endif
                     index++;
                 }
             }
@@ -678,6 +710,9 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
     {
         retval = UNEXPECTED;
     }
+#ifdef __ANDROID__
+     __android_log_print(ANDROID_LOG_DEBUG, APPNAME, "VideoInputDevice.GetDevices++");
+#endif
     return retval;
 }
 

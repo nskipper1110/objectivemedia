@@ -30,6 +30,14 @@ CND_ARTIFACT_PATH_Debug64=dist/Debug64/lin64/ObjectiveMedia_lin64.so
 CND_PACKAGE_DIR_Debug64=dist/Debug64/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Debug64=libObjectiveMedia.so.tar
 CND_PACKAGE_PATH_Debug64=dist/Debug64/GNU-Linux-x86/package/libObjectiveMedia.so.tar
+# DebugArm configuration
+CND_PLATFORM_DebugArm=AndroidARM-Linux-x86
+CND_ARTIFACT_DIR_DebugArm=dist/DebugArm/lin32
+CND_ARTIFACT_NAME_DebugArm=ObjectiveMedia_lin32.so
+CND_ARTIFACT_PATH_DebugArm=dist/DebugArm/lin32/ObjectiveMedia_lin32.so
+CND_PACKAGE_DIR_DebugArm=dist/DebugArm/AndroidARM-Linux-x86/package
+CND_PACKAGE_NAME_DebugArm=libObjectiveMedia.so.tar
+CND_PACKAGE_PATH_DebugArm=dist/DebugArm/AndroidARM-Linux-x86/package/libObjectiveMedia.so.tar
 #
 # include compiler specific variables
 #

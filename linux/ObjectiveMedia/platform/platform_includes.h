@@ -36,6 +36,7 @@ Revision History:
 #include <string>
 #include <cstring>
 #include <vector>
+
 #define   SAFERELEASE(x)            if((x)){ (x)->Release(); (x) = NULL;}
 #define   SAFEDELETE(x)             if((x)){ delete [] (x);  (x) = NULL;}
 #define   SAFEDELETES(x)            if((x)){ delete    (x);  (x) = NULL;}

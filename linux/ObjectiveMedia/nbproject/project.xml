@@ -23,6 +23,10 @@
                     <name>Debug64</name>
                     <type>2</type>
                 </confElem>
+                <confElem>
+                    <name>DebugArm</name>
+                    <type>2</type>
+                </confElem>
             </confList>
         </data>
     </configuration>

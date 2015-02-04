@@ -34,7 +34,13 @@ class VideoInputDeviceListener : public DeviceListener
 			//DebugOut("Listener and JVM are instantiated.\n");
 			JNIEnv* CallbackEnv = NULL;
 			//DebugOut("Attaching to current thread.\n");
-			if(CallbackJVM->AttachCurrentThread((void**)&CallbackEnv, NULL) == 0)
+                        int jvmRet = 0;
+#ifdef __ANDROID__
+                        jvmRet = (*CallbackJVM).AttachCurrentThread(&CallbackEnv, NULL);
+#else
+                        jvmRet = CallbackJVM->AttachCurrentThread((void**)&CallbackEnv, NULL);
+#endif
+			if(jvmRet == 0)
 			{
 				//DebugOut("Creating new byte array\n");
 				jbyteArray frame = CallbackEnv->NewByteArray(size);
@@ -57,7 +63,11 @@ class VideoInputDeviceListener : public DeviceListener
 					}
 				}
 				//DebugOut("Detaching thread\n");
+#ifndef __ANDROID__
 				CallbackJVM->DetachCurrentThread();
+#else
+                                (*CallbackJVM).DetachCurrentThread();
+#endif
 			}
 		
 		}
