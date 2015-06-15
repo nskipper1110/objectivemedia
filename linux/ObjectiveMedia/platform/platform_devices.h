@@ -209,6 +209,9 @@ public:
 		case I420: //12 bits
 			retval = 12;
 			break;
+                    case NV21:
+                        retval = 12;
+                        break;
 		case UNKNOWN: //unknown pixel size.
 			retval = 0;
 			break;
@@ -285,6 +288,9 @@ public:
 		case I420: //12 bits
 			retval = PIX_FMT_YUV420P;
 			break;
+                case NV21: //12 bits
+                    retval = PIX_FMT_NV21;
+                    break;
 		case UNKNOWN: //unknown pixel size.
 			retval = 0;
 			break;

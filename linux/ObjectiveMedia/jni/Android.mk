@@ -2,8 +2,8 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-#TARGET_ARCH_ABI := armeabi-v7a
-TARGET_ARCH_ABI := armeabi
+TARGET_ARCH_ABI := armeabi-v7a
+#TARGET_ARCH_ABI := armeabi
 #TARGET_ARCH_ABI := arm64-v8a
 #TARGET_ARCH_ABI := x86
 #TARGET_ARCH_ABI := x86_64

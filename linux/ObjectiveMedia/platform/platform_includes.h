@@ -87,6 +87,7 @@ typedef enum VideoPixelFormat{
 	YV12=	75, //12 bits
 	YVU9=	76, //9 buts
 	I420=	77, //12 bits
+        NV21=   78, //12 bits
 	UNKNOWN=99, //unknown pixel size.
 	ANY=	0, //any pixel size.
 }VideoPixelFormat;
