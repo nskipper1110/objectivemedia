@@ -205,7 +205,11 @@ public class MainForm extends javax.swing.JFrame {
             Device_Errors err = CurrentVideoInputDevice.Open(vf);
             if(err == Device_Errors.SUCCEEDED)
             {
+                
                 retval = true;
+            }
+            else{
+                retval = CurrentVideoInputDevice.Open(vf) == Device_Errors.SUCCEEDED;
             }
         }
         return retval;
@@ -410,7 +414,7 @@ public class MainForm extends javax.swing.JFrame {
             retval = false;
         }
         else{
-            CurrentAudioOutputDevice = new AudioOutputDevice(0,"");
+            CurrentAudioOutputDevice = new AudioOutputDevice(Integer.parseInt(AudioOutDeviceIndex.getText()),"");
             retval = CurrentAudioOutputDevice.Open(CurrentAudioInputFormat) == Device_Errors.SUCCEEDED;
         }
         return retval;
@@ -455,6 +459,8 @@ public class MainForm extends javax.swing.JFrame {
         lstAvailableAudioInputFormats = new javax.swing.JList();
         jPanel6 = new javax.swing.JPanel();
         chkAudioDisplay = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        AudioOutDeviceIndex = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtH263BitRate = new javax.swing.JTextField();
@@ -527,7 +533,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -586,6 +592,12 @@ public class MainForm extends javax.swing.JFrame {
         chkAudioDisplay.setText("Visually Display Audio");
         jPanel6.add(chkAudioDisplay);
 
+        jLabel5.setText("Audio Device");
+        jPanel6.add(jLabel5);
+
+        AudioOutDeviceIndex.setText("0");
+        jPanel6.add(AudioOutDeviceIndex);
+
         jTabbedPane1.addTab("Audio Out", jPanel6);
 
         jLabel1.setText("Codec Bit Rate");
@@ -627,7 +639,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblH263BitRate)
                     .addComponent(lblH263FrameRate))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,7 +658,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtH263FrameSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("H.263", jPanel7);
@@ -668,7 +680,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(cmbG7231BitRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblG7231BitRate)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -678,7 +690,7 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(cmbG7231BitRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblG7231BitRate))
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addContainerGap(473, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("G.723.1", jPanel8);
@@ -736,7 +748,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(btnStop)
                         .addGap(18, 18, 18)
                         .addComponent(RecordToFile)))
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,11 +780,11 @@ public class MainForm extends javax.swing.JFrame {
         VideoView.setLayout(VideoViewLayout);
         VideoViewLayout.setHorizontalGroup(
             VideoViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         VideoViewLayout.setVerticalGroup(
             VideoViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 286, Short.MAX_VALUE)
+            .addGap(0, 291, Short.MAX_VALUE)
         );
 
         jPanel12.add(VideoView, java.awt.BorderLayout.CENTER);
@@ -783,11 +795,11 @@ public class MainForm extends javax.swing.JFrame {
         AudioView.setLayout(AudioViewLayout);
         AudioViewLayout.setHorizontalGroup(
             AudioViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         AudioViewLayout.setVerticalGroup(
             AudioViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 81, Short.MAX_VALUE)
+            .addGap(0, 90, Short.MAX_VALUE)
         );
 
         jPanel12.add(AudioView, java.awt.BorderLayout.PAGE_START);
@@ -890,6 +902,7 @@ public class MainForm extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AudioOutDeviceIndex;
     private javax.swing.JPanel AudioView;
     private javax.swing.JCheckBox RecordToFile;
     private javax.swing.JCheckBox TestAudio;
@@ -905,6 +918,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
