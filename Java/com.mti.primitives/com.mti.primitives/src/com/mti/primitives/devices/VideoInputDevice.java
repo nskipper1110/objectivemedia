@@ -84,6 +84,10 @@ public final class VideoInputDevice extends InputDevice {
             }
             else{
                 retval = Device_Errors.FromNative(PlatformOpen(this.Listener, vf.Width, vf.Height, vf.PixelFormat.ToNative(), vf.FPS));
+                if(retval != Device_Errors.SUCCEEDED){
+                    retval = Device_Errors.FromNative(PlatformOpen(this.Listener, vf.Width, vf.Height, vf.PixelFormat.ToNative(), vf.FPS));
+                
+                }
             }
         }
         catch(Exception e){
