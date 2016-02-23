@@ -1,4 +1,4 @@
-prefix=/home/nathan/ffmpeg/build/x86
+prefix=/home/nathan/ffmpeg-new/build/android/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -9,6 +9,6 @@ Version: 4.4.100
 Requires: libavutil = 52.77.100
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavfilter -lm -pthread
+Libs: -L${libdir}  -lavfilter -lm -lz -pthread
 Libs.private: 
 Cflags: -I${includedir}

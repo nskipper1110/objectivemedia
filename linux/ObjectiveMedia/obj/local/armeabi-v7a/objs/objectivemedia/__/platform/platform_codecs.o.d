@@ -1,4 +1,4 @@
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/obj/local/armeabi-v7a/objs/objectivemedia/__/platform/platform_codecs.o: \
+obj/local/armeabi-v7a/objs/objectivemedia/__/platform/platform_codecs.o: \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_codecs.cpp \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_codecs.h \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_includes.h \

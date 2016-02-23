@@ -1,4 +1,4 @@
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/obj/local/armeabi-v7a/objs/objectivemedia/__/platform/platform_devices.o: \
+obj/local/armeabi-v7a/objs/objectivemedia/__/platform/platform_devices.o: \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_devices.cpp \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_devices.h \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_includes.h \

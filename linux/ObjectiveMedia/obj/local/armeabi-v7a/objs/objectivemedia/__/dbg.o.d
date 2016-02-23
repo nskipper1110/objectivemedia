@@ -1,4 +1,4 @@
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/obj/local/armeabi-v7a/objs/objectivemedia/__/dbg.o: \
+obj/local/armeabi-v7a/objs/objectivemedia/__/dbg.o: \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../dbg.cpp \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../dbg.h \
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdlib.h \

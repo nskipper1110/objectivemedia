@@ -1,4 +1,4 @@
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/obj/local/armeabi-v7a/objs/objectivemedia/com_mti_primitives_devices_VideoInputDevice.o: \
+obj/local/armeabi-v7a/objs/objectivemedia/com_mti_primitives_devices_VideoInputDevice.o: \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_VideoInputDevice.cpp \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices.h \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_VideoInputDevice.h \

@@ -1,4 +1,4 @@
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/obj/local/armeabi-v7a/objs/objectivemedia/com_mti_primitives_codecs_H263VideoDecoder.o: \
+obj/local/armeabi-v7a/objs/objectivemedia/com_mti_primitives_codecs_H263VideoDecoder.o: \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_codecs_H263VideoDecoder.cpp \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_codecs.h \
  /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_codecs_H263VideoEncoder.h \

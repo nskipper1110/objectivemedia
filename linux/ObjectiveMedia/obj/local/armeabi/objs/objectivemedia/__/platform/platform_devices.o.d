@@ -155,9 +155,9 @@
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_vector.c \
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_bvector.h \
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_relops_cont.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/imgutils.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/imgutils.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/avutil.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/common.h \
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/errno.h \
  /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/errno.h \
  /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/errno.h \
@@ -165,46 +165,46 @@
  /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/errno.h \
  /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/errno-base.h \
  /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/inttypes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/macros.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avconfig.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/error.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/intfloat.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/old_pix_fmts.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixdesc.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/opt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/avcodec.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/cpu.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/channel_layout.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/frame.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/old_codec_ids.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/swscale.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avformat.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avio.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/version.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/attributes.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/version.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/macros.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/avconfig.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mem.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/error.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mathematics.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/rational.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/intfloat.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/log.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/pixfmt.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/old_pix_fmts.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/pixdesc.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/opt.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/dict.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/samplefmt.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavcodec/avcodec.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/samplefmt.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/attributes.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/avutil.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/buffer.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/cpu.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/channel_layout.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/dict.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/frame.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/buffer.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/log.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/pixfmt.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/rational.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavcodec/version.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/version.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mem.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavcodec/old_codec_ids.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/common.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mathematics.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libswscale/swscale.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libswscale/version.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavformat/avformat.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavformat/avio.h \
+ /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavformat/version.h \
  /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/dirent.h \
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/iostream \
  /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ioserr.h \
@@ -549,11 +549,11 @@
 
 /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_relops_cont.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/imgutils.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/imgutils.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/avutil.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/common.h:
 
 /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/errno.h:
 
@@ -569,85 +569,85 @@
 
 /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/inttypes.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/attributes.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/version.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/macros.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/macros.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avconfig.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/avconfig.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mem.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/error.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/error.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mathematics.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/rational.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/intfloat.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/intfloat.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/log.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/pixfmt.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/old_pix_fmts.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/old_pix_fmts.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixdesc.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/pixdesc.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/opt.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/opt.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/dict.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/samplefmt.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/avcodec.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavcodec/avcodec.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/samplefmt.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/attributes.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/avutil.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/buffer.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/cpu.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/cpu.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/channel_layout.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/channel_layout.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/dict.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/frame.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/frame.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/buffer.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/log.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/pixfmt.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/rational.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/version.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavcodec/version.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/version.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mem.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/old_codec_ids.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavcodec/old_codec_ids.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/common.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavutil/mathematics.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/swscale.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libswscale/swscale.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/version.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libswscale/version.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avformat.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavformat/avformat.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avio.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavformat/avio.h:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/version.h:
+/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi/include/libavformat/version.h:
 
 /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/dirent.h:
 
