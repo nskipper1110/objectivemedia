@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=GNU-MacOSX
+CND_DLIB_EXT=dylib
 CND_CONF=Debug64
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -55,6 +55,10 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f1
 
+# Test Object Files
+TESTOBJECTFILES= \
+	${TESTDIR}/tests/testVideoInputDevice.o
+
 # C Compiler Flags
 CFLAGS=
 
@@ -77,7 +81,7 @@ LDLIBSOPTIONS=-L/usr/lib/jvm/java-7-openjdk-amd64/lib -L/home/nathan/ffmpeg-new/
 
 ${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/lin64
-	g++ -o ${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -shared -fPIC
+	g++ -o ${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -dynamiclib -install_name ObjectiveMedia_lin64.so -fPIC
 
 ${OBJECTDIR}/dbg.o: dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -143,7 +147,9 @@ ${OBJECTDIR}/platform/platform_devices.o: platform/platform_devices.cpp
 .build-subprojects:
 
 # Build Test Targets
-.build-tests-conf: .build-conf ${TESTFILES}
+.build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
+.build-tests-subprojects:
+
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testVideoInputDevice.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} -L../../../ffmpeg/build/x64/lib ../../../ffmpeg/build/x64/lib/libavcodec.a ../../../ffmpeg/build/x64/lib/libavdevice.a ../../../ffmpeg/build/x64/lib/libavfilter.a ../../../ffmpeg/build/x64/lib/libavformat.a ../../../ffmpeg/build/x64/lib/libavutil.a ../../../ffmpeg/build/x64/lib/libswresample.a ../../../ffmpeg/build/x64/lib/libswscale.a -lpthread 
