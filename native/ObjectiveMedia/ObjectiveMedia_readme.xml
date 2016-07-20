@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<readme>
+    <!--The name of the project-->
+    <project_name>
+        ObjectiveMedia
+    </project_name>
+    <!--The author of the project-->
+    <author>
+        Nathan Skipper
+    </author>
+    <!--The license for the project-->
+    <license>
+        * copyright (c) 2013 Nathan Skipper, Montgomery Technology, Inc.
+         *
+         * This file is part of ObjectiveMedia (http://nskipper1110.github.com/objectivemedia).
+         *
+         * ObjectiveMedia is free software; you can redistribute it and/or
+         * modify it under the terms of the GNU Lesser General Public
+         * License as published by the Free Software Foundation; either
+         * version 2.1 of the License, or (at your option) any later version.
+         *
+         * ObjectiveMedia is distributed in the hope that it will be useful,
+         * but WITHOUT ANY WARRANTY; without even the implied warranty of
+         * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+         * Lesser General Public License for more details.
+         *
+         * You should have received a copy of the GNU Lesser General Public
+         * License along with ObjectiveMedia; if not, write to the Free Software
+         * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+    </license>
+    <!--The creation date for the project-->
+    <creation_date>
+        6/13/2012
+    </creation_date>
+    <!--The company sponsor of the project-->
+    <company>
+        Montgomery Technology, Inc.
+    </company>
+    <!--The repository on which the project is stored-->
+    <repository>
+        https://nskipper1110.github.com/ObjectiveMedia/
+    </repository>
+    <!--The programming language in which the project is written.-->
+    <language>
+        ANSI C++
+    </language>
+    <!--The development suite used for the project-->
+    <ide>
+        NetBeans 7.3.1 with GNU C++ Compiler on Ubuntu Linux 12.04
+    </ide>
+    <!--The operating system platform(s) for which the project is designed.-->
+    <platform>
+        Linux (Mac support to come)
+    </platform>
+    <!--The processor architectures for which the project is designed.-->
+    <architecture>
+        x86, x64
+    </architecture>
+    <!--Definition of the project, its purpose, and relation to the overall system-->
+    <definition>
+        The ObjectiveMedia project is a dynamic library meant to provide platform-specific
+        functionality for accessing media devices such as video input devices and
+        audio input and output devices. It also provides video and audio codec support.
+        
+    </definition>
+    <!--Dependencies for the project-->
+    <dependencies>
+        <dependency>
+            <name>
+                
+            </name>
+            <location>
+                
+            </location>
+            <description>
+                
+            </description>
+        </dependency>
+    </dependencies>
+    <!--The history of major versions-->
+    <changelog>
+        <change>
+            <date></date>
+            <version></version>
+            <description></description>
+        </change>
+    </changelog>
+</readme>
