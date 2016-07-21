@@ -483,6 +483,7 @@ public class MainForm extends javax.swing.JFrame {
         btnRun = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
         RecordToFile = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         VideoView = new javax.swing.JPanel();
         AudioView = new javax.swing.JPanel();
@@ -728,6 +729,13 @@ public class MainForm extends javax.swing.JFrame {
 
         RecordToFile.setText("Record To File");
 
+        jButton1.setLabel("Reload Devices");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -743,12 +751,15 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(TestAudioCodec)
                             .addComponent(TestVideoCodec)))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(btnRun)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(btnRun)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStop))
+                            .addComponent(RecordToFile))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnStop)
-                        .addGap(18, 18, 18)
-                        .addComponent(RecordToFile)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButton1)))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -764,8 +775,9 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRun)
                     .addComponent(btnStop)
-                    .addComponent(RecordToFile))
-                .addGap(0, 21, Short.MAX_VALUE))
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addComponent(RecordToFile))
         );
 
         jPanel2.add(jPanel11, java.awt.BorderLayout.PAGE_START);
@@ -784,7 +796,7 @@ public class MainForm extends javax.swing.JFrame {
         );
         VideoViewLayout.setVerticalGroup(
             VideoViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
 
         jPanel12.add(VideoView, java.awt.BorderLayout.CENTER);
@@ -900,6 +912,10 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lstAvailableVideoInputDevicesValueChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        LoadVideoInputDevices();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AudioOutDeviceIndex;
@@ -914,6 +930,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton btnStop;
     private javax.swing.JCheckBox chkAudioDisplay;
     private javax.swing.JComboBox cmbG7231BitRate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
