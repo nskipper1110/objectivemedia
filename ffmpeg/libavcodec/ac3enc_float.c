@@ -36,8 +36,12 @@
 #if CONFIG_AC3_ENCODER
 #define AC3ENC_TYPE AC3ENC_TYPE_AC3
 #include "ac3enc_opts_template.c"
-static const AVClass ac3enc_class = { "AC-3 Encoder", av_default_item_name,
-                                      ac3_options, LIBAVUTIL_VERSION_INT };
+static const AVClass ac3enc_class = {
+    .class_name = "AC-3 Encoder",
+    .item_name  = av_default_item_name,
+    .option     = ac3_options,
+    .version    = LIBAVUTIL_VERSION_INT,
+};
 #endif
 
 #include "ac3enc_template.c"
@@ -69,7 +73,7 @@ av_cold int ff_ac3_float_mdct_init(AC3EncodeContext *s)
     n  = 1 << 9;
     n2 = n >> 1;
 
-    window = av_malloc(n * sizeof(*window));
+    window = av_malloc_array(n, sizeof(*window));
     if (!window) {
         av_log(s->avctx, AV_LOG_ERROR, "Cannot allocate memory.\n");
         return AVERROR(ENOMEM);
@@ -80,16 +84,6 @@ av_cold int ff_ac3_float_mdct_init(AC3EncodeContext *s)
     s->mdct_window = window;
 
     return ff_mdct_init(&s->mdct, 9, 0, -2.0 / n);
-}
-
-
-/*
- * Apply KBD window to input samples prior to MDCT.
- */
-static void apply_window(DSPContext *dsp, float *output, const float *input,
-                         const float *window, unsigned int len)
-{
-    dsp->vector_fmul(output, input, window, len);
 }
 
 
@@ -146,15 +140,15 @@ static CoefType calc_cpl_coord(CoefSumType energy_ch, CoefSumType energy_cpl)
 #if CONFIG_AC3_ENCODER
 AVCodec ff_ac3_encoder = {
     .name            = "ac3",
+    .long_name       = NULL_IF_CONFIG_SMALL("ATSC A/52A (AC-3)"),
     .type            = AVMEDIA_TYPE_AUDIO,
-    .id              = CODEC_ID_AC3,
+    .id              = AV_CODEC_ID_AC3,
     .priv_data_size  = sizeof(AC3EncodeContext),
     .init            = ff_ac3_encode_init,
     .encode2         = ff_ac3_float_encode_frame,
     .close           = ff_ac3_encode_close,
-    .sample_fmts     = (const enum AVSampleFormat[]){ AV_SAMPLE_FMT_FLT,
+    .sample_fmts     = (const enum AVSampleFormat[]){ AV_SAMPLE_FMT_FLTP,
                                                       AV_SAMPLE_FMT_NONE },
-    .long_name       = NULL_IF_CONFIG_SMALL("ATSC A/52A (AC-3)"),
     .priv_class      = &ac3enc_class,
     .channel_layouts = ff_ac3_channel_layouts,
     .defaults        = ac3_defaults,

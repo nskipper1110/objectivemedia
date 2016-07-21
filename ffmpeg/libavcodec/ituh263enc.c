@@ -27,21 +27,18 @@
  * h263 bitstream encoder.
  */
 
-//#define DEBUG
 #include <limits.h>
 
-#include "dsputil.h"
+#include "libavutil/attributes.h"
 #include "avcodec.h"
 #include "mpegvideo.h"
 #include "h263.h"
 #include "mathops.h"
+#include "mpegutils.h"
 #include "unary.h"
 #include "flv.h"
 #include "mpeg4video.h"
 #include "internal.h"
-
-//#undef NDEBUG
-//#include <assert.h>
 
 /**
  * Table of number of bits a motion vector component needs.
@@ -229,7 +226,7 @@ void ff_h263_encode_picture_header(MpegEncContext * s, int picture_number)
     if(s->h263_slice_structured){
         put_bits(&s->pb, 1, 1);
 
-        assert(s->mb_x == 0 && s->mb_y == 0);
+        av_assert1(s->mb_x == 0 && s->mb_y == 0);
         ff_h263_encode_mba(s);
 
         put_bits(&s->pb, 1, 1);
@@ -271,11 +268,11 @@ void ff_h263_encode_gob_header(MpegEncContext * s, int mb_line)
 }
 
 /**
- * modify qscale so that encoding is acually possible in h263 (limit difference to -2..2)
+ * modify qscale so that encoding is actually possible in h263 (limit difference to -2..2)
  */
 void ff_clean_h263_qscales(MpegEncContext *s){
     int i;
-    int8_t * const qscale_table = s->current_picture.f.qscale_table;
+    int8_t * const qscale_table = s->current_picture.qscale_table;
 
     ff_init_qscale_tab(s);
 
@@ -288,7 +285,7 @@ void ff_clean_h263_qscales(MpegEncContext *s){
             qscale_table[ s->mb_index2xy[i] ]= qscale_table[ s->mb_index2xy[i+1] ]+2;
     }
 
-    if(s->codec_id != CODEC_ID_H263P){
+    if(s->codec_id != AV_CODEC_ID_H263P){
         for(i=1; i<s->mb_num; i++){
             int mb_xy= s->mb_index2xy[i];
 
@@ -306,7 +303,7 @@ static const int dquant_code[5]= {1,0,9,2,3};
  * @param block the 8x8 block
  * @param n block index (0-3 are luma, 4-5 are chroma)
  */
-static void h263_encode_block(MpegEncContext * s, DCTELEM * block, int n)
+static void h263_encode_block(MpegEncContext * s, int16_t * block, int n)
 {
     int level, run, last, i, j, last_index, last_non_zero, sign, slevel, code;
     RLTable *rl;
@@ -396,7 +393,7 @@ static void h263_encode_block(MpegEncContext * s, DCTELEM * block, int n)
                 put_bits(&s->pb, 1, last);
                 put_bits(&s->pb, 6, run);
 
-                assert(slevel != 0);
+                av_assert2(slevel != 0);
 
                 if(level < 128)
                     put_sbits(&s->pb, 8, slevel);
@@ -455,7 +452,7 @@ static void h263p_encode_umotion(MpegEncContext * s, int val)
 }
 
 void ff_h263_encode_mb(MpegEncContext * s,
-                       DCTELEM block[6][64],
+                       int16_t block[6][64],
                        int motion_x, int motion_y)
 {
     int cbpc, cbpy, i, cbp, pred_x, pred_y;
@@ -529,8 +526,8 @@ void ff_h263_encode_mb(MpegEncContext * s,
                 /* motion vectors: 8x8 mode*/
                 ff_h263_pred_motion(s, i, 0, &pred_x, &pred_y);
 
-                motion_x = s->current_picture.f.motion_val[0][s->block_index[i]][0];
-                motion_y = s->current_picture.f.motion_val[0][s->block_index[i]][1];
+                motion_x = s->current_picture.motion_val[0][s->block_index[i]][0];
+                motion_y = s->current_picture.motion_val[0][s->block_index[i]][1];
                 if (!s->umvplus) {
                     ff_h263_encode_motion_vector(s, motion_x - pred_x,
                                                     motion_y - pred_y, 1);
@@ -549,7 +546,7 @@ void ff_h263_encode_mb(MpegEncContext * s,
             s->mv_bits+= get_bits_diff(s);
         }
     } else {
-        assert(s->mb_intra);
+        av_assert2(s->mb_intra);
 
         cbp = 0;
         if (s->h263_aic) {
@@ -683,7 +680,7 @@ void ff_h263_encode_motion(MpegEncContext * s, int val, int f_code)
     }
 }
 
-static void init_mv_penalty_and_fcode(MpegEncContext *s)
+static av_cold void init_mv_penalty_and_fcode(MpegEncContext *s)
 {
     int f_code;
     int mv;
@@ -725,11 +722,13 @@ static void init_mv_penalty_and_fcode(MpegEncContext *s)
     }
 }
 
-static void init_uni_h263_rl_tab(RLTable *rl, uint32_t *bits_tab, uint8_t *len_tab){
+static av_cold void init_uni_h263_rl_tab(RLTable *rl, uint32_t *bits_tab,
+                                         uint8_t *len_tab)
+{
     int slevel, run, last;
 
-    assert(MAX_LEVEL >= 64);
-    assert(MAX_RUN   >= 63);
+    av_assert0(MAX_LEVEL >= 64);
+    av_assert0(MAX_RUN   >= 63);
 
     for(slevel=-64; slevel<64; slevel++){
         if(slevel==0) continue;
@@ -768,7 +767,7 @@ static void init_uni_h263_rl_tab(RLTable *rl, uint32_t *bits_tab, uint8_t *len_t
     }
 }
 
-void ff_h263_encode_init(MpegEncContext *s)
+av_cold void ff_h263_encode_init(MpegEncContext *s)
 {
     static int done = 0;
 
@@ -795,10 +794,10 @@ void ff_h263_encode_init(MpegEncContext *s)
 
     // use fcodes >1 only for mpeg4 & h263 & h263p FIXME
     switch(s->codec_id){
-    case CODEC_ID_MPEG4:
+    case AV_CODEC_ID_MPEG4:
         s->fcode_tab= fcode_tab;
         break;
-    case CODEC_ID_H263P:
+    case AV_CODEC_ID_H263P:
         if(s->umvplus)
             s->fcode_tab= umv_fcode_tab;
         if(s->modified_quant){
@@ -810,7 +809,7 @@ void ff_h263_encode_init(MpegEncContext *s)
         }
         break;
         //Note for mpeg4 & h263 the dc-scale table will be set per frame as needed later
-    case CODEC_ID_FLV1:
+    case AV_CODEC_ID_FLV1:
         if (s->h263_flv > 1) {
             s->min_qcoeff= -1023;
             s->max_qcoeff=  1023;

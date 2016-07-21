@@ -21,36 +21,28 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <inttypes.h>
-#include <assert.h>
-#include <unistd.h>
 #include "libavutil/pixdesc.h"
+#include <stdint.h>
 
 #include "config.h"
-#include "libswscale/rgb2rgb.h"
-#include "libswscale/swscale.h"
+#include "libavutil/attributes.h"
+#include "libavutil/bfin/attributes.h"
 #include "libswscale/swscale_internal.h"
 
-#if defined(__FDPIC__) && CONFIG_SRAM
-#define L1CODE __attribute__((l1_text))
-#else
-#define L1CODE
-#endif
+void ff_bfin_yuv2rgb555_line(const uint8_t *Y, const uint8_t *U,
+                             const uint8_t *V, uint8_t *out,
+                             int w, uint32_t *coeffs) attribute_l1_text;
 
-void ff_bfin_yuv2rgb555_line(uint8_t *Y, uint8_t *U, uint8_t *V, uint8_t *out,
-                             int w, uint32_t *coeffs) L1CODE;
+void ff_bfin_yuv2rgb565_line(const uint8_t *Y, const uint8_t *U,
+                             const uint8_t *V, uint8_t *out,
+                             int w, uint32_t *coeffs) attribute_l1_text;
 
-void ff_bfin_yuv2rgb565_line(uint8_t *Y, uint8_t *U, uint8_t *V, uint8_t *out,
-                             int w, uint32_t *coeffs) L1CODE;
+void ff_bfin_yuv2rgb24_line(const uint8_t *Y, const uint8_t *U,
+                            const uint8_t *V, uint8_t *out,
+                            int w, uint32_t *coeffs) attribute_l1_text;
 
-void ff_bfin_yuv2rgb24_line(uint8_t *Y, uint8_t *U, uint8_t *V, uint8_t *out,
-                            int w, uint32_t *coeffs) L1CODE;
-
-typedef void (*ltransform)(uint8_t *Y, uint8_t *U, uint8_t *V, uint8_t *out,
-                           int w, uint32_t *coeffs);
+typedef void (*ltransform)(const uint8_t *Y, const uint8_t *U, const uint8_t *V,
+                           uint8_t *out, int w, uint32_t *coeffs);
 
 static void bfin_prepare_coefficients(SwsContext *c, int rgb, int masks)
 {
@@ -88,12 +80,13 @@ static void bfin_prepare_coefficients(SwsContext *c, int rgb, int masks)
     }
 }
 
-static int core_yuv420_rgb(SwsContext *c, uint8_t **in, int *instrides,
+static int core_yuv420_rgb(SwsContext *c, const uint8_t **in, int *instrides,
                            int srcSliceY, int srcSliceH, uint8_t **oplanes,
                            int *outstrides, ltransform lcscf,
                            int rgb, int masks)
 {
-    uint8_t *py, *pu, *pv, *op;
+    const uint8_t *py, *pu, *pv;
+    uint8_t *op;
     int w  = instrides[0];
     int h2 = srcSliceH >> 1;
     int i;
@@ -123,7 +116,7 @@ static int core_yuv420_rgb(SwsContext *c, uint8_t **in, int *instrides,
     return srcSliceH;
 }
 
-static int bfin_yuv420_rgb555(SwsContext *c, uint8_t **in, int *instrides,
+static int bfin_yuv420_rgb555(SwsContext *c, const uint8_t **in, int *instrides,
                               int srcSliceY, int srcSliceH,
                               uint8_t **oplanes, int *outstrides)
 {
@@ -131,7 +124,7 @@ static int bfin_yuv420_rgb555(SwsContext *c, uint8_t **in, int *instrides,
                            outstrides, ff_bfin_yuv2rgb555_line, 1, 555);
 }
 
-static int bfin_yuv420_bgr555(SwsContext *c, uint8_t **in, int *instrides,
+static int bfin_yuv420_bgr555(SwsContext *c, const uint8_t **in, int *instrides,
                               int srcSliceY, int srcSliceH,
                               uint8_t **oplanes, int *outstrides)
 {
@@ -139,7 +132,7 @@ static int bfin_yuv420_bgr555(SwsContext *c, uint8_t **in, int *instrides,
                            outstrides, ff_bfin_yuv2rgb555_line, 0, 555);
 }
 
-static int bfin_yuv420_rgb24(SwsContext *c, uint8_t **in, int *instrides,
+static int bfin_yuv420_rgb24(SwsContext *c, const uint8_t **in, int *instrides,
                              int srcSliceY, int srcSliceH,
                              uint8_t **oplanes, int *outstrides)
 {
@@ -147,7 +140,7 @@ static int bfin_yuv420_rgb24(SwsContext *c, uint8_t **in, int *instrides,
                            outstrides, ff_bfin_yuv2rgb24_line, 1, 888);
 }
 
-static int bfin_yuv420_bgr24(SwsContext *c, uint8_t **in, int *instrides,
+static int bfin_yuv420_bgr24(SwsContext *c, const uint8_t **in, int *instrides,
                              int srcSliceY, int srcSliceH,
                              uint8_t **oplanes, int *outstrides)
 {
@@ -155,7 +148,7 @@ static int bfin_yuv420_bgr24(SwsContext *c, uint8_t **in, int *instrides,
                            outstrides, ff_bfin_yuv2rgb24_line, 0, 888);
 }
 
-static int bfin_yuv420_rgb565(SwsContext *c, uint8_t **in, int *instrides,
+static int bfin_yuv420_rgb565(SwsContext *c, const uint8_t **in, int *instrides,
                               int srcSliceY, int srcSliceH,
                               uint8_t **oplanes, int *outstrides)
 {
@@ -163,7 +156,7 @@ static int bfin_yuv420_rgb565(SwsContext *c, uint8_t **in, int *instrides,
                            outstrides, ff_bfin_yuv2rgb565_line, 1, 565);
 }
 
-static int bfin_yuv420_bgr565(SwsContext *c, uint8_t **in, int *instrides,
+static int bfin_yuv420_bgr565(SwsContext *c, const uint8_t **in, int *instrides,
                               int srcSliceY, int srcSliceH,
                               uint8_t **oplanes, int *outstrides)
 {
@@ -171,27 +164,27 @@ static int bfin_yuv420_bgr565(SwsContext *c, uint8_t **in, int *instrides,
                            outstrides, ff_bfin_yuv2rgb565_line, 0, 565);
 }
 
-SwsFunc ff_yuv2rgb_get_func_ptr_bfin(SwsContext *c)
+av_cold SwsFunc ff_yuv2rgb_init_bfin(SwsContext *c)
 {
     SwsFunc f;
 
     switch (c->dstFormat) {
-    case PIX_FMT_RGB555:
+    case AV_PIX_FMT_RGB555:
         f = bfin_yuv420_rgb555;
         break;
-    case PIX_FMT_BGR555:
+    case AV_PIX_FMT_BGR555:
         f = bfin_yuv420_bgr555;
         break;
-    case PIX_FMT_RGB565:
+    case AV_PIX_FMT_RGB565:
         f = bfin_yuv420_rgb565;
         break;
-    case PIX_FMT_BGR565:
+    case AV_PIX_FMT_BGR565:
         f = bfin_yuv420_bgr565;
         break;
-    case PIX_FMT_RGB24:
+    case AV_PIX_FMT_RGB24:
         f = bfin_yuv420_rgb24;
         break;
-    case PIX_FMT_BGR24:
+    case AV_PIX_FMT_BGR24:
         f = bfin_yuv420_bgr24;
         break;
     default:

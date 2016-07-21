@@ -33,13 +33,12 @@
  *                        FU-B packet types)
  */
 
+#include "libavutil/attributes.h"
 #include "libavutil/base64.h"
 #include "libavutil/avstring.h"
 #include "libavcodec/get_bits.h"
 #include "avformat.h"
-#include "mpegts.h"
 
-#include <unistd.h>
 #include "network.h"
 #include <assert.h>
 
@@ -70,7 +69,7 @@ static int sdp_parse_fmtp_config_h264(AVStream *stream,
                                       char *attr, char *value)
 {
     AVCodecContext *codec = stream->codec;
-    assert(codec->codec_id == CODEC_ID_H264);
+    assert(codec->codec_id == AV_CODEC_ID_H264);
     assert(h264_data != NULL);
 
     if (!strcmp(attr, "packetization-mode")) {
@@ -167,7 +166,8 @@ static int sdp_parse_fmtp_config_h264(AVStream *stream,
 // return 0 on packet, no more left, 1 on packet, 1 on partial packet
 static int h264_handle_packet(AVFormatContext *ctx, PayloadContext *data,
                               AVStream *st, AVPacket *pkt, uint32_t *timestamp,
-                              const uint8_t *buf, int len, int flags)
+                              const uint8_t *buf, int len, uint16_t seq,
+                              int flags)
 {
     uint8_t nal;
     uint8_t type;
@@ -190,7 +190,8 @@ static int h264_handle_packet(AVFormatContext *ctx, PayloadContext *data,
     switch (type) {
     case 0:                    // undefined, but pass them through
     case 1:
-        av_new_packet(pkt, len + sizeof(start_sequence));
+        if ((result = av_new_packet(pkt, len + sizeof(start_sequence))) < 0)
+            return result;
         memcpy(pkt->data, start_sequence, sizeof(start_sequence));
         memcpy(pkt->data + sizeof(start_sequence), buf, len);
         COUNT_NAL_TYPE(data, nal);
@@ -247,7 +248,8 @@ static int h264_handle_packet(AVFormatContext *ctx, PayloadContext *data,
                 if (pass == 0) {
                     /* now we know the total size of the packet (with the
                      * start sequences added) */
-                    av_new_packet(pkt, total_length);
+                    if ((result = av_new_packet(pkt, total_length)) < 0)
+                        return result;
                     dst = pkt->data;
                 } else {
                     assert(dst - pkt->data == total_length);
@@ -292,12 +294,14 @@ static int h264_handle_packet(AVFormatContext *ctx, PayloadContext *data,
                 COUNT_NAL_TYPE(data, nal_type);
             if (start_bit) {
                 /* copy in the start sequence, and the reconstructed nal */
-                av_new_packet(pkt, sizeof(start_sequence) + sizeof(nal) + len);
+                if ((result = av_new_packet(pkt, sizeof(start_sequence) + sizeof(nal) + len)) < 0)
+                    return result;
                 memcpy(pkt->data, start_sequence, sizeof(start_sequence));
                 pkt->data[sizeof(start_sequence)] = reconstructed_nal;
                 memcpy(pkt->data + sizeof(start_sequence) + sizeof(nal), buf, len);
             } else {
-                av_new_packet(pkt, len);
+                if ((result = av_new_packet(pkt, len)) < 0)
+                    return result;
                 memcpy(pkt->data, buf, len);
             }
         } else {
@@ -339,6 +343,15 @@ static void h264_free_context(PayloadContext *data)
     av_free(data);
 }
 
+static av_cold int h264_init(AVFormatContext *s, int st_index,
+                             PayloadContext *data)
+{
+    if (st_index < 0)
+        return 0;
+    s->streams[st_index]->need_parsing = AVSTREAM_PARSE_FULL;
+    return 0;
+}
+
 static int parse_h264_sdp_line(AVFormatContext *s, int st_index,
                                PayloadContext *h264_data, const char *line)
 {
@@ -371,7 +384,6 @@ static int parse_h264_sdp_line(AVFormatContext *s, int st_index,
         // set our parameters
         codec->width   = atoi(buf1);
         codec->height  = atoi(p + 1); // skip the -
-        codec->pix_fmt = PIX_FMT_YUV420P;
     } else if (av_strstart(p, "fmtp:", &p)) {
         return ff_parse_fmtp(stream, h264_data, p, sdp_parse_fmtp_config_h264);
     } else if (av_strstart(p, "cliprect:", &p)) {
@@ -384,7 +396,8 @@ static int parse_h264_sdp_line(AVFormatContext *s, int st_index,
 RTPDynamicProtocolHandler ff_h264_dynamic_handler = {
     .enc_name         = "H264",
     .codec_type       = AVMEDIA_TYPE_VIDEO,
-    .codec_id         = CODEC_ID_H264,
+    .codec_id         = AV_CODEC_ID_H264,
+    .init             = h264_init,
     .parse_sdp_a_line = parse_h264_sdp_line,
     .alloc            = h264_new_context,
     .free             = h264_free_context,

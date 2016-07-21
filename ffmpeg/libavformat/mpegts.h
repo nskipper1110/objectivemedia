@@ -52,6 +52,8 @@
 #define STREAM_TYPE_AUDIO_AAC_LATM  0x11
 #define STREAM_TYPE_VIDEO_MPEG4     0x10
 #define STREAM_TYPE_VIDEO_H264      0x1b
+#define STREAM_TYPE_VIDEO_HEVC      0x24 //Definition of 0x24 HEVC video MPEG TS stream type
+#define STREAM_TYPE_VIDEO_CAVS      0x42
 #define STREAM_TYPE_VIDEO_VC1       0xea
 #define STREAM_TYPE_VIDEO_DIRAC     0xd1
 
@@ -65,7 +67,7 @@ int ff_mpegts_parse_packet(MpegTSContext *ts, AVPacket *pkt,
                            const uint8_t *buf, int len);
 void ff_mpegts_parse_close(MpegTSContext *ts);
 
-typedef struct {
+typedef struct SLConfigDescr {
     int use_au_start;
     int use_au_end;
     int use_rand_acc_pt;
@@ -82,7 +84,7 @@ typedef struct {
     int packet_seq_num_len;
 } SLConfigDescr;
 
-typedef struct {
+typedef struct Mp4Descr {
     int es_id;
     int dec_config_descr_len;
     uint8_t *dec_config_descr;
@@ -102,5 +104,11 @@ int ff_parse_mpeg2_descriptor(AVFormatContext *fc, AVStream *st, int stream_type
                               const uint8_t **pp, const uint8_t *desc_list_end,
                               Mp4Descr *mp4_descr, int mp4_descr_count, int pid,
                               MpegTSContext *ts);
+
+/**
+ * Check presence of H264 startcode
+ * @return <0 to stop processing
+ */
+int ff_check_h264_startcode(AVFormatContext *s, const AVStream *st, const AVPacket *pkt);
 
 #endif /* AVFORMAT_MPEGTS_H */
