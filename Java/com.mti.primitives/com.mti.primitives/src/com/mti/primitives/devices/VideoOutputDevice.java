@@ -81,7 +81,12 @@ public final class VideoOutputDevice extends OutputDevice {
                 DataBuffer buffer = new DataBufferByte(sample, sample.length);
                 int pixelStride = 3; //assuming r, g, b, skip, r, g, b, skip...
 		int scanlineStride = 3 * ((VideoMediaFormat)CurrentFormat).Width; //no extra padding
-		int[] bandOffsets = {2, 1, 0}; //r, g, b
+                int[] bandOffsets = {2, 1, 0}; //r, g, b
+                if(System.getProperty("os.name").toLowerCase().contains("mac")){
+                    bandOffsets[0] = 0;
+                    bandOffsets[2] = 2;
+                }
+		
 		WritableRaster raster = Raster.createInterleavedRaster(buffer, ((VideoMediaFormat)CurrentFormat).Width, ((VideoMediaFormat)CurrentFormat).Height, scanlineStride, pixelStride, bandOffsets, null);
 		ColorSpace colorSpace = ColorSpace.getInstance(ColorSpace.CS_sRGB);
                 boolean hasAlpha = false;

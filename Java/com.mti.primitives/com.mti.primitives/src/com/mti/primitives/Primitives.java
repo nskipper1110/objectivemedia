@@ -30,7 +30,7 @@ import java.io.BufferedInputStream;
  */
 public abstract class Primitives {
     
-    final static String Version = "1.0.0";
+    final static String Version = "1.0.1";
     /**
      * The LibraryPath global variable should define the file folder location
      * for the JNI enabled dynamic library that implements the functions needed
@@ -110,13 +110,23 @@ public abstract class Primitives {
                 }
             }
             else if(osname.toLowerCase().contains("lin")){
-                if(archtype.contains("amd")){
+                if(archtype.contains("amd") || archtype.contains("_64")){
                     resourcePath = "os/lin/x64/";
-                    NativeLibraries.add("ObjectiveMedia_lin64.so");
+                    NativeLibraries.add("objectivemedia_lin64.so");
                 }
                 else{
                     resourcePath = "os/lin/x86/";
-                    NativeLibraries.add("ObjectiveMedia_lin32.so");
+                    NativeLibraries.add("objectivemedia_lin32.so");
+                }
+            }
+            else if(osname.toLowerCase().contains("mac")){
+                if(archtype.contains("amd") || archtype.contains("_64")){
+                    resourcePath = "os/mac/x64/";
+                    NativeLibraries.add("objectivemedia_mac64.so");
+                }
+                else{
+                    resourcePath = "os/mac/x86/";
+                    NativeLibraries.add("objectivemedia_mac32.so");
                 }
             }
             for(int x = 0; x < DependencyPaths.size(); x++){
