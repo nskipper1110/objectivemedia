@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-MacOSX
-CND_DLIB_EXT=dylib
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug_Linux_x64
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -60,7 +60,7 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/testVideoInputDevice.o
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-m64
 
 # CC Compiler Flags
 CCFLAGS=-D__STDC_CONSTANT_MACROS
@@ -73,75 +73,75 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/lib/jvm/java-7-openjdk-amd64/lib -L/home/nathan/ffmpeg-new/build/x64/lib -lswscale -lswresample -lavcodec -lavfilter -lavformat -lavutil
+LDLIBSOPTIONS=-L../../ffmpeg/build/linux/x64/lib -L/usr/lib/jvm/java-8-oracle/lib/amd64 -L/usr/lib/jvm/java-8-oracle/lib -lswscale -lswresample -lavcodec -lavfilter -lavformat -lavutil
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so
 
-${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/lin64
-	g++ -o ${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -dynamiclib -install_name ObjectiveMedia_lin64.so -fPIC
+../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so: ${OBJECTFILES}
+	${MKDIR} -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64
+	g++ -o ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -shared -fPIC
 
 ${OBJECTDIR}/dbg.o: dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dbg.o dbg.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dbg.o dbg.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o: jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o: jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o: jni/com_mti_primitives_codecs_H263VideoDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o: jni/com_mti_primitives_codecs_H263VideoEncoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o: jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o: jni/com_mti_primitives_devices_AudioInputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o jni/com_mti_primitives_devices_AudioInputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o: jni/com_mti_primitives_devices_FileOutputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o jni/com_mti_primitives_devices_FileOutputDevice.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o jni/com_mti_primitives_devices_FileOutputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o: jni/com_mti_primitives_devices_VideoInputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o jni/com_mti_primitives_devices_VideoInputDevice.cpp
 
 ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o: jni/com_mti_primitives_devices_VideoOutputDevice.cpp 
 	${MKDIR} -p ${OBJECTDIR}/jni
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp
 
 ${OBJECTDIR}/platform/platform_codecs.o: platform/platform_codecs.cpp 
 	${MKDIR} -p ${OBJECTDIR}/platform
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_codecs.o platform/platform_codecs.cpp
 
 ${OBJECTDIR}/platform/platform_devices.o: platform/platform_devices.cpp 
 	${MKDIR} -p ${OBJECTDIR}/platform
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_devices.o platform/platform_devices.cpp
 
 # Subprojects
 .build-subprojects:
@@ -158,7 +158,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testVideoInputDevice.o ${OBJECTFILES:%
 ${TESTDIR}/tests/testVideoInputDevice.o: tests/testVideoInputDevice.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
+	$(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/testVideoInputDevice.o tests/testVideoInputDevice.cpp
 
 
 ${OBJECTDIR}/dbg_nomain.o: ${OBJECTDIR}/dbg.o dbg.cpp 
@@ -169,7 +169,7 @@ ${OBJECTDIR}/dbg_nomain.o: ${OBJECTDIR}/dbg.o dbg.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dbg_nomain.o dbg.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/dbg_nomain.o dbg.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/dbg.o ${OBJECTDIR}/dbg_nomain.o;\
 	fi
@@ -182,7 +182,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o: ${OBJECTD
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioDecoder.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioDecoder_nomain.o;\
 	fi
@@ -195,7 +195,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o: ${OBJECTD
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o jni/com_mti_primitives_codecs_G7231AudioEncoder.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_G7231AudioEncoder_nomain.o;\
 	fi
@@ -208,7 +208,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o: ${OBJECTDI
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o jni/com_mti_primitives_codecs_H263VideoDecoder.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoDecoder_nomain.o;\
 	fi
@@ -221,7 +221,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o: ${OBJECTDI
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o jni/com_mti_primitives_codecs_H263VideoEncoder.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_H263VideoEncoder_nomain.o;\
 	fi
@@ -234,7 +234,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o: ${OBJECTDIR
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o jni/com_mti_primitives_codecs_VC1VideoDecoder.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder.o ${OBJECTDIR}/jni/com_mti_primitives_codecs_VC1VideoDecoder_nomain.o;\
 	fi
@@ -247,7 +247,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o: ${OBJECTD
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o jni/com_mti_primitives_devices_AudioInputDevice.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o jni/com_mti_primitives_devices_AudioInputDevice.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_AudioInputDevice_nomain.o;\
 	fi
@@ -260,7 +260,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o: ${OBJECTD
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o jni/com_mti_primitives_devices_FileOutputDevice.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o jni/com_mti_primitives_devices_FileOutputDevice.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_FileOutputDevice_nomain.o;\
 	fi
@@ -273,7 +273,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o: ${OBJECTD
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o jni/com_mti_primitives_devices_VideoInputDevice.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o jni/com_mti_primitives_devices_VideoInputDevice.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoInputDevice_nomain.o;\
 	fi
@@ -286,7 +286,7 @@ ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o: ${OBJECT
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o jni/com_mti_primitives_devices_VideoOutputDevice.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice.o ${OBJECTDIR}/jni/com_mti_primitives_devices_VideoOutputDevice_nomain.o;\
 	fi
@@ -299,7 +299,7 @@ ${OBJECTDIR}/platform/platform_codecs_nomain.o: ${OBJECTDIR}/platform/platform_c
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_codecs_nomain.o platform/platform_codecs.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_codecs_nomain.o platform/platform_codecs.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/platform/platform_codecs.o ${OBJECTDIR}/platform/platform_codecs_nomain.o;\
 	fi
@@ -312,7 +312,7 @@ ${OBJECTDIR}/platform/platform_devices_nomain.o: ${OBJECTDIR}/platform/platform_
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -s -I/home/nathan/ffmpeg/build/x64/include -I/usr/lib/jvm/java-6-openjdk-amd64/include/linux -I/usr/lib/jvm/java-6-openjdk-amd64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_devices_nomain.o platform/platform_devices.cpp;\
+	    $(COMPILE.cc) -g -s -I/usr/lib/jvm/java-8-oracle/include -I/usr/lib/jvm/java-8-oracle/include/linux -I../../ffmpeg/build/linux/x64/include -fPIC  -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/platform/platform_devices_nomain.o platform/platform_devices.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/platform/platform_devices.o ${OBJECTDIR}/platform/platform_devices_nomain.o;\
 	fi
@@ -329,7 +329,7 @@ ${OBJECTDIR}/platform/platform_devices_nomain.o: ${OBJECTDIR}/platform/platform_
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/lin64/ObjectiveMedia_lin64.so
+	${RM} ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so
 
 # Subprojects
 .clean-subprojects:

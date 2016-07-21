@@ -242,7 +242,12 @@ public:
 			retval = PIX_FMT_RGB565LE;
 			break;
 		case RGB24: //24 bit
-			retval = PIX_FMT_BGR24;
+#ifdef __APPLE__
+                        retval = PIX_FMT_BGR24;
+#else
+                        retval = PIX_FMT_BGR24;
+#endif
+			
 			break;
 		case RGB32: //32 bit
 			retval = PIX_FMT_ARGB;
@@ -303,54 +308,54 @@ public:
 	};
         
         static VideoPixelFormat FromFFPixel(int ffpix){
-		VideoPixelFormat retval = VideoPixelFormat::ANY;
+		VideoPixelFormat retval = ANY;
 		switch(ffpix){
 		case PIX_FMT_MONOBLACK: //1 bit
-			retval = VideoPixelFormat::RGB1;
+			retval = RGB1;
 			break;
 		case PIX_FMT_RGB4: //4 bit
-			retval = VideoPixelFormat::RGB4;
+			retval = RGB4;
 			break;
 		case PIX_FMT_RGB8: //8 bit
-			retval = VideoPixelFormat::RGB8;
+			retval = RGB8;
 			break;
 		case PIX_FMT_RGB555LE: //15 bit
-			retval = VideoPixelFormat::RGB555;
+			retval = RGB555;
 			break;
 		case PIX_FMT_RGB565LE: //16 bit
-			retval = VideoPixelFormat::RGB565;
+			retval = RGB565;
 			break;
 		case PIX_FMT_BGR24: //24 bit
                 case PIX_FMT_RGB24:
                         
-			retval = VideoPixelFormat::RGB24;
+			retval = RGB24;
 			break;
 		case PIX_FMT_ARGB: //32 bit
-			retval = VideoPixelFormat::RGB32;
+			retval = RGB32;
 			break;
 		case PIX_FMT_BGRA: //32 bit
-			retval = VideoPixelFormat::ARGB32;
+			retval = ARGB32;
 			break;
 		case PIX_FMT_YUV422P16BE: //32 bit
-			retval = VideoPixelFormat::AYUV;
+			retval = AYUV;
 			break;
 		case PIX_FMT_UYYVYY411: //12 bit
-			retval = VideoPixelFormat::Y411;
+			retval = Y411;
 			break;
 		case PIX_FMT_YUV411P: //12 bit
-			retval = VideoPixelFormat::Y41P;
+			retval = Y41P;
 			break;
 		case PIX_FMT_YUV410P: //8 bit
-			retval = VideoPixelFormat::Y211;
+			retval = Y211;
 			break;
 		case PIX_FMT_UYVY422: //16 bit
-			retval = VideoPixelFormat::YUY2;
+			retval = YUY2;
                         break;
 		case PIX_FMT_YUV420P: //12 bits YV12
-			retval = VideoPixelFormat::YV12;
+			retval = YV12;
 			break;
                 case PIX_FMT_NV21: //12 bits NV21
-                    retval = VideoPixelFormat::NV21;
+                    retval = NV21;
                     break;
 		}
 		return retval;

@@ -12,10 +12,6 @@
             <sourceRootList/>
             <confList>
                 <confElem>
-                    <name>Debug_Linux_x86</name>
-                    <type>2</type>
-                </confElem>
-                <confElem>
                     <name>Release</name>
                     <type>2</type>
                 </confElem>
@@ -41,6 +37,10 @@
                 </confElem>
                 <confElem>
                     <name>Release_Mac_x86</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>Debug_Linux_x86</name>
                     <type>2</type>
                 </confElem>
             </confList>

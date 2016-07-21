@@ -27,11 +27,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=ObjectiveMedia
 
 # Active Configuration
-DEFAULTCONF=Debug_Linux_x86
+DEFAULTCONF=Release
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=Debug_Linux_x86 Release Debug_Linux_x64 DebugArm Debug_Mac_x64 Debug_Mac_x86 Release_Mac_x64 Release_Mac_x86 
+ALLCONFS=Release Debug_Linux_x64 DebugArm Debug_Mac_x64 Debug_Mac_x86 Release_Mac_x64 Release_Mac_x86 Debug_Linux_x86 
 
 
 # build

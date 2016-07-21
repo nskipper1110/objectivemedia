@@ -6,16 +6,16 @@
 
 # Macros
 TOP=`pwd`
-CND_PLATFORM=GNU-MacOSX
+CND_PLATFORM=GNU-Linux
 CND_CONF=Debug_Linux_x86
 CND_DISTDIR=dist
 CND_BUILDDIR=build
-CND_DLIB_EXT=dylib
+CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/lin32/ObjectiveMedia_lin32.so
-OUTPUT_BASENAME=ObjectiveMedia_lin32.so
-PACKAGE_TOP_DIR=libObjectiveMedia.dylib/
+OUTPUT_PATH=../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x32/objectivemedia_lin32.so
+OUTPUT_BASENAME=objectivemedia_lin32.so
+PACKAGE_TOP_DIR=libObjectiveMedia.so/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/libObjectiveMedia.dylib/lib"
+makeDirectory "${NBTMPDIR}/libObjectiveMedia.so/lib"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}" 0644
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libObjectiveMedia.dylib.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libObjectiveMedia.so.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libObjectiveMedia.dylib.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libObjectiveMedia.so.tar *
 checkReturnCode
 
 # Cleanup

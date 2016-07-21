@@ -61,14 +61,7 @@ OS Specific Structures and functions
 #define VIDEO_INPUT_NAME "avfoundation";
 #define VIDEO_INPUT_LIST "";
 #endif
-#ifdef __linux__
-#define VIDEO_INPUT_NAME "v4l2";
 
-#endif
-#ifdef _WIN32
-#define VIDEO_INPUT_NAME "vfwcap";
-#define VIDEO_INPUT_LIST "list";
-#endif
 
 typedef struct StandardVideoFormat{
     int Width;
@@ -88,9 +81,10 @@ typedef struct VideoInputBuffer{
 }VideoInputBuffer;
 
 typedef struct VideoInputDeviceContext{
-    int DeviceHandle;
+    void* DeviceHandle;
     long ImageSize;
     VideoMediaFormat* Format;
+    VideoMediaFormat* NativeFormat;
     pthread_t CaptureThread;
     DeviceListener* Listener;
     bool Stopped;
@@ -99,21 +93,18 @@ typedef struct VideoInputDeviceContext{
     AVFrame* TempFrame;
     SwsContext* ScaleContext;
     VideoInputDeviceContext(){
-        DeviceHandle = -1;
+        DeviceHandle = NULL;
         ImageSize = 0;
         Format = NULL;
         CaptureThread = (pthread_t)-1;
         Listener = NULL;
         Stopped = false;
-        Buffers = NULL;
-        BufferCount = 0;
+        //Buffers = NULL;
+        //BufferCount = 0;
         TempFrame = NULL;
         ScaleContext = NULL;
     };
     ~VideoInputDeviceContext(){
-        if(Buffers != NULL)
-            free(Buffers);
-        BufferCount = 0;
         if(TempFrame != NULL){
             if(TempFrame->data[0] != NULL)
                 av_free(TempFrame->data[0]);
@@ -373,32 +364,44 @@ VideoInputDevice::VideoInputDevice(){
     long sleepTime = 1000000*((double) 1000/adjfps);
     long long StartTicks = 0;
     while(!context->Stopped){
-        v4l2_buffer buf;
-        memset (&buf, 0, sizeof(buf));
+        //v4l2_buffer buf;
+        //memset (&buf, 0, sizeof(buf));
 
-        buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-        buf.memory = V4L2_MEMORY_MMAP;
+        //buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+        //buf.memory = V4L2_MEMORY_MMAP;
 
-        if (0 == ioctl (context->DeviceHandle, VIDIOC_DQBUF, &buf)) {
+        if (context->DeviceHandle != NULL) {
             if(context->Listener != NULL)
             {
-                void* buffer = context->Buffers[buf.index].Buffer;
-                int bufsize = buf.length;
-                if(context->ScaleContext != NULL){
-                    VideoMediaFormat* vf = context->Format;
-                    AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat), vf->Width, vf->Height, buffer);
-                    if(source != NULL){
-                        int outheight = sws_scale(context->ScaleContext, source->data, source->linesize,0, vf->Height, context->TempFrame->data, context->TempFrame->linesize);
-                        //set the outgoing reference.
-                        if(outheight > 0)
-                        {
-                            buffer = context->TempFrame->data[0];
-                                //calculate and set the outgoing frame size, in bytes.
-                            bufsize = vf->Width * vf->Height * VideoMediaFormat::GetPixelBits(RGB24) / 8;
+                void* buffer = NULL;
+                int bufsize = 0;
+                AVPacket *packet=(AVPacket *)av_malloc(sizeof(AVPacket));
+                if(av_read_frame((AVFormatContext*) context->DeviceHandle, packet) >= 0){
+                    buffer = NULL;
+                    bufsize = 0;
+                    if(context->ScaleContext != NULL){
+                        VideoMediaFormat* native = context->NativeFormat;
+                        VideoMediaFormat* adjusted = context->Format;
+                        AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
+                        if(source != NULL){
+                            int outheight = sws_scale(context->ScaleContext, source->data, source->linesize,0, adjusted->Height, context->TempFrame->data, context->TempFrame->linesize);
+                            //set the outgoing reference.
+                            if(outheight > 0)
+                            {
+                                buffer = context->TempFrame->data[0];
+                                    //calculate and set the outgoing frame size, in bytes.
+                                bufsize = adjusted->Width * adjusted->Height * VideoMediaFormat::GetPixelBits(RGB24) / 8;
+                            }
+                            av_free(source);
                         }
-                        av_free(source);
                     }
+                    else{
+                        buffer = malloc(packet->size);
+                        memcpy(buffer, packet->data, packet->size);
+                    }
+                    av_free_packet(packet);
                 }
+                
                 struct timeval tv;
                 struct timezone tz;
                 gettimeofday(&tv, &tz);
@@ -408,7 +411,7 @@ VideoInputDevice::VideoInputDevice(){
                 long long timestamp = (tv.tv_usec/1000) - StartTicks;
                 context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
             }
-            ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
+            //ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }
         timespec tv;
         tv.tv_nsec = sleepTime;
@@ -423,185 +426,77 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
     Device_Errors retval = SUCCEEDED;
     try
     {
-#ifdef __linux__
-        string file("/dev/video");
-        char index[3];
-        sprintf(index,"%d", DeviceIndex, 10);
-        file = file + index;
         VideoMediaFormat* vformat = (VideoMediaFormat*)format;
         VideoInputDeviceContext* context = new VideoInputDeviceContext();
         
-        if(vformat->AVPixelFormat != RGB24){
+        if(vformat->PixelFormat != RGB24){
             for(int x = 0; x < Formats.size(); x++){
                 VideoMediaFormat* f = (VideoMediaFormat*)Formats[x];
-                if(vformat->AVPixelFormat == ANY){
+                if(vformat->PixelFormat == ANY){
                     if(vformat->Width == f->Width && vformat->Height == f->Height){
                         vformat->PixelFormat = f->PixelFormat;
                         PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
                         context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
                         context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
+                        context->NativeFormat = f;
+                        vformat->PixelFormat = RGB24;
+                        context->Format = vformat;
                         break;
                     }
                 }
                 else{
-                    if(vformat->Width == f->Width && vformat->Height == f->Height && vformat->AVPixelFormat == f->AVPixelFormat){
+                    if(vformat->Width == f->Width && vformat->Height == f->Height && vformat->PixelFormat == f->PixelFormat){
                         vformat->PixelFormat = f->PixelFormat;
                         PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
                         context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
                         context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
+                        vformat->PixelFormat = RGB24;
+                        context->Format = vformat;
+                        context->NativeFormat = f;
                         break;
                     }
                 }
                 
             }
         }
-        context->DeviceHandle = -1;
-        context->Format = vformat;
-        context->DeviceHandle = open(file.c_str(), O_RDWR | O_NONBLOCK);
-        if(context->DeviceHandle == -1)
+        context->DeviceHandle = NULL;
+        char index[10];
+#ifdef __linux__
+        AVInputFormat *iformat = av_find_input_format("v4l2");
+        
+        sprintf(index,"/dev/video%d", DeviceIndex);
+#endif
+#ifdef __APPLE__
+        AVInputFormat *iformat = av_find_input_format("avfoundation");
+        sprintf(index,"%d", DeviceIndex);
+#endif
+#ifdef _WIN32
+        AVInputFormat *iformat = av_find_input_format("vfwcap");
+        sprintf(index,"%d", DeviceIndex);
+#endif
+        int error = avformat_open_input((AVFormatContext**)&context->DeviceHandle, index, iformat, NULL);
+        if(error != 0)
         {
             retval = INVALID_DEVICE;
         }
         else{
-            v4l2_input input;
-            memset(&input, 0, sizeof(input));
-            int counter = 0;
-            input.index = counter;
-            
-            if(ioctl(context->DeviceHandle, VIDIOC_ENUMINPUT, &input) != -1){
-                ioctl(context->DeviceHandle, VIDIOC_G_INPUT, &input);
-                
-                if(ioctl(context->DeviceHandle, VIDIOC_S_INPUT, &input) != -1){
-                    v4l2_std_id std_id = V4L2_STD_NTSC;
-                    ioctl (context->DeviceHandle, VIDIOC_S_STD, &std_id);
-                    v4l2_cropcap cropcap;
-                    v4l2_crop crop;
-
-                    memset (&cropcap, 0, sizeof(cropcap));
-
-                    cropcap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-
-                    if (0 == ioctl (context->DeviceHandle, VIDIOC_CROPCAP, &cropcap)) {
-                            crop.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                            crop.c = cropcap.defrect; /* reset to default */
-
-                            if (-1 == ioctl (context->DeviceHandle, VIDIOC_S_CROP, &crop)) {
-                                    switch (errno) {
-                                    case EINVAL:
-                                            /* Cropping not supported. */
-                                            break;
-                                    default:
-                                            /* Errors ignored. */
-                                            break;
-                                    }
-                            }
-                    } else {        
-                            /* Errors ignored. */
-                    }
-
-                    v4l2_format rawfmt;
-                    memset(&rawfmt, 0, sizeof(v4l2_format));
-                    rawfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-
-                    rawfmt.fmt.pix.width = vformat->Width;
-                    rawfmt.fmt.pix.height = vformat->Height;
-                    rawfmt.fmt.pix.field = V4L2_FIELD_ANY;
-
-                    rawfmt.fmt.pix.pixelformat = (__u32)GetBPPFCC((VideoPixelFormat)vformat->PixelFormat);
-                    if(ioctl(context->DeviceHandle, VIDIOC_S_FMT, &rawfmt) == -1)
-                    {
-                        retval = INVALID_FORMAT;
-                    }
-                    else{
-                        context->Listener = Listener;
-                        DeviceContext = context;
-                        context->Stopped = false;
-                        context->ImageSize = rawfmt.fmt.pix.sizeimage;
-
-                        v4l2_requestbuffers req;
-
-                        memset (&req,0, sizeof(req));
-
-                        req.count               = 4;
-                        req.type                = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                        req.memory              = V4L2_MEMORY_MMAP;
-
-                        if (0 == ioctl (context->DeviceHandle, VIDIOC_REQBUFS, &req)) {
-                                if (req.count >= 2) {
-                                   context->Buffers = (VideoInputBuffer*)calloc (req.count, sizeof (*context->Buffers));
-
-                                    for (context->BufferCount = 0; context->BufferCount < req.count; ++context->BufferCount) {
-                                            v4l2_buffer buf;
-
-                                            memset (&buf, 0, sizeof(buf));
-
-                                            buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                                            buf.memory      = V4L2_MEMORY_MMAP;
-                                            buf.index       = context->BufferCount;
-
-                                            if (0 == ioctl (context->DeviceHandle, VIDIOC_QUERYBUF, &buf))
-                                            {
-                                                context->Buffers[context->BufferCount].Length = buf.length;
-                                                context->Buffers[context->BufferCount].Buffer =
-                                                        mmap (NULL /* start anywhere */,
-                                                              buf.length,
-                                                              PROT_READ | PROT_WRITE /* required */,
-                                                              MAP_SHARED /* recommended */,
-                                                              context->DeviceHandle, buf.m.offset);
-                                                if(MAP_FAILED == context->Buffers[context->BufferCount].Buffer)
-                                                    break;
-                                            }
-
-
-                                    } 
-                                   for (int i = 0; i < context->BufferCount; ++i) {
-                                        struct v4l2_buffer buf;
-
-                                        memset (&buf, 0, sizeof(buf));
-
-                                        buf.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                                        buf.memory      = V4L2_MEMORY_MMAP;
-                                        buf.index       = i;
-
-                                        if(-1 == ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf))
-                                            printf("QBuf Failed");
-                                }
-
-                                //v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-
-                                if(-1 == ioctl (context->DeviceHandle, VIDIOC_STREAMON, &rawfmt.type))
-                                {
-                                    retval = NOT_SUPPORTED;
-                                }
-                                else{
-                                    int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
-                                    if(r != 0){
-                                        retval = NOT_SUPPORTED;
-                                    }
-                                }
-                            }
-
-
-                        }
-
-
-                    }
-                }
-                else{
-                    retval = INVALID_DEVICE;
-                }
+            context->Listener = Listener;
+            DeviceContext = context;
+            context->Stopped = false;
+                        
+            int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
+            if(r != 0){
+                retval = NOT_SUPPORTED;
             }
-            else{
-                retval = INVALID_DEVICE;
-            }
-            
-            
-            
         }
+            
+    
+            
+        
         if(retval != SUCCEEDED){
             Close();
         }
-#endif //linux
+
     }
     catch(...){
         retval = UNEXPECTED;
@@ -613,26 +508,16 @@ Device_Errors VideoInputDevice::Close(){
 	Device_Errors retval = SUCCEEDED;
 	try
 	{
-            
-            
-#ifdef __linux__
-		if(DeviceContext != NULL)
-		{
-			VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
-                        context->Stopped = true;
-                        pthread_join(context->CaptureThread, NULL);
-                        enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                        ioctl(context->DeviceHandle, VIDIOC_STREAMOFF, &type);
-                        for (int i = 0; i < context->BufferCount; ++i)
-                                munmap(context->Buffers[i].Buffer, context->Buffers[i].Length);
-                        close(context->DeviceHandle);
-                        free(context->Buffers);
-                        context->Buffers = NULL;
-                        delete(context);
-                        DeviceContext = NULL;
-		}
-		SAFEDELETE(DeviceContext);
-#endif
+            if(DeviceContext != NULL)
+            {
+                    VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
+                    context->Stopped = true;
+                    pthread_join(context->CaptureThread, NULL);
+                    avformat_close_input((AVFormatContext**)&context->DeviceHandle);
+                    delete(context);
+                    DeviceContext = NULL;
+            }
+            SAFEDELETE(DeviceContext);
 	}
 	catch(...){
 		retval = UNEXPECTED;
@@ -665,7 +550,9 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
     
 #endif
             printf("Device number is %s\n", devnum);
-            error = avformat_open_input(&pFormatCtx, devnum, iformat, NULL);
+            AVDictionary *options = NULL;
+            //av_dict_set(&options, "s", "320x240", 0);
+            error = avformat_open_input(&pFormatCtx, devnum, iformat, &options);
             if(error == 0){
                 printf("Getting details for input %d\n", x);
                 VideoInputDevice* vid = new VideoInputDevice();

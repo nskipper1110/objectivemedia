@@ -7,8 +7,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Connexus">
-            <file>file:/Users/nathanskipper/objectivemedia/linux/ObjectiveMedia/platform/platform_devices.cpp</file>
-            <file>file:/Users/nathanskipper/objectivemedia/linux/ObjectiveMedia/platform/platform_devices.h</file>
+            <file>file:/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/platform/platform.h</file>
+            <file>file:/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/platform/platform_storage.h</file>
+            <file>file:/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/com_mti_primitives_devices_VideoInputDevice.cpp</file>
+            <file>file:/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/platform/platform_devices.cpp</file>
         </group>
     </open-files>
 </project-private>
