@@ -24,8 +24,14 @@ using namespace std;
 #include <errno.h>
 #include <iostream>
 #include <stdlib.h>
-#include <pthread.h>
+#ifndef _VSC
 #include <time.h>
+#include <pthread.h>
+#else
+#include <windows.h>
+#endif
+
+
 #include <assert.h>
 
 #include <getopt.h>             /* getopt_long() */
@@ -35,12 +41,14 @@ using namespace std;
 #include <errno.h>
 #ifdef __linux__
 #include <malloc.h>
-#endif
+
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/time.h>
 #include <sys/mman.h>
 #include <sys/ioctl.h>
+#endif
+
 #ifndef __ANDROID__
 #ifdef __linux__
 #include <sys/soundcard.h>
@@ -54,14 +62,12 @@ using namespace std;
 
 #include <linux/videodev2.h>
 #endif
+#ifdef _VSC
+DWORD WINAPI VideoInputDevice_Thread( LPVOID lpParam );
+#endif
 /********************************************
 OS Specific Structures and functions
 ********************************************/
-#ifdef __APPLE__
-#define VIDEO_INPUT_NAME "avfoundation";
-#define VIDEO_INPUT_LIST "";
-#endif
-
 
 typedef struct StandardVideoFormat{
     int Width;
@@ -85,7 +91,11 @@ typedef struct VideoInputDeviceContext{
     long ImageSize;
     VideoMediaFormat* Format;
     VideoMediaFormat* NativeFormat;
+    #ifndef _VSC
     pthread_t CaptureThread;
+    #else
+    HANDLE CaptureThread;
+    #endif
     DeviceListener* Listener;
     bool Stopped;
     VideoInputBuffer* Buffers;
@@ -96,7 +106,11 @@ typedef struct VideoInputDeviceContext{
         DeviceHandle = NULL;
         ImageSize = 0;
         Format = NULL;
+        #ifndef _VSC
         CaptureThread = (pthread_t)-1;
+        #else
+        CaptureThread = NULL;
+        #endif
         Listener = NULL;
         Stopped = false;
         //Buffers = NULL;
@@ -120,14 +134,22 @@ typedef struct VideoInputDeviceContext{
 typedef struct AudioInputDeviceContext{
     int DeviceHandle;
     AudioMediaFormat* Format;
+    #ifndef _VSC
     pthread_t CaptureThread;
+    #else
+    HANDLE CaptureThread;
+    #endif
     DeviceListener* Listener;
     bool Stopped;
     
     AudioInputDeviceContext(){
         DeviceHandle = -1;
         Format = NULL;
-        CaptureThread = (pthread_t)-1;
+        #ifndef _VSC
+            CaptureThread = (pthread_t)-1;
+        #else
+            CaptureThread = NULL;
+        #endif
         Listener = NULL;
         Stopped = false;
         
@@ -294,7 +316,7 @@ int GetPixelByteSize(VideoPixelFormat fmt){
 long GetImageSize(VideoMediaFormat* format){
     return format->Width * format->Height * GetPixelByteSize(format->PixelFormat);
 }
-
+#ifdef __linux__
 static int
 xioctl                          (int                    fd,
                                  int                    request,
@@ -307,6 +329,7 @@ xioctl                          (int                    fd,
 
         return r;
 }
+#endif
 
 
 
@@ -356,8 +379,11 @@ VideoInputDevice::VideoInputDevice(){
 	this->DeviceContext = NULL;
 	FormatCount = 0;
 }
-
+ #ifndef _VSC
  void *VideoInputDevice_Thread(void* ptr){
+ #else
+ DWORD WINAPI VideoInputDevice_Thread(LPVOID ptr){
+ #endif
     VideoInputDeviceContext* context = (VideoInputDeviceContext*) ptr;
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
     double adjfps = context->Format->FPS;
@@ -401,7 +427,7 @@ VideoInputDevice::VideoInputDevice(){
                     }
                     av_free_packet(packet);
                 }
-                
+                #ifndef _VSC
                 struct timeval tv;
                 struct timezone tz;
                 gettimeofday(&tv, &tz);
@@ -409,17 +435,31 @@ VideoInputDevice::VideoInputDevice(){
                     StartTicks = tv.tv_usec / 1000;
                 }
                 long long timestamp = (tv.tv_usec/1000) - StartTicks;
+                #else
+                if(StartTicks == 0){
+                    StartTicks = GetTickCount();
+                }
+                long long timestamp = GetTickCount() - StartTicks;
+                #endif
                 context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
             }
             //ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }
+        #ifndef _VSC
+        
         timespec tv;
         tv.tv_nsec = sleepTime;
         tv.tv_sec = 0;
-        
         nanosleep(&tv, NULL);
+        #else
+        Sleep(sleepTime/1000000);
+        #endif
     }
+    #ifndef _VSC
     pthread_exit(NULL);
+    #else
+        ExitThread(0);
+    #endif
 }
 
 Device_Errors VideoInputDevice::Open(MediaFormat* format){
@@ -470,7 +510,7 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         AVInputFormat *iformat = av_find_input_format("avfoundation");
         sprintf(index,"%d", DeviceIndex);
 #endif
-#ifdef _WIN32
+#ifdef __MINGW32__
         AVInputFormat *iformat = av_find_input_format("vfwcap");
         sprintf(index,"%d", DeviceIndex);
 #endif
@@ -483,11 +523,18 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             context->Listener = Listener;
             DeviceContext = context;
             context->Stopped = false;
-                        
+            #ifndef _VSC            
             int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
             if(r != 0){
                 retval = NOT_SUPPORTED;
             }
+            #else
+            context->CaptureThread = CreateThread(NULL, 0,VideoInputDevice_Thread, NULL, 0, NULL);
+            if(context->CaptureThread == NULL){
+                retval = NOT_SUPPORTED;
+            }
+            #endif
+            
         }
             
     
@@ -512,7 +559,12 @@ Device_Errors VideoInputDevice::Close(){
             {
                     VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
                     context->Stopped = true;
+                    #ifndef _VSC
                     pthread_join(context->CaptureThread, NULL);
+                    #else
+                    WaitForSingleObject(context->CaptureThread, INFINITE);
+                    CloseHandle(context->CaptureThread);
+                    #endif
                     avformat_close_input((AVFormatContext**)&context->DeviceHandle);
                     delete(context);
                     DeviceContext = NULL;
@@ -544,7 +596,7 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
             sprintf(devnum, "%d", x);
             AVInputFormat *iformat = av_find_input_format("avfoundation");
 #endif
-#ifdef _WIN32
+#ifdef __MINGW32__
             sprintf(devnum, "%d", x);
             AVInputFormat *iformat = av_find_input_format("vfwcap");
     

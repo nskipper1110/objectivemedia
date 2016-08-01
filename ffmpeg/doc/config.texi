@@ -21,8 +21,8 @@
 @c @set arch-tilepro no
 @c @set arch-tomi no
 @set arch-x86 yes
-@c @set arch-x86-32 no
-@set arch-x86-64 yes
+@set arch-x86-32 yes
+@c @set arch-x86-64 no
 @c @set have-armv5te no
 @c @set have-armv6 no
 @c @set have-armv6t2 no
@@ -123,9 +123,9 @@
 @c @set have-mipsdspr2-inline no
 @c @set have-loongson-inline no
 @set have-aligned-stack yes
-@set have-fast-64bit yes
+@c @set have-fast-64bit no
 @set have-fast-clz yes
-@set have-fast-cmov yes
+@c @set have-fast-cmov no
 @set have-local-aligned-8 yes
 @set have-local-aligned-16 yes
 @set have-atomics-gcc yes
@@ -134,7 +134,7 @@
 @c @set have-atomic-cas-ptr no
 @c @set have-machine-rw-barrier no
 @c @set have-memorybarrier no
-@set have-mm-empty yes
+@c @set have-mm-empty no
 @c @set have-rdtsc no
 @set have-sarestart yes
 @set have-sync-val-compare-and-swap yes
@@ -277,7 +277,7 @@
 @set have-symver-gnu-asm yes
 @c @set have-vfp-args no
 @c @set have-xform-asm no
-@set have-xmm-clobbers yes
+@c @set have-xmm-clobbers no
 @set have-socklen-t yes
 @set have-struct-addrinfo yes
 @set have-struct-group-source-req yes
@@ -292,18 +292,18 @@
 @set have-struct-stat-st-mtim-tv-nsec yes
 @set have-struct-v4l2-frmivalenum-discrete yes
 @set have-atomics-native yes
-@c @set have-dos-paths no
+@set have-dos-paths yes
 @c @set have-libc-msvcrt no
 @c @set have-libdc1394-1 no
 @c @set have-libdc1394-2 no
 @set have-makeinfo yes
 @set have-perl yes
 @set have-pod2man yes
-@set have-sdl yes
+@c @set have-sdl no
 @c @set have-texi2html no
 @set have-threads yes
-@set have-vdpau-x11 yes
-@set have-xlib yes
+@c @set have-vdpau-x11 no
+@c @set have-xlib no
 @c @set config-bsfs no
 @set config-decoders yes
 @c @set config-demuxers no
@@ -396,7 +396,7 @@
 @c @set config-opengl no
 @c @set config-openssl no
 @c @set config-x11grab no
-@set config-xlib yes
+@c @set config-xlib no
 @c @set config-zlib no
 @c @set config-ftrapv no
 @c @set config-gray no
@@ -409,7 +409,7 @@
 @set config-static yes
 @set config-swscale-alpha yes
 @c @set config-dxva2 no
-@set config-vaapi yes
+@c @set config-vaapi no
 @c @set config-vda no
 @set config-vdpau yes
 @c @set config-xvmc no
@@ -444,7 +444,7 @@
 @c @set config-memalign-hack no
 @c @set config-memory-poisoning no
 @c @set config-neon-clobber-test no
-@set config-pic yes
+@c @set config-pic no
 @set config-pod2man yes
 @c @set config-raise-major no
 @c @set config-thumb no
@@ -1482,13 +1482,13 @@
 @c @set config-bktr-indev no
 @c @set config-dshow-indev no
 @c @set config-dv1394-indev no
-@c @set config-fbdev-indev no
+@set config-fbdev-indev yes
 @c @set config-gdigrab-indev no
 @c @set config-iec61883-indev no
 @c @set config-jack-indev no
-@c @set config-lavfi-indev no
+@set config-lavfi-indev yes
 @c @set config-openal-indev no
-@c @set config-oss-indev no
+@set config-oss-indev yes
 @c @set config-pulse-indev no
 @c @set config-qtkit-indev no
 @c @set config-sndio-indev no

@@ -1,4 +1,4 @@
-prefix=./build/linux/x64
+prefix=./build/win/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -9,6 +9,6 @@ Version: 55.37.101
 Requires: libavcodec = 55.58.105
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavformat -lva -lX11 -lSDL -lm -lz -pthread
+Libs: -L${libdir}  -lavformat -lm -pthread
 Libs.private: 
 Cflags: -I${includedir}
