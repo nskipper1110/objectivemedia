@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
 SHELL = /bin/sh
 CC    = gcc
 CCFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS
@@ -15,8 +19,16 @@ LDFLAGS      = -shared -L/c/jdk/lib \
 					   -lavdevice \
 					   -lgcc \
 					   -liconv \
+<<<<<<< HEAD
 					   -lmsvcr100 \
 					   -lstdc++
+=======
+					   -lstdc++ \
+					   -lquartz \
+					   -lstrmiids \
+					   -lole32 \
+					   -luuid
+>>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
 INCLUDES = -I/c/jdk/include \
 		   -I/c/jdk/include/win32 \
 		   -I../../ffmpeg/build/win/x86/include \

@@ -21,7 +21,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-//#define _DEBUG 1
+#define _DEBUG 1
 static char dbg_buffer[1000];
 
 void WriteErrorMsg(char* file, char* text);

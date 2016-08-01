@@ -218,7 +218,11 @@ public class MainForm extends javax.swing.JFrame {
     private boolean OpenVideoOutputDevice(){
         boolean retval = true;
         CurrentVideoOutputDevice = new VideoOutputDevice(0, "");
-        VideoMediaFormat vf = new VideoMediaFormat(CurrentVideoInputFormat.FPS, CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.ANY);
+        int fps = CurrentVideoInputFormat.FPS;
+        if(CurrentVideoInputFormat.FPS == 0){
+            fps = 30;
+        }
+        VideoMediaFormat vf = new VideoMediaFormat(fps, CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.ANY);
         CurrentVideoOutputDevice.Open(vf, VideoView, false);
         return retval;
     }
