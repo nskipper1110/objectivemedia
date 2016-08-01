@@ -96,15 +96,16 @@ public abstract class Primitives {
             if(osname.toLowerCase().contains("win")){
                 if(archtype.contains("amd")){
                     resourcePath = "os/win/x64/";
-                    DependencyPaths.add("msvcr100d.dll");
-                    DependencyPaths.add("msvcp100d.dll");
+                    DependencyPaths.add("libwinpthread-1.dll");
+                    DependencyPaths.add("libgcc_s_seh-1.dll");
+                    DependencyPaths.add("libstdc++-6.dll");
                     
                     NativeLibraries.add("objectivemedia_win64.dll");
                 }
                 else{
                     resourcePath = "os/win/x86/";
-                    DependencyPaths.add("msvcr100d.dll");
-                    DependencyPaths.add("msvcp100d.dll");
+                    DependencyPaths.add("msvcr110.dll");
+                    DependencyPaths.add("msvcp110.dll");
                     
                     NativeLibraries.add("objectivemedia_win32.dll");
                 }

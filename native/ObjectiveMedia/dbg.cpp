@@ -30,6 +30,6 @@ void WriteErrorMsg(char* file, char* text)
 }
 
 void DbgOut(char* msg){
-	WriteErrorMsg("/Users/nathanskipper/com_objectivemedia_dbg.txt", msg);
-        printf(msg);
+	WriteErrorMsg("c:\\users\\nathan\\Desktop\\com_objectivemedia_dbg.txt", msg);
+        //printf(msg);
 }

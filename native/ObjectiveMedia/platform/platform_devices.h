@@ -326,7 +326,7 @@ public:
 			retval = RGB565;
 			break;
 		case PIX_FMT_BGR24: //24 bit
-                case PIX_FMT_RGB24:
+        case PIX_FMT_RGB24:
                         
 			retval = RGB24;
 			break;
@@ -350,13 +350,16 @@ public:
 			break;
 		case PIX_FMT_UYVY422: //16 bit
 			retval = YUY2;
-                        break;
+            	break;
 		case PIX_FMT_YUV420P: //12 bits YV12
 			retval = YV12;
 			break;
-                case PIX_FMT_NV21: //12 bits NV21
-                    retval = NV21;
-                    break;
+        case PIX_FMT_NV21: //12 bits NV21
+            retval = NV21;
+            break;
+		case PIX_FMT_YUYV422:
+			retval = YUYV;
+			break;
 		}
 		return retval;
 	};
@@ -416,6 +419,8 @@ public:
 protected:
 	
 };
+
+
 
 /**************************************************************************************
 Description: The AudioInputDevice class provides functionality for interfacing to hardware

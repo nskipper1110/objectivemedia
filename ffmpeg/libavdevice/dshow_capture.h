@@ -36,7 +36,7 @@
 #ifndef EC_DEVICE_LOST
 #define EC_DEVICE_LOST 0x1f
 #endif
-
+int is_number(const char* s);
 long ff_copy_dshow_media_type(AM_MEDIA_TYPE *dst, const AM_MEDIA_TYPE *src);
 void ff_print_VIDEO_STREAM_CONFIG_CAPS(const VIDEO_STREAM_CONFIG_CAPS *caps);
 void ff_print_AUDIO_STREAM_CONFIG_CAPS(const AUDIO_STREAM_CONFIG_CAPS *caps);

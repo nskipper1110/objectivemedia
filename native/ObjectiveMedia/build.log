@@ -1,0 +1,1 @@
+g++ -D__STDC_CONSTANT_MACROS -I/c/jdk/include -I../../ffmpeg/build/win/x64/include -I. -I./jni -I./platform -I../../windows/pthreads/pre-built/include   -c -o platform/platform_devices.o platform/platform_devices.cpp

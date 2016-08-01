@@ -236,6 +236,18 @@ fail:
     return;
 }
 
+int is_number(const char* s)
+{
+    int retval = 1;
+    for(int x = 0; x < strlen(s); x++){
+        if((s[x] < '0' || s[x] > '9') && s[x] != '\n'){
+            retval = 0;
+            break;
+        }
+    }
+    return retval;
+}
+
 /**
  * Cycle through available devices using the device enumerator devenum,
  * retrieve the device with type specified by devtype and return the
@@ -266,7 +278,14 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
                devtypename);
         return AVERROR(EIO);
     }
-
+    int count = 0;
+    int index = -1;
+    av_log(avctx, AV_LOG_INFO, "Looking for dshow name %s\n", device_name);
+    if(is_number(device_name)){
+        index = atoi(device_name);
+        av_log(avctx, AV_LOG_INFO, "Looking for dshow index %d\n", index);
+    }
+    
     while (!device_filter && IEnumMoniker_Next(classenum, 1, &m, NULL) == S_OK) {
         IPropertyBag *bag = NULL;
         char *buf = NULL;
@@ -284,8 +303,19 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
         buf = dup_wchar_to_utf8(var.bstrVal);
 
         if (pfilter) {
-            if (strcmp(device_name, buf))
+            if(index >= 0){
+                if(index == count){
+                    av_log(avctx, AV_LOG_INFO, "Found dshow device at %d with name %s\n", index, buf);
+                    strcpy(avctx->filename, buf);
+                }
+                else{
+                    goto fail1;
+                }
+            }
+            else if (strcmp(device_name, buf)){
                 goto fail1;
+            }
+                
 
             if (!skip--)
                 IMoniker_BindToObject(m, 0, 0, &IID_IBaseFilter, (void *) &device_filter);
@@ -299,6 +329,7 @@ fail1:
         if (bag)
             IPropertyBag_Release(bag);
         IMoniker_Release(m);
+        count++;
     }
 
     IEnumMoniker_Release(classenum);

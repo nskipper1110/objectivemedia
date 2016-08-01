@@ -1,4 +1,4 @@
-prefix=./build/linux/x64
+prefix=./build/win/x64
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -9,6 +9,6 @@ Version: 55.58.105
 Requires: libavutil = 52.77.100
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavcodec -lva -lX11 -lSDL -lm -lz -pthread
+Libs: -L${libdir}  -lavcodec -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
 Libs.private: 
 Cflags: -I${includedir}
