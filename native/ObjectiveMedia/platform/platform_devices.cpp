@@ -25,11 +25,8 @@ using namespace std;
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
-<<<<<<< HEAD
-#ifndef _VSC
-=======
+
 #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
 #include <time.h>
 #include <pthread.h>
 #else
@@ -67,11 +64,7 @@ using namespace std;
 
 #include <linux/videodev2.h>
 #endif
-<<<<<<< HEAD
-#ifdef _VSC
-=======
 #ifdef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
 DWORD WINAPI VideoInputDevice_Thread( LPVOID lpParam );
 #endif
 /********************************************
@@ -100,11 +93,7 @@ typedef struct VideoInputDeviceContext{
     long ImageSize;
     VideoMediaFormat* Format;
     VideoMediaFormat* NativeFormat;
-<<<<<<< HEAD
-    #ifndef _VSC
-=======
     #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
     pthread_t CaptureThread;
     #else
     HANDLE CaptureThread;
@@ -119,11 +108,9 @@ typedef struct VideoInputDeviceContext{
         DeviceHandle = NULL;
         ImageSize = 0;
         Format = NULL;
-<<<<<<< HEAD
-        #ifndef _VSC
-=======
+
         #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
+
         CaptureThread = (pthread_t)-1;
         #else
         CaptureThread = NULL;
@@ -151,11 +138,7 @@ typedef struct VideoInputDeviceContext{
 typedef struct AudioInputDeviceContext{
     int DeviceHandle;
     AudioMediaFormat* Format;
-<<<<<<< HEAD
-    #ifndef _VSC
-=======
     #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
     pthread_t CaptureThread;
     #else
     HANDLE CaptureThread;
@@ -166,12 +149,8 @@ typedef struct AudioInputDeviceContext{
     AudioInputDeviceContext(){
         DeviceHandle = -1;
         Format = NULL;
-<<<<<<< HEAD
-        #ifndef _VSC
-=======
         #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
-            CaptureThread = (pthread_t)-1;
+           CaptureThread = (pthread_t)-1;
         #else
             CaptureThread = NULL;
         #endif
@@ -404,11 +383,7 @@ VideoInputDevice::VideoInputDevice(){
 	this->DeviceContext = NULL;
 	FormatCount = 0;
 }
-<<<<<<< HEAD
- #ifndef _VSC
-=======
  #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
  void *VideoInputDevice_Thread(void* ptr){
  #else
  DWORD WINAPI VideoInputDevice_Thread(LPVOID ptr){
@@ -456,11 +431,7 @@ VideoInputDevice::VideoInputDevice(){
                     }
                     av_free_packet(packet);
                 }
-<<<<<<< HEAD
-                #ifndef _VSC
-=======
                 #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
                 struct timeval tv;
                 struct timezone tz;
                 gettimeofday(&tv, &tz);
@@ -478,11 +449,7 @@ VideoInputDevice::VideoInputDevice(){
             }
             //ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }
-<<<<<<< HEAD
-        #ifndef _VSC
-=======
         #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
         
         timespec tv;
         tv.tv_nsec = sleepTime;
@@ -492,11 +459,7 @@ VideoInputDevice::VideoInputDevice(){
         Sleep(sleepTime/1000000);
         #endif
     }
-<<<<<<< HEAD
-    #ifndef _VSC
-=======
-    #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
+   #ifndef __MINGW32__
     pthread_exit(NULL);
     #else
         ExitThread(0);
@@ -552,14 +515,9 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         sprintf(index,"%d", DeviceIndex);
 #endif
 #ifdef __MINGW32__
-<<<<<<< HEAD
-        AVInputFormat *iformat = av_find_input_format("vfwcap");
-        sprintf(index,"%d", DeviceIndex);
-=======
         AVInputFormat *iformat = av_find_input_format("dshow");
         sprintf(index,"video=%s", DeviceName.c_str());
 
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
 #endif
         AVDictionary *options = NULL;
         if(vformat->FPS <= 0){
@@ -611,22 +569,13 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             printf("Adding device listener to context\n");
             DeviceContext = context;
             context->Stopped = false;
-<<<<<<< HEAD
-            #ifndef _VSC            
-=======
             #ifndef __MINGW32__            
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
             int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
             if(r != 0){
                 retval = NOT_SUPPORTED;
             }
             #else
-<<<<<<< HEAD
-            context->CaptureThread = CreateThread(NULL, 0,VideoInputDevice_Thread, NULL, 0, NULL);
-            if(context->CaptureThread == NULL){
-                retval = NOT_SUPPORTED;
-            }
-=======
+
             printf("Starting thread\n");
             context->CaptureThread = CreateThread(NULL, 0,VideoInputDevice_Thread, (void*) DeviceContext, 0, NULL);
             if(context->CaptureThread == NULL){
@@ -635,7 +584,6 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             else{
                 printf("Starting W32 thread.\n");
             }
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
             #endif
             
         }
@@ -663,11 +611,7 @@ Device_Errors VideoInputDevice::Close(){
             {
                     VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
                     context->Stopped = true;
-<<<<<<< HEAD
-                    #ifndef _VSC
-=======
                     #ifndef __MINGW32__
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
                     pthread_join(context->CaptureThread, NULL);
                     #else
                     WaitForSingleObject(context->CaptureThread, INFINITE);
@@ -706,14 +650,9 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
             AVInputFormat *iformat = av_find_input_format("avfoundation");
 #endif
 #ifdef __MINGW32__
-<<<<<<< HEAD
-            sprintf(devnum, "%d", x);
-            AVInputFormat *iformat = av_find_input_format("vfwcap");
-=======
             
             sprintf(devnum, "video=%d", x);
             AVInputFormat *iformat = av_find_input_format("dshow");
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
     
 #endif
             printf("Device number is %s\n", devnum);
