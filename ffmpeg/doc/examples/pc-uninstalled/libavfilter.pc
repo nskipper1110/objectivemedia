@@ -8,9 +8,5 @@ Description: FFmpeg audio/video filtering library
 Version: 4.4.100
 Requires: libavutil = 52.77.100
 Conflicts:
-<<<<<<< HEAD
-Libs: -L${libdir} -Wl,-rpath,${libdir} -lavfilter -lm -pthread
-=======
-Libs: -L${libdir} -Wl,-rpath,${libdir} -lavfilter -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
->>>>>>> ce0552a01e9649381e1ea4cc97af4623fc30dc78
+Libs: -L${libdir} -Wl,-rpath,${libdir} -lavfilter -lva -lX11 -lSDL -lm -lz -pthread
 Cflags: -I${includedir}

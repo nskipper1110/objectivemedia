@@ -1,0 +1,140 @@
+Opening device index 0, device name video0, format width 160, height 120, fps 15, Pixel format 72
+Open returned 0
+Opening device index 1, device name video1, format width 1280, height 720, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 2
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 2
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 2
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 2
+Opening device index 0, device name video0, format width 160, height 120, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 640, height 480, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 72
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 77
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Opening device index 0, device name video0, format width 160, height 120, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 160, height 120, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 160, height 120, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Open returned 0
+Opening device index 0, device name video0, format width 320, height 240, fps 15, Pixel format 24
+Open returned 0
+Opening device index 1, device name video1, format width 1280, height 800, fps 15, Pixel format 24
+Open returned 0
+Opening H263VideoEncoder
+	Found codec
+	Bit Rate = 1066
+	Frame Rate = 15
+	KFS = 160
+	Width= 1280, Height = 800, Format = 24
+	Initializing Scaler
+*****START FFMPEG LOG ENTRY*****
+intra_quant_bias = 0 inter_quant_bias = -64
+*****STOP FFMPEG LOG ENTRY*****
+	Codec Open returned 0
+Finished opening H263VideoEncoder
+*****START FFMPEG LOG ENTRY*****
+'FaceTime HD Camera' opened
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+'Logitech Camera' opened
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Invalid device index
+*****STOP FFMPEG LOG ENTRY*****
+Opening device index 1, device name video1, format width 1280, height 800, fps 15, Pixel format 24
+*****START FFMPEG LOG ENTRY*****
+Setting framerate to 15:1
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+'Logitech Camera' opened
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Adding device listener to context
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Found decoder for 14
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Allocating temp scaling frame
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Codec Pixel Format is 2->rgb24
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Initiating scaling context
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Forcing full internal H chroma due to input having non subsampled chroma
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Native Pixel Format is 24
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Native Width is 1280
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Native Height is 800
+*****STOP FFMPEG LOG ENTRY*****
+Open returned 0
+*****START FFMPEG LOG ENTRY*****
+VideoInputDevice_Thread++
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+VideoInputDevice_Thread starting control loop
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Signaling the thread to stop.
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+VideoInputDevice_Thread--
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Freeing the scale context.
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Freeing the codec context.
+*****STOP FFMPEG LOG ENTRY*****
+*****START FFMPEG LOG ENTRY*****
+Closing the device context.
+*****STOP FFMPEG LOG ENTRY*****
+Closing H263VideoEncoder
+	Closing codec
+	Freeing codec
+	Freeing scaler
+	Freeing Frame Data
+	Freeing Frame
+Closed H263VideoEncoder
+Closing H263VideoDecoder
+	Closing H263VideoDecoder Codec Context
+	Closing H263VideoDecoder Scaler
+	Closing H263VideoDecoder Temp Frame
+Closed H263VideoDecoder

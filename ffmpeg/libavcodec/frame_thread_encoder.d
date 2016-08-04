@@ -15,4 +15,4 @@ libavcodec/frame_thread_encoder.o: libavcodec/frame_thread_encoder.c \
  libavutil/mem.h libavcodec/old_codec_ids.h libavutil/common.h \
  libavutil/fifo.h libavutil/avassert.h libavutil/imgutils.h \
  libavutil/pixdesc.h libavcodec/internal.h libavutil/mathematics.h \
- libavcodec/thread.h compat/w32pthreads.h libavutil/internal.h
+ libavcodec/thread.h

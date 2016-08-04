@@ -16,6 +16,14 @@
 *.sdf
 *.suo
 *.scc
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.DS_Store
+/.vscode
+/ffmpeg/.vscode
+/native/ObjectiveMedia/.vscode
 /Java/com.mti.primitives/com.mti.primitives/nbproject/private/
 /Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/nbproject/private/
 /Java/com.mti.primitives/com.mti.primitives/build/

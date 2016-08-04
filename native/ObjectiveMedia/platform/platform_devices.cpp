@@ -41,12 +41,15 @@ using namespace std;
 #include <fcntl.h>              /* low-level i/o */
 #include <unistd.h>
 #include <errno.h>
+#ifndef __MINGW32__
+#include <sys/time.h>
+#endif
 #ifdef __linux__
 #include <malloc.h>
 
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sys/time.h>
+
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #endif
