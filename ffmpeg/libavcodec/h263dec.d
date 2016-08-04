@@ -26,4 +26,4 @@ libavcodec/h263dec.o: libavcodec/h263dec.c libavutil/cpu.h \
  libavcodec/msmpeg4.h libavcodec/msmpeg4data.h \
  libavcodec/vdpau_internal.h libavcodec/h264.h libavcodec/cabac.h \
  libavcodec/h264dsp.h libavcodec/h264pred.h libavcodec/h264qpel.h \
- libavcodec/mpegutils.h libavcodec/rectangle.h
+ libavcodec/mpegutils.h libavcodec/rectangle.h libavcodec/vdpau.h

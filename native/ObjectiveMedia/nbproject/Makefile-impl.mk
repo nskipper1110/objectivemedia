@@ -31,7 +31,7 @@ DEFAULTCONF=Release
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=Release Debug_Linux_x64 DebugArm Debug_Mac_x64 Debug_Mac_x86 Release_Mac_x64 Release_Mac_x86 Debug_Linux_x86 
+ALLCONFS=Release Debug_Linux_x64 DebugArm Debug_Mac_x64 Debug_Mac_x86 Release_Mac_x64 Release_Mac_x86 Release_Linux_x64 Release_Linux_x86 
 
 
 # build

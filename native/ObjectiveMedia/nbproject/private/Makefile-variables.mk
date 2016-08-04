@@ -9,4 +9,5 @@
 # Debug_Mac_x86 configuration
 # Release_Mac_x64 configuration
 # Release_Mac_x86 configuration
-# Debug_Linux_x86 configuration
+# Release_Linux_x64 configuration
+# Release_Linux_x86 configuration

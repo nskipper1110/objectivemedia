@@ -195,13 +195,14 @@ public class MainForm extends javax.swing.JFrame {
         boolean retval = false;
         if(CurrentVideoInputDevice != null && CurrentVideoInputFormat != null){
             CurrentVideoInputDevice.Listener = new MyVideoDeviceListener();
-            VideoPixelFormat pix = VideoPixelFormat.ANY;
-            if(System.getProperty("os.name").toLowerCase().contains("lin")){
-                //String ver = System.getProperty("os.version");
-                //String os = System.getProperty("os.name");
-                pix = VideoPixelFormat.YUYV;
-            }
-            VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, pix);
+//            VideoPixelFormat pix = VideoPixelFormat.ANY;
+//            if(System.getProperty("os.name").toLowerCase().contains("lin")){
+//                //String ver = System.getProperty("os.version");
+//                //String os = System.getProperty("os.name");
+//                pix = VideoPixelFormat.YUYV;
+//            }
+            VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, CurrentVideoInputFormat.PixelFormat);
+
             Device_Errors err = CurrentVideoInputDevice.Open(vf);
             if(err == Device_Errors.SUCCEEDED)
             {

@@ -1,7 +1,0 @@
-To make for Windowsx64, use the following commands:
-./configure --enable-static --arch=x86_64 --prefix=/cygdrive/c/ffmpeg/build/x64 --cross-prefix=x86_64-w64-mingw32- --target-os=mingw32 --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-yasm
-make clean && make && make install
-
-To make for Windowsx86, use the following commands:
-./configure --enable-static --arch=x86 --prefix=/cygdrive/c/ffmpeg/build/x86 --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-yasm
-make clean && make && make install

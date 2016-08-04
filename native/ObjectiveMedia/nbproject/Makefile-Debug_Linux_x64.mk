@@ -73,7 +73,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../../ffmpeg/build/linux/x64/lib -L/usr/lib/jvm/java-8-oracle/lib/amd64 -L/usr/lib/jvm/java-8-oracle/lib -lswscale -lswresample -lavcodec -lavfilter -lavformat -lavutil
+LDLIBSOPTIONS=-L../../ffmpeg/build/linux/x64/lib -L/usr/lib/jvm/java-8-oracle/lib/amd64 -L/usr/lib/jvm/java-8-oracle/lib -lswscale -lswresample -lavcodec -lavfilter -lavformat -lavutil -lavdevice
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

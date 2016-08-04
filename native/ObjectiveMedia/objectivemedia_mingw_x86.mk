@@ -1,4 +1,3 @@
-
 SHELL = /bin/sh
 CC    = gcc
 CCFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS

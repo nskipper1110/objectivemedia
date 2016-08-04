@@ -40,7 +40,11 @@
                     <type>2</type>
                 </confElem>
                 <confElem>
-                    <name>Debug_Linux_x86</name>
+                    <name>Release_Linux_x64</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>Release_Linux_x86</name>
                     <type>2</type>
                 </confElem>
             </confList>
