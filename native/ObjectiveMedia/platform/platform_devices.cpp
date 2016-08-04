@@ -62,7 +62,7 @@ using namespace std;
 #ifdef __linux__
 #include <asm/types.h>          /* for videodev2.h */
 
-#include <linux/videodev2.h>
+//#include <linux/videodev2.h>
 #endif
 #ifdef __MINGW32__
 DWORD WINAPI VideoInputDevice_Thread( LPVOID lpParam );
@@ -74,7 +74,7 @@ OS Specific Structures and functions
 typedef struct StandardVideoFormat{
     int Width;
     int Height;
-    int PixelFormat;
+    int pixelFormat;
 }StandardVideoFormat;
 
 typedef struct StandardAudioFormat{
@@ -104,6 +104,8 @@ typedef struct VideoInputDeviceContext{
     unsigned int BufferCount;
     AVFrame* TempFrame;
     SwsContext* ScaleContext;
+    AVCodecContext* CodecContext;
+    AVCodec* Codec;
     VideoInputDeviceContext(){
         DeviceHandle = NULL;
         ImageSize = 0;
@@ -163,7 +165,7 @@ typedef struct AudioInputDeviceContext{
     }
 }AudioInputDeviceContext;
 
-#define StandardFormatCount 60
+#define StandardFormatCount 3
 StandardVideoFormat StandardFormats[] = 
 {
     /*
@@ -185,69 +187,7 @@ StandardVideoFormat StandardFormats[] =
      */
     {160,120,RGB24},
     {320,240,RGB24},
-    {640,480,RGB24},
-    {720,480,RGB24},
-    {1024,768,RGB24},
-    {160,120,IYUV},
-    {320,240,IYUV},
-    {640,480,IYUV},
-    {720,480,IYUV},
-    {1024,768,IYUV},
-    {160,120,YUYV},
-    {320,240,YUYV},
-    {640,480,YUYV},
-    {720,480,YUYV},
-    {1024,768,YUYV},
-    {160,120,RGB565},
-    {320,240,RGB565},
-    {640,480,RGB565},
-    {720,480,RGB565},
-    {1024,768,RGB565},
-    {160,120,RGB555},
-    {320,240,RGB555},
-    {640,480,RGB555},
-    {720,480,RGB555},
-    {1024,768,RGB555},
-    {160,120,RGB32},
-    {320,240,RGB32},
-    {640,480,RGB32},
-    {720,480,RGB32},
-    {1024,768,RGB32},
-    {160,120,ARGB32},
-    {320,240,ARGB32},
-    {640,480,ARGB32},
-    {720,480,ARGB32},
-    {1024,768,ARGB32},
-    {160,120,AYUV},
-    {320,240,AYUV},
-    {640,480,AYUV},
-    {720,480,AYUV},
-    {1024,768,AYUV},
-    {160,120,UYVY},
-    {320,240,UYVY},
-    {640,480,UYVY},
-    {720,480,UYVY},
-    {1024,768,UYVY},
-    {160,120,Y411},
-    {320,240,Y411},
-    {640,480,Y411},
-    {720,480,Y411},
-    {1024,768,Y411},
-    {160,120,YUY2},
-    {320,240,YUY2},
-    {640,480,YUY2},
-    {720,480,YUY2},
-    {1024,768,YUY2},
-    {160,120,YV12},
-    {320,240,YV12},
-    {640,480,YV12},
-    {720,480,YV12},
-    {1024,768,YV12},
-    {160,120,UNKNOWN},
-    {320,240,UNKNOWN},
-    {640,480,UNKNOWN},
-    {720,480,UNKNOWN},
-    {1024,768,UNKNOWN},
+    {640,480,RGB24}
 };
 #define StandardAudioFormatCount 4
 StandardAudioFormat StandardAudioFormats[] = {
@@ -256,42 +196,7 @@ StandardAudioFormat StandardAudioFormats[] = {
     {11025, 8, 1},
     {11025, 16, 1}
 };
-#ifdef __linux__
-__u32 GetBPPFCC(VideoPixelFormat fmt){
-    __u32 retval = V4L2_PIX_FMT_BGR24;
-    switch(fmt){
-        case RGB24:
-            retval = V4L2_PIX_FMT_BGR24;
-            break;
-        case IYUV:
-            retval = V4L2_PIX_FMT_YUV420;
-            break;
-        case YUYV:
-            retval = V4L2_PIX_FMT_YUYV;
-            break;
-        case RGB565:
-            retval = V4L2_PIX_FMT_RGB565;
-            break;
-        case RGB555:
-            retval = V4L2_PIX_FMT_RGB555;
-            break;
-        case UYVY:
-            retval = V4L2_PIX_FMT_UYVY;
-            break;
-        case YV12:
-            retval = V4L2_PIX_FMT_YUV420;
-            break;
-#ifndef __ANDROID__
-        case UNKNOWN:
-            retval = V4L2_PIX_FMT_H264;
-            break;
-#endif
-        default:
-            retval = V4L2_PIX_FMT_BGR24;
-    }
-    return retval;
-};
-#endif
+
 
 int GetPixelByteSize(VideoPixelFormat fmt){
     int retval = 3;
@@ -320,20 +225,6 @@ int GetPixelByteSize(VideoPixelFormat fmt){
 long GetImageSize(VideoMediaFormat* format){
     return format->Width * format->Height * GetPixelByteSize(format->PixelFormat);
 }
-#ifdef __linux__
-static int
-xioctl                          (int                    fd,
-                                 int                    request,
-                                 void *                 arg)
-{
-        int r;
-
-        do r = ioctl (fd, request, arg);
-        while (-1 == r && EINTR == errno);
-
-        return r;
-}
-#endif
 
 
 
@@ -377,58 +268,91 @@ VideoInputDevice::VideoInputDevice(){
     av_register_all();
     avdevice_register_all();
     avformat_network_init();
+    avcodec_register_all();
 	this->DeviceName = "";
 	this->DeviceIndex = 0;
 	this->Listener = NULL;
 	this->DeviceContext = NULL;
 	FormatCount = 0;
 }
+
  #ifndef __MINGW32__
  void *VideoInputDevice_Thread(void* ptr){
  #else
  DWORD WINAPI VideoInputDevice_Thread(LPVOID ptr){
  #endif
+    
+                    
     VideoInputDeviceContext* context = (VideoInputDeviceContext*) ptr;
+    av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread++\n");
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
     double adjfps = context->Format->FPS;
     long sleepTime = 1000000*((double) 1000/adjfps);
     long long StartTicks = 0;
+    av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread starting control loop\n");
+    
     while(!context->Stopped){
-        //v4l2_buffer buf;
-        //memset (&buf, 0, sizeof(buf));
-
-        //buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-        //buf.memory = V4L2_MEMORY_MMAP;
         
         if (context->DeviceHandle != NULL) {
             if(context->Listener != NULL)
             {
                 void* buffer = NULL;
                 int bufsize = 0;
+                //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread allocating new packet.\n");
                 AVPacket *packet=(AVPacket *)av_malloc(sizeof(AVPacket));
+                //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread reading packet\n");
                 if(av_read_frame((AVFormatContext*) context->DeviceHandle, packet) >= 0){
                     buffer = NULL;
                     bufsize = 0;
-                    if(context->ScaleContext != NULL){
+                    
+                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread got a packet.\n");
+                    if(context->ScaleContext != NULL && context->CodecContext != NULL){
+                        //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread gonna do some scaling!\n");
                         VideoMediaFormat* native = context->NativeFormat;
                         VideoMediaFormat* adjusted = context->Format;
-                        AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
-                        if(source != NULL){
-                            int outheight = sws_scale(context->ScaleContext, source->data, source->linesize,0, adjusted->Height, context->TempFrame->data, context->TempFrame->linesize);
-                            //set the outgoing reference.
-                            if(outheight > 0)
-                            {
-                                buffer = context->TempFrame->data[0];
-                                    //calculate and set the outgoing frame size, in bytes.
-                                bufsize = adjusted->Width * adjusted->Height * VideoMediaFormat::GetPixelBits(RGB24) / 8;
+                        //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread getting source frame\n");
+                        //AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
+                        AVFrame* sourceFrame = NULL;
+                        if(context->CodecContext->codec_id != AV_CODEC_ID_RAWVIDEO){
+                            //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread need to decode.\n");
+                            sourceFrame = av_frame_alloc();
+                            int got_picture;
+                            if(avcodec_decode_video2(context->CodecContext, sourceFrame, &got_picture, packet)){
+                                if(!got_picture){
+                                    av_free(sourceFrame);
+                                    sourceFrame = NULL;
+                                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread failed to decode frame\n");
+                                }
                             }
-                            av_free(source);
+                        }
+                        else{
+                            //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread get the raw frame\n");
+                            sourceFrame = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
+                            
+                        }
+                        if(sourceFrame != NULL){
+                            if(context->NativeFormat->PixelFormat != context->Format->PixelFormat){
+                                
+                                //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread scaling to desired format\n");
+                                int outheight = sws_scale(context->ScaleContext, sourceFrame->data, sourceFrame->linesize,0, adjusted->Height, context->TempFrame->data, context->TempFrame->linesize);
+                                //set the outgoing reference.
+                                if(outheight > 0)
+                                {
+                                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread got my new scaled buffer\n");
+                                    buffer = context->TempFrame->data[0];
+                                        //calculate and set the outgoing frame size, in bytes.
+                                    bufsize = adjusted->Width * adjusted->Height * VideoMediaFormat::GetPixelBits(RGB24) / 8;
+                                }
+                            }
+                            else{
+                                buffer = malloc(packet->size);
+                                bufsize = packet->size;
+                                memcpy(buffer, packet->data, bufsize);
+                            }
+                            av_free(sourceFrame);
                         }
                     }
-                    else{
-                        buffer = malloc(packet->size);
-                        memcpy(buffer, packet->data, packet->size);
-                    }
+                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread freeing packet.\n");
                     av_free_packet(packet);
                 }
                 #ifndef __MINGW32__
@@ -445,6 +369,7 @@ VideoInputDevice::VideoInputDevice(){
                 }
                 long long timestamp = GetTickCount() - StartTicks;
                 #endif
+                //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread passing up buffer\n");
                 context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
             }
             //ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
@@ -454,16 +379,19 @@ VideoInputDevice::VideoInputDevice(){
         timespec tv;
         tv.tv_nsec = sleepTime;
         tv.tv_sec = 0;
+        //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread sleeping\n");
         nanosleep(&tv, NULL);
         #else
         Sleep(sleepTime/1000000);
         #endif
     }
+    av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread--\n");
    #ifndef __MINGW32__
     pthread_exit(NULL);
     #else
         ExitThread(0);
     #endif
+    
 }
 
 Device_Errors VideoInputDevice::Open(MediaFormat* format){
@@ -473,37 +401,9 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         VideoMediaFormat* vformat = (VideoMediaFormat*)format;
         VideoInputDeviceContext* context = new VideoInputDeviceContext();
         
-        if(vformat->PixelFormat != RGB24){
-            for(int x = 0; x < Formats.size(); x++){
-                VideoMediaFormat* f = (VideoMediaFormat*)Formats[x];
-                if(vformat->PixelFormat == ANY){
-                    if(vformat->Width == f->Width && vformat->Height == f->Height){
-                        vformat->PixelFormat = f->PixelFormat;
-                        PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
-                        context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
-                        context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
-                        context->NativeFormat = f;
-                        vformat->PixelFormat = RGB24;
-                        context->Format = vformat;
-                        break;
-                    }
-                }
-                else{
-                    if(vformat->Width == f->Width && vformat->Height == f->Height && vformat->PixelFormat == f->PixelFormat){
-                        vformat->PixelFormat = f->PixelFormat;
-                        PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
-                        context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
-                        context->ScaleContext = sws_getContext(vformat->Width, vformat->Height,(AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat), vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
-                        vformat->PixelFormat = RGB24;
-                        context->Format = vformat;
-                        context->NativeFormat = f;
-                        break;
-                    }
-                }
-                
-            }
-        }
+        
         context->DeviceHandle = NULL;
+        
         char index[100];
 #ifdef __linux__
         AVInputFormat *iformat = av_find_input_format("v4l2");
@@ -530,20 +430,24 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         sprintf(framerate, "%d:1", vformat->FPS);
         
         sprintf(video_size, "%dx%d", vformat->Width, vformat->Height);
-        
-        sprintf(pixfmt, "%d", (AVPixelFormat)VideoMediaFormat::GetFFPixel(vformat->PixelFormat));
+        int ffpix = VideoMediaFormat::GetFFPixel(vformat->PixelFormat);
+        sprintf(pixfmt, "%s", VideoMediaFormat::GetFFPixelName(ffpix));
         sprintf(rtbufsize, "%d", vformat->FPS * vformat->Width * vformat->Height * 3);
         
-        #ifdef __MINGW32__
-        av_dict_set(&options, "video_size", video_size, 0);
-        printf("Setting video size to %s\n", video_size);
-        av_dict_set(&options, "framerate", framerate, 0);
-        printf("Setting framerate to %s\n", framerate);
-        #endif
+        
         #ifdef __APPLE__
         av_dict_set(&options, "frame_rate", framerate, 0);
-        printf("Setting framerate to %s\n", framerate);
-        #endif
+        av_log(context->DeviceHandle, AV_LOG_INFO, "Setting framerate to %s\n", framerate);
+#else
+        
+        
+        av_dict_set(&options, "video_size", video_size, 0);
+        av_log(context->DeviceHandle, AV_LOG_INFO, "Setting video size to %s\n", video_size);
+        av_dict_set(&options, "framerate", framerate, 0);
+        av_log(context->DeviceHandle, AV_LOG_INFO, "Setting framerate to %s\n", framerate);
+        //av_dict_set(&options, "pixel_format", pixfmt, 0);
+        //av_log(context->DeviceHandle, AV_LOG_INFO, "Setting pixel format to %s\n", pixfmt);
+#endif
         av_dict_set(&options, "rtbufsize", rtbufsize, 0);
         //av_dict_set(&options, "pixel_format", pixfmt, 0);
         //printf("Setting pixel format to %s\n", pixfmt);
@@ -553,22 +457,64 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             sprintf(framerate, "%d:1", vformat->FPS);
         
             av_dict_set(&options, "framerate", framerate, 0);
-            printf("Trying framerate to %s\n", framerate);
+            av_log(context->DeviceHandle, AV_LOG_INFO, "Trying framerate to %s\n", framerate);
             error = avformat_open_input((AVFormatContext**)&context->DeviceHandle, index, iformat, &options);
         }
         if(error != 0)
         {
-            printf("Error opening device = %d\n", error);
+            av_log(context->DeviceHandle, AV_LOG_INFO, "Error opening device = %d\n", error);
             char errormsg[1024];
             av_strerror(error, errormsg, 1024);
-            printf("%s\n", errormsg);
+            av_log(context->DeviceHandle, AV_LOG_INFO, "%s\n", errormsg);
             retval = INVALID_DEVICE;
         }
         else{
             context->Listener = Listener;
-            printf("Adding device listener to context\n");
+            av_log(context->DeviceHandle, AV_LOG_INFO, "Adding device listener to context\n");
             DeviceContext = context;
             context->Stopped = false;
+            context->CodecContext = ((AVFormatContext*)context->DeviceHandle)->streams[0]->codec;
+            context->Codec = avcodec_find_decoder(context->CodecContext->codec_id);
+            if(context->CodecContext != NULL && context->Codec != NULL){
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Found decoder for %i\n", context->CodecContext->codec_id);
+                if(context->CodecContext->codec_id != AV_CODEC_ID_RAWVIDEO){
+                    context->CodecContext->pix_fmt = AV_PIX_FMT_YUV420P;
+                }
+                error = avcodec_open2(context->CodecContext, context->Codec, NULL);
+                if(error != 0){
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Error opening codec = %d\n", error);
+                    char errormsg[1024];
+                    av_strerror(error, errormsg, 1024);
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "%s\n", errormsg);
+                    context->CodecContext = NULL;
+                    avcodec_close(context->CodecContext);
+                    context->Codec = NULL;
+                    retval = INVALID_FORMAT;
+                    avformat_close_input((AVFormatContext**)&context->DeviceHandle);
+                }
+                else{
+                    AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Allocating temp scaling frame\n");
+                    context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Codec Pixel Format is %d->%s\n", context->CodecContext->pix_fmt, VideoMediaFormat::GetFFPixelName(context->CodecContext->pix_fmt));
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Initiating scaling context\n");
+                    
+                    context->ScaleContext = sws_getContext(context->CodecContext->width, context->CodecContext->height,context->CodecContext->pix_fmt, vformat->Width, vformat->Height,fmt,SWS_BICUBIC, NULL, NULL, NULL);
+                    context->NativeFormat = new VideoMediaFormat();
+                    context->NativeFormat->PixelFormat = VideoMediaFormat::FromFFPixel(context->CodecContext->pix_fmt);
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Native Pixel Format is %i\n", context->NativeFormat->PixelFormat);
+                    context->NativeFormat->Width = context->CodecContext->width;
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Native Width is %i\n", context->NativeFormat->Width);
+                    context->NativeFormat->Height = context->CodecContext->height;
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Native Height is %i\n", context->NativeFormat->Height);
+                    
+                    vformat->PixelFormat = RGB24;
+                    context->Format = vformat;
+                }
+            }
+            else{
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Unable to find the decoder for the codec.\n");
+            }
             #ifndef __MINGW32__            
             int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
             if(r != 0){
@@ -576,13 +522,13 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             }
             #else
 
-            printf("Starting thread\n");
+            av_log(context->DeviceHandle, AV_LOG_INFO, "Starting thread\n");
             context->CaptureThread = CreateThread(NULL, 0,VideoInputDevice_Thread, (void*) DeviceContext, 0, NULL);
             if(context->CaptureThread == NULL){
                 retval = NOT_SUPPORTED;
             }
             else{
-                printf("Starting W32 thread.\n");
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Starting W32 thread.\n");
             }
             #endif
             
@@ -609,17 +555,25 @@ Device_Errors VideoInputDevice::Close(){
 	{
             if(DeviceContext != NULL)
             {
-                    VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
-                    context->Stopped = true;
-                    #ifndef __MINGW32__
-                    pthread_join(context->CaptureThread, NULL);
-                    #else
-                    WaitForSingleObject(context->CaptureThread, INFINITE);
-                    CloseHandle(context->CaptureThread);
-                    #endif
-                    avformat_close_input((AVFormatContext**)&context->DeviceHandle);
-                    delete(context);
-                    DeviceContext = NULL;
+                
+                VideoInputDeviceContext* context = (VideoInputDeviceContext*)DeviceContext;
+                context->Stopped = true;
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Signaling the thread to stop.\n");
+                #ifndef __MINGW32__
+                pthread_join(context->CaptureThread, NULL);
+                #else
+                WaitForSingleObject(context->CaptureThread, INFINITE);
+                CloseHandle(context->CaptureThread);
+                #endif
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Freeing the scale context.\n");
+                if(context->ScaleContext != NULL) sws_freeContext(context->ScaleContext);
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Freeing the codec context.\n");
+                if(context->CodecContext != NULL) avcodec_close(context->CodecContext);
+                av_log(context->DeviceHandle, AV_LOG_INFO, "Closing the device context.\n");
+                avformat_close_input((AVFormatContext**)&context->DeviceHandle);
+
+                //delete(context);
+                //DeviceContext = NULL;
             }
             SAFEDELETE(DeviceContext);
 	}
@@ -659,6 +613,7 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
             
             error = avformat_open_input(&pFormatCtx, devnum, iformat, NULL);
             if(error == 0){
+                
                 printf("Getting details for input %d\n", x);
                 VideoInputDevice* vid = new VideoInputDevice();
                 vid->DeviceIndex = x;
@@ -671,7 +626,39 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
                 string name(devname);
                 vid->DeviceName = name;
                 printf("Device has %d streams\n", (int)pFormatCtx->nb_streams);
-                
+#ifndef __APPLE__
+                avformat_close_input(&pFormatCtx);
+                for(int i = 0; i < StandardFormatCount; i++){
+                    
+                    AVDictionary *options = NULL;
+
+                    char video_size[40];
+                    char pixfmt[20];
+                    sprintf(video_size, "%dx%d", StandardFormats[i].Width, StandardFormats[i].Height);
+                    int ffpix = VideoMediaFormat::GetFFPixel((VideoPixelFormat)StandardFormats[i].pixelFormat);
+                    sprintf(pixfmt, "%s", VideoMediaFormat::GetFFPixelName(ffpix));
+                    av_log(pFormatCtx, AV_LOG_INFO, "Checking video size %s and FF format %s and our format is %i\n", video_size, pixfmt, StandardFormats[i].pixelFormat);
+                    av_dict_set(&options, "video_size", video_size, 0);
+                    av_dict_set(&options, "pixel_format", pixfmt, 0);
+                    if(avformat_open_input(&pFormatCtx, devnum, iformat, &options) == 0){
+                        if(pFormatCtx->nb_streams > 0){
+                            VideoMediaFormat* vf = new VideoMediaFormat();
+                            vf->Width = pFormatCtx->streams[0]->codec->width;
+                            printf("Stream %d width = %d\n", i, vf->Width);
+                            vf->Height = pFormatCtx->streams[0]->codec->height;
+                            printf("Stream %d height = %d\n", i, vf->Height);
+                            vf->PixelFormat = (VideoPixelFormat)StandardFormats[i].pixelFormat;
+                            printf("Stream %d Pixel = %d\n", i, vf->PixelFormat);
+                            vf->FPS = 0;
+
+                            vid->Formats.push_back(vf);
+                            printf("Stream %d pushed to format list\n", i);
+                            vid->FormatCount = vid->Formats.size();
+                        }
+                        avformat_close_input(&pFormatCtx);
+                    }
+                }
+#else
                 for(int i=0; i < pFormatCtx->nb_streams; i++) {
                     printf("Stream %d has a name of %s\n", i, pFormatCtx->streams[i]->codec->codec_name);
                     if(pFormatCtx->streams[i]->codec->codec_type==AVMEDIA_TYPE_VIDEO)
@@ -694,9 +681,12 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
                     
                     
                 }
+#endif
                 deviceList.push_back(vid);
                 printf("Device %d pushed to device list\n", x);
+#ifdef __APPLE__
                 avformat_close_input(&pFormatCtx);
+#endif
                 printf("Closed Context\n");
                 //avformat_free_context(pFormatCtx);
                 pFormatCtx = NULL;
@@ -776,65 +766,7 @@ Device_Errors AudioInputDevice::Close(){
 Device_Errors AudioInputDevice::GetDevices(std::vector<Device*> &deviceList){
     Device_Errors retval = SUCCEEDED;
     try{
-#ifdef __linux__
-        DIR *dp;
-        struct dirent *dirp;
-        if((dp  = opendir("/dev/")) == NULL) {
-            retval = NO_DEVICES;
-        }
-        else{
-            int index = 0;
-            while ((dirp = readdir(dp)) != NULL) {
-                string file(dirp->d_name);
-                //std::cout << file << std::endl;
-                if(file.find("audio", 0) != file.npos)
-                {
-                    file = "/dev/" + file;
-                    int fd = open(file.c_str(), O_RDWR);
-                    if(fd != -1)
-                    {
-                        v4l2_capability argp;
-                        if(ioctl(fd, VIDIOC_QUERYCAP, &argp) == 0)
-                        {
-                            if(argp.capabilities & V4L2_CAP_STREAMING)
-                            {
-                                VideoInputDevice* vid = new VideoInputDevice();
-                                vid->DeviceIndex = index;
-                                string name((char*)argp.card);
-                                vid->DeviceName = name;
-                                
-                                for(int x=0; x < StandardFormatCount; x++)
-                                {
-                                    v4l2_format rawfmt;
-                                    memset(&rawfmt, 0, sizeof(v4l2_format));
-                                    rawfmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-                                    
-                                    rawfmt.fmt.pix.width = StandardFormats[x].Width;
-                                    rawfmt.fmt.pix.height = StandardFormats[x].Height;
-                                    rawfmt.fmt.pix.pixelformat = (__u32)GetBPPFCC((VideoPixelFormat)StandardFormats[x].PixelFormat);
-                                    if(ioctl(fd, VIDIOC_TRY_FMT, &rawfmt) == 0)
-                                    {
-                                        VideoMediaFormat* fmt = new VideoMediaFormat();
-                                        fmt->Width = rawfmt.fmt.pix.width;
-                                        fmt->Height = rawfmt.fmt.pix.height;
-                                        fmt->PixelFormat = (VideoPixelFormat)StandardFormats[x].PixelFormat;
-                                        vid->Formats.push_back(fmt);
-                                        vid->FormatCount = vid->Formats.size();
-                                    }
-                                }
-                                deviceList.push_back(vid);
-                            }
-                        }
-                        
-                        close(fd);
-                    }
-                    
-                    index++;
-                }
-            }
-            closedir(dp);
-        }
-#endif
+
     }
     catch(...)
     {

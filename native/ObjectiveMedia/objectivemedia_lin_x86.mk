@@ -3,9 +3,9 @@ CC    = gcc
 CCFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS
 CFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS
 CXXFLAGS = -D__STDC_CONSTANT_MACROS
-LDFLAGS      = -shared -L/c/jdk/lib \
-					   -L/c/jdk/lib/amd64 \
-					   -L../../ffmpeg/build/win/x86/lib \
+LDFLAGS      = -shared -L/usr/lib/jvm/java-8-oracle/lib \
+					   -L/usr/lib/jvm/java-8-oracle/lib/amd64 \
+					   -L../../ffmpeg/build/linux/x86/lib \
 					   -lswscale \
 					   -lswresample \
 					   -lavcodec \
@@ -14,20 +14,15 @@ LDFLAGS      = -shared -L/c/jdk/lib \
 					   -lavutil \
 					   -lavdevice \
 					   -lgcc \
-					   -liconv \
-					   -lstdc++ \
-					   -lquartz \
-					   -lstrmiids \
-					   -lole32 \
-					   -luuid
-INCLUDES = -I/c/jdk/include \
-		   -I/c/jdk/include/win32 \
-		   -I../../ffmpeg/build/win/x86/include \
+                       -lstdc++
+INCLUDES = -I/usr/lib/jvm/java-8-oracle/include \
+		   -I/usr/lib/jvm/java-8-oracle/include/linux \
+		   -I../../ffmpeg/build/linux/x86/include \
 		   -I. \
 		   -I./jni \
 		   -I./platform
 
-TARGET  = ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/win/x86/objectivemedia_win32.dll
+TARGET  = ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/objectivemedia_lin32.dll
 SOURCES = $(shell echo ./*.cpp) \
 		  $(shell echo ./platform/*.cpp) \
 		  $(shell echo ./jni/*.cpp)
@@ -45,5 +40,5 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 
 $(TARGET) : $(OBJECTS)
-	mkdir -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/win/x86/
+	mkdir -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/
 	$(CC) $(CCFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)

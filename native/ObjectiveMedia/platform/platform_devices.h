@@ -243,11 +243,10 @@ public:
 			break;
 		case RGB24: //24 bit
 #ifdef __APPLE__
-                        retval = PIX_FMT_BGR24;
+                        retval = PIX_FMT_RGB24;
 #else
                         retval = PIX_FMT_BGR24;
 #endif
-			
 			break;
 		case RGB32: //32 bit
 			retval = PIX_FMT_ARGB;
@@ -286,7 +285,7 @@ public:
 			retval = PIX_FMT_YUV420P;
 			break;
 		case YV12: //12 bits
-			retval = PIX_FMT_YUV420P;
+			retval = PIX_FMT_NV12;
 			break;
 		case YVU9: //9 bits
 			retval = PIX_FMT_YUV410P;
@@ -301,11 +300,15 @@ public:
 			retval = 0;
 			break;
 		case ANY: //any pixel size.
-			retval = 0;
+			retval = AV_PIX_FMT_NONE;
 			break;
 		}
 		return retval;
 	};
+        
+        static const char* GetFFPixelName(int ffpix){
+            return av_get_pix_fmt_name((::AVPixelFormat)ffpix);
+        }
         
         static VideoPixelFormat FromFFPixel(int ffpix){
 		VideoPixelFormat retval = ANY;
@@ -350,16 +353,23 @@ public:
 			break;
 		case PIX_FMT_UYVY422: //16 bit
 			retval = YUY2;
-            	break;
-		case PIX_FMT_YUV420P: //12 bits YV12
+                        break;
+		case PIX_FMT_NV12: //12 bits YV12
 			retval = YV12;
 			break;
-        case PIX_FMT_NV21: //12 bits NV21
-            retval = NV21;
-            break;
-		case PIX_FMT_YUYV422:
+                    case PIX_FMT_YUV420P:
+                        retval = I420;
+                        break;
+                case PIX_FMT_NV21: //12 bits NV21
+                    retval = NV21;
+                    break;
+                case PIX_FMT_YUYV422:
 			retval = YUYV;
 			break;
+                        
+                    case AV_PIX_FMT_NONE:
+                        retval = ANY;
+                        break;
 		}
 		return retval;
 	};

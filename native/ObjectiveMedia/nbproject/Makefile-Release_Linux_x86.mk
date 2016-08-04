@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
-CND_CONF=Debug_Linux_x64
+CND_CONF=Release_Linux_x86
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -60,7 +60,7 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/testVideoInputDevice.o
 
 # C Compiler Flags
-CFLAGS=-m64
+CFLAGS=-m32
 
 # CC Compiler Flags
 CCFLAGS=-D__STDC_CONSTANT_MACROS
@@ -77,11 +77,11 @@ LDLIBSOPTIONS=-L../../ffmpeg/build/linux/x64/lib -L/usr/lib/jvm/java-8-oracle/li
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/objectivemedia_lin32.so
 
-../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so: ${OBJECTFILES}
-	${MKDIR} -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64
-	g++ -o ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -shared -fPIC
+../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/objectivemedia_lin32.so: ${OBJECTFILES}
+	${MKDIR} -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86
+	g++ -o ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/objectivemedia_lin32.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -shared -fPIC
 
 ${OBJECTDIR}/dbg.o: dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -329,7 +329,7 @@ ${OBJECTDIR}/platform/platform_devices_nomain.o: ${OBJECTDIR}/platform/platform_
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so
+	${RM} ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/objectivemedia_lin32.so
 
 # Subprojects
 .clean-subprojects:

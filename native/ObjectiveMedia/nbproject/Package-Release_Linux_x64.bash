@@ -7,7 +7,7 @@
 # Macros
 TOP=`pwd`
 CND_PLATFORM=GNU-Linux
-CND_CONF=Debug_Linux_x64
+CND_CONF=Release_Linux_x64
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 CND_DLIB_EXT=so
