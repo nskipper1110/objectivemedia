@@ -5,6 +5,7 @@
 *.d
 *.def
 *.dll
+*.dylib
 *.exe
 *.ho
 *.lib
