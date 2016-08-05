@@ -67,21 +67,21 @@
 @c @set have-dcbzl-external no
 @c @set have-ldbrx-external no
 @c @set have-ppc4xx-external no
-@set have-amd3dnow-external yes
-@set have-amd3dnowext-external yes
-@set have-avx-external yes
-@set have-avx2-external yes
-@set have-fma3-external yes
-@set have-fma4-external yes
-@set have-mmx-external yes
-@set have-mmxext-external yes
-@set have-sse-external yes
-@set have-sse2-external yes
-@set have-sse3-external yes
-@set have-sse4-external yes
-@set have-sse42-external yes
-@set have-ssse3-external yes
-@set have-xop-external yes
+@c @set have-amd3dnow-external no
+@c @set have-amd3dnowext-external no
+@c @set have-avx-external no
+@c @set have-avx2-external no
+@c @set have-fma3-external no
+@c @set have-fma4-external no
+@c @set have-mmx-external no
+@c @set have-mmxext-external no
+@c @set have-sse-external no
+@c @set have-sse2-external no
+@c @set have-sse3-external no
+@c @set have-sse4-external no
+@c @set have-sse42-external no
+@c @set have-ssse3-external no
+@c @set have-xop-external no
 @c @set have-cpunop-external no
 @c @set have-i686-external no
 @c @set have-mipsfpu-external no
@@ -130,31 +130,24 @@
 @set have-local-aligned-16 yes
 @set have-atomics-gcc yes
 @c @set have-atomics-suncc no
-@c @set have-atomics-win32 no
+@set have-atomics-win32 yes
 @c @set have-atomic-cas-ptr no
 @c @set have-machine-rw-barrier no
-<<<<<<< HEAD
 @set have-memorybarrier yes
 @c @set have-mm-empty no
 @set have-rdtsc yes
 @c @set have-sarestart no
-=======
-@c @set have-memorybarrier no
-@set have-mm-empty yes
-@c @set have-rdtsc no
-@set have-sarestart yes
->>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 @set have-sync-val-compare-and-swap yes
 @set have-inline-asm yes
 @set have-symver yes
-@set have-yasm yes
+@c @set have-yasm no
 @c @set have-bigendian no
 @set have-fast-unaligned yes
 @c @set have-incompatible-libav-abi no
 @c @set have-alsa-asoundlib-h no
 @c @set have-altivec-h no
-@set have-arpa-inet-h yes
-@set have-asm-types-h yes
+@c @set have-arpa-inet-h no
+@c @set have-asm-types-h no
 @c @set have-cdio-paranoia-h no
 @c @set have-cdio-paranoia-paranoia-h no
 @c @set have-cl-cl-h no
@@ -163,33 +156,33 @@
 @c @set have-dev-ic-bt8xx-h no
 @c @set have-dev-video-bktr-ioctl-bt848-h no
 @c @set have-dev-video-meteor-ioctl-meteor-h no
-@c @set have-direct-h no
-@set have-dlfcn-h yes
-@c @set have-dxva-h no
+@set have-direct-h yes
+@c @set have-dlfcn-h no
+@set have-dxva-h yes
 @c @set have-es2-gl-h no
 @c @set have-gsm-h no
-@c @set have-io-h no
+@set have-io-h yes
 @c @set have-mach-mach-time-h no
 @c @set have-machine-ioctl-bt848-h no
 @c @set have-machine-ioctl-meteor-h no
 @set have-malloc-h yes
 @c @set have-openjpeg-1-5-openjpeg-h no
 @c @set have-opengl-gl3-h no
-@set have-poll-h yes
+@c @set have-poll-h no
 @c @set have-sndio-h no
 @c @set have-soundcard-h no
-@set have-sys-mman-h yes
+@c @set have-sys-mman-h no
 @set have-sys-param-h yes
-@set have-sys-resource-h yes
-@set have-sys-select-h yes
-@set have-sys-soundcard-h yes
+@c @set have-sys-resource-h no
+@c @set have-sys-select-h no
+@c @set have-sys-soundcard-h no
 @set have-sys-time-h yes
-@set have-sys-un-h yes
+@c @set have-sys-un-h no
 @c @set have-sys-videoio-h no
-@set have-termios-h yes
+@c @set have-termios-h no
 @set have-unistd-h yes
-@c @set have-windows-h no
-@c @set have-winsock2-h no
+@set have-windows-h yes
+@set have-winsock2-h yes
 @set have-atanf yes
 @set have-atan2f yes
 @set have-cbrt yes
@@ -216,57 +209,57 @@
 @set have-trunc yes
 @set have-truncf yes
 @set have-access yes
-@c @set have-aligned-malloc no
+@set have-aligned-malloc yes
 @set have-clock-gettime yes
-@c @set have-closesocket no
-@c @set have-commandlinetoargvw no
-@c @set have-cryptgenrandom no
-@set have-dlopen yes
-@set have-fcntl yes
+@set have-closesocket yes
+@set have-commandlinetoargvw yes
+@set have-cryptgenrandom yes
+@c @set have-dlopen no
+@c @set have-fcntl no
 @set have-flt-lim yes
-@set have-fork yes
+@c @set have-fork no
 @set have-getaddrinfo yes
 @c @set have-gethrtime no
 @set have-getopt yes
-@c @set have-getprocessaffinitymask no
-@c @set have-getprocessmemoryinfo no
-@c @set have-getprocesstimes no
-@set have-getrusage yes
-@set have-getservbyport yes
-@c @set have-getsystemtimeasfiletime no
+@set have-getprocessaffinitymask yes
+@set have-getprocessmemoryinfo yes
+@set have-getprocesstimes yes
+@c @set have-getrusage no
+@c @set have-getservbyport no
+@set have-getsystemtimeasfiletime yes
 @set have-gettimeofday yes
-@set have-glob yes
+@c @set have-glob no
 @c @set have-glxgetprocaddress no
-@set have-inet-aton yes
+@c @set have-inet-aton no
 @set have-isatty yes
 @c @set have-jack-port-get-latency-range no
-@c @set have-kbhit no
-@set have-localtime-r yes
+@set have-kbhit yes
+@c @set have-localtime-r no
 @c @set have-lzo1x-999-compress no
 @c @set have-mach-absolute-time no
-@c @set have-mapviewoffile no
-@set have-memalign yes
+@set have-mapviewoffile yes
+@c @set have-memalign no
 @set have-mkstemp yes
-@set have-mmap yes
+@c @set have-mmap no
 @set have-mprotect yes
 @set have-nanosleep yes
-@c @set have-peeknamedpipe no
-@set have-posix-memalign yes
-@set have-pthread-cancel yes
-@set have-sched-getaffinity yes
-@c @set have-setconsoletextattribute no
-@c @set have-setmode no
-@set have-setrlimit yes
-@c @set have-sleep no
-@set have-strerror-r yes
-@set have-sysconf yes
-@set have-sysctl yes
+@set have-peeknamedpipe yes
+@c @set have-posix-memalign no
+@c @set have-pthread-cancel no
+@c @set have-sched-getaffinity no
+@set have-setconsoletextattribute yes
+@set have-setmode yes
+@c @set have-setrlimit no
+@set have-sleep yes
+@c @set have-strerror-r no
+@c @set have-sysconf no
+@c @set have-sysctl no
 @set have-usleep yes
-@c @set have-virtualalloc no
+@set have-virtualalloc yes
 @c @set have-wglgetprocaddress no
-@set have-pthreads yes
+@c @set have-pthreads no
 @c @set have-os2threads no
-@c @set have-w32threads no
+@set have-w32threads yes
 @c @set have-asm-mod-q no
 @set have-attribute-may-alias yes
 @set have-attribute-packed yes
@@ -280,8 +273,8 @@
 @set have-inline-asm-direct-symbol-refs yes
 @set have-pragma-deprecated yes
 @set have-rsync-contimeout yes
-@c @set have-symver-asm-label no
-@set have-symver-gnu-asm yes
+@set have-symver-asm-label yes
+@c @set have-symver-gnu-asm no
 @c @set have-vfp-args no
 @c @set have-xform-asm no
 @c @set have-xmm-clobbers no
@@ -290,35 +283,35 @@
 @set have-struct-group-source-req yes
 @set have-struct-ip-mreq-source yes
 @set have-struct-ipv6-mreq yes
-@set have-struct-pollfd yes
-@set have-struct-rusage-ru-maxrss yes
+@c @set have-struct-pollfd no
+@c @set have-struct-rusage-ru-maxrss no
 @c @set have-struct-sctp-event-subscribe no
 @set have-struct-sockaddr-in6 yes
 @c @set have-struct-sockaddr-sa-len no
 @set have-struct-sockaddr-storage yes
-@set have-struct-stat-st-mtim-tv-nsec yes
-@set have-struct-v4l2-frmivalenum-discrete yes
+@c @set have-struct-stat-st-mtim-tv-nsec no
+@c @set have-struct-v4l2-frmivalenum-discrete no
 @set have-atomics-native yes
-@c @set have-dos-paths no
+@set have-dos-paths yes
 @c @set have-libc-msvcrt no
 @c @set have-libdc1394-1 no
 @c @set have-libdc1394-2 no
 @set have-makeinfo yes
 @set have-perl yes
 @set have-pod2man yes
-@set have-sdl yes
+@c @set have-sdl no
 @c @set have-texi2html no
 @set have-threads yes
-@set have-vdpau-x11 yes
-@set have-xlib yes
+@c @set have-vdpau-x11 no
+@c @set have-xlib no
 @c @set config-bsfs no
 @set config-decoders yes
-@c @set config-demuxers no
+@set config-demuxers yes
 @set config-encoders yes
 @c @set config-filters no
 @c @set config-hwaccels no
 @set config-indevs yes
-@c @set config-muxers no
+@set config-muxers yes
 @c @set config-outdevs no
 @set config-parsers yes
 @c @set config-protocols no
@@ -403,7 +396,7 @@
 @c @set config-opengl no
 @c @set config-openssl no
 @c @set config-x11grab no
-@set config-xlib yes
+@c @set config-xlib no
 @c @set config-zlib no
 @c @set config-ftrapv no
 @c @set config-gray no
@@ -415,10 +408,10 @@
 @c @set config-sram no
 @set config-static yes
 @set config-swscale-alpha yes
-@c @set config-dxva2 no
-@set config-vaapi yes
+@set config-dxva2 yes
+@c @set config-vaapi no
 @c @set config-vda no
-@set config-vdpau yes
+@c @set config-vdpau no
 @c @set config-xvmc no
 @c @set config-gpl no
 @c @set config-nonfree no
@@ -483,8 +476,8 @@
 @set config-mpegvideoenc yes
 @c @set config-nettle no
 @c @set config-rangecoder no
-@c @set config-riffdec no
-@c @set config-riffenc no
+@set config-riffdec yes
+@set config-riffenc yes
 @c @set config-rtpdec no
 @c @set config-rtpenc-chain no
 @c @set config-sinewin no
@@ -916,7 +909,7 @@
 @c @set config-apc-demuxer no
 @c @set config-ape-demuxer no
 @c @set config-aqtitle-demuxer no
-@c @set config-asf-demuxer no
+@set config-asf-demuxer yes
 @c @set config-ass-demuxer no
 @c @set config-ast-demuxer no
 @c @set config-au-demuxer no
@@ -1149,7 +1142,7 @@
 @c @set config-jpeg2000-encoder no
 @c @set config-jpegls-encoder no
 @c @set config-ljpeg-encoder no
-@c @set config-mjpeg-encoder no
+@set config-mjpeg-encoder yes
 @c @set config-mpeg1video-encoder no
 @c @set config-mpeg2video-encoder no
 @c @set config-mpeg4-encoder no
@@ -1487,7 +1480,7 @@
 @c @set config-alsa-indev no
 @c @set config-avfoundation-indev no
 @c @set config-bktr-indev no
-@c @set config-dshow-indev no
+@set config-dshow-indev yes
 @c @set config-dv1394-indev no
 @c @set config-fbdev-indev no
 @c @set config-gdigrab-indev no
@@ -1499,7 +1492,7 @@
 @c @set config-pulse-indev no
 @c @set config-qtkit-indev no
 @c @set config-sndio-indev no
-@set config-v4l2-indev yes
+@c @set config-v4l2-indev no
 @c @set config-vfwcap-indev no
 @c @set config-x11grab-indev no
 @c @set config-libcdio-indev no
@@ -1510,7 +1503,7 @@
 @c @set config-adx-muxer no
 @c @set config-aiff-muxer no
 @c @set config-amr-muxer no
-@c @set config-asf-muxer no
+@set config-asf-muxer yes
 @c @set config-ass-muxer no
 @c @set config-ast-muxer no
 @c @set config-asf-stream-muxer no

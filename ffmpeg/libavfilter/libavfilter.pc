@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 prefix=./build/win/x86
-=======
-prefix=./build/linux/x64
->>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -13,6 +9,6 @@ Version: 4.4.100
 Requires: libavutil = 52.77.100
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavfilter -lva -lX11 -lSDL -lm -lz -pthread
+Libs: -L${libdir}  -lavfilter -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
 Libs.private: 
 Cflags: -I${includedir}
