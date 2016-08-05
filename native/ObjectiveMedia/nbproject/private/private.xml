@@ -10,8 +10,6 @@
             <file>file:/media/sf_mac/objectivemedia/native/ObjectiveMedia/platform/platform_devices.cpp</file>
             <file>file:/media/sf_mac/objectivemedia/native/ObjectiveMedia/platform/platform_devices.h</file>
         </group>
-        <group name="Connexus">
-            <file>file:/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/platform/platform_devices.cpp</file>
-        </group>
+        <group name="Connexus"/>
     </open-files>
 </project-private>
