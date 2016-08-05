@@ -13,4 +13,4 @@ libavfilter/pthread.o: libavfilter/pthread.c config.h libavutil/common.h \
  libavutil/rational.h libavfilter/version.h libavutil/version.h \
  libavfilter/internal.h libavutil/internal.h libavfilter/avfiltergraph.h \
  libavfilter/formats.h libavfilter/thread.h libavfilter/version.h \
- libavfilter/video.h compat/w32pthreads.h
+ libavfilter/video.h
