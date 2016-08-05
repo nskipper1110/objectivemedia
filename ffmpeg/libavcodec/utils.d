@@ -19,4 +19,4 @@ libavcodec/utils.o: libavcodec/utils.c config.h libavutil/atomic.h \
  libavcodec/dsputil.h libavutil/opt.h libavcodec/thread.h \
  libavcodec/frame_thread_encoder.h libavcodec/internal.h libavcodec/raw.h \
  libavcodec/bytestream.h libavutil/intreadwrite.h libavutil/bswap.h \
- libavutil/x86/bswap.h libavutil/x86/intreadwrite.h
+ libavutil/x86/bswap.h libavutil/x86/intreadwrite.h compat/w32pthreads.h
