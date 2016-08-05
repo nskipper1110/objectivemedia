@@ -19,6 +19,12 @@
 *-example
 *-test
 *_g
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.DS_Store
+*.pc
 /.config
 /.version
 /ffmpeg

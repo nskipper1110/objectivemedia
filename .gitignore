@@ -21,6 +21,8 @@
 *.db-wal
 *.log
 *.DS_Store
+*.d
+*.pc
 /.vscode
 /ffmpeg/.vscode
 /native/ObjectiveMedia/.vscode
