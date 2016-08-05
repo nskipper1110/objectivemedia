@@ -293,7 +293,7 @@ VideoInputDevice::VideoInputDevice(){
     long sleepTime = 1000000*((double) 1000/adjfps);
     long long StartTicks = 0;
     av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread starting control loop\n");
-    
+    AVFrame* sourceFrame = av_frame_alloc();;
     while(!context->Stopped){
         
         if (context->DeviceHandle != NULL) {
@@ -315,25 +315,22 @@ VideoInputDevice::VideoInputDevice(){
                         VideoMediaFormat* adjusted = context->Format;
                         //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread getting source frame\n");
                         //AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
-                        AVFrame* sourceFrame = NULL;
+                        int goahead = 1;
                         if(context->CodecContext->codec_id != AV_CODEC_ID_RAWVIDEO){
                             //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread need to decode.\n");
-                            sourceFrame = av_frame_alloc();
                             int got_picture;
                             if(avcodec_decode_video2(context->CodecContext, sourceFrame, &got_picture, packet)){
                                 if(!got_picture){
-                                    av_free(sourceFrame);
-                                    sourceFrame = NULL;
-                                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread failed to decode frame\n");
+                                    goahead = 0;
                                 }
                             }
                         }
                         else{
-                            //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread get the raw frame\n");
-                            sourceFrame = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
-                            
+                             if(avpicture_fill((AVPicture*) sourceFrame, packet->data, (AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height) < 0){
+                                 goahead = 0;
+                             }
                         }
-                        if(sourceFrame != NULL){
+                        if(goahead == 1){
                             if(context->NativeFormat->PixelFormat != context->Format->PixelFormat){
                                 
                                 //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread scaling to desired format\n");
@@ -348,15 +345,14 @@ VideoInputDevice::VideoInputDevice(){
                                 }
                             }
                             else{
-                                buffer = malloc(packet->size);
+                                buffer = sourceFrame->data[0];
                                 bufsize = packet->size;
-                                memcpy(buffer, packet->data, bufsize);
                             }
-                            av_free(sourceFrame);
+                            
                         }
                     }
                     //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread freeing packet.\n");
-                    av_free_packet(packet);
+                    
                 }
                 #ifndef __MINGW32__
                 struct timeval tv;
@@ -374,6 +370,8 @@ VideoInputDevice::VideoInputDevice(){
                 #endif
                 //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread passing up buffer\n");
                 context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
+                av_free_packet(packet);
+                //if(sourceFrame != NULL) av_free(sourceFrame);
             }
             //ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }

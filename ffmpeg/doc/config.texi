@@ -21,8 +21,8 @@
 @c @set arch-tilepro no
 @c @set arch-tomi no
 @set arch-x86 yes
-@c @set arch-x86-32 no
-@set arch-x86-64 yes
+@set arch-x86-32 yes
+@c @set arch-x86-64 no
 @c @set have-armv5te no
 @c @set have-armv6 no
 @c @set have-armv6t2 no
@@ -123,9 +123,9 @@
 @c @set have-mipsdspr2-inline no
 @c @set have-loongson-inline no
 @set have-aligned-stack yes
-@set have-fast-64bit yes
+@c @set have-fast-64bit no
 @set have-fast-clz yes
-@set have-fast-cmov yes
+@c @set have-fast-cmov no
 @set have-local-aligned-8 yes
 @set have-local-aligned-16 yes
 @set have-atomics-gcc yes
@@ -133,10 +133,17 @@
 @c @set have-atomics-win32 no
 @c @set have-atomic-cas-ptr no
 @c @set have-machine-rw-barrier no
+<<<<<<< HEAD
+@set have-memorybarrier yes
+@c @set have-mm-empty no
+@set have-rdtsc yes
+@c @set have-sarestart no
+=======
 @c @set have-memorybarrier no
 @set have-mm-empty yes
 @c @set have-rdtsc no
 @set have-sarestart yes
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 @set have-sync-val-compare-and-swap yes
 @set have-inline-asm yes
 @set have-symver yes
@@ -277,7 +284,7 @@
 @set have-symver-gnu-asm yes
 @c @set have-vfp-args no
 @c @set have-xform-asm no
-@set have-xmm-clobbers yes
+@c @set have-xmm-clobbers no
 @set have-socklen-t yes
 @set have-struct-addrinfo yes
 @set have-struct-group-source-req yes
@@ -444,7 +451,7 @@
 @c @set config-memalign-hack no
 @c @set config-memory-poisoning no
 @c @set config-neon-clobber-test no
-@set config-pic yes
+@c @set config-pic no
 @set config-pod2man yes
 @c @set config-raise-major no
 @c @set config-thumb no

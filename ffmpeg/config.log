@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+# ./configure --prefix=./build/win/x86 --disable-yasm --disable-shared --enable-static --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-everything --disable-muxers --disable-demuxers --disable-parsers --disable-filters --disable-hwaccels --enable-decoder=rawvideo --enable-encoder=rawvideo --enable-demuxer=asf --enable-muxer=asf --enable-decoder=h263 --enable-encoder=h263p --enable-encoder=g723_1 --enable-decoder=g723_1 --enable-indev=dshow --target-os=mingw32 --arch=x86 --enable-cross-compile --cc='gcc -m32'
+!::='::\'
+!C:='C:\MinGW\msys\1.0'
+ALLUSERSPROFILE='C:\ProgramData'
+=======
 # ./configure --prefix=./build/linux/x64 --disable-shared --enable-static --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-everything --disable-muxers --disable-demuxers --disable-parsers --disable-filters --disable-hwaccels --enable-decoder=rawvideo --enable-encoder=rawvideo --enable-decoder=mjpeg --enable-decoder=jpeg --enable-decoder=h263 --enable-encoder=h263p --enable-encoder=g723_1 --enable-decoder=g723_1 --enable-indev=v4l2 --target-os=linux --arch=x86_64 --cc='gcc -m64 -fPIC'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 ALL_COMPONENTS='
     aac_adtstoasc_bsf
 chomp_bsf
@@ -1378,6 +1385,16 @@ ATOMICS_LIST='
     atomics_suncc
     atomics_win32
 '
+<<<<<<< HEAD
+BASH=/usr/bin/sh
+BASH_ARGC=([0]="27")
+BASH_ARGV=([0]="--cc=gcc -m32" [1]="--enable-cross-compile" [2]="--arch=x86" [3]="--target-os=mingw32" [4]="--enable-indev=dshow" [5]="--enable-decoder=g723_1" [6]="--enable-encoder=g723_1" [7]="--enable-encoder=h263p" [8]="--enable-decoder=h263" [9]="--enable-muxer=asf" [10]="--enable-demuxer=asf" [11]="--enable-encoder=rawvideo" [12]="--enable-decoder=rawvideo" [13]="--disable-hwaccels" [14]="--disable-filters" [15]="--disable-parsers" [16]="--disable-demuxers" [17]="--disable-muxers" [18]="--disable-everything" [19]="--disable-ffserver" [20]="--disable-ffprobe" [21]="--disable-ffplay" [22]="--disable-ffmpeg" [23]="--enable-static" [24]="--disable-shared" [25]="--disable-yasm" [26]="--prefix=./build/win/x86")
+BASH_LINENO=([0]="0")
+BASH_SOURCE=([0]="./configure")
+BASH_VERSINFO=([0]="3" [1]="1" [2]="23" [3]="1" [4]="release" [5]="i686-pc-msys")
+BASH_VERSION='3.1.23(1)-release'
+=======
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 BSF_LIST='aac_adtstoasc_bsf
 chomp_bsf
 dump_extradata_bsf
@@ -2804,7 +2821,11 @@ FEATURE_LIST='
     static
     swscale_alpha
 '
+<<<<<<< HEAD
+FFMPEG_CONFIGURATION='--prefix=./build/win/x86 --disable-yasm --disable-shared --enable-static --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-everything --disable-muxers --disable-demuxers --disable-parsers --disable-filters --disable-hwaccels --enable-decoder=rawvideo --enable-encoder=rawvideo --enable-demuxer=asf --enable-muxer=asf --enable-decoder=h263 --enable-encoder=h263p --enable-encoder=g723_1 --enable-decoder=g723_1 --enable-indev=dshow --target-os=mingw32 --arch=x86 --enable-cross-compile --cc='\''gcc -m32'\'''
+=======
 FFMPEG_CONFIGURATION='--prefix=./build/linux/x64 --disable-shared --enable-static --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-everything --disable-muxers --disable-demuxers --disable-parsers --disable-filters --disable-hwaccels --enable-decoder=rawvideo --enable-encoder=rawvideo --enable-decoder=mjpeg --enable-decoder=jpeg --enable-decoder=h263 --enable-encoder=h263p --enable-encoder=g723_1 --enable-decoder=g723_1 --enable-indev=v4l2 --target-os=linux --arch=x86_64 --cc='"'"'gcc -m64 -fPIC'"'"
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 FILTER_LIST='aconvert_filter
 adelay_filter
 aecho_filter
@@ -3654,7 +3675,12 @@ vorbis_parser
 vp3_parser
 vp8_parser
 vp9_parser'
+<<<<<<< HEAD
+PATH='/c/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/bin:.:/usr/local/bin:/mingw/bin:/bin:/c/ProgramData/Oracle/Java/javapath:/c/Program Files (x86)/Intel/iCLS Client/:/c/Program Files/Intel/iCLS Client/:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/c/Program Files (x86)/ATI Technologies/ATI.ACE/Core-Static:/c/Users/nathan/.dnx/bin:/c/Program Files/Microsoft DNX/Dnvm/:/c/Program Files/Microsoft SQL Server/120/Tools/Binn/:/c/Program Files/Microsoft SQL Server/130/Tools/Binn/:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/c/Program Files/Git/cmd:/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/:/c/Program Files (x86)/Microsoft SQL Server/130/Tools/Binn/:/c/Program Files/Microsoft SQL Server/130/DTS/Binn/:/c/Program Files (x86)/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/:/c/Program Files (x86)/Microsoft SQL Server/130/DTS/Binn/:/c/Program Files (x86)/Microsoft SQL Server/130/Tools/Binn/ManagementStudio/:/c/Program Files (x86)/Common Files/Intuit/QBPOSSDKRuntime:.:/c/Program Files (x86)/Microsoft VS Code/bin'
+PATHEXT='.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+=======
 PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 PATHS_LIST='
     bindir
     datadir
@@ -3665,7 +3691,22 @@ PATHS_LIST='
     prefix
     shlibdir
 '
+<<<<<<< HEAD
+PIPESTATUS=([0]="0")
+POSIXLY_CORRECT=y
+PPID=3112
+PROCESSOR_ARCHITECTURE=x86
+PROCESSOR_ARCHITEW6432=AMD64
+PROCESSOR_IDENTIFIER='Intel64 Family 6 Model 70 Stepping 1, GenuineIntel'
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=4601
+PROGRAMDATA='C:\ProgramData'
+PROGRAMFILES='C:\Program Files (x86)'
+PROGRAMFILES(X86)='C:\Program Files (x86)'
+PROGRAMW6432='C:\Program Files'
+=======
 PPID='10464'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 PROGRAM_LIST='
     ffplay
     ffprobe
@@ -3836,6 +3877,22 @@ TYPES_LIST='
     struct_stat_st_mtim_tv_nsec
     struct_v4l2_frmivalenum_discrete
 '
+<<<<<<< HEAD
+UID=500
+USERDNSDOMAIN=MTI.COM
+USERDOMAIN=MTI
+USERDOMAIN_ROAMINGPROFILE=MTI
+USERNAME=nathan
+USERPROFILE='C:\Users\nathan'
+VS110COMNTOOLS='C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\'
+VS120COMNTOOLS='C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\'
+VS140COMNTOOLS='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\'
+VS90COMNTOOLS='C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\'
+VSSDK140INSTALL='C:\Program Files (x86)\Microsoft Visual Studio 14.0\VSSDK\'
+WD='C:\MinGW\msys\1.0\\bin\'
+WINDIR='C:\WINDOWS'
+_='# ./configure --prefix=./build/win/x86 --disable-yasm --disable-shared --enable-static --disable-ffmpeg --disable-ffplay --disable-ffprobe --disable-ffserver --disable-everything --disable-muxers --disable-demuxers --disable-parsers --disable-filters --disable-hwaccels --enable-decoder=rawvideo --enable-encoder=rawvideo --enable-demuxer=asf --enable-muxer=asf --enable-decoder=h263 --enable-encoder=h263p --enable-encoder=g723_1 --enable-decoder=g723_1 --enable-indev=dshow --target-os=mingw32 --arch=x86 --enable-cross-compile --cc='\''gcc -m32'\'''
+=======
 UPSTART_EVENTS='xsession started'
 UPSTART_INSTANCE=''
 UPSTART_JOB='unity7'
@@ -3859,6 +3916,7 @@ XDG_SESSION_TYPE='x11'
 XDG_VTNR='7'
 XMODIFIERS='@im=ibus'
 _='./configure'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 aac_decoder_select='mdct sinewin'
 aac_encoder_select='audio_frame_queue mdct sinewin'
 aac_latm_decoder_select='aac_decoder aac_latm_parser'
@@ -3891,6 +3949,42 @@ amovie_filter_deps='avcodec avformat'
 amrnb_decoder_select='lsp'
 amrwb_decoder_select='lsp'
 amv_decoder_select='sp5x_decoder exif'
+<<<<<<< HEAD
+amv_encoder_select=aandcttables
+ape_decoder_select=dsputil
+ar_default=ar
+arch=x86
+arch_default=i686
+aresample_filter_deps=swresample
+armv5te=yes
+armv5te_deps=arm
+armv5te_inline_deps=inline_asm
+armv6=yes
+armv6_deps=arm
+armv6_inline_deps=inline_asm
+armv6t2=yes
+armv6t2_deps=arm
+armv6t2_inline_deps=inline_asm
+armv8=yes
+armv8_deps=aarch64
+armv8_inline_deps=inline_asm
+asf_demuxer=yes
+asf_demuxer_select=riffdec
+asf_muxer=yes
+asf_muxer_select=riffenc
+asf_stream_muxer_select=asf_muxer
+asflags_filter=echo
+asm=yes
+ass_filter_deps=libass
+asv1_decoder_select=dsputil
+asv1_encoder_select=dsputil
+asv2_decoder_select=dsputil
+asv2_encoder_select=dsputil
+asyncts_filter_deps=avresample
+atempo_filter_deps=avcodec
+atempo_filter_select=rdft
+atomics_gcc_if=sync_val_compare_and_swap
+=======
 amv_encoder_select='aandcttables'
 ape_decoder_select='dsputil'
 ar_default='ar'
@@ -3923,6 +4017,7 @@ asyncts_filter_deps='avresample'
 atempo_filter_deps='avcodec'
 atempo_filter_select='rdft'
 atomics_gcc_if='sync_val_compare_and_swap'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 atomics_native_if_any='
     atomics_gcc
     atomics_suncc
@@ -3988,12 +4083,21 @@ text2movsub_bsf'
 caca_outdev_deps='libcaca'
 caf_demuxer_select='riffdec'
 cavs_decoder_select='dsputil golomb h264chroma videodsp'
+<<<<<<< HEAD
+cc='gcc -m32'
+cc_default=gcc
+cflags_filter=echo
+cllc_decoder_select=dsputil
+colormatrix_filter_deps=gpl
+comfortnoise_encoder_select=lpc
+=======
 cc='gcc -m64 -fPIC'
 cc_default='gcc'
 cflags_filter='echo'
 cllc_decoder_select='dsputil'
 colormatrix_filter_deps='gpl'
 comfortnoise_encoder_select='lpc'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 cook_decoder_select='dsputil mdct sinewin'
 cp_f='cp -f'
 cpu='generic'
@@ -5534,6 +5638,20 @@ nm_default='nm -g'
 nogas=':'
 nut_muxer_select='riffenc'
 nuv_decoder_select='dsputil lzo'
+<<<<<<< HEAD
+nuv_demuxer_select=riffdec
+objformat=elf
+ocv_filter_deps=libopencv
+ogg_demuxer_select=golomb
+op==
+openal_indev_deps=openal
+opengl_outdev_deps=opengl
+opt='--cc=gcc -m32'
+optimizations=yes
+option=cross_compile
+optname=cc
+optval='gcc -m32'
+=======
 nuv_demuxer_select='riffdec'
 objformat='elf'
 ocv_filter_deps='libopencv'
@@ -5546,6 +5664,7 @@ optimizations='yes'
 option='hwaccels'
 optname='cc'
 optval='gcc -m64 -fPIC'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 oss_indev_deps_any='soundcard_h sys_soundcard_h'
 oss_outdev_deps_any='soundcard_h sys_soundcard_h'
 outdevs_if_any='alsa_outdev
@@ -5607,12 +5726,21 @@ podpages_deps='perl'
 postproc='yes'
 postproc_deps='avutil gpl'
 pp_filter_deps='gpl postproc'
+<<<<<<< HEAD
+ppc4xx=yes
+ppc4xx_deps=ppc
+prefix=./build/win/x86
+prefix_default=/usr/local
+prores_decoder_select=dsputil
+prores_encoder_select=dsputil
+=======
 ppc4xx='yes'
 ppc4xx_deps='ppc'
 prefix='./build/linux/x64'
 prefix_default='/usr/local'
 prores_decoder_select='dsputil'
 prores_encoder_select='dsputil'
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 protocols_if_any='bluray_protocol
 cache_protocol
 concat_protocol
@@ -5660,7 +5788,11 @@ qdm2_decoder_select='mdct rdft mpegaudiodsp'
 qtkit_indev_extralibs='-framework QTKit -framework Foundation -framework QuartzCore'
 qtkit_indev_select='qtkit'
 quotes='""'
+<<<<<<< HEAD
+r=''\''gcc -m32'\'''
+=======
 r=''"'"'gcc -m64 -fPIC'"'"
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 ra_144_encoder_select='audio_frame_queue lpc'
 ralf_decoder_select='golomb'
 ranlib='ranlib'
@@ -5909,6 +6041,90 @@ zmbv_decoder_select='zlib'
 zmbv_encoder_select='zlib'
 zmq_filter_deps='libzmq'
 mktemp -u XXXXXX
+<<<<<<< HEAD
+exsIru
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_cflags -std=c99
+test_cflags -std=c99
+check_cc -std=c99
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -std=c99 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc -D_FILE_OFFSET_BITS=64
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <stdlib.h>
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -std=c99 -D_FILE_OFFSET_BITS=64 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc -D_LARGEFILE_SOURCE
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <stdlib.h>
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -std=c99 -D_LARGEFILE_SOURCE -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_host_cflags -std=c99
+check_host_cc -std=c99
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -std=c99 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_host_cflags -Wall
+check_host_cc -Wall
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -std=c99 -Wall -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_host_cflags -O3
+check_host_cc -O3
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -std=c99 -Wall -O3 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_code cc  int test[2*(sizeof(void *) > 4) - 1]
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void) { int test[2*(sizeof(void *) > 4) - 1]; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'main':
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: error: size of array 'test' is negative
+ int main(void) { int test[2*(sizeof(void *) > 4) - 1]; return 0; }
+                      ^~~~
+check_ldflags -Wl,--nxcompat
+test_ldflags -Wl,--nxcompat
+check_ld cc -Wl,--nxcompat
+check_cc -Wl,--nxcompat
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -Wl,--nxcompat -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_ldflags -Wl,--dynamicbase
+test_ldflags -Wl,--dynamicbase
+check_ld cc -Wl,--dynamicbase
+check_cc -Wl,--dynamicbase
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -Wl,--dynamicbase -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+lib.exe -list
+./configure: line 775: lib.exe: command not found
+dlltool --version
+GNU c:\Program Files (x86)\mingw-w64\i686-6.1.0-posix-dwarf-rt_v5-rev0\mingw32\bin\dlltool.exe (GNU Binutils) 2.25
+Copyright (C) 2014 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) any later version.
+This program has absolutely no warranty.
+check_cpp_condition features.h defined __UCLIBC__
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 bYmxt1
 check_ld cc
 check_cc
@@ -5961,10 +6177,22 @@ gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=
 check_cpp_condition features.h defined __UCLIBC__
 check_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <features.h>
     2	#if !(defined __UCLIBC__)
     3	#error "unsatisfied condition: defined __UCLIBC__"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: features.h: No such file or directory
+ #include <features.h>
+                      ^
+compilation terminated.
+check_cpp_condition features.h defined __GLIBC__
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:3:2: error: #error "unsatisfied condition: defined __UCLIBC__"
@@ -5973,19 +6201,77 @@ gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=
 check_cpp_condition features.h defined __GLIBC__
 check_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <features.h>
     2	#if !(defined __GLIBC__)
     3	#error "unsatisfied condition: defined __GLIBC__"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: features.h: No such file or directory
+ #include <features.h>
+                      ^
+compilation terminated.
+check_cpp_condition newlib.h defined _NEWLIB_VERSION
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <newlib.h>
+    2	#if !(defined _NEWLIB_VERSION)
+    3	#error "unsatisfied condition: defined _NEWLIB_VERSION"
+    4	#endif
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:20: fatal error: newlib.h: No such file or directory
+ #include <newlib.h>
+                    ^
+compilation terminated.
+check_cpp_condition _mingw.h defined __MINGW64_VERSION_MAJOR
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <_mingw.h>
+    2	#if !(defined __MINGW64_VERSION_MAJOR)
+    3	#error "unsatisfied condition: defined __MINGW64_VERSION_MAJOR"
+    4	#endif
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cpp_condition _mingw.h __MINGW64_VERSION_MAJOR < 3
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <_mingw.h>
+    2	#if !(__MINGW64_VERSION_MAJOR < 3)
+    3	#error "unsatisfied condition: __MINGW64_VERSION_MAJOR < 3"
+    4	#endif
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:3:2: error: #error "unsatisfied condition: __MINGW64_VERSION_MAJOR < 3"
+ #error "unsatisfied condition: __MINGW64_VERSION_MAJOR < 3"
+  ^~~~~
+check_host_cpp_condition features.h defined __UCLIBC__
+check_host_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -std=c99 -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 check_host_cpp_condition features.h defined __UCLIBC__
 check_host_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <features.h>
     2	#if !(defined __UCLIBC__)
     3	#error "unsatisfied condition: defined __UCLIBC__"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: features.h: No such file or directory
+ #include <features.h>
+                      ^
+compilation terminated.
+check_host_cpp_condition features.h defined __GLIBC__
+check_host_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:3:2: error: #error "unsatisfied condition: defined __UCLIBC__"
@@ -5994,10 +6280,65 @@ gcc -m64 -fPIC -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 check_host_cpp_condition features.h defined __GLIBC__
 check_host_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <features.h>
     2	#if !(defined __GLIBC__)
     3	#error "unsatisfied condition: defined __GLIBC__"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: features.h: No such file or directory
+ #include <features.h>
+                      ^
+compilation terminated.
+check_host_cpp_condition newlib.h defined _NEWLIB_VERSION
+check_host_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <newlib.h>
+    2	#if !(defined _NEWLIB_VERSION)
+    3	#error "unsatisfied condition: defined _NEWLIB_VERSION"
+    4	#endif
+END /tmp/ffconf.pplcibkB.c
+gcc -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:20: fatal error: newlib.h: No such file or directory
+ #include <newlib.h>
+                    ^
+compilation terminated.
+check_host_cpp_condition _mingw.h defined __MINGW64_VERSION_MAJOR
+check_host_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <_mingw.h>
+    2	#if !(defined __MINGW64_VERSION_MAJOR)
+    3	#error "unsatisfied condition: defined __MINGW64_VERSION_MAJOR"
+    4	#endif
+END /tmp/ffconf.pplcibkB.c
+gcc -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_host_cpp_condition _mingw.h __MINGW64_VERSION_MAJOR < 3
+check_host_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <_mingw.h>
+    2	#if !(__MINGW64_VERSION_MAJOR < 3)
+    3	#error "unsatisfied condition: __MINGW64_VERSION_MAJOR < 3"
+    4	#endif
+END /tmp/ffconf.pplcibkB.c
+gcc -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:3:2: error: #error "unsatisfied condition: __MINGW64_VERSION_MAJOR < 3"
+ #error "unsatisfied condition: __MINGW64_VERSION_MAJOR < 3"
+  ^~~~~
+check_compile_assert flt_lim float.h limits.h DBL_MAX == (double)DBL_MAX
+check_code cc float.h limits.h char c[2 * !!(DBL_MAX == (double)DBL_MAX) - 1]
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <float.h>
+    2	#include <limits.h>
+    3	int main(void) { char c[2 * !!(DBL_MAX == (double)DBL_MAX) - 1]; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cpp_condition stdlib.h defined(__PIC__) || defined(__pic__) || defined(PIC)
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 check_compile_assert flt_lim float.h limits.h DBL_MAX == (double)DBL_MAX
@@ -6012,10 +6353,72 @@ gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_PO
 check_cpp_condition stdlib.h defined(__PIC__) || defined(__pic__) || defined(PIC)
 check_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <stdlib.h>
     2	#if !(defined(__PIC__) || defined(__pic__) || defined(PIC))
     3	#error "unsatisfied condition: defined(__PIC__) || defined(__pic__) || defined(PIC)"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:3:2: error: #error "unsatisfied condition: defined(__PIC__) || defined(__pic__) || defined(PIC)"
+ #error "unsatisfied condition: defined(__PIC__) || defined(__pic__) || defined(PIC)"
+  ^~~~~
+check_cflags -fomit-frame-pointer
+test_cflags -fomit-frame-pointer
+check_cc -fomit-frame-pointer
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int ff_extern;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void) { __asm__ volatile ("" ::); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(char * restrict p);
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void) { _Pragma("GCC diagnostic ignored \"-Wdeprecated-declarations\"") }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	struct { int x; } __attribute__((packed)) x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	union { int x; } __attribute__((may_alias)) x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	unsigned int endian = 'B' << 24 | 'I' << 16 | 'G' << 8 | 'E';
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_inline_asm inline_asm_labels "1:\n"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("1:\n"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_inline_asm inline_asm_nonlocal_labels "Label:\n"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("Label:\n"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -std=c99 -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 check_cflags -fomit-frame-pointer
@@ -6074,10 +6477,19 @@ BEGIN /tmp/ffconf.NcoPR4jR.c
     1	void foo(void){ __asm__ volatile("Label:\n"); }
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin rdtsc intrin.h __rdtsc()
 check_code ld intrin.h __rdtsc() cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <intrin.h>
+    2	int main(void) { __rdtsc(); return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <intrin.h>
     2	int main(void) { __rdtsc(); return 0; }
@@ -6085,10 +6497,29 @@ END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:20: fatal error: intrin.h: No such file or directory
 compilation terminated.
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin mm_empty mmintrin.h _mm_empty()
 check_code ld mmintrin.h _mm_empty() cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <mmintrin.h>
+    2	int main(void) { _mm_empty(); return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+In file included from C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:0:
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'main':
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/lib/gcc/i686-w64-mingw32/6.1.0/include/mmintrin.h:49:1: error: inlining failed in call to always_inline '_mm_empty': target specific option mismatch
+ _mm_empty (void)
+ ^~~~~~~~~
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:18: note: called from here
+ int main(void) { _mm_empty(); return 0; }
+                  ^~~~~~~~~~~
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <mmintrin.h>
     2	int main(void) { _mm_empty(); return 0; }
@@ -6098,6 +6529,7 @@ gcc -m64 -fPIC -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o
 check_ld cc
 check_cc
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <signal.h>
     2	static void sighandler(int sig){
     3	    raise(SIGTERM);
@@ -6117,6 +6549,53 @@ BEGIN /tmp/ffconf.NcoPR4jR.c
    17	#endif
    18	    return func_ptr();
    19	}
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_inline_asm ebx_available ""::"b"(0)
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile(""::"b"(0)); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_inline_asm ebx_available "":::"%ebx"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("":::"%ebx"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_inline_asm xmm_clobbers "":::"%xmm0"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("":::"%xmm0"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'foo':
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:17: error: unknown register name '%xmm0' in 'asm'
+ void foo(void){ __asm__ volatile("":::"%xmm0"); }
+                 ^~~~~~~
+check_inline_asm inline_asm_direct_symbol_refs "movl _test, %eax"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("movl _test, %eax"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_inline_asm ssse3_inline "pabsw %xmm0, %xmm0"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("pabsw %xmm0, %xmm0"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_inline_asm mmxext_inline "pmaxub %mm0, %mm1"
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void foo(void){ __asm__ volatile("pmaxub %mm0, %mm1"); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_as
+BEGIN /tmp/ffconf.eHYJtQep.S
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o
@@ -6205,16 +6684,337 @@ yasm -f elf -m amd64 -DPIC -g dwarf2 -Werror -o /tmp/ffconf.hpWGEhFx.o /tmp/ffco
 : error: warnings being treated as errors
 check_as
 BEGIN /tmp/ffconf.lazodCkQ.S
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	.macro m n
     2	\n: .int 0
     3	.endm
     4	m x
+<<<<<<< HEAD
+END /tmp/ffconf.eHYJtQep.S
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.eHYJtQep.S
+=======
 END /tmp/ffconf.lazodCkQ.S
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.lazodCkQ.S
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_ldflags -Wl,--as-needed
 test_ldflags -Wl,--as-needed
 check_ld cc -Wl,--as-needed
 check_cc -Wl,--as-needed
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -Wl,--as-needed -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func dlopen
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int dlopen();
+    2	int main(void){ dlopen(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `dlopen'
+collect2.exe: error: ld returned 1 exit status
+check_func dlopen -ldl
+check_ld cc -ldl
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int dlopen();
+    2	int main(void){ dlopen(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -ldl
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.1.0/../../../../i686-w64-mingw32/bin/ld.exe: cannot find -ldl
+collect2.exe: error: ld returned 1 exit status
+check_func getaddrinfo
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int getaddrinfo();
+    2	int main(void){ getaddrinfo(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `getaddrinfo'
+collect2.exe: error: ld returned 1 exit status
+check_func getservbyport
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int getservbyport();
+    2	int main(void){ getservbyport(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `getservbyport'
+collect2.exe: error: ld returned 1 exit status
+check_func inet_aton
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int inet_aton();
+    2	int main(void){ inet_aton(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `inet_aton'
+collect2.exe: error: ld returned 1 exit status
+check_type netdb.h struct addrinfo
+check_code cc netdb.h struct addrinfo v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <netdb.h>
+    2	int main(void) { struct addrinfo v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:19: fatal error: netdb.h: No such file or directory
+ #include <netdb.h>
+                   ^
+compilation terminated.
+check_type netinet/in.h struct group_source_req -D_BSD_SOURCE
+check_code cc netinet/in.h struct group_source_req v -D_BSD_SOURCE
+check_cc -D_BSD_SOURCE
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <netinet/in.h>
+    2	int main(void) { struct group_source_req v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -D_BSD_SOURCE -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:24: fatal error: netinet/in.h: No such file or directory
+ #include <netinet/in.h>
+                        ^
+compilation terminated.
+check_type netinet/in.h struct ip_mreq_source -D_BSD_SOURCE
+check_code cc netinet/in.h struct ip_mreq_source v -D_BSD_SOURCE
+check_cc -D_BSD_SOURCE
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <netinet/in.h>
+    2	int main(void) { struct ip_mreq_source v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -D_BSD_SOURCE -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:24: fatal error: netinet/in.h: No such file or directory
+ #include <netinet/in.h>
+                        ^
+compilation terminated.
+check_type netinet/in.h struct ipv6_mreq -D_DARWIN_C_SOURCE
+check_code cc netinet/in.h struct ipv6_mreq v -D_DARWIN_C_SOURCE
+check_cc -D_DARWIN_C_SOURCE
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <netinet/in.h>
+    2	int main(void) { struct ipv6_mreq v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -D_DARWIN_C_SOURCE -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:24: fatal error: netinet/in.h: No such file or directory
+ #include <netinet/in.h>
+                        ^
+compilation terminated.
+check_type poll.h struct pollfd
+check_code cc poll.h struct pollfd v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <poll.h>
+    2	int main(void) { struct pollfd v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:18: fatal error: poll.h: No such file or directory
+ #include <poll.h>
+                  ^
+compilation terminated.
+check_type netinet/sctp.h struct sctp_event_subscribe
+check_code cc netinet/sctp.h struct sctp_event_subscribe v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <netinet/sctp.h>
+    2	int main(void) { struct sctp_event_subscribe v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:26: fatal error: netinet/sctp.h: No such file or directory
+ #include <netinet/sctp.h>
+                          ^
+compilation terminated.
+check_struct sys/types.h sys/socket.h struct sockaddr sa_len
+check_code cc sys/types.h sys/socket.h const void *p = &((struct sockaddr *)0)->sa_len
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/types.h>
+    2	#include <sys/socket.h>
+    3	int main(void) { const void *p = &((struct sockaddr *)0)->sa_len; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:24: fatal error: sys/socket.h: No such file or directory
+ #include <sys/socket.h>
+                        ^
+compilation terminated.
+check_type netinet/in.h struct sockaddr_in6
+check_code cc netinet/in.h struct sockaddr_in6 v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <netinet/in.h>
+    2	int main(void) { struct sockaddr_in6 v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:24: fatal error: netinet/in.h: No such file or directory
+ #include <netinet/in.h>
+                        ^
+compilation terminated.
+check_type sys/types.h sys/socket.h struct sockaddr_storage
+check_code cc sys/types.h sys/socket.h struct sockaddr_storage v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/types.h>
+    2	#include <sys/socket.h>
+    3	int main(void) { struct sockaddr_storage v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:24: fatal error: sys/socket.h: No such file or directory
+ #include <sys/socket.h>
+                        ^
+compilation terminated.
+check_type sys/types.h sys/socket.h socklen_t
+check_code cc sys/types.h sys/socket.h socklen_t v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/types.h>
+    2	#include <sys/socket.h>
+    3	int main(void) { socklen_t v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:24: fatal error: sys/socket.h: No such file or directory
+ #include <sys/socket.h>
+                        ^
+compilation terminated.
+check_header arpa/inet.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <arpa/inet.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:23: fatal error: arpa/inet.h: No such file or directory
+ #include <arpa/inet.h>
+                       ^
+compilation terminated.
+check_header winsock2.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <winsock2.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_func_headers winsock2.h closesocket -lws2
+check_ld cc -lws2
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <winsock2.h>
+    2	long check_closesocket(void) { return (long) closesocket; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lws2
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.1.0/../../../../i686-w64-mingw32/bin/ld.exe: cannot find -lws2
+collect2.exe: error: ld returned 1 exit status
+check_func_headers winsock2.h closesocket -lws2_32
+check_ld cc -lws2_32
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <winsock2.h>
+    2	long check_closesocket(void) { return (long) closesocket; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lws2_32
+check_func_headers ws2tcpip.h getaddrinfo -lws2_32
+check_ld cc -lws2_32
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	long check_getaddrinfo(void) { return (long) getaddrinfo; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lws2_32
+check_type ws2tcpip.h socklen_t
+check_code cc ws2tcpip.h socklen_t v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { socklen_t v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type ws2tcpip.h struct addrinfo
+check_code cc ws2tcpip.h struct addrinfo v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { struct addrinfo v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type ws2tcpip.h struct group_source_req
+check_code cc ws2tcpip.h struct group_source_req v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { struct group_source_req v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type ws2tcpip.h struct ip_mreq_source
+check_code cc ws2tcpip.h struct ip_mreq_source v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { struct ip_mreq_source v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type ws2tcpip.h struct ipv6_mreq
+check_code cc ws2tcpip.h struct ipv6_mreq v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { struct ipv6_mreq v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type winsock2.h struct pollfd
+check_code cc winsock2.h struct pollfd v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <winsock2.h>
+    2	int main(void) { struct pollfd v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'main':
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:32: error: storage size of 'v' isn't known
+ int main(void) { struct pollfd v; return 0; }
+                                ^
+check_struct winsock2.h struct sockaddr sa_len
+check_code cc winsock2.h const void *p = &((struct sockaddr *)0)->sa_len
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <winsock2.h>
+    2	int main(void) { const void *p = &((struct sockaddr *)0)->sa_len; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'main':
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:57: error: 'struct sockaddr' has no member named 'sa_len'
+ int main(void) { const void *p = &((struct sockaddr *)0)->sa_len; return 0; }
+                                                         ^~
+check_type ws2tcpip.h struct sockaddr_in6
+check_code cc ws2tcpip.h struct sockaddr_in6 v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { struct sockaddr_in6 v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type ws2tcpip.h struct sockaddr_storage
+check_code cc ws2tcpip.h struct sockaddr_storage v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <ws2tcpip.h>
+    2	int main(void) { struct sockaddr_storage v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	int main(void){ return 0; }
 END /tmp/ffconf.NcoPR4jR.c
@@ -6376,10 +7176,22 @@ gcc -m64 -fPIC -Wl,--as-needed -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o
 /tmp/ffconf.hpWGEhFx.o: In function `main':
 ffconf.NcoPR4jR.c:(.text+0xa): undefined reference to `closesocket'
 collect2: error: ld returned 1 exit status
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin atomic_cas_ptr atomic.h void **ptr; void *oldval, *newval; atomic_cas_ptr(ptr, oldval, newval)
 check_code ld atomic.h void **ptr; void *oldval, *newval; atomic_cas_ptr(ptr, oldval, newval) cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <atomic.h>
+    2	int main(void) { void **ptr; void *oldval, *newval; atomic_cas_ptr(ptr, oldval, newval); return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:20: fatal error: atomic.h: No such file or directory
+ #include <atomic.h>
+                    ^
+compilation terminated.
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <atomic.h>
     2	int main(void) { void **ptr; void *oldval, *newval; atomic_cas_ptr(ptr, oldval, newval); return 0; }
@@ -6387,10 +7199,22 @@ END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:20: fatal error: atomic.h: No such file or directory
 compilation terminated.
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin machine_rw_barrier mbarrier.h __machine_rw_barrier()
 check_code ld mbarrier.h __machine_rw_barrier() cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <mbarrier.h>
+    2	int main(void) { __machine_rw_barrier(); return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: mbarrier.h: No such file or directory
+ #include <mbarrier.h>
+                      ^
+compilation terminated.
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <mbarrier.h>
     2	int main(void) { __machine_rw_barrier(); return 0; }
@@ -6398,10 +7222,19 @@ END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:22: fatal error: mbarrier.h: No such file or directory
 compilation terminated.
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin MemoryBarrier windows.h MemoryBarrier()
 check_code ld windows.h MemoryBarrier() cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	int main(void) { MemoryBarrier(); return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <windows.h>
     2	int main(void) { MemoryBarrier(); return 0; }
@@ -6409,20 +7242,438 @@ END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:21: fatal error: windows.h: No such file or directory
 compilation terminated.
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin sarestart signal.h SA_RESTART
 check_code ld signal.h SA_RESTART cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <signal.h>
+    2	int main(void) { SA_RESTART; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'main':
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:18: error: 'SA_RESTART' undeclared (first use in this function)
+ int main(void) { SA_RESTART; return 0; }
+                  ^~~~~~~~~~
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:18: note: each undeclared identifier is reported only once for each function it appears in
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <signal.h>
     2	int main(void) { SA_RESTART; return 0; }
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -Wl,--as-needed -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_builtin sync_val_compare_and_swap  int *ptr; int oldval, newval; __sync_val_compare_and_swap(ptr, oldval, newval)
 check_code ld  int *ptr; int oldval, newval; __sync_val_compare_and_swap(ptr, oldval, newval) cc
 check_ld cc
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void) { int *ptr; int oldval, newval; __sync_val_compare_and_swap(ptr, oldval, newval); return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers malloc.h _aligned_malloc
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <malloc.h>
+    2	long check__aligned_malloc(void) { return (long) _aligned_malloc; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func memalign
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int memalign();
+    2	int main(void){ memalign(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `memalign'
+collect2.exe: error: ld returned 1 exit status
+check_func posix_memalign
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int posix_memalign();
+    2	int main(void){ posix_memalign(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `posix_memalign'
+collect2.exe: error: ld returned 1 exit status
+check_func access
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int access();
+    2	int main(void){ access(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func clock_gettime
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int clock_gettime();
+    2	int main(void){ clock_gettime(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func fcntl
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int fcntl();
+    2	int main(void){ fcntl(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `fcntl'
+collect2.exe: error: ld returned 1 exit status
+check_func fork
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int fork();
+    2	int main(void){ fork(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `fork'
+collect2.exe: error: ld returned 1 exit status
+check_func gethrtime
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int gethrtime();
+    2	int main(void){ gethrtime(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `gethrtime'
+collect2.exe: error: ld returned 1 exit status
+check_func getopt
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int getopt();
+    2	int main(void){ getopt(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func getrusage
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int getrusage();
+    2	int main(void){ getrusage(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `getrusage'
+collect2.exe: error: ld returned 1 exit status
+check_func gettimeofday
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int gettimeofday();
+    2	int main(void){ gettimeofday(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func isatty
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int isatty();
+    2	int main(void){ isatty(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func localtime_r
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int localtime_r();
+    2	int main(void){ localtime_r(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `localtime_r'
+collect2.exe: error: ld returned 1 exit status
+check_func mach_absolute_time
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int mach_absolute_time();
+    2	int main(void){ mach_absolute_time(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `mach_absolute_time'
+collect2.exe: error: ld returned 1 exit status
+check_func mkstemp
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int mkstemp();
+    2	int main(void){ mkstemp(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func mmap
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int mmap();
+    2	int main(void){ mmap(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `mmap'
+collect2.exe: error: ld returned 1 exit status
+check_func mprotect
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int mprotect();
+    2	int main(void){ mprotect(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func nanosleep
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int nanosleep();
+    2	int main(void){ nanosleep(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func sched_getaffinity
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int sched_getaffinity();
+    2	int main(void){ sched_getaffinity(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `sched_getaffinity'
+collect2.exe: error: ld returned 1 exit status
+check_func setrlimit
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int setrlimit();
+    2	int main(void){ setrlimit(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `setrlimit'
+collect2.exe: error: ld returned 1 exit status
+check_struct sys/stat.h struct stat st_mtim.tv_nsec -D_BSD_SOURCE
+check_code cc sys/stat.h const void *p = &((struct stat *)0)->st_mtim.tv_nsec -D_BSD_SOURCE
+check_cc -D_BSD_SOURCE
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/stat.h>
+    2	int main(void) { const void *p = &((struct stat *)0)->st_mtim.tv_nsec; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -D_BSD_SOURCE -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c: In function 'main':
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:53: error: 'struct _stati64' has no member named 'st_mtim'; did you mean 'st_mtime'?
+ int main(void) { const void *p = &((struct stat *)0)->st_mtim.tv_nsec; return 0; }
+                                                     ^~
+check_func strerror_r
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int strerror_r();
+    2	int main(void){ strerror_r(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `strerror_r'
+collect2.exe: error: ld returned 1 exit status
+check_func sysconf
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int sysconf();
+    2	int main(void){ sysconf(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `sysconf'
+collect2.exe: error: ld returned 1 exit status
+check_func sysctl
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int sysctl();
+    2	int main(void){ sysctl(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+C:/Users/nathan/AppData/Local/Temp/ffconf.wgPZgvgS.o:ffconf.pplcibkB.c:(.text+0xc): undefined reference to `sysctl'
+collect2.exe: error: ld returned 1 exit status
+check_func usleep
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int usleep();
+    2	int main(void){ usleep(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers conio.h kbhit
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <conio.h>
+    2	long check_kbhit(void) { return (long) kbhit; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers io.h setmode
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <io.h>
+    2	long check_setmode(void) { return (long) setmode; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers lzo/lzo1x.h lzo1x_999_compress
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <lzo/lzo1x.h>
+    2	long check_lzo1x_999_compress(void) { return (long) lzo1x_999_compress; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:23: fatal error: lzo/lzo1x.h: No such file or directory
+ #include <lzo/lzo1x.h>
+                       ^
+compilation terminated.
+check_func_headers stdlib.h getenv
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <stdlib.h>
+    2	long check_getenv(void) { return (long) getenv; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h GetProcessAffinityMask
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_GetProcessAffinityMask(void) { return (long) GetProcessAffinityMask; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h GetProcessTimes
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_GetProcessTimes(void) { return (long) GetProcessTimes; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h GetSystemTimeAsFileTime
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_GetSystemTimeAsFileTime(void) { return (long) GetSystemTimeAsFileTime; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h MapViewOfFile
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_MapViewOfFile(void) { return (long) MapViewOfFile; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h PeekNamedPipe
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_PeekNamedPipe(void) { return (long) PeekNamedPipe; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h SetConsoleTextAttribute
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_SetConsoleTextAttribute(void) { return (long) SetConsoleTextAttribute; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h Sleep
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_Sleep(void) { return (long) Sleep; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers windows.h VirtualAlloc
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_VirtualAlloc(void) { return (long) VirtualAlloc; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o
+check_func_headers glob.h glob
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <glob.h>
+    2	long check_glob(void) { return (long) glob; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:18: fatal error: glob.h: No such file or directory
+ #include <glob.h>
+                  ^
+compilation terminated.
+check_func_headers X11/Xlib.h X11/extensions/Xvlib.h XvGetPortAttribute -lXv -lX11 -lXext
+check_ld cc -lXv -lX11 -lXext
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	int main(void) { int *ptr; int oldval, newval; __sync_val_compare_and_swap(ptr, oldval, newval); return 0; }
 END /tmp/ffconf.NcoPR4jR.c
@@ -6808,10 +8059,247 @@ check_func_headers X11/Xlib.h X11/extensions/Xvlib.h XvGetPortAttribute -lXv -lX
 check_ld cc -lXv -lX11 -lXext
 check_cc
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <X11/Xlib.h>
     2	#include <X11/extensions/Xvlib.h>
     3	long check_XvGetPortAttribute(void) { return (long) XvGetPortAttribute; }
     4	int main(void) { return 0; }
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: X11/Xlib.h: No such file or directory
+ #include <X11/Xlib.h>
+                      ^
+compilation terminated.
+check_header cl/cl.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <cl/cl.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:19: fatal error: cl/cl.h: No such file or directory
+ #include <cl/cl.h>
+                   ^
+compilation terminated.
+check_header direct.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <direct.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header dlfcn.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dlfcn.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:19: fatal error: dlfcn.h: No such file or directory
+ #include <dlfcn.h>
+                   ^
+compilation terminated.
+check_header dxva.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dxva.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header dxva2api.h -D_WIN32_WINNT=0x0600
+check_cpp -D_WIN32_WINNT=0x0600
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dxva2api.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -D_WIN32_WINNT=0x0600 -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header io.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <io.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header libcrystalhd/libcrystalhd_if.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <libcrystalhd/libcrystalhd_if.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:42: fatal error: libcrystalhd/libcrystalhd_if.h: No such file or directory
+ #include <libcrystalhd/libcrystalhd_if.h>
+                                          ^
+compilation terminated.
+check_header mach/mach_time.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <mach/mach_time.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:28: fatal error: mach/mach_time.h: No such file or directory
+ #include <mach/mach_time.h>
+                            ^
+compilation terminated.
+check_header malloc.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <malloc.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header poll.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <poll.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:18: fatal error: poll.h: No such file or directory
+ #include <poll.h>
+                  ^
+compilation terminated.
+check_header sys/mman.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/mman.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: sys/mman.h: No such file or directory
+ #include <sys/mman.h>
+                      ^
+compilation terminated.
+check_header sys/param.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/param.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header sys/resource.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/resource.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:26: fatal error: sys/resource.h: No such file or directory
+ #include <sys/resource.h>
+                          ^
+compilation terminated.
+check_header sys/select.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/select.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:24: fatal error: sys/select.h: No such file or directory
+ #include <sys/select.h>
+                        ^
+compilation terminated.
+check_header sys/time.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/time.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header sys/un.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/un.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:20: fatal error: sys/un.h: No such file or directory
+ #include <sys/un.h>
+                    ^
+compilation terminated.
+check_header termios.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <termios.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:21: fatal error: termios.h: No such file or directory
+ #include <termios.h>
+                     ^
+compilation terminated.
+check_header unistd.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <unistd.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header vdpau/vdpau.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <vdpau/vdpau.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:25: fatal error: vdpau/vdpau.h: No such file or directory
+ #include <vdpau/vdpau.h>
+                         ^
+compilation terminated.
+check_header vdpau/vdpau_x11.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <vdpau/vdpau_x11.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:29: fatal error: vdpau/vdpau_x11.h: No such file or directory
+ #include <vdpau/vdpau_x11.h>
+                             ^
+compilation terminated.
+check_header VideoDecodeAcceleration/VDADecoder.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <VideoDecodeAcceleration/VDADecoder.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:48: fatal error: VideoDecodeAcceleration/VDADecoder.h: No such file or directory
+ #include <VideoDecodeAcceleration/VDADecoder.h>
+                                                ^
+compilation terminated.
+check_header windows.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_header X11/extensions/XvMClib.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <X11/extensions/XvMClib.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:36: fatal error: X11/extensions/XvMClib.h: No such file or directory
+ #include <X11/extensions/XvMClib.h>
+                                    ^
+compilation terminated.
+check_header asm/types.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <asm/types.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:23: fatal error: asm/types.h: No such file or directory
+ #include <asm/types.h>
+                       ^
+compilation terminated.
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:2:34: fatal error: X11/extensions/Xvlib.h: No such file or directory
@@ -7004,41 +8492,88 @@ BEGIN /tmp/ffconf.NcoPR4jR.c
     2	int x;
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_lib2 windows.h shellapi.h CommandLineToArgvW -lshell32
 check_func_headers windows.h shellapi.h CommandLineToArgvW -lshell32
 check_ld cc -lshell32
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <windows.h>
     2	#include <shellapi.h>
     3	long check_CommandLineToArgvW(void) { return (long) CommandLineToArgvW; }
     4	int main(void) { return 0; }
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lshell32
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:21: fatal error: windows.h: No such file or directory
 compilation terminated.
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_lib2 windows.h wincrypt.h CryptGenRandom -ladvapi32
 check_func_headers windows.h wincrypt.h CryptGenRandom -ladvapi32
 check_ld cc -ladvapi32
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <windows.h>
     2	#include <wincrypt.h>
     3	long check_CryptGenRandom(void) { return (long) CryptGenRandom; }
     4	int main(void) { return 0; }
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -ladvapi32 -lshell32
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:21: fatal error: windows.h: No such file or directory
 compilation terminated.
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_lib2 windows.h psapi.h GetProcessMemoryInfo -lpsapi
 check_func_headers windows.h psapi.h GetProcessMemoryInfo -lpsapi
 check_ld cc -lpsapi
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <windows.h>
     2	#include <psapi.h>
     3	long check_GetProcessMemoryInfo(void) { return (long) GetProcessMemoryInfo; }
     4	int main(void) { return 0; }
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lpsapi -ladvapi32 -lshell32
+check_struct sys/time.h sys/resource.h struct rusage ru_maxrss
+check_code cc sys/time.h sys/resource.h const void *p = &((struct rusage *)0)->ru_maxrss
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/time.h>
+    2	#include <sys/resource.h>
+    3	int main(void) { const void *p = &((struct rusage *)0)->ru_maxrss; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:26: fatal error: sys/resource.h: No such file or directory
+ #include <sys/resource.h>
+                          ^
+compilation terminated.
+check_func_headers windows.h process.h _beginthreadex
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:21: fatal error: windows.h: No such file or directory
@@ -7056,10 +8591,33 @@ check_func_headers windows.h process.h _beginthreadex
 check_ld cc
 check_cc
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <windows.h>
     2	#include <process.h>
     3	long check__beginthreadex(void) { return (long) _beginthreadex; }
     4	int main(void) { return 0; }
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lpsapi -ladvapi32 -lshell32
+check_lib zlib.h zlibVersion -lz
+check_header zlib.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <zlib.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_func zlibVersion -lz
+check_ld cc -lz
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int zlibVersion();
+    2	int main(void){ zlibVersion(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lz -lpsapi -ladvapi32 -lshell32
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:21: fatal error: windows.h: No such file or directory
@@ -7115,10 +8673,305 @@ BEGIN /tmp/ffconf.NcoPR4jR.c
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -Wl,--as-needed -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o -lz -pthread
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_lib2 bzlib.h BZ2_bzlibVersion -lbz2
 check_func_headers bzlib.h BZ2_bzlibVersion -lbz2
 check_ld cc -lbz2
 check_cc
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <bzlib.h>
+    2	long check_BZ2_bzlibVersion(void) { return (long) BZ2_bzlibVersion; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:19: fatal error: bzlib.h: No such file or directory
+ #include <bzlib.h>
+                   ^
+compilation terminated.
+check_lib math.h sin -lm
+check_header math.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_func sin -lm
+check_ld cc -lm
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	extern int sin();
+    2	int main(void){ sin(); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:12: warning: conflicting types for built-in function 'sin'
+ extern int sin();
+            ^~~
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_lib libcrystalhd/libcrystalhd_if.h DtsCrystalHDVersion -lcrystalhd
+check_header libcrystalhd/libcrystalhd_if.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <libcrystalhd/libcrystalhd_if.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:42: fatal error: libcrystalhd/libcrystalhd_if.h: No such file or directory
+ #include <libcrystalhd/libcrystalhd_if.h>
+                                          ^
+compilation terminated.
+check_mathfunc atanf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return atanf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc atan2f 2
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return atan2f(f, g); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc cbrt 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return cbrt(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc cbrtf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return cbrtf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc cosf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return cosf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc exp2 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return exp2(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc exp2f 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return exp2f(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc expf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return expf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc isinf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return isinf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc isnan 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return isnan(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc ldexpf 2
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return ldexpf(f, g); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc llrint 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return llrint(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc llrintf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return llrintf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc log2 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return log2(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc log2f 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return log2f(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc log10f 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return log10f(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc lrint 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return lrint(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc lrintf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return lrintf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc powf 2
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return powf(f, g); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc rint 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return rint(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc round 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return round(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc roundf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return roundf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc sinf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return sinf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc trunc 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return trunc(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+check_mathfunc truncf 1
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <math.h>
+    2	float foo(float f, float g) { return truncf(f); }
+    3	int main(void){ return (int) foo; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <bzlib.h>
     2	long check_BZ2_bzlibVersion(void) { return (long) BZ2_bzlibVersion; }
@@ -7507,6 +9360,7 @@ gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_PO
  int main(void){ return (int) foo; }
                         ^
 gcc -m64 -fPIC -Wl,--as-needed -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o -lm -lz -pthread
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_pkg_config sdl SDL_events.h SDL_PollEvent
 pkg-config --exists --print-errors sdl
 check_func_headers SDL_events.h SDL_PollEvent -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -lSDL
@@ -7539,6 +9393,65 @@ END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 check_header linux/fb.h
 check_cpp
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <linux/fb.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: linux/fb.h: No such file or directory
+ #include <linux/fb.h>
+                      ^
+compilation terminated.
+check_header linux/videodev.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <linux/videodev.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:28: fatal error: linux/videodev.h: No such file or directory
+ #include <linux/videodev.h>
+                            ^
+compilation terminated.
+check_header linux/videodev2.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <linux/videodev2.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:29: fatal error: linux/videodev2.h: No such file or directory
+ #include <linux/videodev2.h>
+                             ^
+compilation terminated.
+check_code cc linux/videodev2.h struct v4l2_frmsizeenum vfse; vfse.discrete.width = 0;
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <linux/videodev2.h>
+    2	int main(void) { struct v4l2_frmsizeenum vfse; vfse.discrete.width = 0;; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:29: fatal error: linux/videodev2.h: No such file or directory
+ #include <linux/videodev2.h>
+                             ^
+compilation terminated.
+check_header sys/videoio.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/videoio.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:25: fatal error: sys/videoio.h: No such file or directory
+ #include <sys/videoio.h>
+                         ^
+compilation terminated.
+check_func_headers windows.h vfw.h capCreateCaptureWindow -lavicap32
+check_ld cc -lavicap32
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	#include <linux/fb.h>
     2	int x;
@@ -7580,10 +9493,19 @@ check_func_headers windows.h vfw.h capCreateCaptureWindow -lavicap32
 check_ld cc -lavicap32
 check_cc
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <windows.h>
     2	#include <vfw.h>
     3	long check_capCreateCaptureWindow(void) { return (long) capCreateCaptureWindow; }
     4	int main(void) { return 0; }
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lavicap32 -lm -lz -lpsapi -ladvapi32 -lshell32
+check_cpp_condition vfw.h WM_CAP_DRIVER_CONNECT > WM_USER
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:21: fatal error: windows.h: No such file or directory
@@ -7591,10 +9513,372 @@ compilation terminated.
 check_cpp_condition vfw.h WM_CAP_DRIVER_CONNECT > WM_USER
 check_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <vfw.h>
     2	#if !(WM_CAP_DRIVER_CONNECT > WM_USER)
     3	#error "unsatisfied condition: WM_CAP_DRIVER_CONNECT > WM_USER"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_type dshow.h IBaseFilter
+check_code cc dshow.h IBaseFilter v
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dshow.h>
+    2	int main(void) { IBaseFilter v; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+In file included from c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/dshow.h:33:0,
+                 from C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:865:12: warning: inline function 'StringCbLengthW' declared but never defined
+ STRSAFEAPI StringCbLengthW(STRSAFE_LPCWSTR psz,size_t cbMax,size_t *pcbLength);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:864:12: warning: inline function 'StringCbLengthA' declared but never defined
+ STRSAFEAPI StringCbLengthA(STRSAFE_LPCSTR psz,size_t cbMax,size_t *pcbLength);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:838:12: warning: inline function 'StringCchLengthW' declared but never defined
+ STRSAFEAPI StringCchLengthW(STRSAFE_LPCWSTR psz,size_t cchMax,size_t *pcchLength);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:837:12: warning: inline function 'StringCchLengthA' declared but never defined
+ STRSAFEAPI StringCchLengthA(STRSAFE_LPCSTR psz,size_t cchMax,size_t *pcchLength);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:685:12: warning: inline function 'StringCbVPrintfExW' declared but never defined
+ STRSAFEAPI StringCbVPrintfExW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCWSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:684:12: warning: inline function 'StringCbVPrintfExA' declared but never defined
+ STRSAFEAPI StringCbVPrintfExA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:656:12: warning: inline function 'StringCchVPrintfExW' declared but never defined
+ STRSAFEAPI StringCchVPrintfExW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCWSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:655:12: warning: inline function 'StringCchVPrintfExA' declared but never defined
+ STRSAFEAPI StringCchVPrintfExA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:609:12: warning: inline function 'StringCbPrintfExW' declared but never defined
+ STRSAFEAPI StringCbPrintfExW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCWSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:608:12: warning: inline function 'StringCbPrintfExA' declared but never defined
+ STRSAFEAPI StringCbPrintfExA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:581:12: warning: inline function 'StringCchPrintfExW' declared but never defined
+ STRSAFEAPI StringCchPrintfExW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCWSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:580:12: warning: inline function 'StringCchPrintfExA' declared but never defined
+ STRSAFEAPI StringCchPrintfExA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:553:12: warning: inline function 'StringCbPrintfW' declared but never defined
+ STRSAFEAPI StringCbPrintfW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:552:12: warning: inline function 'StringCbPrintfA' declared but never defined
+ STRSAFEAPI StringCbPrintfA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:526:12: warning: inline function 'StringCchPrintfW' declared but never defined
+ STRSAFEAPI StringCchPrintfW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:525:12: warning: inline function 'StringCchPrintfA' declared but never defined
+ STRSAFEAPI StringCchPrintfA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszFormat,...);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:508:12: warning: inline function 'StringCbVPrintfW' declared but never defined
+ STRSAFEAPI StringCbVPrintfW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:507:12: warning: inline function 'StringCbVPrintfA' declared but never defined
+ STRSAFEAPI StringCbVPrintfA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:491:12: warning: inline function 'StringCchVPrintfW' declared but never defined
+ STRSAFEAPI StringCchVPrintfW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:490:12: warning: inline function 'StringCchVPrintfA' declared but never defined
+ STRSAFEAPI StringCchVPrintfA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:462:12: warning: inline function 'StringCbCatNExW' declared but never defined
+ STRSAFEAPI StringCbCatNExW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,size_t cbToAppend,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:461:12: warning: inline function 'StringCbCatNExA' declared but never defined
+ STRSAFEAPI StringCbCatNExA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,size_t cbToAppend,STRSAFE_LPSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:445:12: warning: inline function 'StringCchCatNExW' declared but never defined
+ STRSAFEAPI StringCchCatNExW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,size_t cchToAppend,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:444:12: warning: inline function 'StringCchCatNExA' declared but never defined
+ STRSAFEAPI StringCchCatNExA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,size_t cchToAppend,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:425:12: warning: inline function 'StringCbCatNW' declared but never defined
+ STRSAFEAPI StringCbCatNW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,size_t cbToAppend);
+            ^~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:424:12: warning: inline function 'StringCbCatNA' declared but never defined
+ STRSAFEAPI StringCbCatNA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,size_t cbToAppend);
+            ^~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:408:12: warning: inline function 'StringCchCatNW' declared but never defined
+ STRSAFEAPI StringCchCatNW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,size_t cchToAppend);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:407:12: warning: inline function 'StringCchCatNA' declared but never defined
+ STRSAFEAPI StringCchCatNA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,size_t cchToAppend);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:379:12: warning: inline function 'StringCbCatExW' declared but never defined
+ STRSAFEAPI StringCbCatExW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:378:12: warning: inline function 'StringCbCatExA' declared but never defined
+ STRSAFEAPI StringCbCatExA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,STRSAFE_LPSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:361:12: warning: inline function 'StringCchCatExW' declared but never defined
+ STRSAFEAPI StringCchCatExW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:360:12: warning: inline function 'StringCchCatExA' declared but never defined
+ STRSAFEAPI StringCchCatExA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:343:12: warning: inline function 'StringCbCatW' declared but never defined
+ STRSAFEAPI StringCbCatW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc);
+            ^~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:342:12: warning: inline function 'StringCbCatA' declared but never defined
+ STRSAFEAPI StringCbCatA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc);
+            ^~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:326:12: warning: inline function 'StringCchCatW' declared but never defined
+ STRSAFEAPI StringCchCatW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc);
+            ^~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:325:12: warning: inline function 'StringCchCatA' declared but never defined
+ STRSAFEAPI StringCchCatA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc);
+            ^~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:293:12: warning: inline function 'StringCbCopyNExW' declared but never defined
+ STRSAFEAPI StringCbCopyNExW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,size_t cbToCopy,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:292:12: warning: inline function 'StringCbCopyNExA' declared but never defined
+ STRSAFEAPI StringCbCopyNExA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,size_t cbToCopy,STRSAFE_LPSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:276:12: warning: inline function 'StringCchCopyNExW' declared but never defined
+ STRSAFEAPI StringCchCopyNExW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,size_t cchToCopy,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:275:12: warning: inline function 'StringCchCopyNExA' declared but never defined
+ STRSAFEAPI StringCchCopyNExA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,size_t cchToCopy,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:255:12: warning: inline function 'StringCbCopyNW' declared but never defined
+ STRSAFEAPI StringCbCopyNW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,size_t cbToCopy);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:254:12: warning: inline function 'StringCbCopyNA' declared but never defined
+ STRSAFEAPI StringCbCopyNA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,size_t cbToCopy);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:237:12: warning: inline function 'StringCchCopyNW' declared but never defined
+ STRSAFEAPI StringCchCopyNW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,size_t cchToCopy);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:236:12: warning: inline function 'StringCchCopyNA' declared but never defined
+ STRSAFEAPI StringCchCopyNA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,size_t cchToCopy);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:206:12: warning: inline function 'StringCbCopyExW' declared but never defined
+ STRSAFEAPI StringCbCopyExW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:205:12: warning: inline function 'StringCbCopyExA' declared but never defined
+ STRSAFEAPI StringCbCopyExA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,STRSAFE_LPSTR *ppszDestEnd,size_t *pcbRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:187:12: warning: inline function 'StringCchCopyExW' declared but never defined
+ STRSAFEAPI StringCchCopyExW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:186:12: warning: inline function 'StringCchCopyExA' declared but never defined
+ STRSAFEAPI StringCchCopyExA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:169:12: warning: inline function 'StringCbCopyW' declared but never defined
+ STRSAFEAPI StringCbCopyW(STRSAFE_LPWSTR pszDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc);
+            ^~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:168:12: warning: inline function 'StringCbCopyA' declared but never defined
+ STRSAFEAPI StringCbCopyA(STRSAFE_LPSTR pszDest,size_t cbDest,STRSAFE_LPCSTR pszSrc);
+            ^~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:153:12: warning: inline function 'StringCchCopyW' declared but never defined
+ STRSAFEAPI StringCchCopyW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:152:12: warning: inline function 'StringCchCopyA' declared but never defined
+ STRSAFEAPI StringCchCopyA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc);
+            ^~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:146:12: warning: inline function 'StringLengthWorkerW' declared but never defined
+ STRSAFEAPI StringLengthWorkerW(STRSAFE_LPCWSTR psz,size_t cchMax,size_t *pcchLength);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:145:12: warning: inline function 'StringLengthWorkerA' declared but never defined
+ STRSAFEAPI StringLengthWorkerA(STRSAFE_LPCSTR psz,size_t cchMax,size_t *pcchLength);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:144:12: warning: inline function 'StringVPrintfExWorkerW' declared but never defined
+ STRSAFEAPI StringVPrintfExWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCWSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:143:12: warning: inline function 'StringVPrintfExWorkerA' declared but never defined
+ STRSAFEAPI StringVPrintfExWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags,STRSAFE_LPCSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:142:12: warning: inline function 'StringVPrintfWorkerW' declared but never defined
+ STRSAFEAPI StringVPrintfWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:141:12: warning: inline function 'StringVPrintfWorkerA' declared but never defined
+ STRSAFEAPI StringVPrintfWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszFormat,va_list argList);
+            ^~~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:140:12: warning: inline function 'StringCatNExWorkerW' declared but never defined
+ STRSAFEAPI StringCatNExWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,size_t cchToAppend,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:139:12: warning: inline function 'StringCatNExWorkerA' declared but never defined
+ STRSAFEAPI StringCatNExWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,size_t cchToAppend,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:138:12: warning: inline function 'StringCatNWorkerW' declared but never defined
+ STRSAFEAPI StringCatNWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,size_t cchToAppend);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:137:12: warning: inline function 'StringCatNWorkerA' declared but never defined
+ STRSAFEAPI StringCatNWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,size_t cchToAppend);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:136:12: warning: inline function 'StringCatExWorkerW' declared but never defined
+ STRSAFEAPI StringCatExWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:135:12: warning: inline function 'StringCatExWorkerA' declared but never defined
+ STRSAFEAPI StringCatExWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:134:12: warning: inline function 'StringCatWorkerW' declared but never defined
+ STRSAFEAPI StringCatWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:133:12: warning: inline function 'StringCatWorkerA' declared but never defined
+ STRSAFEAPI StringCatWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc);
+            ^~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:132:12: warning: inline function 'StringCopyNExWorkerW' declared but never defined
+ STRSAFEAPI StringCopyNExWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,size_t cchToCopy,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:131:12: warning: inline function 'StringCopyNExWorkerA' declared but never defined
+ STRSAFEAPI StringCopyNExWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,size_t cchToCopy,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:130:12: warning: inline function 'StringCopyNWorkerW' declared but never defined
+ STRSAFEAPI StringCopyNWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc,size_t cchToCopy);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:129:12: warning: inline function 'StringCopyNWorkerA' declared but never defined
+ STRSAFEAPI StringCopyNWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc,size_t cchToCopy);
+            ^~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:128:12: warning: inline function 'StringCopyExWorkerW' declared but never defined
+ STRSAFEAPI StringCopyExWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCWSTR pszSrc,STRSAFE_LPWSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:127:12: warning: inline function 'StringCopyExWorkerA' declared but never defined
+ STRSAFEAPI StringCopyExWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,size_t cbDest,STRSAFE_LPCSTR pszSrc,STRSAFE_LPSTR *ppszDestEnd,size_t *pcchRemaining,unsigned __LONG32 dwFlags);
+            ^~~~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:126:12: warning: inline function 'StringCopyWorkerW' declared but never defined
+ STRSAFEAPI StringCopyWorkerW(STRSAFE_LPWSTR pszDest,size_t cchDest,STRSAFE_LPCWSTR pszSrc);
+            ^~~~~~~~~~~~~~~~~
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/i686-w64-mingw32/include/strsafe.h:125:12: warning: inline function 'StringCopyWorkerA' declared but never defined
+ STRSAFEAPI StringCopyWorkerA(STRSAFE_LPSTR pszDest,size_t cchDest,STRSAFE_LPCSTR pszSrc);
+            ^~~~~~~~~~~~~~~~~
+check_header dev/bktr/ioctl_meteor.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dev/bktr/ioctl_meteor.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:35: fatal error: dev/bktr/ioctl_meteor.h: No such file or directory
+ #include <dev/bktr/ioctl_meteor.h>
+                                   ^
+compilation terminated.
+check_header machine/ioctl_meteor.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <machine/ioctl_meteor.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:34: fatal error: machine/ioctl_meteor.h: No such file or directory
+ #include <machine/ioctl_meteor.h>
+                                  ^
+compilation terminated.
+check_header dev/video/meteor/ioctl_meteor.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dev/video/meteor/ioctl_meteor.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:43: fatal error: dev/video/meteor/ioctl_meteor.h: No such file or directory
+ #include <dev/video/meteor/ioctl_meteor.h>
+                                           ^
+compilation terminated.
+check_header dev/ic/bt8xx.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <dev/ic/bt8xx.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:26: fatal error: dev/ic/bt8xx.h: No such file or directory
+ #include <dev/ic/bt8xx.h>
+                          ^
+compilation terminated.
+check_header sndio.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sndio.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:19: fatal error: sndio.h: No such file or directory
+ #include <sndio.h>
+                   ^
+compilation terminated.
+check_struct sys/soundcard.h audio_buf_info bytes
+check_code cc sys/soundcard.h const void *p = &((audio_buf_info *)0)->bytes
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <sys/soundcard.h>
+    2	int main(void) { const void *p = &((audio_buf_info *)0)->bytes; return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:27: fatal error: sys/soundcard.h: No such file or directory
+ #include <sys/soundcard.h>
+                           ^
+compilation terminated.
+check_cc -D__BSD_VISIBLE -D__XSI_VISIBLE
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	    #include <sys/soundcard.h>
+    2	    audio_buf_info abc;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -D__BSD_VISIBLE -D__XSI_VISIBLE -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:31: fatal error: sys/soundcard.h: No such file or directory
+     #include <sys/soundcard.h>
+                               ^
+compilation terminated.
+check_header soundcard.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <soundcard.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:23: fatal error: soundcard.h: No such file or directory
+ #include <soundcard.h>
+                       ^
+compilation terminated.
+check_lib X11/Xlib.h XOpenDisplay -lX11
+check_header X11/Xlib.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <X11/Xlib.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:22: fatal error: X11/Xlib.h: No such file or directory
+ #include <X11/Xlib.h>
+                      ^
+compilation terminated.
+check_func_headers windows.h CreateDIBSection -lgdi32
+check_ld cc -lgdi32
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <windows.h>
+    2	long check_CreateDIBSection(void) { return (long) CreateDIBSection; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lgdi32 -lm -lz -lpsapi -ladvapi32 -lshell32
+check_lib va/va.h vaInitialize -lva
+check_header va/va.h
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <va/va.h>
+    2	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:19: fatal error: va/va.h: No such file or directory
+ #include <va/va.h>
+                   ^
+compilation terminated.
+check_cpp_condition vdpau/vdpau.h defined VDP_DECODER_PROFILE_MPEG4_PART2_ASP
+check_cpp
+BEGIN /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 /tmp/ffconf.NcoPR4jR.c:1:17: fatal error: vfw.h: No such file or directory
@@ -7719,10 +10003,150 @@ gcc -m64 -fPIC -Wl,--as-needed -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o -l
 check_cpp_condition vdpau/vdpau.h defined VDP_DECODER_PROFILE_MPEG4_PART2_ASP
 check_cpp
 BEGIN /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
     1	#include <vdpau/vdpau.h>
     2	#if !(defined VDP_DECODER_PROFILE_MPEG4_PART2_ASP)
     3	#error "unsatisfied condition: defined VDP_DECODER_PROFILE_MPEG4_PART2_ASP"
     4	#endif
+<<<<<<< HEAD
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -E -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:1:25: fatal error: vdpau/vdpau.h: No such file or directory
+ #include <vdpau/vdpau.h>
+                         ^
+compilation terminated.
+check_func_headers iconv.h iconv
+check_ld cc
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <iconv.h>
+    2	long check_iconv(void) { return (long) iconv; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -lm -lz -lpsapi -ladvapi32 -lshell32
+c:/Program Files (x86)/mingw-w64/i686-6.1.0-posix-dwarf-rt_v5-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.1.0/../../../../i686-w64-mingw32/lib/../lib/libiconv.a(localcharset.o):localcharset.c:(.text+0x7): undefined reference to `_imp__GetACP@0'
+collect2.exe: error: ld returned 1 exit status
+check_lib2 iconv.h iconv -liconv
+check_func_headers iconv.h iconv -liconv
+check_ld cc -liconv
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	#include <iconv.h>
+    2	long check_iconv(void) { return (long) iconv; }
+    3	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+check_cflags -Wdeclaration-after-statement
+test_cflags -Wdeclaration-after-statement
+check_cc -Wdeclaration-after-statement
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wall
+test_cflags -Wall
+check_cc -Wall
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wdisabled-optimization
+test_cflags -Wdisabled-optimization
+check_cc -Wdisabled-optimization
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wpointer-arith
+test_cflags -Wpointer-arith
+check_cc -Wpointer-arith
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wredundant-decls
+test_cflags -Wredundant-decls
+check_cc -Wredundant-decls
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wwrite-strings
+test_cflags -Wwrite-strings
+check_cc -Wwrite-strings
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wtype-limits
+test_cflags -Wtype-limits
+check_cc -Wtype-limits
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wundef
+test_cflags -Wundef
+check_cc -Wundef
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wmissing-prototypes
+test_cflags -Wmissing-prototypes
+check_cc -Wmissing-prototypes
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wno-pointer-to-int-cast
+test_cflags -Wno-pointer-to-int-cast
+check_cc -Wno-pointer-to-int-cast
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wstrict-prototypes
+test_cflags -Wstrict-prototypes
+check_cc -Wstrict-prototypes
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Wempty-body
+test_cflags -Wempty-body
+check_cc -Wempty-body
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+test_cflags -Wparentheses
+check_cc -Wparentheses
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wparentheses -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+test_cflags -Wswitch
+check_cc -Wswitch
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wswitch -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+test_cflags -Wformat-zero-length
+check_cc -Wformat-zero-length
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wformat-zero-length -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+test_cflags -Wpointer-sign
+check_cc -Wpointer-sign
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wpointer-sign -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+=======
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -E -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 check_func_headers vdpau/vdpau.h vdpau/vdpau_x11.h vdp_device_create_x11 -lvdpau
@@ -7854,19 +10278,143 @@ BEGIN /tmp/ffconf.NcoPR4jR.c
     1	int x;
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wpointer-sign -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_ldflags -Wl,--warn-common
 test_ldflags -Wl,--warn-common
 check_ld cc -Wl,--warn-common
 check_cc -Wl,--warn-common
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wl,--warn-common -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -Wl,--warn-common -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	int main(void){ return 0; }
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wl,--warn-common -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -Wl,--as-needed -Wl,--warn-common -o /tmp/ffconf.joOM3PjC /tmp/ffconf.hpWGEhFx.o -lva -lX11 -lSDL -lm -lz -pthread
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
 check_ldflags -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample
 test_ldflags -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample
 check_ld cc -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample
 check_cc -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample
+<<<<<<< HEAD
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -Wl,--warn-common -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+test_ldflags -Wl,-Bsymbolic
+check_ld cc -Wl,-Bsymbolic
+check_cc -Wl,-Bsymbolic
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wl,-Bsymbolic -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -Wl,--warn-common -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample -Wl,-Bsymbolic -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+check_stripflags -wN '..@*'
+test_stripflags -wN '..@*'
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void) { return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+strip -wN '..@*' /tmp/ffconf.wgPZgvgS.o
+test_ldflags -Wl,--version-script,/tmp/ffconf.EJOYmdYy.ver
+check_ld cc -Wl,--version-script,/tmp/ffconf.EJOYmdYy.ver
+check_cc -Wl,--version-script,/tmp/ffconf.EJOYmdYy.ver
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int main(void){ return 0; }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wl,--version-script,/tmp/ffconf.EJOYmdYy.ver -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+gcc -m32 -Wl,--nxcompat -Wl,--dynamicbase -Wl,--as-needed -Wl,--warn-common -Wl,-rpath-link=libpostproc:libswresample:libswscale:libavfilter:libavdevice:libavformat:libavcodec:libavutil:libavresample -Wl,--version-script,/tmp/ffconf.EJOYmdYy.ver -o /tmp/ffconf.jzLxUWnx.exe /tmp/ffconf.wgPZgvgS.o -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	void ff_foo(void) __asm__ ("av_foo@VERSION");
+    2	void ff_foo(void) { __asm__(""); }
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	__asm__(".symver ff_foo,av_foo@VERSION");
+    2	void ff_foo(void) {}
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+C:/Users/nathan/AppData/Local/Temp/ffconf.pplcibkB.c:2:6: warning: no previous prototype for 'ff_foo' [-Wmissing-prototypes]
+ void ff_foo(void) {}
+      ^~~~~~
+C:\Users\nathan\AppData\Local\Temp\ccf48Qp5.s: Assembler messages:
+C:\Users\nathan\AppData\Local\Temp\ccf48Qp5.s:5: Error: unknown pseudo-op: `.symver'
+check_cflags -O3
+test_cflags -O3
+check_cc -O3
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -fno-math-errno
+test_cflags -fno-math-errno
+check_cc -fno-math-errno
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -fno-signed-zeros
+test_cflags -fno-signed-zeros
+check_cc -fno-signed-zeros
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cc -mno-red-zone
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -mno-red-zone -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -fno-tree-vectorize
+test_cflags -fno-tree-vectorize
+check_cc -fno-tree-vectorize
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Werror=implicit-function-declaration
+test_cflags -Werror=implicit-function-declaration
+check_cc -Werror=implicit-function-declaration
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Werror=implicit-function-declaration -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Werror=missing-prototypes
+test_cflags -Werror=missing-prototypes
+check_cc -Werror=missing-prototypes
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Werror=implicit-function-declaration -Werror=missing-prototypes -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Werror=return-type
+test_cflags -Werror=return-type
+check_cc -Werror=return-type
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Werror=implicit-function-declaration -Werror=missing-prototypes -Werror=return-type -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+check_cflags -Werror=vla
+test_cflags -Werror=vla
+check_cc -Werror=vla
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Werror=implicit-function-declaration -Werror=missing-prototypes -Werror=return-type -Werror=vla -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+test_cflags -Wmaybe-uninitialized
+check_cc -Wmaybe-uninitialized
+BEGIN /tmp/ffconf.pplcibkB.c
+    1	int x;
+END /tmp/ffconf.pplcibkB.c
+gcc -m32 -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -U__STRICT_ANSI__ -D__USE_MINGW_ANSI_STDIO=1 -D__printf__=__gnu_printf__ -std=c99 -fomit-frame-pointer -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Werror=implicit-function-declaration -Werror=missing-prototypes -Werror=return-type -Werror=vla -Wmaybe-uninitialized -c -o /tmp/ffconf.wgPZgvgS.o /tmp/ffconf.pplcibkB.c
+=======
 BEGIN /tmp/ffconf.NcoPR4jR.c
     1	int main(void){ return 0; }
 END /tmp/ffconf.NcoPR4jR.c
@@ -7984,3 +10532,4 @@ BEGIN /tmp/ffconf.NcoPR4jR.c
     1	int x;
 END /tmp/ffconf.NcoPR4jR.c
 gcc -m64 -fPIC -D_ISOC99_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600 -DPIC -std=c99 -fomit-frame-pointer -fPIC -pthread -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL -g -Wdeclaration-after-statement -Wall -Wdisabled-optimization -Wpointer-arith -Wredundant-decls -Wwrite-strings -Wtype-limits -Wundef -Wmissing-prototypes -Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign -O3 -fno-math-errno -fno-signed-zeros -fno-tree-vectorize -Werror=implicit-function-declaration -Werror=missing-prototypes -Werror=return-type -Werror=vla -Wmaybe-uninitialized -c -o /tmp/ffconf.hpWGEhFx.o /tmp/ffconf.NcoPR4jR.c
+>>>>>>> b3c912f41532d7fdc20c4e2469fba06c5fedbb36
