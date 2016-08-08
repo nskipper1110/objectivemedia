@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-libavcodec/avpicture.o: libavcodec/avpicture.c libavcodec/avcodec.h \
-  libavutil/samplefmt.h libavutil/avutil.h libavutil/common.h \
-  libavutil/attributes.h libavutil/version.h libavutil/macros.h \
-  libavutil/avconfig.h config.h libavutil/intmath.h libavutil/mem.h \
-  libavutil/error.h libavutil/internal.h libavutil/timer.h \
-  libavutil/log.h libavutil/x86/timer.h libavutil/cpu.h libavutil/dict.h \
-  libavutil/x86/emms.h libavutil/libm.h libavutil/intfloat.h \
-  libavutil/mathematics.h libavutil/rational.h libavutil/pixfmt.h \
-  libavutil/old_pix_fmts.h libavutil/buffer.h libavutil/channel_layout.h \
-  libavutil/frame.h libavcodec/version.h libavcodec/old_codec_ids.h \
-  libavcodec/internal.h libavutil/pixdesc.h libavutil/imgutils.h \
-  libavutil/colorspace.h
-=======
 libavcodec/avpicture.o: libavcodec/avpicture.c libavcodec/avcodec.h \
  libavutil/samplefmt.h libavutil/avutil.h libavutil/common.h \
  libavutil/attributes.h libavutil/version.h libavutil/macros.h \
@@ -28,4 +14,3 @@ libavcodec/avpicture.o: libavcodec/avpicture.c libavcodec/avcodec.h \
  libavutil/mem.h libavcodec/old_codec_ids.h libavutil/common.h \
  libavcodec/internal.h libavutil/mathematics.h libavutil/pixdesc.h \
  libavutil/imgutils.h libavutil/pixdesc.h libavutil/colorspace.h
->>>>>>> 5fcdb63f808c240c88075109189721697b65ab66

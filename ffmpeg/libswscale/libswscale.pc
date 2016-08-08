@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-prefix=./build/mac/x64
-=======
-prefix=./build/win/x64
->>>>>>> 5fcdb63f808c240c88075109189721697b65ab66
+prefix=./build/linux/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include

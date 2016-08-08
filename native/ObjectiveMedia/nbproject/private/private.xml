@@ -2,12 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
         <activeConfTypeElem>2</activeConfTypeElem>
-        <activeConfIndexElem>8</activeConfIndexElem>
+        <activeConfIndexElem>7</activeConfIndexElem>
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Connexus">
-            <file>file:/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/dbg.h</file>
-        </group>
+        <group name="Connexus"/>
     </open-files>
 </project-private>

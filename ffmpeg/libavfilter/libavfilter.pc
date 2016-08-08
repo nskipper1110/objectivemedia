@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-prefix=./build/mac/x64
-=======
-prefix=./build/win/x64
->>>>>>> 5fcdb63f808c240c88075109189721697b65ab66
+prefix=./build/linux/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -13,10 +9,6 @@ Version: 4.4.100
 Requires: libavutil = 52.77.100
 Requires.private: 
 Conflicts:
-<<<<<<< HEAD
-Libs: -L${libdir}  -lavfilter -framework CoreVideo -framework Foundation -framework AVFoundation -framework CoreMedia -framework CoreFoundation -framework VideoDecodeAcceleration -framework QuartzCore -L/usr/local/lib -lSDLmain -lSDL -Wl,-framework,Cocoa -lm -lbz2 -lz -pthread
-=======
-Libs: -L${libdir}  -lavfilter -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
->>>>>>> 5fcdb63f808c240c88075109189721697b65ab66
+Libs: -L${libdir}  -lavfilter -lm -pthread
 Libs.private: 
 Cflags: -I${includedir}
