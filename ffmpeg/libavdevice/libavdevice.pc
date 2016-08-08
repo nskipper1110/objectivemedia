@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 prefix=./build/mac/x64
+=======
+prefix=./build/win/x64
+>>>>>>> 5fcdb63f808c240c88075109189721697b65ab66
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -9,6 +13,10 @@ Version: 55.13.100
 Requires: libavformat = 55.37.101
 Requires.private: 
 Conflicts:
+<<<<<<< HEAD
 Libs: -L${libdir}  -lavdevice -framework CoreVideo -framework Foundation -framework AVFoundation -framework CoreMedia -framework CoreFoundation -framework VideoDecodeAcceleration -framework QuartzCore -L/usr/local/lib -lSDLmain -lSDL -Wl,-framework,Cocoa -lm -lbz2 -lz -pthread
+=======
+Libs: -L${libdir}  -lavdevice -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+>>>>>>> 5fcdb63f808c240c88075109189721697b65ab66
 Libs.private: 
 Cflags: -I${includedir}
