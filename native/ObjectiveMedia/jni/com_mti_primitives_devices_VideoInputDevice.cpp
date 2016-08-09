@@ -29,7 +29,7 @@ class VideoInputDeviceListener : public DeviceListener
 	void SampleCaptured(void* sender, void* sample, long size, long long timestamp)
 	{
 		//DebugOut("VideoInputDeviceListener.SampleCaptured++\n");
-		if(MyListener != NULL && CallbackJVM != NULL)
+		if(MyListener != NULL && CallbackJVM != NULL && sample != NULL && size > 0)
 		{
 			//DebugOut("Listener and JVM are instantiated.\n");
 			JNIEnv* CallbackEnv = NULL;
@@ -91,20 +91,21 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
 		  else{
 			  MyListener = Env->NewGlobalRef(listener);
 			  jvideoInputDevice = Env->NewGlobalRef(sender);
-			  VideoInputDevice* tempDevice = new VideoInputDevice();
-			  Java_To_VideoInputDevice(Env, sender, tempDevice);
-			  vector<Device*> deviceList;
-			  if(tempDevice->GetDevices(deviceList) == SUCCEEDED){
-				  for(int x = 0; x < deviceList.size(); x++)
-				  {
-					  if(((VideoInputDevice*)deviceList[x])->DeviceIndex != tempDevice->DeviceIndex)
-						  delete deviceList[x];
-                                          else
-                                          {
-                                              videoInputDevice = (VideoInputDevice*)deviceList[x];
-                                          }
-				  }
-				  deviceList.clear();
+			  //VideoInputDevice* tempDevice = new VideoInputDevice();
+                          videoInputDevice = new VideoInputDevice();
+			  Java_To_VideoInputDevice(Env, sender, videoInputDevice);
+//			  vector<Device*> deviceList;
+//			  if(tempDevice->GetDevices(deviceList) == SUCCEEDED){
+//				  for(int x = 0; x < deviceList.size(); x++)
+//				  {
+//					  if(((VideoInputDevice*)deviceList[x])->DeviceIndex != tempDevice->DeviceIndex)
+//						  delete deviceList[x];
+//                                          else
+//                                          {
+//                                              videoInputDevice = (VideoInputDevice*)deviceList[x];
+//                                          }
+//				  }
+//				  deviceList.clear();
 				  VideoInputDeviceListener* clistener = new VideoInputDeviceListener();
 				  videoInputDevice->Listener = clistener;
 				  VideoMediaFormat* format = new VideoMediaFormat();
@@ -118,10 +119,10 @@ JNIEXPORT jint JNICALL Java_com_mti_primitives_devices_VideoInputDevice_Platform
 				  retval = (jint)videoInputDevice->Open(format);
 				  sprintf(dbg_buffer, "Open returned %d\n", retval);
 				  DbgOut(dbg_buffer);
-			  }
-			  else{
-				  retval = (jint)NO_DEVICES;
-			  }
+//			  }
+//			  else{
+//				  retval = (jint)NO_DEVICES;
+//			  }
 			  
 		  }
 	  }

@@ -1,4 +1,4 @@
-prefix=./build/win/x64
+prefix=./build/linux/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -9,6 +9,6 @@ Version: 55.13.100
 Requires: libavformat = 55.37.101
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavdevice -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+Libs: -L${libdir}  -lavdevice -lm -pthread
 Libs.private: 
 Cflags: -I${includedir}

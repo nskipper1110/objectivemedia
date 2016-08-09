@@ -1,3 +1,4 @@
+
 libavdevice/alldevices.o: libavdevice/alldevices.c config.h \
  libavdevice/avdevice.h libavdevice/version.h libavutil/version.h \
  libavutil/macros.h libavutil/log.h libavutil/avutil.h libavutil/common.h \

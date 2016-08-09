@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+libswscale/swscale_unscaled.o: libswscale/swscale_unscaled.c config.h \
+  libswscale/swscale.h libavutil/avutil.h libavutil/common.h \
+  libavutil/attributes.h libavutil/version.h libavutil/macros.h \
+  libavutil/avconfig.h libavutil/intmath.h libavutil/mem.h \
+  libavutil/error.h libavutil/internal.h libavutil/timer.h \
+  libavutil/log.h libavutil/x86/timer.h libavutil/cpu.h libavutil/dict.h \
+  libavutil/x86/emms.h libavutil/libm.h libavutil/intfloat.h \
+  libavutil/mathematics.h libavutil/rational.h libavutil/pixfmt.h \
+  libavutil/old_pix_fmts.h libswscale/version.h \
+  libswscale/swscale_internal.h libavutil/avassert.h \
+  libavutil/intreadwrite.h libavutil/bswap.h libavutil/x86/bswap.h \
+  libavutil/x86/intreadwrite.h libavutil/pixdesc.h libswscale/rgb2rgb.h \
+  libswscale/bayer_template.c
+=======
 libswscale/swscale_unscaled.o: libswscale/swscale_unscaled.c config.h \
  libswscale/swscale.h libavutil/avutil.h libavutil/common.h \
  libavutil/attributes.h libavutil/version.h libavutil/macros.h \
@@ -13,3 +28,4 @@ libswscale/swscale_unscaled.o: libswscale/swscale_unscaled.c config.h \
  libavutil/bswap.h libavutil/x86/bswap.h libavutil/x86/intreadwrite.h \
  libavutil/pixdesc.h libswscale/rgb2rgb.h libavutil/mathematics.h \
  libavutil/bswap.h libswscale/bayer_template.c
+>>>>>>> 5fcdb63f808c240c88075109189721697b65ab66

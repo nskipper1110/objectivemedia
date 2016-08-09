@@ -1564,7 +1564,7 @@
             <linkerLibLibItem>avutil</linkerLibLibItem>
             <linkerLibLibItem>avdevice</linkerLibLibItem>
           </linkerLibItems>
-          <commandLine>-Wl,-Bsymbolic</commandLine>
+          <commandLine>-Wl,-Bsymbolic -m64 -static-libstdc++</commandLine>
         </linkerTool>
       </compileType>
       <item path="ObjectiveMedia_readme.xml" ex="false" tool="3" flavor2="0">
@@ -1763,22 +1763,23 @@
           <incDir>
             <pElem>/usr/lib/jvm/java-8-oracle/include</pElem>
             <pElem>/usr/lib/jvm/java-8-oracle/include/linux</pElem>
-            <pElem>../../ffmpeg/build/linux/x64/include</pElem>
+            <pElem>../../ffmpeg/build/linux/x86/include</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <stripSymbols>true</stripSymbols>
+          <architecture>1</architecture>
           <incDir>
             <pElem>/usr/lib/jvm/java-8-oracle/include</pElem>
             <pElem>/usr/lib/jvm/java-8-oracle/include/linux</pElem>
-            <pElem>../../ffmpeg/build/linux/x64/include</pElem>
+            <pElem>../../ffmpeg/build/linux/x86/include</pElem>
           </incDir>
           <commandLine>-D__STDC_CONSTANT_MACROS</commandLine>
         </ccTool>
         <linkerTool>
           <output>../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x86/objectivemedia_lin32.so</output>
           <linkerAddLib>
-            <pElem>../../ffmpeg/build/linux/x64/lib</pElem>
+            <pElem>../../ffmpeg/build/linux/x86/lib</pElem>
             <pElem>/usr/lib/jvm/java-8-oracle/lib/amd64</pElem>
             <pElem>/usr/lib/jvm/java-8-oracle/lib</pElem>
           </linkerAddLib>
@@ -1792,7 +1793,7 @@
             <linkerLibLibItem>avutil</linkerLibLibItem>
             <linkerLibLibItem>avdevice</linkerLibLibItem>
           </linkerLibItems>
-          <commandLine>-Wl,-Bsymbolic</commandLine>
+          <commandLine>-Wl,-Bsymbolic -m32 -static-libstdc++</commandLine>
         </linkerTool>
       </compileType>
       <item path="ObjectiveMedia_readme.xml" ex="false" tool="3" flavor2="0">

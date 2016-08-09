@@ -126,6 +126,8 @@ typedef struct VideoInputDeviceContext{
         //BufferCount = 0;
         TempFrame = NULL;
         ScaleContext = NULL;
+        CodecContext = NULL;
+        Codec = NULL;
     };
     ~VideoInputDeviceContext(){
         if(TempFrame != NULL){
@@ -289,11 +291,19 @@ VideoInputDevice::VideoInputDevice(){
     VideoInputDeviceContext* context = (VideoInputDeviceContext*) ptr;
     av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread++\n");
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
+    if(context->Format->FPS % 2 > 0){
+        context->Format->FPS++;
+    }
     double adjfps = context->Format->FPS;
-    long sleepTime = 1000000*((double) 1000/adjfps);
+    
+    long sleepTime = ((double) 1000/adjfps)/2;//33000;
+    //float clockAdjust = ((float)33.333)/((float)CLOCKS_PER_SEC);
     long long StartTicks = 0;
+    //long long lastTicks = 0;
+    long long timestamp = 0;
+    long cycleCount = 0;
     av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread starting control loop\n");
-    AVFrame* sourceFrame = av_frame_alloc();;
+    AVFrame* sourceFrame = av_frame_alloc();
     while(!context->Stopped){
         
         if (context->DeviceHandle != NULL) {
@@ -307,11 +317,23 @@ VideoInputDevice::VideoInputDevice(){
                 if(av_read_frame((AVFormatContext*) context->DeviceHandle, packet) >= 0){
                     buffer = NULL;
                     bufsize = 0;
+                    #ifndef __MINGW32__
                     
-                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread got a packet.\n");
-                    if(context->ScaleContext != NULL && context->CodecContext != NULL){
-                        //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread gonna do some scaling!\n");
-                        VideoMediaFormat* native = context->NativeFormat;
+//                    if(StartTicks == 0){
+//                        StartTicks = clock() * clockAdjust;
+//                        av_log(context->DeviceHandle, AV_LOG_INFO, "Starting tick is %d\n", StartTicks);
+//                    }
+                    timestamp = cycleCount * sleepTime;//(clock() * clockAdjust) - StartTicks;
+                    
+                    #else
+                    if(StartTicks == 0){
+                        StartTicks = GetTickCount();
+                    }
+                    timestamp = GetTickCount() - StartTicks;
+                    #endif
+
+                    if(context->ScaleContext != NULL && context->CodecContext != NULL && cycleCount % 2 == 0){
+                         VideoMediaFormat* native = context->NativeFormat;
                         VideoMediaFormat* adjusted = context->Format;
                         //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread getting source frame\n");
                         //AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
@@ -354,36 +376,20 @@ VideoInputDevice::VideoInputDevice(){
                     //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread freeing packet.\n");
                     
                 }
-                #ifndef __MINGW32__
-                struct timeval tv;
-                struct timezone tz;
-                gettimeofday(&tv, &tz);
-                if(StartTicks == 0){
-                    StartTicks = tv.tv_usec / 1000;
-                }
-                long long timestamp = (tv.tv_usec/1000) - StartTicks;
-                #else
-                if(StartTicks == 0){
-                    StartTicks = GetTickCount();
-                }
-                long long timestamp = GetTickCount() - StartTicks;
-                #endif
+                
                 //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread passing up buffer\n");
-                context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
+                if(buffer != NULL) context->Listener->SampleCaptured(NULL, buffer, bufsize, timestamp);
                 av_free_packet(packet);
                 //if(sourceFrame != NULL) av_free(sourceFrame);
             }
             //ioctl (context->DeviceHandle, VIDIOC_QBUF, &buf);
         }
+        cycleCount++;
         #ifndef __MINGW32__
         
-        timespec tv;
-        tv.tv_nsec = sleepTime;
-        tv.tv_sec = 0;
-        //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread sleeping\n");
-        nanosleep(&tv, NULL);
+        usleep(sleepTime * 1000);
         #else
-        Sleep(sleepTime/1000000);
+        Sleep(sleepTime);
         #endif
     }
     av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread--\n");
@@ -427,13 +433,13 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         char framerate[20];
         char video_size[40];
         char pixfmt[20];
-        char rtbufsize[40];
+        //char rtbufsize[40];
         sprintf(framerate, "%d:1", vformat->FPS);
         
         sprintf(video_size, "%dx%d", vformat->Width, vformat->Height);
         int ffpix = VideoMediaFormat::GetFFPixel(vformat->PixelFormat);
         sprintf(pixfmt, "%s", VideoMediaFormat::GetFFPixelName(ffpix));
-        sprintf(rtbufsize, "%d", vformat->FPS * vformat->Width * vformat->Height * 3);
+        //sprintf(rtbufsize, "%d", vformat->FPS * vformat->Width * vformat->Height * 3);
         
         
         #ifdef __APPLE__
@@ -449,7 +455,7 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
         //av_dict_set(&options, "pixel_format", pixfmt, 0);
         //av_log(context->DeviceHandle, AV_LOG_INFO, "Setting pixel format to %s\n", pixfmt);
 #endif
-        av_dict_set(&options, "rtbufsize", rtbufsize, 0);
+        //av_dict_set(&options, "rtbufsize", rtbufsize, 0);
         //av_dict_set(&options, "pixel_format", pixfmt, 0);
         //printf("Setting pixel format to %s\n", pixfmt);
         int error = avformat_open_input((AVFormatContext**)&context->DeviceHandle, index, iformat, &options);
@@ -478,10 +484,12 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
             context->Codec = avcodec_find_decoder(context->CodecContext->codec_id);
             if(context->CodecContext != NULL && context->Codec != NULL){
                 av_log(context->DeviceHandle, AV_LOG_INFO, "Found decoder for %i\n", context->CodecContext->codec_id);
+                error = 0;
                 if(context->CodecContext->codec_id != AV_CODEC_ID_RAWVIDEO){
                     context->CodecContext->pix_fmt = AV_PIX_FMT_YUV420P;
+                    error = avcodec_open2(context->CodecContext, context->Codec, NULL);
                 }
-                error = avcodec_open2(context->CodecContext, context->Codec, NULL);
+                
                 if(error != 0){
                     av_log(context->DeviceHandle, AV_LOG_INFO, "Error opening codec = %d\n", error);
                     char errormsg[1024];
@@ -494,6 +502,7 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
                     avformat_close_input((AVFormatContext**)&context->DeviceHandle);
                 }
                 else{
+                    
                     AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(RGB24);
                     av_log(context->DeviceHandle, AV_LOG_INFO, "Allocating temp scaling frame\n");
                     context->TempFrame = alloc_picture(fmt, vformat->Width, vformat->Height); //allocate temp based on this format.
@@ -511,27 +520,28 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
                     
                     vformat->PixelFormat = RGB24;
                     context->Format = vformat;
+                    #ifndef __MINGW32__            
+                    int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
+                    if(r != 0){
+                        retval = NOT_SUPPORTED;
+                    }
+                    #else
+
+                    av_log(context->DeviceHandle, AV_LOG_INFO, "Starting thread\n");
+                    context->CaptureThread = CreateThread(NULL, 0,VideoInputDevice_Thread, (void*) DeviceContext, 0, NULL);
+                    if(context->CaptureThread == NULL){
+                        retval = NOT_SUPPORTED;
+                    }
+                    else{
+                        av_log(context->DeviceHandle, AV_LOG_INFO, "Starting W32 thread.\n");
+                    }
+                    #endif
                 }
             }
             else{
                 av_log(context->DeviceHandle, AV_LOG_INFO, "Unable to find the decoder for the codec.\n");
             }
-            #ifndef __MINGW32__            
-            int r = pthread_create( &context->CaptureThread, NULL, &VideoInputDevice_Thread, (void*) DeviceContext);
-            if(r != 0){
-                retval = NOT_SUPPORTED;
-            }
-            #else
-
-            av_log(context->DeviceHandle, AV_LOG_INFO, "Starting thread\n");
-            context->CaptureThread = CreateThread(NULL, 0,VideoInputDevice_Thread, (void*) DeviceContext, 0, NULL);
-            if(context->CaptureThread == NULL){
-                retval = NOT_SUPPORTED;
-            }
-            else{
-                av_log(context->DeviceHandle, AV_LOG_INFO, "Starting W32 thread.\n");
-            }
-            #endif
+            
             
         }
         av_dict_free(&options);

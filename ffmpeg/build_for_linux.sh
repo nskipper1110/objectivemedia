@@ -17,7 +17,6 @@
     --enable-decoder=rawvideo \
     --enable-encoder=rawvideo \
     --enable-decoder=mjpeg \
-    --enable-decoder=jpeg \
     --enable-decoder=h263 \
     --enable-encoder=h263p \
     --enable-encoder=g723_1 \
@@ -48,7 +47,6 @@ make install
     --enable-decoder=rawvideo \
     --enable-encoder=rawvideo \
     --enable-decoder=mjpeg \
-    --enable-decoder=jpeg \
     --enable-decoder=h263 \
     --enable-encoder=h263p \
     --enable-encoder=g723_1 \
