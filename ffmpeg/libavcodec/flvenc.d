@@ -1,4 +1,3 @@
-
 libavcodec/flvenc.o: libavcodec/flvenc.c libavcodec/mpegvideo.h \
  libavcodec/avcodec.h libavutil/samplefmt.h libavutil/avutil.h \
  libavutil/common.h libavutil/attributes.h libavutil/version.h \
