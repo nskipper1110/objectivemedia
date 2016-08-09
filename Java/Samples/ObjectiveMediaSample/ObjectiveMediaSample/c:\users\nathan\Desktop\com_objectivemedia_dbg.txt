@@ -1,2 +1,0 @@
-Opening device index 1, device name video1, format width 1280, height 800, fps 15, Pixel format 24
-Open returned 0
