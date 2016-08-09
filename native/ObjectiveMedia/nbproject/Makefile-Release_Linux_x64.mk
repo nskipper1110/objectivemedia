@@ -81,7 +81,7 @@ LDLIBSOPTIONS=-L../../ffmpeg/build/linux/x64/lib -L/usr/lib/jvm/java-8-oracle/li
 
 ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so: ${OBJECTFILES}
 	${MKDIR} -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64
-	g++ -o ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -shared -fPIC
+	g++ -o ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/lin/x64/objectivemedia_lin64.so ${OBJECTFILES} ${LDLIBSOPTIONS} -Wl,-Bsymbolic -m64 -static-libstdc++ -shared -fPIC
 
 ${OBJECTDIR}/dbg.o: dbg.cpp 
 	${MKDIR} -p ${OBJECTDIR}
