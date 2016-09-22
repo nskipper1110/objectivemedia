@@ -201,7 +201,8 @@ public class MainForm extends javax.swing.JFrame {
 //                //String os = System.getProperty("os.name");
 //                pix = VideoPixelFormat.YUYV;
 //            }
-            VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, CurrentVideoInputFormat.PixelFormat);
+            //VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, CurrentVideoInputFormat.PixelFormat);
+            VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), 320, 240, CurrentVideoInputFormat.PixelFormat);
 
             Device_Errors err = CurrentVideoInputDevice.Open(vf);
             if(err == Device_Errors.SUCCEEDED)
@@ -223,7 +224,8 @@ public class MainForm extends javax.swing.JFrame {
         if(CurrentVideoInputFormat.FPS == 0){
             fps = 30;
         }
-        VideoMediaFormat vf = new VideoMediaFormat(fps, CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.ANY);
+        //VideoMediaFormat vf = new VideoMediaFormat(fps, CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.ANY);
+        VideoMediaFormat vf = new VideoMediaFormat(fps, 320, 240, VideoPixelFormat.ANY);
         CurrentVideoOutputDevice.Open(vf, VideoView, false);
         return retval;
     }
@@ -231,7 +233,8 @@ public class MainForm extends javax.swing.JFrame {
     private boolean OpenVideoCodec(){
         boolean retval = true;
         CurrentVideoCodecData = new CodecData(Integer.parseInt(txtH263BitRate.getText()), 0,false,Integer.parseInt(txtH263FrameSpace.getText()),0);
-        VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.RGB24);
+        //VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), CurrentVideoInputFormat.Width, CurrentVideoInputFormat.Height, VideoPixelFormat.RGB24);
+        VideoMediaFormat vf = new VideoMediaFormat(Integer.parseInt(txtH263FPS.getText()), 320, 240, VideoPixelFormat.RGB24);
         CurrentVideoEncoder = new H263VideoEncoder();
         CurrentVideoDecoder = new H263VideoDecoder();
         Codec_Errors err = CurrentVideoEncoder.Open(vf, CurrentVideoCodecData);
