@@ -27,6 +27,7 @@ void WriteErrorMsg(char* file, char* text)
 	fprintf(fout, text);
 	fclose(fout);
 #endif
+        printf(text);
 }
 
 void DbgOut(char* msg){

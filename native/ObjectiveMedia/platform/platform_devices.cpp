@@ -333,7 +333,7 @@ VideoInputDevice::VideoInputDevice(){
                     #endif
 
                     if(context->ScaleContext != NULL && context->CodecContext != NULL && cycleCount % 2 == 0){
-                         VideoMediaFormat* native = context->NativeFormat;
+                        VideoMediaFormat* native = context->NativeFormat;
                         VideoMediaFormat* adjusted = context->Format;
                         //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread getting source frame\n");
                         //AVFrame* source = alloc_and_fill_picture((AVPixelFormat)VideoMediaFormat::GetFFPixel(native->PixelFormat), native->Width, native->Height, packet->data);
@@ -353,15 +353,17 @@ VideoInputDevice::VideoInputDevice(){
                              }
                         }
                         if(goahead == 1){
-                            if(context->NativeFormat->PixelFormat != context->Format->PixelFormat){
+                            if(context->NativeFormat->PixelFormat != context->Format->PixelFormat || context->NativeFormat->Width != context->Format->Width){
                                 
                                 //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread scaling to desired format\n");
-                                int outheight = sws_scale(context->ScaleContext, sourceFrame->data, sourceFrame->linesize,0, adjusted->Height, context->TempFrame->data, context->TempFrame->linesize);
+                                
+                                int outheight = sws_scale(context->ScaleContext, sourceFrame->data, sourceFrame->linesize,0, native->Height, context->TempFrame->data, context->TempFrame->linesize);
                                 //set the outgoing reference.
                                 if(outheight > 0)
                                 {
-                                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread got my new scaled buffer\n");
+                                    //av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread got my new scaled buffer of height %d\n", outheight);
                                     buffer = context->TempFrame->data[0];
+                                    
                                         //calculate and set the outgoing frame size, in bytes.
                                     bufsize = adjusted->Width * adjusted->Height * VideoMediaFormat::GetPixelBits(RGB24) / 8;
                                 }
