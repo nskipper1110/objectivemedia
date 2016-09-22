@@ -104,8 +104,9 @@ public abstract class Primitives {
                 }
                 else{
                     resourcePath = "os/win/x86/";
-                    DependencyPaths.add("msvcr110.dll");
-                    DependencyPaths.add("msvcp110.dll");
+                    DependencyPaths.add("libwinpthread-1.dll");
+                    DependencyPaths.add("libgcc_s_dw2-1.dll");
+                    DependencyPaths.add("libstdc++-6.dll");
                     
                     NativeLibraries.add("objectivemedia_win32.dll");
                 }

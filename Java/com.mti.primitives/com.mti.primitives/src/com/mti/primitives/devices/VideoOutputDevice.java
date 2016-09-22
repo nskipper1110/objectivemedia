@@ -72,9 +72,11 @@ public final class VideoOutputDevice extends OutputDevice {
             }
             else{
                 Graphics surfaceGraphics = Surface.getGraphics();
+                
+                Rectangle size = Surface.getBounds();
                 if(RotateFrames){
                     AffineTransform newXform = (AffineTransform)((Graphics2D)surfaceGraphics).getTransform().clone();
-                    newXform.rotate(Math.toRadians(180), Surface.getWidth()/2, Surface.getHeight()/2);
+                    newXform.rotate(Math.toRadians(180), size.width/2, size.height/2);
                     ((Graphics2D)surfaceGraphics).setTransform(newXform);
                     
                 }
@@ -95,7 +97,7 @@ public final class VideoOutputDevice extends OutputDevice {
                 int transferType = DataBuffer.TYPE_BYTE;
                 ColorModel colorModel = new ComponentColorModel(colorSpace, hasAlpha, isAlphaPremultiplied, transparency, transferType);
                 BufferedImage img = new BufferedImage(colorModel, raster, false, null);
-                surfaceGraphics.drawImage(img, 0,0, Surface.getWidth(), Surface.getHeight(), null);
+                surfaceGraphics.drawImage(img, 0,0, size.width, size.height, null);
             }
         }
         catch(Exception e){
