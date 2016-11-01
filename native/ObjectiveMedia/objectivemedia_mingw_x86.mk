@@ -2,8 +2,8 @@ SHELL = /bin/sh
 CC    = gcc
 CCFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS
 CFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS
-CXXFLAGS = -D__STDC_CONSTANT_MACROS
-LDFLAGS      = -shared -L/c/jdk/lib \
+CXXFLAGS = -m32 -fPIC -D__STDC_CONSTANT_MACROS
+LDFLAGS      = -Wl,--kill-at -shared -L/c/jdk/lib \
 					   -L/c/jdk/lib/amd64 \
 					   -L../../ffmpeg/build/win/x86/lib \
 					   -lswscale \
