@@ -84,7 +84,7 @@ static int id3v2_put_ttag(ID3v2EncContext *id3, AVIOContext *avioc, const char *
     len = avio_close_dyn_buf(dyn_buf, &pb);
 
     avio_wb32(avioc, tag);
-    /* ID3v2.3 frame size is not synchsafe */
+    /* ID3v2.3 frame size is not sync-safe */
     if (id3->version == 3)
         avio_wb32(avioc, len);
     else
@@ -242,6 +242,7 @@ int ff_id3v2_write_metadata(AVFormatContext *s, ID3v2EncContext *id3)
                                   ID3v2_ENCODING_UTF8;
     int i, ret;
 
+    ff_standardize_creation_time(s);
     if ((ret = write_metadata(s->pb, &s->metadata, id3, enc)) < 0)
         return ret;
 
@@ -268,7 +269,7 @@ int ff_id3v2_write_apic(AVFormatContext *s, ID3v2EncContext *id3, AVPacket *pkt)
 
     /* get the mimetype*/
     while (mime->id != AV_CODEC_ID_NONE) {
-        if (mime->id == st->codec->codec_id) {
+        if (mime->id == st->codecpar->codec_id) {
             mimetype = mime->str;
             break;
         }
@@ -283,7 +284,7 @@ int ff_id3v2_write_apic(AVFormatContext *s, ID3v2EncContext *id3, AVPacket *pkt)
     /* get the picture type */
     e = av_dict_get(st->metadata, "comment", NULL, 0);
     for (i = 0; e && i < FF_ARRAY_ELEMS(ff_id3v2_picture_types); i++) {
-        if (strstr(ff_id3v2_picture_types[i], e->value) == ff_id3v2_picture_types[i]) {
+        if (!av_strcasecmp(e->value, ff_id3v2_picture_types[i])) {
             type = i;
             break;
         }

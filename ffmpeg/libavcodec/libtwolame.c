@@ -60,7 +60,7 @@ static av_cold int twolame_encode_init(AVCodecContext *avctx)
     int ret;
 
     avctx->frame_size = TWOLAME_SAMPLES_PER_FRAME;
-    avctx->delay      = 512 - 32 + 1;
+    avctx->initial_padding = 512 - 32 + 1;
 
     s->glopts = twolame_init();
     if (!s->glopts)
@@ -77,7 +77,11 @@ static av_cold int twolame_encode_init(AVCodecContext *avctx)
     twolame_set_num_channels(s->glopts, avctx->channels);
     twolame_set_in_samplerate(s->glopts, avctx->sample_rate);
     twolame_set_out_samplerate(s->glopts, avctx->sample_rate);
-    if (avctx->flags & CODEC_FLAG_QSCALE || !avctx->bit_rate) {
+
+    if (!avctx->bit_rate)
+        avctx->bit_rate = avctx->sample_rate < 28000 ? 160000 : 384000;
+
+    if (avctx->flags & AV_CODEC_FLAG_QSCALE || !avctx->bit_rate) {
         twolame_set_VBR(s->glopts, TRUE);
         twolame_set_VBR_level(s->glopts,
                               avctx->global_quality / (float) FF_QP2LAMBDA);
@@ -102,7 +106,7 @@ static int twolame_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
     TWOLAMEContext *s = avctx->priv_data;
     int ret;
 
-    if ((ret = ff_alloc_packet2(avctx, avpkt, MPA_MAX_CODED_FRAME_SIZE)) < 0)
+    if ((ret = ff_alloc_packet2(avctx, avpkt, MPA_MAX_CODED_FRAME_SIZE, 0)) < 0)
         return ret;
 
     if (frame) {
@@ -148,10 +152,10 @@ static int twolame_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
     if (ret < 0)  // twolame error
         return AVERROR_UNKNOWN;
 
-    avpkt->duration = ff_samples_to_time_base(avctx, frame->nb_samples);
     if (frame) {
+        avpkt->duration = ff_samples_to_time_base(avctx, frame->nb_samples);
         if (frame->pts != AV_NOPTS_VALUE)
-            avpkt->pts = frame->pts - ff_samples_to_time_base(avctx, avctx->delay);
+            avpkt->pts = frame->pts - ff_samples_to_time_base(avctx, avctx->initial_padding);
     } else {
         avpkt->pts = s->next_pts;
     }
@@ -190,7 +194,7 @@ static const AVClass twolame_class = {
 };
 
 static const AVCodecDefault twolame_defaults[] = {
-    { "b", "384000" },
+    { "b", "0" },
     { NULL },
 };
 
@@ -207,7 +211,7 @@ AVCodec ff_libtwolame_encoder = {
     .init           = twolame_encode_init,
     .encode2        = twolame_encode_frame,
     .close          = twolame_encode_close,
-    .capabilities   = CODEC_CAP_DELAY,
+    .capabilities   = AV_CODEC_CAP_DELAY,
     .defaults       = twolame_defaults,
     .priv_class     = &twolame_class,
     .sample_fmts    = (const enum AVSampleFormat[]) {

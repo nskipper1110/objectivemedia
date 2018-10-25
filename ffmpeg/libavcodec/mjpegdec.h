@@ -34,9 +34,10 @@
 #include "libavutil/stereo3d.h"
 
 #include "avcodec.h"
+#include "blockdsp.h"
 #include "get_bits.h"
-#include "dsputil.h"
 #include "hpeldsp.h"
+#include "idctdsp.h"
 
 #define MAX_COMPONENTS 4
 
@@ -61,9 +62,8 @@ typedef struct MJpegDecodeContext {
     int ls;
     int progressive;
     int rgb;
-    int upscale_h;
-    int chroma_height;
-    int upscale_v;
+    uint8_t upscale_h[4];
+    uint8_t upscale_v[4];
     int rct;            /* standard rct */
     int pegasus_rct;    /* pegasus reversible colorspace transform */
     int bits;           /* bits per component */
@@ -104,8 +104,9 @@ typedef struct MJpegDecodeContext {
     uint64_t coefs_finished[MAX_COMPONENTS]; ///< bitmask of which coefs have been completely decoded (progressive mode)
     int palette_index;
     ScanTable scantable;
-    DSPContext dsp;
+    BlockDSPContext bdsp;
     HpelDSPContext hdsp;
+    IDCTDSPContext idsp;
 
     int restart_interval;
     int restart_count;
@@ -113,6 +114,7 @@ typedef struct MJpegDecodeContext {
     int buggy_avid;
     int cs_itu601;
     int interlace_polarity;
+    int multiscope;
 
     int mjpb_skiptosod;
 

@@ -5,10 +5,10 @@ includedir=${prefix}/include
 
 Name: libavutil
 Description: FFmpeg utility library
-Version: 52.77.100
+Version: 55.43.100
 Requires: 
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavutil -lm
-Libs.private: 
+Libs: -L${libdir}  -lavutil 
+Libs.private: -lm
 Cflags: -I${includedir}

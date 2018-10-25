@@ -8,5 +8,5 @@ Description: FFmpeg codec library
 Version: 55.58.105
 Requires: libavutil = 52.77.100
 Conflicts:
-Libs: -L${libdir} -Wl,-rpath,${libdir} -lavcodec -lX11 -lm -pthread
+Libs: -L${libdir} -Wl,-rpath,${libdir} -lavcodec 
 Cflags: -I${includedir}

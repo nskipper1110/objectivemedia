@@ -1,3 +1,5 @@
+../emsdk-portable/emsdk install latest
+../emsdk-portable/emsdk activate latest
 source ../emsdk-portable/emsdk_env.sh
 emconfigure ./configure --prefix=./build/js/x86 \
     --target-os=none arch=x86 \

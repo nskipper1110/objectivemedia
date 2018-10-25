@@ -254,7 +254,7 @@ MK_IDCT_DC_ADD4_C(vp8)
     int av_unused q2 = p[ 2 * stride];                                        \
     int av_unused q3 = p[ 3 * stride];
 
-#define clip_int8(n) (cm[n + 0x80] - 0x80)
+#define clip_int8(n) (cm[(n) + 0x80] - 0x80)
 
 static av_always_inline void filter_common(uint8_t *p, ptrdiff_t stride,
                                            int is4tap, int is_vp7)
@@ -735,5 +735,7 @@ av_cold void ff_vp8dsp_init(VP8DSPContext *dsp)
         ff_vp8dsp_init_arm(dsp);
     if (ARCH_X86)
         ff_vp8dsp_init_x86(dsp);
+    if (ARCH_MIPS)
+        ff_vp8dsp_init_mips(dsp);
 }
 #endif /* CONFIG_VP8_DECODER */

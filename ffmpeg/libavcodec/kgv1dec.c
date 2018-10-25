@@ -30,7 +30,7 @@
 #include "avcodec.h"
 #include "internal.h"
 
-typedef struct {
+typedef struct KgvContext {
     uint16_t *frame_buffer;
     uint16_t *last_frame_buffer;
 } KgvContext;
@@ -82,8 +82,8 @@ static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
 
     if ((res = ff_get_buffer(avctx, frame, 0)) < 0)
         return res;
-    out  = c->frame_buffer;
-    prev = c->last_frame_buffer;
+    out  = (uint8_t*)c->frame_buffer;
+    prev = (uint8_t*)c->last_frame_buffer;
 
     for (i = 0; i < 8; i++)
         offsets[i] = -1;
@@ -183,5 +183,5 @@ AVCodec ff_kgv1_decoder = {
     .close          = decode_end,
     .decode         = decode_frame,
     .flush          = decode_flush,
-    .capabilities   = CODEC_CAP_DR1,
+    .capabilities   = AV_CODEC_CAP_DR1,
 };

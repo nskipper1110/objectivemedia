@@ -1,13 +1,13 @@
-prefix=./build/mac/x64
+prefix=./build/js/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
 
 Name: libpostproc
 Description: FFmpeg postprocessing library
-Version: 52.3.100
-Requires: libavutil = 52.77.100
-Requires.private: 
+Version: 54.2.100
+Requires: 
+Requires.private: libavutil >= 55.43.100
 Conflicts:
 Libs: -L${libdir}  -lpostproc 
 Libs.private: 

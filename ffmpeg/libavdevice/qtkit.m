@@ -25,7 +25,11 @@
  * @author Vadim Kalinsky <vadim@kalinsky.ru>
  */
 
-#import <QTKit/QTkit.h>
+#if defined(__clang__)
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
+#import <QTKit/QTKit.h>
 #include <pthread.h>
 
 #include "libavutil/pixdesc.h"

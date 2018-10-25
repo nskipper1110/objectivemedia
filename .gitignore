@@ -4,6 +4,9 @@
 *.o
 *.obj
 # Compiled Dynamic libraries
+*.dylib
+*.so
+*.dll
 # Compiled Static libraries
 *.lai
 *.la
@@ -18,6 +21,7 @@
 *.db-wal
 *.log
 *.DS_Store
+.DS_Store
 *.d
 *.pc
 /.vscode

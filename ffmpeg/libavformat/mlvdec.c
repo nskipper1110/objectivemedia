@@ -25,9 +25,11 @@
  */
 
 #include "libavutil/eval.h"
+#include "libavutil/imgutils.h"
 #include "libavutil/intreadwrite.h"
 #include "libavutil/rational.h"
 #include "avformat.h"
+#include "avio_internal.h"
 #include "internal.h"
 #include "riff.h"
 
@@ -48,8 +50,6 @@ typedef struct {
     int class[2];
     int stream_index;
     uint64_t pts;
-    uint8_t * buffer;
-    unsigned int buffer_size;
 } MlvContext;
 
 static int probe(AVProbeData *p)
@@ -97,37 +97,30 @@ static void read_string(AVFormatContext *avctx, AVIOContext *pb, const char *tag
 
 static void read_uint8(AVFormatContext *avctx, AVIOContext *pb, const char *tag, const char *fmt)
 {
-    char value[4];
-    snprintf(value, sizeof(value), "%i", avio_r8(pb));
-    av_dict_set(&avctx->metadata, tag, value, 0);
+    av_dict_set_int(&avctx->metadata, tag, avio_r8(pb), 0);
 }
 
 static void read_uint16(AVFormatContext *avctx, AVIOContext *pb, const char *tag, const char *fmt)
 {
-    char value[8];
-    snprintf(value, sizeof(value), "%i", avio_rl16(pb));
-    av_dict_set(&avctx->metadata, tag, value, 0);
+    av_dict_set_int(&avctx->metadata, tag, avio_rl16(pb), 0);
 }
 
 static void read_uint32(AVFormatContext *avctx, AVIOContext *pb, const char *tag, const char *fmt)
 {
-    char value[16];
-    snprintf(value, sizeof(value), fmt, avio_rl32(pb));
-    av_dict_set(&avctx->metadata, tag, value, 0);
+    av_dict_set_int(&avctx->metadata, tag, avio_rl32(pb), 0);
 }
 
 static void read_uint64(AVFormatContext *avctx, AVIOContext *pb, const char *tag, const char *fmt)
 {
-    char value[32];
-    snprintf(value, sizeof(value), fmt, avio_rl64(pb));
-    av_dict_set(&avctx->metadata, tag, value, 0);
+    av_dict_set_int(&avctx->metadata, tag, avio_rl64(pb), 0);
 }
 
-static void scan_file(AVFormatContext *avctx, AVStream *vst, AVStream *ast, int file)
+static int scan_file(AVFormatContext *avctx, AVStream *vst, AVStream *ast, int file)
 {
     MlvContext *mlv = avctx->priv_data;
     AVIOContext *pb = mlv->pb[file];
-    while (!url_feof(pb)) {
+    int ret;
+    while (!avio_feof(pb)) {
         int type;
         unsigned int size;
         type = avio_rl32(pb);
@@ -137,21 +130,34 @@ static void scan_file(AVFormatContext *avctx, AVStream *vst, AVStream *ast, int 
             break;
         size -= 16;
         if (vst && type == MKTAG('R','A','W','I') && size >= 164) {
-            vst->codec->width  = avio_rl16(pb);
-            vst->codec->height = avio_rl16(pb);
+            vst->codecpar->width  = avio_rl16(pb);
+            vst->codecpar->height = avio_rl16(pb);
+            ret = av_image_check_size(vst->codecpar->width, vst->codecpar->height, 0, avctx);
+            if (ret < 0)
+                return ret;
             if (avio_rl32(pb) != 1)
                 avpriv_request_sample(avctx, "raw api version");
             avio_skip(pb, 20); // pointer, width, height, pitch, frame_size
-            vst->codec->bits_per_coded_sample = avio_rl32(pb);
+            vst->codecpar->bits_per_coded_sample = avio_rl32(pb);
+            if (vst->codecpar->bits_per_coded_sample < 0 ||
+                vst->codecpar->bits_per_coded_sample > (INT_MAX - 7) / (vst->codecpar->width * vst->codecpar->height)) {
+                av_log(avctx, AV_LOG_ERROR,
+                       "invalid bits_per_coded_sample %d (size: %dx%d)\n",
+                       vst->codecpar->bits_per_coded_sample,
+                       vst->codecpar->width, vst->codecpar->height);
+                return AVERROR_INVALIDDATA;
+            }
             avio_skip(pb, 8 + 16 + 24); // black_level, white_level, xywh, active_area, exposure_bias
             if (avio_rl32(pb) != 0x2010100) /* RGGB */
                 avpriv_request_sample(avctx, "cfa_pattern");
             avio_skip(pb, 80); // calibration_illuminant1, color_matrix1, dynamic_range
-            vst->codec->pix_fmt  = AV_PIX_FMT_BAYER_RGGB16LE;
-            vst->codec->codec_tag = MKTAG('B', 'I', 'T', 16);
+            vst->codecpar->format    = AV_PIX_FMT_BAYER_RGGB16LE;
+            vst->codecpar->codec_tag = MKTAG('B', 'I', 'T', 16);
             size -= 164;
         } else if (ast && type == MKTAG('W', 'A', 'V', 'I') && size >= 16) {
-            ff_get_wav_header(pb, ast->codec, 16);
+            ret = ff_get_wav_header(avctx, pb, ast->codecpar, 16, 0);
+            if (ret < 0)
+                return ret;
             size -= 16;
         } else if (type == MKTAG('I','N','F','O')) {
             if (size > 0)
@@ -211,8 +217,8 @@ static void scan_file(AVFormatContext *avctx, AVStream *vst, AVStream *ast, int 
             time.tm_yday   = avio_rl16(pb);
             time.tm_isdst  = avio_rl16(pb);
             avio_skip(pb, 2);
-            strftime(str, sizeof(str), "%Y-%m-%d %H:%M:%S", &time);
-            av_dict_set(&avctx->metadata, "time", str, 0);
+            if (strftime(str, sizeof(str), "%Y-%m-%d %H:%M:%S", &time))
+                av_dict_set(&avctx->metadata, "time", str, 0);
             size -= 20;
         } else if (type == MKTAG('E','X','P','O') && size >= 16) {
             av_dict_set(&avctx->metadata, "isoMode", avio_rl32(pb) ? "auto" : "manual", 0);
@@ -236,10 +242,11 @@ static void scan_file(AVFormatContext *avctx, AVStream *vst, AVStream *ast, int 
         } else if (type == MKTAG('N','U','L','L')) {
         } else if (type == MKTAG('M','L','V','I')) { /* occurs when MLV and Mnn files are concatenated */
         } else {
-            av_log(avctx, AV_LOG_INFO, "unsupported tag %c%c%c%c, size %d\n", type&0xFF, (type>>8)&0xFF, (type>>16)&0xFF, (type>>24)&0xFF, size);
+            av_log(avctx, AV_LOG_INFO, "unsupported tag %c%c%c%c, size %u\n", type&0xFF, (type>>8)&0xFF, (type>>16)&0xFF, (type>>24)&0xFF, size);
         }
         avio_skip(pb, size);
     }
+    return 0;
 }
 
 static int read_header(AVFormatContext *avctx)
@@ -247,7 +254,8 @@ static int read_header(AVFormatContext *avctx)
     MlvContext *mlv = avctx->priv_data;
     AVIOContext *pb = avctx->pb;
     AVStream *vst = NULL, *ast = NULL;
-    int size;
+    int size, ret;
+    unsigned nb_video_frames, nb_audio_frames;
     uint64_t guid;
     char guidstr[32];
 
@@ -265,60 +273,56 @@ static int read_header(AVFormatContext *avctx)
     avio_skip(pb, 8); //fileNum, fileCount, fileFlags
 
     mlv->class[0] = avio_rl16(pb);
-    if (mlv->class[0]) {
+    mlv->class[1] = avio_rl16(pb);
+
+    nb_video_frames = avio_rl32(pb);
+    nb_audio_frames = avio_rl32(pb);
+
+    if (nb_video_frames && mlv->class[0]) {
         vst = avformat_new_stream(avctx, NULL);
         if (!vst)
             return AVERROR(ENOMEM);
         vst->id = 0;
+        vst->nb_frames = nb_video_frames;
         if ((mlv->class[0] & (MLV_CLASS_FLAG_DELTA|MLV_CLASS_FLAG_LZMA)))
             avpriv_request_sample(avctx, "compression");
-        vst->codec->codec_type = AVMEDIA_TYPE_VIDEO;
+        vst->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;
         switch (mlv->class[0] & ~(MLV_CLASS_FLAG_DELTA|MLV_CLASS_FLAG_LZMA)) {
         case MLV_VIDEO_CLASS_RAW:
-            vst->codec->codec_id = AV_CODEC_ID_RAWVIDEO;
+            vst->codecpar->codec_id = AV_CODEC_ID_RAWVIDEO;
             break;
         case MLV_VIDEO_CLASS_YUV:
-            vst->codec->pix_fmt  = AV_PIX_FMT_YUV420P;
-            vst->codec->codec_id = AV_CODEC_ID_RAWVIDEO;
-            vst->codec->codec_tag = 0;
+            vst->codecpar->format   = AV_PIX_FMT_YUV420P;
+            vst->codecpar->codec_id = AV_CODEC_ID_RAWVIDEO;
+            vst->codecpar->codec_tag = 0;
             break;
         case MLV_VIDEO_CLASS_JPEG:
-            vst->codec->codec_id = AV_CODEC_ID_MJPEG;
-            vst->codec->codec_tag = 0;
+            vst->codecpar->codec_id = AV_CODEC_ID_MJPEG;
+            vst->codecpar->codec_tag = 0;
             break;
         case MLV_VIDEO_CLASS_H264:
-            vst->codec->codec_id = AV_CODEC_ID_H264;
-            vst->codec->codec_tag = 0;
+            vst->codecpar->codec_id = AV_CODEC_ID_H264;
+            vst->codecpar->codec_tag = 0;
             break;
         default:
             avpriv_request_sample(avctx, "unknown video class");
         }
     }
 
-    mlv->class[1] = avio_rl16(pb);
-    if (mlv->class[1]) {
+    if (nb_audio_frames && mlv->class[1]) {
         ast = avformat_new_stream(avctx, NULL);
         if (!ast)
             return AVERROR(ENOMEM);
         ast->id = 1;
+        ast->nb_frames = nb_audio_frames;
         if ((mlv->class[1] & MLV_CLASS_FLAG_LZMA))
             avpriv_request_sample(avctx, "compression");
         if ((mlv->class[1] & ~MLV_CLASS_FLAG_LZMA) != MLV_AUDIO_CLASS_WAV)
             avpriv_request_sample(avctx, "unknown audio class");
 
-        ast->codec->codec_type = AVMEDIA_TYPE_AUDIO;
-        avpriv_set_pts_info(ast, 33, 1, ast->codec->sample_rate);
+        ast->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+        avpriv_set_pts_info(ast, 33, 1, ast->codecpar->sample_rate);
     }
-
-    if (vst)
-       vst->nb_frames = avio_rl32(pb);
-    else
-       avio_skip(pb, 4);
-
-    if (ast)
-       ast->nb_frames = avio_rl32(pb);
-    else
-       avio_skip(pb, 4);
 
     if (vst) {
        AVRational framerate;
@@ -332,26 +336,34 @@ static int read_header(AVFormatContext *avctx)
 
     /* scan primary file */
     mlv->pb[100] = avctx->pb;
-    scan_file(avctx, vst, ast, 100);
+    ret = scan_file(avctx, vst, ast, 100);
+    if (ret < 0)
+        return ret;
 
     /* scan secondary files */
     if (strlen(avctx->filename) > 2) {
         int i;
         char *filename = av_strdup(avctx->filename);
+
         if (!filename)
             return AVERROR(ENOMEM);
+
         for (i = 0; i < 100; i++) {
             snprintf(filename + strlen(filename) - 2, 3, "%02d", i);
-            if (avio_open2(&mlv->pb[i], filename, AVIO_FLAG_READ, &avctx->interrupt_callback, NULL) < 0)
+            if (avctx->io_open(avctx, &mlv->pb[i], filename, AVIO_FLAG_READ, NULL) < 0)
                 break;
             if (check_file_header(mlv->pb[i], guid) < 0) {
                 av_log(avctx, AV_LOG_WARNING, "ignoring %s; bad format or guid mismatch\n", filename);
-                avio_close(mlv->pb[i]);
-                mlv->pb[i] = NULL;
+                ff_format_io_close(avctx, &mlv->pb[i]);
                 continue;
             }
             av_log(avctx, AV_LOG_INFO, "scanning %s\n", filename);
-            scan_file(avctx, vst, ast, i);
+            ret = scan_file(avctx, vst, ast, i);
+            if (ret < 0) {
+                av_log(avctx, AV_LOG_WARNING, "ignoring %s; %s\n", filename, av_err2str(ret));
+                ff_format_io_close(avctx, &mlv->pb[i]);
+                continue;
+            }
         }
         av_free(filename);
     }
@@ -360,6 +372,11 @@ static int read_header(AVFormatContext *avctx)
         vst->duration = vst->nb_index_entries;
     if (ast)
         ast->duration = ast->nb_index_entries;
+
+    if ((vst && !vst->nb_index_entries) || (ast && !ast->nb_index_entries)) {
+        av_log(avctx, AV_LOG_ERROR, "no index entries found\n");
+        return AVERROR_INVALIDDATA;
+    }
 
     if (vst && ast)
         avio_seek(pb, FFMIN(vst->index_entries[0].pos, ast->index_entries[0].pos), SEEK_SET);
@@ -396,15 +413,15 @@ static int read_packet(AVFormatContext *avctx, AVPacket *pkt)
     if (size < 16)
         return AVERROR_INVALIDDATA;
     avio_skip(pb, 12); //timestamp, frameNumber
-    if (st->codec->codec_type == AVMEDIA_TYPE_VIDEO)
+    if (st->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
         avio_skip(pb, 8); // cropPosX, cropPosY, panPosX, panPosY
     space = avio_rl32(pb);
     avio_skip(pb, space);
 
     if ((mlv->class[st->id] & (MLV_CLASS_FLAG_DELTA|MLV_CLASS_FLAG_LZMA))) {
         ret = AVERROR_PATCHWELCOME;
-    } else if (st->codec->codec_type == AVMEDIA_TYPE_VIDEO) {
-        ret = av_get_packet(pb, pkt, (st->codec->width * st->codec->height * st->codec->bits_per_coded_sample + 7) >> 3);
+    } else if (st->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
+        ret = av_get_packet(pb, pkt, (st->codecpar->width * st->codecpar->height * st->codecpar->bits_per_coded_sample + 7) >> 3);
     } else { // AVMEDIA_TYPE_AUDIO
         if (space > UINT_MAX - 24 || size < (24 + space))
             return AVERROR_INVALIDDATA;
@@ -442,7 +459,10 @@ static int read_seek(AVFormatContext *avctx, int stream_index, int64_t timestamp
 static int read_close(AVFormatContext *s)
 {
     MlvContext *mlv = s->priv_data;
-    av_freep(&mlv->buffer);
+    int i;
+    for (i = 0; i < 100; i++)
+        if (mlv->pb[i])
+            ff_format_io_close(s, &mlv->pb[i]);
     return 0;
 }
 

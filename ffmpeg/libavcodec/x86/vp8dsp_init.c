@@ -1,7 +1,7 @@
 /*
  * VP8 DSP functions x86-optimized
  * Copyright (c) 2010 Ronald S. Bultje <rsbultje@gmail.com>
- * Copyright (c) 2010 Jason Garrett-Glaser <darkshikari@gmail.com>
+ * Copyright (c) 2010 Fiona Glaser <fiona@x264.com>
  *
  * This file is part of FFmpeg.
  *
@@ -23,7 +23,6 @@
 #include "libavutil/attributes.h"
 #include "libavutil/cpu.h"
 #include "libavutil/mem.h"
-#include "libavutil/x86/asm.h"
 #include "libavutil/x86/cpu.h"
 #include "libavcodec/vp8dsp.h"
 
@@ -169,7 +168,7 @@ static void ff_put_vp8_epel ## SIZE ## _h ## TAPNUMX ## v ## TAPNUMY ## _ ## OPT
     uint8_t *dst, ptrdiff_t dststride, uint8_t *src, \
     ptrdiff_t srcstride, int height, int mx, int my) \
 { \
-    DECLARE_ALIGNED(ALIGN, uint8_t, tmp)[SIZE * (MAXHEIGHT + TAPNUMY - 1)]; \
+    LOCAL_ALIGNED(ALIGN, uint8_t, tmp, [SIZE * (MAXHEIGHT + TAPNUMY - 1)]); \
     uint8_t *tmpptr = tmp + SIZE * (TAPNUMY / 2 - 1); \
     src -= srcstride * (TAPNUMY / 2 - 1); \
     ff_put_vp8_epel ## SIZE ## _h ## TAPNUMX ## _ ## OPT( \
@@ -214,7 +213,7 @@ static void ff_put_vp8_bilinear ## SIZE ## _hv_ ## OPT( \
     uint8_t *dst, ptrdiff_t dststride, uint8_t *src, \
     ptrdiff_t srcstride, int height, int mx, int my) \
 { \
-    DECLARE_ALIGNED(ALIGN, uint8_t, tmp)[SIZE * (MAXHEIGHT + 2)]; \
+    LOCAL_ALIGNED(ALIGN, uint8_t, tmp, [SIZE * (MAXHEIGHT + 2)]); \
     ff_put_vp8_bilinear ## SIZE ## _h_ ## OPT( \
         tmp, SIZE,      src, srcstride, height + 1, mx, my); \
     ff_put_vp8_bilinear ## SIZE ## _v_ ## OPT( \

@@ -4,7 +4,7 @@ CXX   = em++
 CCFLAGS = -O3 -s WASM=0 -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=134217728  -s DISABLE_EXCEPTION_CATCHING=0  --memory-init-file 1 -s ERROR_ON_UNDEFINED_SYMBOLS=0
 CFLAGS = -O3 -s WASM=0 -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=134217728  -s DISABLE_EXCEPTION_CATCHING=0  --memory-init-file 1 -D__JS__ -s ERROR_ON_UNDEFINED_SYMBOLS=0
 CXXFLAGS = -O3 -s WASM=0 -s OUTLINING_LIMIT=100000 -s TOTAL_MEMORY=134217728  -s DISABLE_EXCEPTION_CATCHING=0  --memory-init-file 1 -D__JS__ -std=c++11 -s ERROR_ON_UNDEFINED_SYMBOLS=0
-LDFLAGS      = 		   -L../../../../ffmpeg/build/js/x86/lib \
+LDFLAGS      = 		   -L../../ffmpeg/build/js/x86/lib \
 					   -lswscale \
 					   -lswresample \
 					   -lavcodec \
@@ -12,7 +12,7 @@ LDFLAGS      = 		   -L../../../../ffmpeg/build/js/x86/lib \
 					   -lavformat \
 					   -lavutil \
 					   -lavdevice
-INCLUDES = -I../../../../ffmpeg/build/js/x86/include \
+INCLUDES = -I../../ffmpeg/build/js/x86/include \
 		   -I. \
 		   -I./platform
 

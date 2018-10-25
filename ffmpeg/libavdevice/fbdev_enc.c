@@ -48,7 +48,7 @@ static av_cold int fbdev_write_header(AVFormatContext *h)
     int ret, flags = O_RDWR;
     const char* device;
 
-    if (h->nb_streams != 1 || h->streams[0]->codec->codec_type != AVMEDIA_TYPE_VIDEO) {
+    if (h->nb_streams != 1 || h->streams[0]->codecpar->codec_type != AVMEDIA_TYPE_VIDEO) {
         av_log(fbdev, AV_LOG_ERROR, "Only a single video stream is supported.\n");
         return AVERROR(EINVAL);
     }
@@ -105,11 +105,11 @@ static int fbdev_write_packet(AVFormatContext *h, AVPacket *pkt)
     enum AVPixelFormat fb_pix_fmt;
     int disp_height;
     int bytes_to_copy;
-    AVCodecContext *codec_ctx = h->streams[0]->codec;
-    enum AVPixelFormat video_pix_fmt = codec_ctx->pix_fmt;
-    int video_width = codec_ctx->width;
-    int video_height = codec_ctx->height;
-    int bytes_per_pixel = ((codec_ctx->bits_per_coded_sample + 7) >> 3);
+    AVCodecParameters *par = h->streams[0]->codecpar;
+    enum AVPixelFormat video_pix_fmt = par->format;
+    int video_width = par->width;
+    int video_height = par->height;
+    int bytes_per_pixel = ((par->bits_per_coded_sample + 7) >> 3);
     int src_line_size = video_width * bytes_per_pixel;
     int i;
 
@@ -186,63 +186,7 @@ static av_cold int fbdev_write_trailer(AVFormatContext *h)
 
 static int fbdev_get_device_list(AVFormatContext *s, AVDeviceInfoList *device_list)
 {
-    struct fb_var_screeninfo varinfo;
-    struct fb_fix_screeninfo fixinfo;
-    char device_file[12];
-    AVDeviceInfo *device = NULL;
-    int i, fd = -1, ret = 0;
-    const char *default_device = ff_fbdev_default_device();
-
-    if (!device_list)
-        return AVERROR(EINVAL);
-
-    for (i = 0; i <= 31; i++) {
-        snprintf(device_file, sizeof(device_file), "/dev/fb%d", i);
-
-        if ((fd = avpriv_open(device_file, O_RDWR)) < 0)
-            continue;
-        if (ioctl(fd, FBIOGET_VSCREENINFO, &varinfo) == -1)
-            goto fail_device;
-        if (ioctl(fd, FBIOGET_FSCREENINFO, &fixinfo) == -1)
-            goto fail_device;
-
-        device = av_mallocz(sizeof(AVDeviceInfo));
-        if (!device) {
-            ret = AVERROR(ENOMEM);
-            goto fail_device;
-        }
-        device->device_name = av_strdup(device_file);
-        device->device_description = av_strdup(fixinfo.id);
-        if (!device->device_name || !device->device_description) {
-            ret = AVERROR(ENOMEM);
-            goto fail_device;
-        }
-
-        if ((ret = av_dynarray_add_nofree(&device_list->devices,
-                                          &device_list->nb_devices, device)) < 0)
-            goto fail_device;
-
-        if (default_device && !strcmp(device->device_name, default_device)) {
-            device_list->default_device = device_list->nb_devices - 1;
-            default_device = NULL;
-        }
-
-        continue;
-
-      fail_device:
-        if (device) {
-            av_free(device->device_name);
-            av_free(device->device_description);
-            av_freep(&device);
-        }
-        if (fd >= 0) {
-            close(fd);
-            fd = -1;
-        }
-        if (ret < 0)
-            return ret;
-    }
-    return 0;
+    return ff_fbdev_get_device_list(device_list);
 }
 
 #define OFFSET(x) offsetof(FBDevContext, x)

@@ -30,7 +30,7 @@
 #include "avcodec.h"
 #include "get_bits.h"
 #include "mathops.h"
-#include "dsputil.h"
+#include "huffyuvdsp.h"
 #include "lagarithrac.h"
 #include "thread.h"
 
@@ -50,7 +50,7 @@ enum LagarithFrameType {
 
 typedef struct LagarithContext {
     AVCodecContext *avctx;
-    DSPContext dsp;
+    HuffYUVDSPContext hdsp;
     int zeros;                  /**< number of consecutive zero bytes encountered */
     int zeros_rem;              /**< number of zero bytes remaining to output */
     uint8_t *rgb_planes;
@@ -59,11 +59,11 @@ typedef struct LagarithContext {
 } LagarithContext;
 
 /**
- * Compute the 52bit mantissa of 1/(double)denom.
+ * Compute the 52-bit mantissa of 1/(double)denom.
  * This crazy format uses floats in an entropy coder and we have to match x86
  * rounding exactly, thus ordinary floats aren't portable enough.
  * @param denom denominator
- * @return 52bit mantissa
+ * @return 52-bit mantissa
  * @see softfloat_mul
  */
 static uint64_t softfloat_reciprocal(uint32_t denom)
@@ -80,9 +80,9 @@ static uint64_t softfloat_reciprocal(uint32_t denom)
 /**
  * (uint32_t)(x*f), where f has the given mantissa, and exponent 0
  * Used in combination with softfloat_reciprocal computes x/(double)denom.
- * @param x 32bit integer factor
+ * @param x 32-bit integer factor
  * @param mantissa mantissa of f with exponent 0
- * @return 32bit integer value (x*f)
+ * @return 32-bit integer value (x*f)
  * @see softfloat_reciprocal
  */
 static uint32_t softfloat_mul(uint32_t x, uint64_t mantissa)
@@ -128,7 +128,7 @@ static int lag_decode_prob(GetBitContext *gb, uint32_t *value)
     }
 
     val  = get_bits_long(gb, bits);
-    val |= 1 << bits;
+    val |= 1U << bits;
 
     *value = val - 1;
 
@@ -233,8 +233,8 @@ static void add_lag_median_prediction(uint8_t *dst, uint8_t *src1,
                                       uint8_t *diff, int w, int *left,
                                       int *left_top)
 {
-    /* This is almost identical to add_hfyu_median_prediction in dsputil.h.
-     * However the &0xFF on the gradient predictor yealds incorrect output
+    /* This is almost identical to add_hfyu_median_pred in huffyuvdsp.h.
+     * However the &0xFF on the gradient predictor yields incorrect output
      * for lagarith.
      */
     int i;
@@ -260,8 +260,7 @@ static void lag_pred_line(LagarithContext *l, uint8_t *buf,
 
     if (!line) {
         /* Left prediction only for first line */
-        L = l->dsp.add_hfyu_left_prediction(buf, buf,
-                                            width, 0);
+        L = l->hdsp.add_hfyu_left_pred(buf, buf, width, 0);
     } else {
         /* Left pixel is actually prev_row[width] */
         L = buf[width - stride - 1];
@@ -290,7 +289,7 @@ static void lag_pred_line_yuy2(LagarithContext *l, uint8_t *buf,
         L= buf[0];
         if (is_luma)
             buf[0] = 0;
-        l->dsp.add_hfyu_left_prediction(buf, buf, width, 0);
+        l->hdsp.add_hfyu_left_pred(buf, buf, width, 0);
         if (is_luma)
             buf[0] = L;
         return;
@@ -313,8 +312,7 @@ static void lag_pred_line_yuy2(LagarithContext *l, uint8_t *buf,
     } else {
         TL = buf[width - (2 * stride) - 1];
         L  = buf[width - stride - 1];
-        l->dsp.add_hfyu_median_prediction(buf, buf - stride, buf, width,
-                                          &L, &TL);
+        l->hdsp.add_hfyu_median_pred(buf, buf - stride, buf, width, &L, &TL);
     }
 }
 
@@ -677,10 +675,10 @@ static int lag_decode_frame(AVCodecContext *avctx,
         lag_decode_arith_plane(l, p->data[0], avctx->width, avctx->height,
                                p->linesize[0], buf + offset_ry,
                                buf_size - offset_ry);
-        lag_decode_arith_plane(l, p->data[1], avctx->width / 2,
+        lag_decode_arith_plane(l, p->data[1], (avctx->width + 1) / 2,
                                avctx->height, p->linesize[1],
                                buf + offset_gu, buf_size - offset_gu);
-        lag_decode_arith_plane(l, p->data[2], avctx->width / 2,
+        lag_decode_arith_plane(l, p->data[2], (avctx->width + 1) / 2,
                                avctx->height, p->linesize[2],
                                buf + offset_bv, buf_size - offset_bv);
         break;
@@ -704,11 +702,11 @@ static int lag_decode_frame(AVCodecContext *avctx,
         lag_decode_arith_plane(l, p->data[0], avctx->width, avctx->height,
                                p->linesize[0], buf + offset_ry,
                                buf_size - offset_ry);
-        lag_decode_arith_plane(l, p->data[2], avctx->width / 2,
-                               avctx->height / 2, p->linesize[2],
+        lag_decode_arith_plane(l, p->data[2], (avctx->width + 1) / 2,
+                               (avctx->height + 1) / 2, p->linesize[2],
                                buf + offset_gu, buf_size - offset_gu);
-        lag_decode_arith_plane(l, p->data[1], avctx->width / 2,
-                               avctx->height / 2, p->linesize[1],
+        lag_decode_arith_plane(l, p->data[1], (avctx->width + 1) / 2,
+                               (avctx->height + 1) / 2, p->linesize[1],
                                buf + offset_bv, buf_size - offset_bv);
         break;
     default:
@@ -727,7 +725,7 @@ static av_cold int lag_decode_init(AVCodecContext *avctx)
     LagarithContext *l = avctx->priv_data;
     l->avctx = avctx;
 
-    ff_dsputil_init(&l->dsp, avctx);
+    ff_huffyuvdsp_init(&l->hdsp);
 
     return 0;
 }
@@ -750,5 +748,5 @@ AVCodec ff_lagarith_decoder = {
     .init           = lag_decode_init,
     .close          = lag_decode_end,
     .decode         = lag_decode_frame,
-    .capabilities   = CODEC_CAP_DR1 | CODEC_CAP_FRAME_THREADS,
+    .capabilities   = AV_CODEC_CAP_DR1 | AV_CODEC_CAP_FRAME_THREADS,
 };

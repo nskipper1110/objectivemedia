@@ -34,7 +34,7 @@ static av_cold int ra144_decode_init(AVCodecContext * avctx)
     RA144Context *ractx = avctx->priv_data;
 
     ractx->avctx = avctx;
-    ff_dsputil_init(&ractx->dsp, avctx);
+    ff_audiodsp_init(&ractx->adsp);
 
     ractx->lpc_coef[0] = ractx->lpc_tables[0];
     ractx->lpc_coef[1] = ractx->lpc_tables[1];
@@ -134,5 +134,5 @@ AVCodec ff_ra_144_decoder = {
     .priv_data_size = sizeof(RA144Context),
     .init           = ra144_decode_init,
     .decode         = ra144_decode_frame,
-    .capabilities   = CODEC_CAP_DR1,
+    .capabilities   = AV_CODEC_CAP_DR1,
 };
