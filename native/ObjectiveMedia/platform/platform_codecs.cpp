@@ -51,7 +51,7 @@ Codec_Errors H263VideoEncoder::Open(MediaFormat* encFormat, CodecData* encData){
 		CurrentData = encData;
 		VideoMediaFormat* vf = (VideoMediaFormat*)encFormat;
 		//find the H.263 encoder.
-		FFEncoder = avcodec_find_encoder(CODEC_ID_H263P);
+		FFEncoder = avcodec_find_encoder(AV_CODEC_ID_H263P);
 		if(!FFEncoder) //if I didn't find it, return not supported.
 			retval = CODEC_NOT_SUPPORTED;
 		else{
@@ -80,13 +80,13 @@ Codec_Errors H263VideoEncoder::Open(MediaFormat* encFormat, CodecData* encData){
 			sprintf(dbg_buffer, "\tKFS = %d\n", FFEncoderContext->gop_size);
 			DbgOut(dbg_buffer);
 			FFEncoderContext->max_b_frames = 0;
-			FFEncoderContext->pix_fmt = PIX_FMT_YUV420P;
-			TempFrame = alloc_picture(PIX_FMT_YUV420P, vf->Width, vf->Height);
+			FFEncoderContext->pix_fmt = AV_PIX_FMT_YUV420P;
+			TempFrame = alloc_picture(AV_PIX_FMT_YUV420P, vf->Width, vf->Height);
 			sprintf(dbg_buffer, "\tWidth= %d, Height = %d, Format = %d\n", vf->Width, vf->Height, vf->PixelFormat);
 			DbgOut(dbg_buffer);
 			//if the input frame's format is going to be different from our format, then we need to scale.
-			PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
-			if(fmt != PIX_FMT_YUV420P)
+			AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+			if(fmt != AV_PIX_FMT_YUV420P)
 			{
 				sprintf(dbg_buffer, "\tInitializing Scaler\n");
 				DbgOut(dbg_buffer);
@@ -94,7 +94,7 @@ Codec_Errors H263VideoEncoder::Open(MediaFormat* encFormat, CodecData* encData){
 				ScaleContext = sws_getContext(vf->Width, vf->Height,
                                                  fmt,
                                                  vf->Width, vf->Height,
-                                                 PIX_FMT_YUV420P,
+                                                 AV_PIX_FMT_YUV420P,
                                                  SWS_BICUBIC, NULL, NULL, NULL);
 			}
 			//open the codec.
@@ -160,6 +160,10 @@ Codec_Errors H263VideoEncoder::Close(){
 
 Codec_Errors H263VideoEncoder::Encode(void* inSample, long insize, void** outSample, long* outsize, long long timestamp){
 	Codec_Errors retval = CODEC_SUCCEEDED;
+	#ifdef __JS__
+	sprintf(dbg_buffer, "H263VideoEncoder::Encode++\n");
+	DbgOut(dbg_buffer);
+	#endif
 	try{
 		VideoMediaFormat* vf = (VideoMediaFormat*) CurrentFormat;
 		if(vf == NULL){ //if there is no format information, then we haven't opened yet.
@@ -173,13 +177,38 @@ Codec_Errors H263VideoEncoder::Encode(void* inSample, long insize, void** outSam
 			retval = CODEC_CODEC_NOT_OPENED;
 		}
 		else{
+			
+			#ifdef __JS__
+			sprintf(dbg_buffer, "inSample size = %d\n", insize);
+			DbgOut(dbg_buffer);
+			
+			#endif
 			//get the FFMpeg equiv. pixel format for the format provided.
-			PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+			AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
 			//if the format of the incoming frame isn't what the encoder expects, then we need to scale.
-			if(fmt != PIX_FMT_YUV420P){
+			#ifdef __JS__
+			sprintf(dbg_buffer, "Format = %d, Width = %d, Height = %d\n", vf->PixelFormat, vf->Width, vf->Height);
+			DbgOut(dbg_buffer);
+			
+			#endif
+			TempFrame->format = AV_PIX_FMT_YUV420P;
+			TempFrame->width = vf->Width;
+			TempFrame->height = vf->Height;
+			if(fmt != AV_PIX_FMT_YUV420P){
+				#ifdef __JS__
+				sprintf(dbg_buffer, "Scaling image to match 420 YUV format\n");
+				DbgOut(dbg_buffer);
+				
+				#endif
 				AVFrame* tpic = alloc_and_fill_picture(fmt, vf->Width, vf->Height, inSample);
-				sws_scale(ScaleContext, tpic->data, tpic->linesize,
+				
+				int r = sws_scale(ScaleContext, tpic->data, tpic->linesize,
                       0, vf->Height, TempFrame->data, TempFrame->linesize);
+				#ifdef __JS__
+				sprintf(dbg_buffer, "Scaled image returned size of %d\n", r);
+				DbgOut(dbg_buffer);
+				
+				#endif
 				av_free(tpic);
 				tpic = NULL;
 			}
@@ -188,25 +217,57 @@ Codec_Errors H263VideoEncoder::Encode(void* inSample, long insize, void** outSam
 			}
 			//create a buffer to receive the compressed frame, with a little padding for good measure.
 			//TO-DO: Is this size necessary or beneficial?
-			int outbuf_size = 100000 + 12*vf->Width*vf->Height;
-			void* outbuf = av_malloc(outbuf_size);
+			//int outbuf_size = 0;//100000 + 12*vf->Width*vf->Height;
+			//void* outbuf = av_malloc(outbuf_size);
 			//encode the video frame.
-			outbuf_size = avcodec_encode_video(FFEncoderContext, (unsigned char*)outbuf, outbuf_size, TempFrame);
+			int got_packet = 0;
+			AVPacket pkt;
+			av_init_packet(&pkt);
+			#ifdef __JS__
+			sprintf(dbg_buffer, "Initialized packet\n");
+			DbgOut(dbg_buffer);
+			
+			#endif
+			pkt.data = NULL;
+			pkt.size = 0;
+			avcodec_encode_video2(FFEncoderContext, &pkt, TempFrame, &got_packet);
+			#ifdef __JS__
+			sprintf(dbg_buffer, "Encoded video with result %d\n", got_packet);
+			DbgOut(dbg_buffer);
+			
+			#endif
 			//if the resulting buffer size is 0, then we didn't get anything back from the function.
 			//This isn't bad, just means the encoder needs some data to start encoding.
-			if(outbuf_size == 0){
-				av_free(outbuf); //free the buffer
+			if(got_packet == 0){
+				//av_free(outbuf); //free the buffer
+				#ifdef __JS__
+				sprintf(dbg_buffer, "Ah! Didn't get a packet!\n");
+				DbgOut(dbg_buffer);
+				
+				#endif
 			}
 			else{
-				*outSample = outbuf; //set the reference for the outgoing sample.
+				*outSample = pkt.data; //set the reference for the outgoing sample.
+				#ifdef __JS__
+				sprintf(dbg_buffer, "Result size is %d\n", pkt.size);
+				DbgOut(dbg_buffer);
 				
+				#endif
 			}
-			*outsize = outbuf_size; //set the size of the outgoing sample.
+			*outsize = pkt.size; //set the size of the outgoing sample.
 		}
 	}
 	catch(...){
 		retval = CODEC_UNEXPECTED;
+		#ifdef __JS__
+		sprintf(dbg_buffer, "An exception occurred!!!\n");
+		DbgOut(dbg_buffer);
+		#endif
 	}
+	#ifdef __JS__
+	sprintf(dbg_buffer, "H263VideoEncoder::Encode--, returning %d\n", retval);
+	DbgOut(dbg_buffer);
+	#endif
 	return retval;
 }
 
@@ -253,7 +314,7 @@ Codec_Errors H263VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 		CurrentData = encData;
 		VideoMediaFormat* vf = (VideoMediaFormat*)encFormat;
 		//find the H.263 decoder.
-		FFDecoder = avcodec_find_decoder(CODEC_ID_H263);
+		FFDecoder = avcodec_find_decoder(AV_CODEC_ID_H263);
 		if(!FFDecoder) //if it returned null, we didn't find it, exit function.
 			retval = CODEC_NOT_SUPPORTED;
 		else{ //found decoder, now open.
@@ -265,14 +326,14 @@ Codec_Errors H263VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 				retval = CODEC_FAILED_TO_OPEN;
 			else{
 				//get the ffmpeg format from the desired output format.
-				PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
 				TempFrame = alloc_picture(fmt, vf->Width, vf->Height); //allocate temp based on this format.
 
-				if(fmt != PIX_FMT_YUV420P) //if it isn't the standard format, then instantiate the scaler.
+				if(fmt != AV_PIX_FMT_YUV420P) //if it isn't the standard format, then instantiate the scaler.
 				{
 				
 					ScaleContext = sws_getContext(vf->Width, vf->Height,
-													 PIX_FMT_YUV420P,
+													 AV_PIX_FMT_YUV420P,
 													 vf->Width, vf->Height,
 													 fmt,
 													 SWS_BICUBIC, NULL, NULL, NULL);
@@ -355,16 +416,16 @@ Codec_Errors H263VideoDecoder::Decode(void* inSample, long insize, void** outSam
 			avpkt.size = insize;
 			avpkt.data = (unsigned char*) inSample;
 			//allocate a picture to receive the decoded frame.
-			AVFrame* picture= avcodec_alloc_frame();
+			AVFrame* picture= av_frame_alloc();
 			int got_picture, len;
 			//decode the packet.
 			len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
 			//if got_picture returned true, then we have a decoded frame!
 			if(got_picture != 0){
 				//get the desired output format.
-				PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
 				//if the desired format isn't the decoder format, then we need to scale.
-				if(fmt != PIX_FMT_YUV420P){
+				if(fmt != AV_PIX_FMT_YUV420P){
 					//allocate a frame of the desired format.
 					AVFrame* tpic = alloc_picture(fmt, vf->Width, vf->Height);
 					//scale the frame.
@@ -430,7 +491,7 @@ Codec_Errors VC1VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 		CurrentData = encData;
 		VideoMediaFormat* vf = (VideoMediaFormat*)encFormat;
 		//find the decoder.
-		FFDecoder = avcodec_find_decoder(CODEC_ID_WMV3);
+		FFDecoder = avcodec_find_decoder(AV_CODEC_ID_WMV3);
 		if(CurrentFormat == NULL){//if no format, fail.
 			retval = CODEC_INVALID_INPUT;
 		}
@@ -469,14 +530,14 @@ Codec_Errors VC1VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 				if(err < 0) //if there was an error, fail.
 					retval = CODEC_FAILED_TO_OPEN;
 				//load the desired output format.
-				PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
 				TempFrame = alloc_picture(fmt, vf->Width, vf->Height);
 				//if the desired output format is not standard, then open the scaler.
-				if(fmt != PIX_FMT_YUV420P)
+				if(fmt != AV_PIX_FMT_YUV420P)
 				{
 				
 					ScaleContext = sws_getContext(vf->Width, vf->Height,
-													 PIX_FMT_YUV420P,
+													 AV_PIX_FMT_YUV420P,
 													 vf->Width, vf->Height,
 													 fmt,
 													 SWS_BICUBIC, NULL, NULL, NULL);
@@ -548,17 +609,17 @@ Codec_Errors VC1VideoDecoder::Decode(void* inSample, long insize, void** outSamp
 			avpkt.size = insize;
 			avpkt.data = (unsigned char*) inSample;
 			//allocate a frame to receive the decoded frame.
-			AVFrame* picture= avcodec_alloc_frame();
+			AVFrame* picture= av_frame_alloc();
 			int got_picture, len;
 			//decode the frame.
 			len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
 			//if true, then we have a decoded frame!
 			if(got_picture != 0){
 				//get the desired output format.
-				PixelFormat fmt = (PixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
 				int linesize = VideoMediaFormat::GetPixelBits(vf->PixelFormat) / 8 * vf->Width;
 				//if desired format isn't standard, then we need to scale.
-				if(fmt != PIX_FMT_YUV420P){
+				if(fmt != AV_PIX_FMT_YUV420P){
 					//allocate temp picture as desired format.
 					AVFrame* tpic = alloc_picture(fmt, vf->Width, vf->Height);
 					//scale to desired format.
@@ -622,7 +683,7 @@ Codec_Errors G7231AudioEncoder::Open(MediaFormat* encFormat, CodecData* encData)
 		CurrentData = encData;
 		AudioMediaFormat* vf = (AudioMediaFormat*)encFormat;
 		//find the G.729 encoder.
-		FFEncoder = avcodec_find_encoder(CODEC_ID_G723_1);
+		FFEncoder = avcodec_find_encoder(AV_CODEC_ID_G723_1);
 		if(!FFEncoder) //if I didn't find it, return not supported.
 			retval = CODEC_NOT_SUPPORTED;
 		else{
@@ -693,7 +754,7 @@ Codec_Errors G7231AudioEncoder::Encode(void* inSample, long insize, void** outSa
 			av_init_packet(&pack);
 			pack.data = NULL;
 			pack.size = 0;
-			AVFrame* frame = avcodec_alloc_frame();
+			AVFrame* frame = av_frame_alloc();
 			AVSampleFormat fmt = AV_SAMPLE_FMT_S16;
 			if(vf->BitsPerSample == 8){
 				fmt = AV_SAMPLE_FMT_U8;
@@ -773,7 +834,7 @@ Codec_Errors G7231AudioDecoder::Open(MediaFormat* encFormat, CodecData* encData)
 		CurrentData = encData;
 		AudioMediaFormat* vf = (AudioMediaFormat*)encFormat;
 		//find the G.729 Decoder.
-		FFDecoder = avcodec_find_decoder(CODEC_ID_G723_1);
+		FFDecoder = avcodec_find_decoder(AV_CODEC_ID_G723_1);
 		if(!FFDecoder) //if I didn't find it, return not supported.
 			retval = CODEC_NOT_SUPPORTED;
 		else{
@@ -851,7 +912,7 @@ Codec_Errors G7231AudioDecoder::Decode(void* inSample, long insize, void** outSa
 			av_init_packet(&pack);
 			pack.data = (unsigned char*)inSample;
 			pack.size = insize;
-			AVFrame* frame = avcodec_alloc_frame();
+			AVFrame* frame = av_frame_alloc();
 			//avcodec_get_frame_defaults(frame);
 			int got_it = 1;
 			int ret = avcodec_decode_audio4(FFDecoderContext, frame, &got_it, &pack);
@@ -868,7 +929,7 @@ Codec_Errors G7231AudioDecoder::Decode(void* inSample, long insize, void** outSa
 				retval = CODEC_NO_OUTPUT;
 			}
                         //av_free(frame->data);
-			avcodec_free_frame(&frame);
+			av_frame_free(&frame);
 		}
 	}
 	catch(...){

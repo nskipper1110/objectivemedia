@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script src="objectivemedia.js">
+        </script>
+        <script>
+            function onOpen(){
+                var r = Module._js_H263VideoEncoder_PlatformOpen(0, 320, 240, 20, 32, 256000, 0, 75, 75, 16);
+                alert("Open returned " + r);
+                
+            }
+            
+            var encodedData = null;
+            var decodedData = null;
+
+            function onEncode(){
+                var canvas = document.createElement("canvas");
+                canvas.width = 320;
+                canvas.height = 240;
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "red";
+                ctx.fillRect(5,0,105, 240);
+                ctx.fillStyle = "green";
+                ctx.fillRect(110,0,105, 240);
+                ctx.fillStyle = "blue";
+                ctx.fillRect(215,0,105, 240);
+                var imgData = ctx.getImageData(0,0,320,240);
+                var size = imgData.data.BYTES_PER_ELEMENT * imgData.data.length;
+                var srcPtr = Module._malloc(size);
+                var dataHeap = new Uint8Array(Module.HEAPU8.buffer, srcPtr, size);
+                dataHeap.set(new Uint8Array(imgData.data.buffer));
+                var result = Module._js_H263VideoEncoder_PlatformEncode(dataHeap.byteOffset, size, 0);
+                console.log(result);
+                
+            }
+
+            function onClose(){
+                var r = Module._js_H263VideoEncoder_PlatformClose();
+                alert("Close returned " + r);
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <button type="button" onclick="onOpen();">Open</button>
+        <button type="button" onclick="onEncode();">Encode</button>
+        <button type="button" onclick="onClose();">Close</button>
+    </body>
+</html>

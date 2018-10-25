@@ -1,4 +1,4 @@
-prefix=./build/win/x86
+prefix=./build/js/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -9,6 +9,6 @@ Version: 55.37.101
 Requires: libavcodec = 55.58.105
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavformat -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+Libs: -L${libdir}  -lavformat -lX11 -lm -pthread
 Libs.private: 
 Cflags: -I${includedir}
