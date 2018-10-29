@@ -16,7 +16,7 @@ INCLUDES = -I../../ffmpeg/build/js/x86/include \
 		   -I. \
 		   -I./platform
 
-TARGET  = ./objectivemedia.js
+TARGET  = ./build/js/x86/objectivemedia.js
 SOURCES = $(shell echo ./*.cpp) \
 		  $(shell echo ./platform/*.cpp) \
 		  $(shell echo ./js/*.cpp) \

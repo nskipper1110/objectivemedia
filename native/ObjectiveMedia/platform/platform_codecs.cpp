@@ -20,6 +20,7 @@
 
 #include "platform_codecs.h"
 #include "platform_devices.h"
+//#region H263VideoEncoder
 /////////////////////////////////////////////////////////////
 // H263VideoEncoder implementation
 /////////////////////////////////////////////////////////////
@@ -285,7 +286,7 @@ Codec_Errors H263VideoEncoder::Decode(void* inSample, long insize, void** outSam
 H263VideoEncoder::~H263VideoEncoder(){
 	//if(FFEncoderContext != NULL) Close(); //free the objects by calling close.
 }
-
+//#endregion
 /////////////////////////////////////////////////////////////
 // H263VideoDecoder implementation
 /////////////////////////////////////////////////////////////
@@ -940,4 +941,181 @@ Codec_Errors G7231AudioDecoder::Decode(void* inSample, long insize, void** outSa
 
 G7231AudioDecoder::~G7231AudioDecoder(){
 	//Close(); //free the objects by calling close.
+}
+
+/////////////////////////////////////////////////////////////
+// H264VideoDecoder implementation
+/////////////////////////////////////////////////////////////
+
+H264VideoDecoder::H264VideoDecoder(){
+	//intialize all global variables to null for validation checking later.
+	FFEncoder = NULL;
+	FFEncoderContext = NULL;
+
+	FFDecoder = NULL;
+	FFDecoderContext = NULL;
+
+	CurrentFormat = NULL;
+	CurrentData = NULL;
+	TempFrame = NULL;
+	ScaleContext = NULL;
+}
+
+Codec_Errors H264VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
+	Codec_Errors retval = CODEC_SUCCEEDED;
+	try
+	{
+		avcodec_register_all(); //initialize FFMPEG codecs.
+		//set global variables.
+		CurrentFormat = encFormat;
+		CurrentData = encData;
+		VideoMediaFormat* vf = (VideoMediaFormat*)encFormat;
+		//find the H.264 decoder.
+		FFDecoder = avcodec_find_decoder(AV_CODEC_ID_H264);
+		if(!FFDecoder) //if it returned null, we didn't find it, exit function.
+			retval = CODEC_NOT_SUPPORTED;
+		else{ //found decoder, now open.
+			//allocate context.
+			FFDecoderContext = avcodec_alloc_context3(FFDecoder);
+			//open decoder.
+			int err = avcodec_open2(FFDecoderContext, FFDecoder, NULL);
+			if(err < 0) //if error in open, fail.
+				retval = CODEC_FAILED_TO_OPEN;
+			else{
+				//get the ffmpeg format from the desired output format.
+				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+				TempFrame = alloc_picture(fmt, vf->Width, vf->Height); //allocate temp based on this format.
+
+				if(fmt != AV_PIX_FMT_YUV420P) //if it isn't the standard format, then instantiate the scaler.
+				{
+				
+					ScaleContext = sws_getContext(vf->Width, vf->Height,
+													 AV_PIX_FMT_YUV420P,
+													 vf->Width, vf->Height,
+													 fmt,
+													 SWS_BICUBIC, NULL, NULL, NULL);
+				}
+			}
+			
+		}
+	}
+	catch(...)
+	{
+		retval = CODEC_UNEXPECTED;
+	}
+
+	return retval;
+}
+
+Codec_Errors H264VideoDecoder::Close(){
+	Codec_Errors retval = CODEC_SUCCEEDED;
+	try{
+		sprintf(dbg_buffer, "Closing H264VideoDecoder\n");
+		DbgOut(dbg_buffer);
+		if(FFDecoderContext != NULL){ //if we have instantiated the context, then close the codec and free it.
+			sprintf(dbg_buffer, "\tClosing H264VideoDecoder Codec Context\n");
+			DbgOut(dbg_buffer);
+			avcodec_close(FFDecoderContext);
+			av_free(FFDecoderContext);
+			FFDecoderContext = NULL;
+			FFDecoder = NULL;
+		}
+		if(ScaleContext != NULL){ //if we have instantiated the scaler, then delete the reference.
+			sprintf(dbg_buffer, "\tClosing H264VideoDecoder Scaler\n");
+			DbgOut(dbg_buffer);
+			av_free(ScaleContext);
+			ScaleContext = NULL;
+		}
+
+		if(TempFrame != NULL){//free the temp frame used by the scaler.
+			//if(TempFrame->data[0] != NULL) av_free(TempFrame->data[0]);
+			sprintf(dbg_buffer, "\tClosing H264VideoDecoder Temp Frame\n");
+			DbgOut(dbg_buffer);
+			av_free(TempFrame);
+			TempFrame = NULL;
+		}
+	}
+	catch(...){
+		retval = CODEC_UNEXPECTED;
+	}
+	sprintf(dbg_buffer, "Closed H264VideoDecoder\n");
+	DbgOut(dbg_buffer);
+	return retval;
+}
+
+
+Codec_Errors H264VideoDecoder::Encode(void* inSample, long insize, void** outSample, long* outsize, long long timestamp){
+	Codec_Errors retval = CODEC_NOT_SUPPORTED;
+	try{
+
+	}
+	catch(...){
+		retval = CODEC_UNEXPECTED;
+	}
+	return retval;
+}
+
+Codec_Errors H264VideoDecoder::Decode(void* inSample, long insize, void** outSample, long* outsize, long long timestamp){
+	Codec_Errors retval = CODEC_SUCCEEDED;
+	try{
+		VideoMediaFormat* vf = (VideoMediaFormat*)CurrentFormat;
+		//validate parameters, if not opened, then fail.
+		if(vf == NULL){
+			retval = CODEC_CODEC_NOT_OPENED;
+		}
+		else if(FFDecoderContext == NULL){
+			retval = CODEC_CODEC_NOT_OPENED;
+		}
+		else{
+			//initialize a packet.
+			AVPacket avpkt;
+			av_init_packet(&avpkt);
+			avpkt.size = insize;
+			avpkt.data = (unsigned char*) inSample;
+			//allocate a picture to receive the decoded frame.
+			AVFrame* picture= av_frame_alloc();
+			int got_picture, len;
+			//decode the packet.
+			len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
+			//if got_picture returned true, then we have a decoded frame!
+			if(got_picture != 0){
+				//get the desired output format.
+				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
+				//if the desired format isn't the decoder format, then we need to scale.
+				if(fmt != AV_PIX_FMT_YUV420P){
+					//allocate a frame of the desired format.
+					AVFrame* tpic = alloc_picture(fmt, vf->Width, vf->Height);
+					//scale the frame.
+					sws_scale(ScaleContext, picture->data, picture->linesize,
+						  0, vf->Height, tpic->data, tpic->linesize);
+					//set the outgoing reference.
+					*outSample = tpic->data[0];
+					//calculate and set the outgoing frame size, in bytes.
+					*outsize = picture->width * picture->height * VideoMediaFormat::GetPixelBits(vf->PixelFormat) / 8;
+					//free the temporary picture.
+					av_free(tpic);
+					tpic = NULL;
+				}
+				else{//if we desire the standard format, then just set the reference and size.
+					*outSample = picture->data[0];
+					*outsize = picture->width * picture->height * 12 / 8;
+				}
+			
+			}
+			else{
+				*outsize = 0;
+			}
+			av_free(picture);
+		}
+		
+
+	}
+	catch(...){
+		retval = CODEC_UNEXPECTED;
+	}
+	return retval;
+}
+
+H264VideoDecoder::~H264VideoDecoder(){
+	
 }
