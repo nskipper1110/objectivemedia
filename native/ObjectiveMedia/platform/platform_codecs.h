@@ -260,3 +260,4 @@ public:
 	~G7231AudioDecoder();
 protected:
 };
+

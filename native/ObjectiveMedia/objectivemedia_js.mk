@@ -19,7 +19,7 @@ INCLUDES = -I../../ffmpeg/build/js/x86/include \
 TARGET  = ./objectivemedia.js
 SOURCES = $(shell echo ./*.cpp) \
 		  $(shell echo ./platform/*.cpp) \
-		  ./js/js_h263encoder.cpp \
+		  $(shell echo ./js/*.cpp) \
 #HEADERS = $(shell echo ./*.h) \
 #		  $(shell echo ./jni/*.h) \
 #		  $(shell echo ./platform/*.h)
@@ -34,5 +34,5 @@ clean:
 	rm -f $(OBJECTS) $(TARGET)
 
 $(TARGET) : $(OBJECTS)
-	mkdir -p ../../Java/com.mti.primitives/com.mti.primitives/src/com/mti/primitives/os/js/x86/
+	mkdir -p build/js/x86/
 	$(CC) $(CCFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)

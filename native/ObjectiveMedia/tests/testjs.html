@@ -5,8 +5,9 @@
         <script>
             function onOpen(){
                 var r = Module._js_H263VideoEncoder_PlatformOpen(0, 320, 240, 20, 32, 256000, 0, 75, 75, 16);
-                alert("Open returned " + r);
-                
+                alert("Open Encoder returned " + r);
+                r = Module._js_H263VideoDecoder_PlatformOpen(0, 320, 240, 20, 32, 256000, 0, 75, 75, 16);
+                alert("Open Decoder returned " + r);
             }
             
             var encodedData = null;
@@ -28,9 +29,22 @@
                 var srcPtr = Module._malloc(size);
                 var dataHeap = new Uint8Array(Module.HEAPU8.buffer, srcPtr, size);
                 dataHeap.set(new Uint8Array(imgData.data.buffer));
-                var result = Module._js_H263VideoEncoder_PlatformEncode(dataHeap.byteOffset, size, 0);
-                console.log(result);
+                var encresult = Module._js_H263VideoEncoder_PlatformEncode(dataHeap.byteOffset, size, 0);
+                var outsize = Module._js_Helpers_BytesToInt(encresult);
                 
+                var result = Module._js_H263VideoDecoder_PlatformDecode(encresult+4, outsize, 0);
+                if(result != 0){
+                    var decsize = Module._js_Helpers_BytesToInt(result);
+                    dataHeap = new Uint8Array(Module.HEAPU8.buffer, result + 4, decsize);
+                    var destCanvas = document.getElementById("ResultCanvas");
+                    ctx = destCanvas.getContext("2d");
+                    imgData = ctx.createImageData(320,240);
+                    for(var x = 0; x < decsize; x++){
+                        imgData.data[x] = dataHeap[x];
+
+                    }
+                    ctx.putImageData(imgData, 0,0);
+                }
             }
 
             function onClose(){
@@ -42,8 +56,15 @@
         </script>
     </head>
     <body>
-        <button type="button" onclick="onOpen();">Open</button>
-        <button type="button" onclick="onEncode();">Encode</button>
-        <button type="button" onclick="onClose();">Close</button>
+        <div>
+            <button type="button" onclick="onOpen();">Open</button>
+            <button type="button" onclick="onEncode();">Encode</button>
+            <button type="button" onclick="onClose();">Close</button>
+        </div>
+        <div>
+            <canvas width="320" height="240" id="ResultCanvas">
+
+            </canvas>
+        </div>
     </body>
 </html>

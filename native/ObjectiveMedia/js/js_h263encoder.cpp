@@ -1,5 +1,5 @@
 /*
- * copyright (c) 2013 Nathan Skipper, Montgomery Technology, Inc.
+ * copyright (c) 2018 Nathan Skipper, Montgomery Technology, Inc.
  *
  * This file is part of ObjectiveMedia (http://nskipper1110.github.com/objectivemedia).
  *
@@ -17,17 +17,25 @@
  * License along with ObjectiveMedia; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
-//#include "com_mti_primitives_codecs.h"
-//#include "com_mti_primitives_devices.h"
+
+
 #include "js_h263encoder.h"
 H263VideoEncoder* H263Encoder = NULL;
-/*
- * Class:     com_mti_primitives_codecs_H263VideoEncoder
- * Method:    PlatformOpen
- * Signature: (Lcom/mti/primitives/devices/VideoMediaFormat;Lcom/mti/primitives/codecs/CodecData;)I
+
+/**
+ * Opens an H.263p encoder for use in future encoding.
+ * Parameters:
+ * videoType: A platform specific reference to the type of video being encoded. Currently not used.
+ * width: The width, in pixels, of the video frame.
+ * height: the height, in pixels, of the video frame.
+ * pixelFormat: the pixel format of the frame. This is an enumerated value defined by the VideoPxelFormat enumerator (see platform_includes.h)
+ * bitRate: the bit rate, in bits per second, at which the video should be encoded.
+ * isVBS: a binary value (0 or 1) designating whether variable bit rate encoding should be used. Not used for this encoder.
+ * quality: the quality (percentage) of encoding. 0 to 100.
+ * Crispness: The quality of crispness between frames. Not used in this encoder.
+ * kfs: The space, in number of frames, between key frames.
  */
-EMSCRIPTEN_KEEPALIVE int js_H263VideoEncoder_PlatformOpen
-  (int videoType, int width, int height, int fps, int pixelFormat, int bitRate, int isVBS, int quality, int crispness, int kfs)
+EMSCRIPTEN_KEEPALIVE int js_H263VideoEncoder_PlatformOpen(int videoType, int width, int height, int fps, int pixelFormat, int bitRate, int isVBS, int quality, int crispness, int kfs)
   {
 	int retval = 0;
 	VideoMediaFormat* cformat = new VideoMediaFormat();
@@ -52,13 +60,10 @@ EMSCRIPTEN_KEEPALIVE int js_H263VideoEncoder_PlatformOpen
 	return retval;
 }
 
-/*
- * Class:     com_mti_primitives_codecs_H263VideoEncoder
- * Method:    PlatformClose
- * Signature: ()I
+/**
+ * Closes the encoder.
  */
-EMSCRIPTEN_KEEPALIVE int js_H263VideoEncoder_PlatformClose
-  (){
+EMSCRIPTEN_KEEPALIVE int js_H263VideoEncoder_PlatformClose(){
 	  int retval = 0;
 	  if(H263Encoder != NULL){
 		  retval = H263Encoder->Close();
@@ -70,14 +75,16 @@ EMSCRIPTEN_KEEPALIVE int js_H263VideoEncoder_PlatformClose
 	  return retval;
 }
 
-/*
- * Class:     com_mti_primitives_codecs_H263VideoEncoder
- * Method:    PlatformEncode
- * Signature: ([B[BJ)I
+/**
+ * Encodes a video frame and returns the resulting encoded bytes, with the first four bytes of the encoded frame byte array
+ * representing the size of the array.
+ * Parameters:
+ * Sample: the video frame to encode.
+ * size: the size of the video frame, in bytes.
+ * timestamp: the time stamp, in milliseconds, at which the sample was acquired.
  */
-EMSCRIPTEN_KEEPALIVE char* js_H263VideoEncoder_PlatformEncode
-  (char* Sample, int size, long timestamp){
-	  char* retval = NULL;
+EMSCRIPTEN_KEEPALIVE unsigned char* js_H263VideoEncoder_PlatformEncode(char* Sample, int size, long timestamp){
+	  unsigned char* retval = NULL;
 	  if(Sample == NULL){
 		  retval = NULL;
 	  }
@@ -86,23 +93,30 @@ EMSCRIPTEN_KEEPALIVE char* js_H263VideoEncoder_PlatformEncode
 	  }
 	  else{
 		  long outsize = 0;
-		  int r = H263Encoder->Encode((void*)Sample,size, (void**)&retval,&outsize, timestamp);
+		  unsigned char* result;
+		  int r = H263Encoder->Encode((void*)Sample,size, (void**)&result,&outsize, timestamp);
 
 		  if(r != 0){
-			  
 			  retval = NULL;
+		  }
+		  else{
+			  retval = (unsigned char*)malloc(outsize + 4);
+			  unsigned char* sizebytes = (unsigned char*) &outsize;
+			  memcpy((void*) retval, (void*) sizebytes, 4);
+			  unsigned char* next = retval+4;
+			  memcpy((void*) next, (void*) result, outsize);
 		  }
 	  }
 
 	  return retval;
 }
 
-/*
- * Class:     com_mti_primitives_codecs_H263VideoEncoder
- * Method:    PlatformDecode
- * Signature: ([B[BJ)I
+/**
+ * The decode is not implemented for the encoder.
+ * Returns null.
  */
-EMSCRIPTEN_KEEPALIVE char* js_H263VideoEncoder_PlatformDecode
-  (char* sample, int size, long timestamp){
+EMSCRIPTEN_KEEPALIVE unsigned char* js_H263VideoEncoder_PlatformDecode(char* sample, int size, long timestamp){
+	  
 	  return NULL;
 }
+
