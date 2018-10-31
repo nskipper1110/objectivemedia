@@ -270,6 +270,10 @@ Revision History:
 1.0.0 - Initial Creation
 *************************************************************************************************************************/
 class H264VideoDecoder : public Codec{
+private:
+	AVCodecParserContext* Parser;
+	uint8_t* ParseBuffer;
+
 public:
 	/*********************************************************************************************
 	Instantiates a new H264VideoDecoder object.
@@ -305,6 +309,8 @@ public:
 	timestamp - The timestamp reference for when the frame was captured, not used.
 	*********************************************************************************************/
 	Codec_Errors Decode(void* inSample, long insize, void** outSample, long* outsize, long long timestamp);
+
+	Codec_Errors Parse(uint8_t* inSample, long insize, uint8_t** outSample, int* outsize, uint64_t timestmap);
 	/********************************************************************************************
 	Destroys the object.
 	*********************************************************************************************/

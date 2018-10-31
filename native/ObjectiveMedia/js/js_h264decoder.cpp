@@ -108,6 +108,36 @@ EMSCRIPTEN_KEEPALIVE unsigned char* js_H264VideoDecoder_PlatformDecode(char* sam
 			  memcpy((void*) retval, (void*) sizebytes, 4);
 			  unsigned char* next = retval+4;
 			  memcpy((void*) next, (void*) result, outsize);
+			  free(result);
+		  }
+	  }
+
+	  return retval;
+}
+
+EMSCRIPTEN_KEEPALIVE unsigned char* js_H264VideoDecoder_PlatformParse(char* sample, int size, long timestamp){
+	unsigned char* retval;
+	  if(sample == NULL){
+		  retval = NULL;
+	  }	  
+	  else if(H264Decoder == NULL){
+		  retval = NULL;
+	  }
+	  else{
+		  int outsize = 0;
+		  unsigned char* result = NULL;
+		  int r = H264Decoder->Parse((uint8_t*)sample,size, &result,&outsize, timestamp);
+
+		  if(outsize == 0){
+			  retval = NULL;
+		  }
+		  else{
+			  retval = (unsigned char*)malloc(outsize + 4);
+			  unsigned char* sizebytes = (unsigned char*) &outsize;
+			  memcpy((void*) retval, (void*) sizebytes, 4);
+			  unsigned char* next = retval+4;
+			  memcpy((void*) next, (void*) result, outsize);
+			  free(result);
 		  }
 	  }
 

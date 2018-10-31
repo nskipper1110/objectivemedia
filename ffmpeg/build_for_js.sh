@@ -32,6 +32,7 @@ emconfigure ./configure --prefix=./build/js/x86 \
     --enable-encoder=mjpeg \
     --enable-decoder=mjpeg \
     --enable-decoder=h264 \
+    --enable-parser=h264 \
     --disable-network \
 	--disable-dxva2 \
 	--disable-vaapi \

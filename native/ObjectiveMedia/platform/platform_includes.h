@@ -106,12 +106,12 @@ static void avlog_cb(void * ptr, int level, const char * szFmt, va_list varg) {
     
     vsprintf(mymsg, szFmt, varg);
     va_end(varg);
-    sprintf(dbg_buffer, "*****START FFMPEG LOG ENTRY*****\n");
+    sprintf(dbg_buffer, "FFMPEG: ");
     DbgOut(dbg_buffer);
     sprintf((char*)dbg_buffer, (const char*)mymsg);
     DbgOut(dbg_buffer);
-    sprintf(dbg_buffer, "*****STOP FFMPEG LOG ENTRY*****\n");
-    DbgOut(dbg_buffer);
+    //sprintf(dbg_buffer, "*****STOP FFMPEG LOG ENTRY*****\n");
+    //DbgOut(dbg_buffer);
 }
 
 

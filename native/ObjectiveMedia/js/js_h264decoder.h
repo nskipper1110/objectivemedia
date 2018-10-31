@@ -59,6 +59,8 @@ EMSCRIPTEN_KEEPALIVE unsigned char* js_H264VideoDecoder_PlatformEncode(char* sam
  */
 EMSCRIPTEN_KEEPALIVE unsigned char* js_H264VideoDecoder_PlatformDecode(char* sample, int size, long timestamp);
 
+EMSCRIPTEN_KEEPALIVE unsigned char* js_H264VideoDecoder_PlatformParse(char* sample, int size, long timestamp);
+
 #ifdef __cplusplus
 }
 #endif

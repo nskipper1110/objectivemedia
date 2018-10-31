@@ -2151,7 +2151,7 @@
 @c @set config-gsm-parser no
 @c @set config-h261-parser no
 @set config-h263-parser yes
-@c @set config-h264-parser no
+@set config-h264-parser yes
 @c @set config-hevc-parser no
 @c @set config-mjpeg-parser no
 @c @set config-mlp-parser no
