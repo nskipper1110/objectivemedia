@@ -46,7 +46,7 @@ Codec_Errors H263VideoEncoder::Open(MediaFormat* encFormat, CodecData* encData){
 	{
 		sprintf(dbg_buffer, "Opening H263VideoEncoder\n");
 		DbgOut(dbg_buffer);
-		avcodec_register_all(); //initialize codecs.
+		//(); //initialize codecs.
 
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
@@ -231,7 +231,13 @@ Codec_Errors H263VideoEncoder::Encode(void* inSample, long insize, void** outSam
 			#endif
 			pkt.data = NULL;
 			pkt.size = 0;
-			avcodec_encode_video2(FFEncoderContext, &pkt, TempFrame, &got_packet);
+			int ret = avcodec_send_frame(FFEncoderContext, TempFrame);
+			if(ret == 0){
+				ret = avcodec_receive_packet(FFEncoderContext, &pkt);
+				if(ret == 0){
+					got_packet = 1;
+				}
+			}
 			#ifdef __JS__
 			sprintf(dbg_buffer, "Encoded video with result %d\n", got_packet);
 			DbgOut(dbg_buffer);
@@ -310,7 +316,7 @@ Codec_Errors H263VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 	try
 	{
 		av_log_set_callback(&avlog_cb);
-		avcodec_register_all(); //initialize FFMPEG codecs.
+		//avcodec_register_all(); //initialize FFMPEG codecs.
 		//set global variables.
 		CurrentFormat = encFormat;
 		CurrentData = encData;
@@ -419,9 +425,16 @@ Codec_Errors H263VideoDecoder::Decode(void* inSample, long insize, void** outSam
 			avpkt.data = (unsigned char*) inSample;
 			//allocate a picture to receive the decoded frame.
 			AVFrame* picture= av_frame_alloc();
-			int got_picture, len;
+			int got_picture = 0, len = 0;
 			//decode the packet.
-			len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
+			len = avcodec_send_packet(FFDecoderContext, &avpkt);
+			if(len >= 0){
+				len = avcodec_receive_frame(FFDecoderContext, picture);
+				if(len == 0){
+					got_picture = 1;
+				}
+			}
+			//len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
 			//if got_picture returned true, then we have a decoded frame!
 			if(got_picture != 0){
 				//get the desired output format.
@@ -488,7 +501,7 @@ Codec_Errors VC1VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 	try
 	{
 		av_log_set_callback(&avlog_cb);
-		avcodec_register_all(); //load the FFMPEG codecs.
+		//avcodec_register_all(); //load the FFMPEG codecs.
 		//set global variables.
 		CurrentFormat = encFormat;
 		CurrentData = encData;
@@ -511,9 +524,9 @@ Codec_Errors VC1VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 			}
 			else{
 				//we need to set the private/extended data to a sequence header for main profile.
-				unsigned char ed[16 + FF_INPUT_BUFFER_PADDING_SIZE];
+				unsigned char ed[16 + AV_INPUT_BUFFER_PADDING_SIZE ];
 				unsigned char* eds = &ed[0];
-				memset(eds, 0, 16 + FF_INPUT_BUFFER_PADDING_SIZE);
+				memset(eds, 0, 16 + AV_INPUT_BUFFER_PADDING_SIZE );
 				unsigned long val = 0;
 				unsigned char* pval = (unsigned char*) &val;
 				pval[0] = 75;
@@ -613,9 +626,16 @@ Codec_Errors VC1VideoDecoder::Decode(void* inSample, long insize, void** outSamp
 			avpkt.data = (unsigned char*) inSample;
 			//allocate a frame to receive the decoded frame.
 			AVFrame* picture= av_frame_alloc();
-			int got_picture, len;
-			//decode the frame.
-			len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
+			int got_picture = 0, len = 0;
+			//decode the packet.
+			len = avcodec_send_packet(FFDecoderContext, &avpkt);
+			if(len >= 0){
+				len = avcodec_receive_frame(FFDecoderContext, picture);
+				if(len == 0){
+					got_picture = 1;
+				}
+			}
+			//len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
 			//if true, then we have a decoded frame!
 			if(got_picture != 0){
 				//get the desired output format.
@@ -680,7 +700,7 @@ Codec_Errors G7231AudioEncoder::Open(MediaFormat* encFormat, CodecData* encData)
 	Codec_Errors retval = CODEC_SUCCEEDED;
 	try
 	{
-		avcodec_register_all(); //initialize codecs.
+		//avcodec_register_all(); //initialize codecs.
 		av_log_set_callback(&avlog_cb);
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
@@ -771,7 +791,13 @@ Codec_Errors G7231AudioEncoder::Encode(void* inSample, long insize, void** outSa
 			}
 			else{
 				int got_it = 0;
-				ret = avcodec_encode_audio2(FFEncoderContext, &pack, frame, &got_it);
+				int ret = avcodec_send_frame(FFEncoderContext, frame);
+				if(ret == 0){
+					ret = avcodec_receive_packet(FFEncoderContext, &pack);
+					if(ret == 0){
+						got_it = 1;
+					}
+				}
 				*outSample = NULL;
 				*outsize = 0;
 				if(ret == 0){
@@ -831,7 +857,7 @@ Codec_Errors G7231AudioDecoder::Open(MediaFormat* encFormat, CodecData* encData)
 	Codec_Errors retval = CODEC_SUCCEEDED;
 	try
 	{
-		avcodec_register_all(); //initialize codecs.
+		//avcodec_register_all(); //initialize codecs.
 		av_log_set_callback(&avlog_cb);
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
@@ -918,7 +944,17 @@ Codec_Errors G7231AudioDecoder::Decode(void* inSample, long insize, void** outSa
 			AVFrame* frame = av_frame_alloc();
 			//avcodec_get_frame_defaults(frame);
 			int got_it = 1;
-			int ret = avcodec_decode_audio4(FFDecoderContext, frame, &got_it, &pack);
+
+			int ret = avcodec_send_packet(FFDecoderContext, &pack);
+			if(ret == 0){
+				ret = avcodec_receive_frame(FFDecoderContext, frame);
+				if(ret == 0){
+					got_it = 1;
+				}
+				else{
+					got_it = 0;
+				}
+			}
 			if(ret < 0)
 			{
 				retval = CODEC_INVALID_INPUT;
@@ -968,8 +1004,8 @@ Codec_Errors H264VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 	Codec_Errors retval = CODEC_SUCCEEDED;
 	try
 	{
-		avcodec_register_all(); //initialize FFMPEG codecs.
-		av_register_codec_parser(&ff_h264_parser);
+		//avcodec_register_all(); //initialize FFMPEG codecs.
+		//av_register_codec_parser(&ff_h264_parser);
 		av_log_set_callback(&avlog_cb);
 		sprintf(dbg_buffer, "Opening H.264 Decoder\n");
 		DbgOut(dbg_buffer);
@@ -1114,9 +1150,16 @@ Codec_Errors H264VideoDecoder::Decode(void* inSample, long insize, void** outSam
 			avpkt.data = (unsigned char*) inSample;
 			//allocate a picture to receive the decoded frame.
 			AVFrame* picture= av_frame_alloc();
-			int got_picture, len;
+			int got_picture = 0, len = 0;
 			//decode the packet.
-			len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
+			len = avcodec_send_packet(FFDecoderContext, &avpkt);
+			if(len >= 0){
+				len = avcodec_receive_frame(FFDecoderContext, picture);
+				if(len == 0){
+					got_picture = 1;
+				}
+			}
+			//len = avcodec_decode_video2(FFDecoderContext, picture, &got_picture, &avpkt);
 			//if got_picture returned true, then we have a decoded frame!
 			if(got_picture != 0){
 				//get the desired output format.

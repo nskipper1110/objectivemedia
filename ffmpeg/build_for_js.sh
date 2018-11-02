@@ -1,7 +1,9 @@
 ../emsdk-portable/emsdk install latest
 ../emsdk-portable/emsdk activate latest
 source ../emsdk-portable/emsdk_env.sh
-emconfigure ./configure --prefix=./build/js/x86 \
+cd $HOME/Projects/ffmpeg
+mkdir -p $HOME/Projects/objectivemedia/ffmpeg/build/js/x86
+emconfigure ./configure --prefix=$HOME/Projects/objectivemedia/ffmpeg/build/js/x86 \
     --target-os=none arch=x86 \
     --enable-cross-compile \
     --cc="emcc" \
@@ -36,7 +38,6 @@ emconfigure ./configure --prefix=./build/js/x86 \
     --disable-network \
 	--disable-dxva2 \
 	--disable-vaapi \
-	--disable-vda \
 	--disable-vdpau \
     --disable-bzlib \
 	--disable-iconv \
