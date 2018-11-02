@@ -142,33 +142,33 @@
                 }
             }
 
+            function hex2bin(hex){
+                bytes = [];
+                for(var i=0; i< hex.length-1; i+=2){
+                    bytes.push(parseInt(hex.substr(i, 2), 16));
+                }
+                return new Uint8Array(bytes);
+            }
+
             function onH264Open(){
                 var r = Module._js_H264VideoDecoder_PlatformOpen(0, 640, 480, 10, 32, 256000, 0, 75, 75, 16);
                 verbose("Open Decoder returned " + r, document.getElementById("H264Verbose"));
                 h264Request.open("GET", document.getElementById("h264url").value);
-                //h264Request.seenBytes = 0;
-                h264Request.responseType = "arraybuffer";
-                //h264Request.setRequestHeader("Accept", "application/octet-stream");
-                //h264Request.setRequestHeader("Access-Control-Allow-Origin", "*");
                 var onload = function(e){
                     try{
-                        if(h264Request.readyState == 4 && h264Request.status == 200){
+                        if(h264Request.readyState >= 3){
                             var buffer = h264Request.response;
                             if(buffer){
+                                buffer = hex2bin(buffer);
                                 if(buffer.byteLength > 0){
-                                    var srcarr = new Uint8Array(buffer, 0);
-                                    push264Data(srcarr);
+                                    
+                                    push264Data(buffer);
                                 }
                                 
 
-                                //h264Request.seenBytes = buffer.byteLength;
                             }
                         }
-                        window.setTimeout(() => {
-                            h264Request.open("GET", document.getElementById("h264url").value);
-                            h264Request.send(null);
-                            
-                        }, 1);
+                        
                     }
                     catch(e){
                         verbose(e.toString(), document.getElementById("H264Verbose"));
