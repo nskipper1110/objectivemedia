@@ -1,0 +1,14 @@
+prefix=./build/mac/x86
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 4.4.100
+Requires: libavutil = 52.77.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavfilter -framework CoreVideo -framework Foundation -framework AVFoundation -framework CoreMedia -framework CoreFoundation -framework VideoDecodeAcceleration -framework QuartzCore -lm -pthread
+Libs.private: 
+Cflags: -I${includedir}

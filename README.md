@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 FFmpeg README
 =============
 
@@ -44,3 +45,21 @@ GPL. Please refer to the LICENSE file for detailed information.
 Patches should be submitted to the ffmpeg-devel mailing list using
 `git format-patch` or `git send-email`. Github pull requests should be
 avoided because they are not part of our review process and will be ignored.
+=======
+objectivemedia
+==============
+
+The objectivemedia library seeks to provide an object-oriented approach to basic multimedia operations such as video/audio capture, compression, decompression, and playback. The goal is to provide a cross-platform library for use with popular OO languages like Java.
+
+1) Documentation
+----------------
+
+* Read the documentation in the doc/ directory in git.
+  You can also view it online at http://nskipper1110.github.com/objectivemedia
+
+2) Licensing
+------------
+
+* See the LICENSE file.
+
+>>>>>>> 23327ab455e453756f232d2cb2282d9a28bf5586

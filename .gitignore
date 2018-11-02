@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.a
 *.o
 *.o.*
@@ -36,3 +37,47 @@
 /lcov/
 /src
 /mapfile
+=======
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+# Compiled Dynamic libraries
+*.dylib
+*.so
+*.dll
+*.wasm
+*.mem
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+# Project Files
+*.sdf
+*.suo
+*.scc
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.DS_Store
+.DS_Store
+*.d
+*.pc
+/.vscode
+/ffmpeg/.vscode
+/native/ObjectiveMedia/.vscode
+/Java/com.mti.primitives/com.mti.primitives/nbproject/private/
+/Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/nbproject/private/
+/Java/com.mti.primitives/com.mti.primitives/build/
+/Java/com.mti.primitives/com.mti.primitives/dist/
+/Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/build/
+/Java/Samples/ObjectiveMediaSample/ObjectiveMediaSample/dist/
+/linux/ObjectiveMedia/build/Debug/
+/linux/ObjectiveMedia/build/Debug64/
+/linux/ObjectiveMedia/nbproject/private/
+/linux/ObjectiveMedia/build/
+/linux/ObjectiveMedia/dist/
+>>>>>>> 23327ab455e453756f232d2cb2282d9a28bf5586

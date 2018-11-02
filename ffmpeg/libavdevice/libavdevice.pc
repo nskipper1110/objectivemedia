@@ -1,0 +1,14 @@
+prefix=./build/js/x86
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libavdevice
+Description: FFmpeg device handling library
+Version: 57.2.100
+Requires: 
+Requires.private: libavformat >= 57.60.100, libavcodec >= 57.68.100, libavutil >= 55.43.100
+Conflicts:
+Libs: -L${libdir}  -lavdevice 
+Libs.private: -s USE_SDL=2 -lm
+Cflags: -I${includedir}
