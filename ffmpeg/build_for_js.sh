@@ -35,6 +35,9 @@ emconfigure ./configure --prefix=$HOME/Projects/objectivemedia/ffmpeg/build/js/x
     --enable-decoder=mjpeg \
     --enable-decoder=h264 \
     --enable-parser=h264 \
+    --enable-cuda \
+    --enable-cuvid \
+    --enable-nvenc \
     --disable-network \
 	--disable-dxva2 \
 	--disable-vaapi \

@@ -13,7 +13,7 @@ function stream1(req, res){
             
         });
         if(stream1Proc == null){
-            stream1Proc = child_process.spawn("ffmpeg", "-f v4l2 -framerate 10 -video_size 640x480 -i /dev/video2 -c:v libx264 -b:v 256k -f h264 -".split(" "));
+            stream1Proc = child_process.spawn("ffmpeg", "-f v4l2 -framerate 10 -video_size 640x480 -i /dev/video2 -vcodec libx264 -b:v 256k -f h264 -".split(" "));
             stream1Proc.stdout.setEncoding("hex");
             stream1Proc.stdout.on("readable", () => {
                 var data =  stream1Proc.stdout.read();
@@ -25,6 +25,9 @@ function stream1(req, res){
                 }
                 
                 
+            });
+            stream1Proc.stderr.on("data", (d) => {
+                console.log(d.toString())
             });
         }
     }

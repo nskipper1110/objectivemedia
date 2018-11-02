@@ -128,14 +128,15 @@
                     var srcPtr = Module._malloc(size);
                     var dataHeap = new Uint8Array(Module.HEAPU8.buffer, srcPtr, size);
                     dataHeap.set(data.buffer);
-                    var result = Module._js_H264VideoDecoder_PlatformParse(dataHeap.byteOffset, size, 0);
-                    Module._free(srcPtr);
-                    if(result !== 0){
-                        size = Module._js_Helpers_BytesToInt(result);
-                        if(size > 0){
-                            doH264Decode(result + 4, size);
-                        }
-                    }
+                    doH264Decode(dataHeap.byteOffset, size);
+                    // var result = Module._js_H264VideoDecoder_PlatformParse(dataHeap.byteOffset, size, 0);
+                    // Module._free(srcPtr);
+                    // if(result !== 0){
+                    //     size = Module._js_Helpers_BytesToInt(result);
+                    //     if(size > 0){
+                    //         doH264Decode(result + 4, size);
+                    //     }
+                    // }
                 }
                 catch(e){
                     verbose(e.toString(), document.getElementById("H264Verbose"));
@@ -159,13 +160,15 @@
                         if(h264Request.readyState >= 3){
                             var buffer = h264Request.response;
                             if(buffer){
-                                buffer = hex2bin(buffer);
-                                if(buffer.byteLength > 0){
-                                    
-                                    push264Data(buffer);
+                                frames = buffer.split("00000001");
+                                for(var x = 0; x < frames.length; x++){
+                                    if(frames[x].length == 0){
+                                        var frame = "00000001" + frames[x];
+                                        frame = hex2bin(frame);
+                                        push264Data(frame);
+                                    }
                                 }
                                 
-
                             }
                         }
                         
