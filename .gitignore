@@ -1,9 +1,54 @@
+<<<<<<< HEAD
+*.a
+*.o
+*.o.*
+*.d
+*.def
+*.dll
+*.dylib
+*.exe
+*.exp
+*.gcda
+*.gcno
+*.h.c
+*.ilk
+*.lib
+*.pc
+*.pdb
+*.so
+*.so.*
+*.swp
+*.ver
+*.version
+*.ptx
+*.ptx.c
+*_g
+\#*
+.\#*
+/.config
+/.version
+/ffmpeg
+/ffplay
+/ffprobe
+/config.asm
+/config.h
+/coverage.info
+/avversion.h
+/lcov/
+/src
+/mapfile
+=======
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
 # Compiled Dynamic libraries
+*.dylib
+*.so
+*.dll
+*.wasm
+*.mem
 # Compiled Static libraries
 *.lai
 *.la
@@ -18,6 +63,7 @@
 *.db-wal
 *.log
 *.DS_Store
+.DS_Store
 *.d
 *.pc
 /.vscode
@@ -34,3 +80,4 @@
 /linux/ObjectiveMedia/nbproject/private/
 /linux/ObjectiveMedia/build/
 /linux/ObjectiveMedia/dist/
+>>>>>>> 23327ab455e453756f232d2cb2282d9a28bf5586

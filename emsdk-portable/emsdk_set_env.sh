@@ -1,0 +1,5 @@
+export PATH="/home/nathan/Projects/objectivemedia/emsdk-portable:/home/nathan/Projects/objectivemedia/emsdk-portable/clang/e1.38.13_64bit:/home/nathan/Projects/objectivemedia/emsdk-portable/node/8.9.1_64bit/bin:/home/nathan/Projects/objectivemedia/emsdk-portable/emscripten/1.38.13:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin"
+export EMSDK="/home/nathan/Projects/objectivemedia/emsdk-portable"
+export EM_CONFIG="/home/nathan/.emscripten"
+export BINARYEN_ROOT="/home/nathan/Projects/objectivemedia/emsdk-portable/clang/e1.38.13_64bit/binaryen"
+export EMSCRIPTEN="/home/nathan/Projects/objectivemedia/emsdk-portable/emscripten/1.38.13"

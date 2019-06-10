@@ -316,7 +316,11 @@ Codec_Errors H263VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 	try
 	{
 		av_log_set_callback(&avlog_cb);
+<<<<<<< HEAD
 		avcodec_register_all(); //initialize FFMPEG codecs.
+=======
+		//avcodec_register_all(); //initialize FFMPEG codecs.
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 		//set global variables.
 		CurrentFormat = encFormat;
 		CurrentData = encData;
@@ -700,7 +704,7 @@ Codec_Errors G7231AudioEncoder::Open(MediaFormat* encFormat, CodecData* encData)
 	Codec_Errors retval = CODEC_SUCCEEDED;
 	try
 	{
-		avcodec_register_all(); //initialize codecs.
+		//avcodec_register_all(); //initialize codecs.
 		av_log_set_callback(&avlog_cb);
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
@@ -857,7 +861,7 @@ Codec_Errors G7231AudioDecoder::Open(MediaFormat* encFormat, CodecData* encData)
 	Codec_Errors retval = CODEC_SUCCEEDED;
 	try
 	{
-		avcodec_register_all(); //initialize codecs.
+		//avcodec_register_all(); //initialize codecs.
 		av_log_set_callback(&avlog_cb);
 		CurrentFormat = encFormat; //store format settings.
 		CurrentData = encData;
@@ -1022,18 +1026,24 @@ Codec_Errors H264VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 		}
 		else{ //found decoder, now open.
 			//allocate context.
+<<<<<<< HEAD
 			sprintf(dbg_buffer, "Opened H.264 decoder named %s\n",FFDecoder->name);
 			DbgOut(dbg_buffer);
 			
+=======
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 			FFDecoderContext = avcodec_alloc_context3(FFDecoder);
 			if(FFDecoderContext == NULL){
 				sprintf(dbg_buffer, "Could not allocate H.264 Decoder Context\n");
 				DbgOut(dbg_buffer);
 			}
+<<<<<<< HEAD
 			if(FFDecoder->capabilities & AV_CODEC_CAP_TRUNCATED){
 				FFDecoderContext->flags |= AV_CODEC_CAP_TRUNCATED;
 			}
 			FFDecoderContext->delay = 0;
+=======
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 			//open decoder.
 			int err = avcodec_open2(FFDecoderContext, FFDecoder, NULL);
 			if(err < 0) //if error in open, fail.
@@ -1043,9 +1053,24 @@ Codec_Errors H264VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 				DbgOut(dbg_buffer);
 			}
 			else{
+<<<<<<< HEAD
 				FFDecoderContext->flags2 |= AV_CODEC_FLAG2_CHUNKS;
 				Parser = av_parser_init(AV_CODEC_ID_H264);
 
+=======
+				AVRational fps;
+				fps.den = vf->FPS;
+				fps.num = 1;
+				FFDecoderContext->framerate = fps;
+				FFDecoderContext->width = vf->Width;
+				FFDecoderContext->height = vf->Height;
+				FFDecoderContext->coded_width = vf->Width;
+				FFDecoderContext->coded_height = vf->Height;
+				FFDecoderContext->codec_type = AVMEDIA_TYPE_VIDEO;
+				FFDecoderContext->bit_rate = ((double)encData->BitRate/8) / (double)vf->FPS;
+				Parser = av_parser_init(AV_CODEC_ID_H264);
+				
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 				if(Parser == NULL){
 					sprintf(dbg_buffer, "Parser did not open\n");
 					DbgOut(dbg_buffer);
@@ -1053,9 +1078,13 @@ Codec_Errors H264VideoDecoder::Open(MediaFormat* encFormat, CodecData* encData){
 				else{
 					sprintf(dbg_buffer, "Got parser\n");
 					DbgOut(dbg_buffer);
+<<<<<<< HEAD
 					av_log(NULL, AV_LOG_WARNING, "Parser flags = %X\n", Parser->flags);
 				}
 				//Parser->flags = 1;
+=======
+				}
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 				//get the ffmpeg format from the desired output format.
 				AVPixelFormat fmt = (AVPixelFormat)VideoMediaFormat::GetFFPixel(vf->PixelFormat);
 				TempFrame = alloc_picture(fmt, vf->Width, vf->Height); //allocate temp based on this format.
@@ -1203,7 +1232,12 @@ Codec_Errors H264VideoDecoder::Decode(void* inSample, long insize, void** outSam
 Codec_Errors H264VideoDecoder::Parse(uint8_t* inSample, long insize, uint8_t** outSample, int* outsize, uint64_t timestamp){
 	Codec_Errors retval = Codec_Errors::CODEC_SUCCEEDED;
 	try{
+<<<<<<< HEAD
 		
+=======
+		// sprintf(dbg_buffer, "Parsing data of size %d\n", insize);
+		// DbgOut(dbg_buffer);
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 		if(inSample == NULL){
 			sprintf(dbg_buffer, "inSample is null!\n");
 			DbgOut(dbg_buffer);
@@ -1225,6 +1259,7 @@ Codec_Errors H264VideoDecoder::Parse(uint8_t* inSample, long insize, uint8_t** o
 			retval = Codec_Errors::CODEC_CODEC_NOT_OPENED;
 		}
 		else{
+<<<<<<< HEAD
 			int inlen = insize;
 			uint8_t* indata = inSample;
 			//av_log(NULL, AV_LOG_WARNING, "Parser start, Parser flags %X...\n", Parser->flags);
@@ -1254,6 +1289,29 @@ Codec_Errors H264VideoDecoder::Parse(uint8_t* inSample, long insize, uint8_t** o
 			}
 		}
 		//av_log(NULL, AV_LOG_WARNING, "Parser stop...");
+=======
+			int len = av_parser_parse2(Parser, this->FFDecoderContext, outSample, outsize, inSample, insize,0,timestamp,AV_NOPTS_VALUE);
+			// sprintf(dbg_buffer, "Parser returned length %d\n", len);
+			// DbgOut(dbg_buffer);
+			// sprintf(dbg_buffer, "Parser returned size %d\n", *outsize);
+			// DbgOut(dbg_buffer);
+			
+			// if(len == insize && *outsize == 0){
+			// 	sprintf(dbg_buffer, "Reparsing.\n");
+			// 	DbgOut(dbg_buffer);
+			// 	len = av_parser_parse2(Parser, this->FFDecoderContext, outSample, outsize, inSample, insize,0,timestamp,AV_NOPTS_VALUE);
+			// }
+			
+			if(*outsize == 0){
+				retval = Codec_Errors::CODEC_NO_OUTPUT;
+			}
+			else{
+				sprintf(dbg_buffer, "Parsed a frame of size %d\n", *outsize);
+				DbgOut(dbg_buffer);
+			}
+		}
+		
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 	}
 	catch(...){
 		retval = CODEC_UNEXPECTED;

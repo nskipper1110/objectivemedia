@@ -273,7 +273,11 @@ Revision History:
 class H264VideoDecoder : public Codec{
 private:
 	AVCodecParserContext* Parser;
+<<<<<<< HEAD
 	std::vector<uint8_t> ParseBuffer;
+=======
+	uint8_t* ParseBuffer;
+>>>>>>> deec8c204695cd10d4b54267080234bd789ee210
 
 public:
 	/*********************************************************************************************

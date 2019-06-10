@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/testjs.css">
+        <script src="js/objectivemedia.js">
+        </script>
+        <script>
+            function verbose(msg, element){
+                try{
+                    var p = document.createElement("p");
+                    var pre = document.createElement("pre");
+                    pre.innerText = msg;
+                    p.appendChild(pre);
+                    element.appendChild(p);
+                }
+                catch(e){
+                    console.log(e);
+                }
+            }
+
+            function onOpen(){
+                var r = Module._js_H263VideoEncoder_PlatformOpen(0, 320, 240, 20, 32, 256000, 0, 75, 75, 16);
+                verbose("Open Encoder returned " + r, document.getElementById("H263Verbose"));
+                r = Module._js_H263VideoDecoder_PlatformOpen(0, 320, 240, 20, 32, 256000, 0, 75, 75, 16);
+                verbose("Open Decoder returned " + r, document.getElementById("H263Verbose"));
+            }
+            
+            var encodedData = null;
+            var decodedData = null;
+
+            function onEncode(){
+                var canvas = document.createElement("canvas");
+                canvas.width = 320;
+                canvas.height = 240;
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "red";
+                ctx.fillRect(5,0,105, 240);
+                ctx.fillStyle = "green";
+                ctx.fillRect(110,0,105, 240);
+                ctx.fillStyle = "blue";
+                ctx.fillRect(215,0,105, 240);
+                var imgData = ctx.getImageData(0,0,320,240);
+                var size = imgData.data.BYTES_PER_ELEMENT * imgData.data.length;
+                var srcPtr = Module._malloc(size);
+                var dataHeap = new Uint8Array(Module.HEAPU8.buffer, srcPtr, size);
+                dataHeap.set(new Uint8Array(imgData.data.buffer));
+                var encresult = Module._js_H263VideoEncoder_PlatformEncode(dataHeap.byteOffset, size, 0);
+                if(encresult !== 0){
+                    var outsize = Module._js_Helpers_BytesToInt(encresult);
+                    verbose("Encoded frame to a size of " + outsize, document.getElementById("H263Verbose"));
+                    var result = Module._js_H263VideoDecoder_PlatformDecode(encresult+4, outsize, 0);
+                    Module._free(encresult);
+                    if(result != 0){
+                        var decsize = Module._js_Helpers_BytesToInt(result);
+                        verbose("Decoded frame to a size of " + decsize, document.getElementById("H263Verbose"));
+                        dataHeap = new Uint8Array(Module.HEAPU8.buffer, result + 4, decsize);
+                        var destCanvas = document.getElementById("ResultCanvas");
+                        ctx = destCanvas.getContext("2d");
+                        imgData = ctx.createImageData(320,240);
+                        for(var x = 0; x < decsize; x++){
+                            imgData.data[x] = dataHeap[x];
+
+                        }
+                        ctx.putImageData(imgData, 0,0);
+                        Module._free(result);
+                    }
+                    else{
+                        verbose("Failed to decode frame.", document.getElementById("H263Verbose"));
+                    }
+                }
+                else{
+                    verbose("Failed to encode frame.", document.getElementById("H263Verbose"));
+                }
+                Module._free(srcPtr);
+                
+            }
+
+            function onClose(){
+                var r = Module._js_H263VideoEncoder_PlatformClose();
+                verbose("Encoder Close returned " + r, document.getElementById("H263Verbose"));
+                r = Module._js_H263VideoDecoder_PlatformClose();
+                verbose("Decoder Close returned " + r, document.getElementById("H263Verbose"));    
+            }
+            
+            var h264Request = new XMLHttpRequest();
+            var activePacket = new Uint8Array();
+            
+            function concatTypedArrays(a, b) { // a, b TypedArray of same type
+                var c = new (a.constructor)(a.length + b.length);
+                c.set(a, 0);
+                c.set(b, a.length);
+                return c;
+            }
+
+            function doH264Decode(frame, size){
+                try{
+                    
+                    var result = Module._js_H264VideoDecoder_PlatformDecode(frame, size, 0);
+                    Module._free(frame);
+                    if(result !== 0){
+
+                        size = Module._js_Helpers_BytesToInt(result);
+                        if(size > 0){
+                            dataHeap = new Uint8Array(Module.HEAPU8.buffer, result + 4, size);
+                            var destCanvas = document.getElementById("H264Canvas");
+                            ctx = destCanvas.getContext("2d");
+                            imgData = ctx.createImageData(320,240);
+                            for(var x = 0; x < size; x++){
+                                imgData.data[x] = dataHeap[x];
+
+                            }
+                            ctx.putImageData(imgData, 0,0);
+                        }
+                        
+                        Module._free(result);
+                    }
+                }
+                catch(e){
+                    verbose(e.toString(), document.getElementById("H264Verbose"));
+                }
+                
+            }
+
+            function push264Data(data){
+                try{
+                    
+                    var size = data.byteLength;
+                    var srcPtr = Module._malloc(size);
+                    var dataHeap = new Uint8Array(Module.HEAPU8.buffer, srcPtr, size);
+                    dataHeap.set(data.buffer);
+                    doH264Decode(dataHeap.byteOffset, size);
+                    // var result = Module._js_H264VideoDecoder_PlatformParse(dataHeap.byteOffset, size, 0);
+                    // Module._free(srcPtr);
+                    // if(result !== 0){
+                    //     size = Module._js_Helpers_BytesToInt(result);
+                    //     if(size > 0){
+                    //         doH264Decode(result + 4, size);
+                    //     }
+                    // }
+                }
+                catch(e){
+                    verbose(e.toString(), document.getElementById("H264Verbose"));
+                }
+            }
+
+            function hex2bin(hex){
+                bytes = [];
+                for(var i=0; i< hex.length-1; i+=2){
+                    bytes.push(parseInt(hex.substr(i, 2), 16));
+                }
+                return new Uint8Array(bytes);
+            }
+
+            function onH264Open(){
+                var r = Module._js_H264VideoDecoder_PlatformOpen(0, 640, 480, 10, 32, 256000, 0, 75, 75, 16);
+                verbose("Open Decoder returned " + r, document.getElementById("H264Verbose"));
+                h264Request.open("GET", document.getElementById("h264url").value);
+                var onload = function(e){
+                    try{
+                        if(h264Request.readyState >= 3){
+                            var buffer = h264Request.response;
+                            if(buffer){
+                                frames = buffer.split("00000001");
+                                for(var x = 0; x < frames.length; x++){
+                                    if(frames[x].length == 0){
+                                        var frame = "00000001" + frames[x];
+                                        frame = hex2bin(frame);
+                                        push264Data(frame);
+                                    }
+                                }
+                                
+                            }
+                        }
+                        
+                    }
+                    catch(e){
+                        verbose(e.toString(), document.getElementById("H264Verbose"));
+                    }
+                };
+                h264Request.onreadystatechange = onload;
+                
+
+                h264Request.addEventListener("error", function(e) {
+                    verbose(h264Request.statusText, document.getElementById("H264Verbose"));
+                });
+                h264Request.send();
+            }
+            function onH264Close(){
+                r = Module._js_H264VideoDecoder_PlatformClose();
+                verbose("Decoder Close returned " + r, document.getElementById("H264Verbose"));    
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="page">
+            <div class="page-section">
+                <div class="page-section-actions">
+                    <h3>Test H.263+ Codec</h3>
+                    <button type="button" onclick="onOpen();">Open</button>
+                    <button type="button" onclick="onEncode();">Encode</button>
+                    <button type="button" onclick="onClose();">Close</button>
+                </div>
+                <div class="page-section-results">
+                        <canvas width="320" height="240" id="ResultCanvas">
+
+                        </canvas>
+                        <div style="height: 75%; width: 80%">
+                            <h4 style="margin-left:10px">
+                                Verbose
+                            </h4>
+                            <div id="H263Verbose" style="margin-left:10px;overflow:scroll; border: 1px solid black; height: 90%; width: 90%">
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="page-section">
+                <div class="page-section-actions">
+                    <h3>Test H.264 Decoder</h3>
+                    <h4>Stream URL</h4>
+                    <input type="url" id="h264url" value="http://127.0.0.1:8090/streams/stream1.raw"/>
+                    <button type="button" onclick="onH264Open();">Open</button>
+                    <button type="button" onclick="onH264Close();">Close</button>
+                </div>
+                <div class="page-section-results">
+                        <canvas width="320" height="240" id="H264Canvas">
+
+                        </canvas>
+                        <div style="height: 75%; width: 80%">
+                            <h4 style="margin-left:10px">
+                                Verbose
+                            </h4>
+                            <div id="H264Verbose" style="margin-left:10px;overflow:scroll; border: 1px solid black; height: 90%; width: 90%">
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

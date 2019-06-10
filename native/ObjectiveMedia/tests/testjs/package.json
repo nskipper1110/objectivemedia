@@ -1,0 +1,14 @@
+{
+  "name": "testjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Nathan Skipper",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
