@@ -108,11 +108,7 @@ static void avlog_cb(void * ptr, int level, const char * szFmt, va_list varg) {
     va_end(varg);
     sprintf(dbg_buffer, "FFMPEG: ");
     DbgOut(dbg_buffer);
-<<<<<<< HEAD
     sprintf((char*)dbg_buffer, "%s", (const char*)mymsg);
-=======
-    sprintf((char*)dbg_buffer, (const char*)mymsg);
->>>>>>> deec8c204695cd10d4b54267080234bd789ee210
     DbgOut(dbg_buffer);
     //sprintf(dbg_buffer, "*****STOP FFMPEG LOG ENTRY*****\n");
     //DbgOut(dbg_buffer);
