@@ -1,4 +1,4 @@
-prefix=./build/win/x86
+prefix=./build/js/x86
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
@@ -6,9 +6,9 @@ includedir=${prefix}/include
 Name: libavfilter
 Description: FFmpeg audio/video filtering library
 Version: 4.4.100
-Requires: libavutil = 52.77.100
+Requires: libswresample = 0.18.100, libswscale = 2.6.100, libavformat = 55.37.101, libavcodec = 55.58.105, libavutil = 52.77.100
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavfilter -lpsapi -lole32 -lstrmiids -luuid -liconv -lm -lz -lpsapi -ladvapi32 -lshell32
+Libs: -L${libdir}  -lavfilter -lX11 -lm -pthread
 Libs.private: 
 Cflags: -I${includedir}

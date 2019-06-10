@@ -1,629 +1,260 @@
-obj/local/armeabi-v7a/objs/objectivemedia/com_mti_primitives_devices_VideoInputDevice.o: \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_VideoInputDevice.cpp \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_VideoInputDevice.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/jni.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/cdefs.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/android/api-level.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdarg.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/features.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_stlport_version.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/user_config.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/compat.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/host.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_system.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_android.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_gcc.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/stl_confix.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_native_headers.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_epilog.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_FileOutputDevice.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_devices.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_includes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/../dbg.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdlib.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/stdlib.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stddef.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/string.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/string.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/malloc.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/alloca.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/strings.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/stdint.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/_types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/_types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/posix_types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/stddef.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/compiler.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/posix_types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/kernel.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/memory.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdio.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/stdio.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/string \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_alloc.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cstddef.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cstdlib.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cmath.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/math.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/math.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/limits.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/limits.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/limits.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/limits.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/internal_types.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/limits.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/syslimits.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/page.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cstring.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/using/cstring \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_algobase.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/climits \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_pair.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/type_traits.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/type_manips.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_move_construct_fwk.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iterator_base.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ptrs_specialize.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_algobase.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_function_base.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iterator.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_new.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/new \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/cstddef \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/cstddef \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/exception \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/exception \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/gabixx_config.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_construct.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_alloc.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_fwd.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iosfwd.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/char_traits.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cwchar.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/wchar.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/time.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/time.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/time.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/time.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/siginfo.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/_wchar_limits.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_mbstate_t.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_base.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_npos.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_operators.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ctraits_fns.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_function.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_function_adaptors.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_range_errors.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_hash.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_hash_fun.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_io.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ostream.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ios.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ios_base.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_stdexcept_base.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_exception.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_locale.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_threads.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/pthread.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/pthread.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/signal.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/signal.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/signal.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/signal.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/ucontext.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/user.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/sigcontext.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sched.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_threads.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ctime.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_facets_fwd.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ctype.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/c_locale.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_numpunct.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ios.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_streambuf.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_streambuf.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ostreambuf_iterator.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ostream.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_put.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iostream_string.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_put.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_limits.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/cfloat \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/float.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_limits.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_istream.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_istreambuf_iterator.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_istream.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_get.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_get.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_io.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/cstring \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/vector \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_vector.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_vector.c \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_bvector.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_relops_cont.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/imgutils.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h \
- /home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/errno.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/errno.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/errno.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/errno.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/errno.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/errno-base.h \
- /home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/inttypes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/macros.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avconfig.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/error.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/intfloat.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/old_pix_fmts.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixdesc.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/opt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/avcodec.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/cpu.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/channel_layout.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/frame.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/old_codec_ids.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/swscale.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/version.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avformat.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avio.h \
- /home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/version.h
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_VideoInputDevice.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/jni.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/cdefs.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/android/api-level.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/obj/local/armeabi-v7a/objs/objectivemedia/com_mti_primitives_devices_VideoInputDevice.o: \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices_VideoInputDevice.cpp \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices_VideoInputDevice.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices_FileOutputDevice.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/../platform/platform_devices.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/../platform/platform_includes.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/../platform/../dbg.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdlib.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__config \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdio.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/string \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/string_view \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__string \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/algorithm \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/initializer_list \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstddef \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/version \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/type_traits \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstring \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/string.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/utility \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__tuple \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstdint \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdint.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__debug \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/memory \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/typeinfo \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/exception \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstdlib \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/new \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/limits \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/iterator \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/iosfwd \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/wchar.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__functional_base \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/tuple \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdexcept \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cassert \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/atomic \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/functional \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/bit \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstdio \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cwchar \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cwctype \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cctype \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/ctype.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/wctype.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/vector \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__bit_reference \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/climits \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/limits.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__split_buffer \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/imgutils.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/errno.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/inttypes.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/math.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/macros.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avconfig.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/error.h \
+  /Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stddef.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/intfloat.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixdesc.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/opt.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/avcodec.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/cpu.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/channel_layout.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/frame.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/version.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/swscale.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/version.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avformat.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avio.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/version.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavdevice/avdevice.h \
+  /Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavdevice/version.h
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdarg.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cprolog.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices_VideoInputDevice.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/features.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/com_mti_primitives_devices_FileOutputDevice.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_stlport_version.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/../platform/platform_devices.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/user_config.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/../platform/platform_includes.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/compat.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/../platform/../dbg.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/host.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdlib.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_system.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__config:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_android.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdio.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_gcc.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/string:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/stl_confix.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/string_view:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/config/_native_headers.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__string:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_epilog.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/algorithm:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/initializer_list:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/com_mti_primitives_devices_FileOutputDevice.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstddef:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_devices.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/version:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/platform_includes.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/type_traits:
 
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/../platform/../dbg.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstring:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdlib.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/string.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/stdlib.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/utility:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stddef.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__tuple:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/string.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstdint:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/string.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdint.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/malloc.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__debug:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/alloca.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/memory:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/strings.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/typeinfo:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/exception:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/stdint.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstdlib:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/_types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/new:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/_types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/limits:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/posix_types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/iterator:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/stddef.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/iosfwd:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/compiler.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/wchar.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/posix_types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__functional_base:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/tuple:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stdexcept:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/kernel.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cassert:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/atomic:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/memory.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/functional:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stdio.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/bit:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/stdio.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cstdio:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/string:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cwchar:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_prolog.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cwctype:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/cctype:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/ctype.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_alloc.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/wctype.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cstddef.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/vector:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cstdlib.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__bit_reference:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cmath.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/climits:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/math.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/limits.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/math.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/__split_buffer:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/limits.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/imgutils.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/limits.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/limits.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/limits.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/errno.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/internal_types.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/inttypes.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/machine/limits.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/math.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/syslimits.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/page.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/macros.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cstring.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/using/cstring:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avconfig.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_algobase.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/climits:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/error.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_pair.h:
+/Users/nathanskipper/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include/stddef.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/type_traits.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/type_manips.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_move_construct_fwk.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/intfloat.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iterator_base.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ptrs_specialize.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_algobase.c:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixdesc.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_function_base.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/opt.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iterator.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_new.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/new:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/avcodec.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/cstddef:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/cstddef:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/cpu.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/exception:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/channel_layout.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/exception:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/frame.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/../../gabi++/include/gabixx_config.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/version.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_construct.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/swscale.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_alloc.c:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/version.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_fwd.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avformat.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iosfwd.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avio.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/char_traits.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/version.h:
 
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_cwchar.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavdevice/avdevice.h:
 
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/wchar.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/time.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/time.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/time.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/time.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/siginfo.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/_wchar_limits.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_mbstate_t.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_base.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_npos.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_operators.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ctraits_fns.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_function.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_function_adaptors.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_range_errors.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_hash.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_hash_fun.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_io.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ostream.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ios.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ios_base.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_stdexcept_base.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_exception.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_locale.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_threads.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/pthread.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/pthread.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/signal.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/signal.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/signal.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/signal.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/ucontext.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sys/user.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/sigcontext.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/sched.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_threads.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ctime.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_facets_fwd.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ctype.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/c_locale.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_numpunct.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ios.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_streambuf.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_streambuf.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ostreambuf_iterator.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_ostream.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_put.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_iostream_string.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_put.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_limits.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/cfloat:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/float.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_limits.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_istream.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_istreambuf_iterator.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_istream.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_get.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_num_get.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_string_io.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/cstring:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/vector:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_vector.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_vector.c:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_bvector.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/stl/_relops_cont.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/imgutils.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h:
-
-/home/nathan/android-ndk-r10d/sources/cxx-stl/stlport/stlport/errno.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/../include/errno.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/linux/errno.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm/errno.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/errno.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/asm-generic/errno-base.h:
-
-/home/nathan/android-ndk-r10d/platforms/android-3/arch-arm/usr/include/inttypes.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/macros.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avconfig.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/error.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/intfloat.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/old_pix_fmts.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixdesc.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/opt.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/avcodec.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/samplefmt.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/attributes.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/avutil.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/cpu.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/channel_layout.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/dict.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/frame.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/buffer.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/log.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/pixfmt.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/rational.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/version.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/version.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mem.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavcodec/old_codec_ids.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/common.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavutil/mathematics.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/swscale.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libswscale/version.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avformat.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/avio.h:
-
-/home/nathan/github/objectivemedia/linux/ObjectiveMedia/jni/android/ffmpeg-build/armeabi-v7a/include/libavformat/version.h:
+/Users/nathanskipper/objectivemedia/native/ObjectiveMedia/jni/..//jni/android/ffmpeg-build/armeabi-v7a/include/libavdevice/version.h:

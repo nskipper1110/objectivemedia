@@ -1,14 +1,14 @@
-prefix=./android/armv6
+prefix=/Users/nathanskipper/objectivemedia/ffmpeg-android/build
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
 
 Name: libavfilter
 Description: FFmpeg audio/video filtering library
-Version: 4.4.100
-Requires: libavutil = 52.77.100
+Version: 6.82.100
+Requires: libavutil >= 55.58.100
 Requires.private: 
 Conflicts:
-Libs: -L${libdir}  -lavfilter -lm -lz -pthread -lgcc
+Libs: -L${libdir}  -lavfilter -lm -lz -pthread
 Libs.private: 
 Cflags: -I${includedir}

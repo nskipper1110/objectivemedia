@@ -18,6 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 using namespace std;
+//#ifndef __JS__
 #include "platform_devices.h"
 #include <stdio.h>
 #include <dirent.h>
@@ -145,10 +146,14 @@ typedef struct VideoInputDeviceContext{
 typedef struct AudioInputDeviceContext{
     int DeviceHandle;
     AudioMediaFormat* Format;
+    #ifndef __JS__
     #ifndef __MINGW32__
     pthread_t CaptureThread;
     #else
     HANDLE CaptureThread;
+    #endif
+    #else
+    void* CaptureThread;
     #endif
     DeviceListener* Listener;
     bool Stopped;
@@ -156,8 +161,12 @@ typedef struct AudioInputDeviceContext{
     AudioInputDeviceContext(){
         DeviceHandle = -1;
         Format = NULL;
+        #ifndef __JS__
         #ifndef __MINGW32__
            CaptureThread = (pthread_t)-1;
+        #else
+            CaptureThread = NULL;
+        #endif
         #else
             CaptureThread = NULL;
         #endif
@@ -287,7 +296,7 @@ VideoInputDevice::VideoInputDevice(){
  DWORD WINAPI VideoInputDevice_Thread(LPVOID ptr){
  #endif
     
-                    
+#ifndef __JS__                
     VideoInputDeviceContext* context = (VideoInputDeviceContext*) ptr;
     av_log(context->DeviceHandle, AV_LOG_INFO, "VideoInputDevice_Thread++\n");
     if(context->Format->FPS <= 0) context->Format->FPS = 20;
@@ -400,11 +409,12 @@ VideoInputDevice::VideoInputDevice(){
     #else
         ExitThread(0);
     #endif
-    
+#endif
 }
 
 Device_Errors VideoInputDevice::Open(MediaFormat* format){
     Device_Errors retval = SUCCEEDED;
+#ifndef __JS__
     try
     {
         VideoMediaFormat* vformat = (VideoMediaFormat*)format;
@@ -559,6 +569,7 @@ Device_Errors VideoInputDevice::Open(MediaFormat* format){
     catch(...){
         retval = UNEXPECTED;
     }
+#endif
     return retval;
 }
 
@@ -598,6 +609,7 @@ Device_Errors VideoInputDevice::Close(){
 
 Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
     Device_Errors retval = SUCCEEDED;
+#ifndef __JS__
     try{
         int error = 0;
         AVFormatContext *pFormatCtx = NULL;
@@ -715,6 +727,7 @@ Device_Errors VideoInputDevice::GetDevices(std::vector<Device*> &deviceList){
     catch(...){
         
     }
+#endif
     return retval;
 }
 
@@ -952,3 +965,4 @@ AudioOutputDevice::~AudioOutputDevice(){
 	FormatCount = 0;
 	CurrentFormat = NULL;
 }
+//#endif

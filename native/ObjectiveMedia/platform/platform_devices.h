@@ -40,19 +40,20 @@ extern "C"{
 #include <libswscale/swscale.h>
 #include <libavformat/avformat.h>
 #include <libavdevice/avdevice.h>
+#include <libavutil/pixfmt.h>
 }
 
 
 #ifndef DEVICE_DEFS
 #define DEVICE_DEFS
 #endif
-static AVFrame *alloc_picture(enum PixelFormat pix_fmt, int width, int height)
+static AVFrame *alloc_picture(enum AVPixelFormat pix_fmt, int width, int height)
     {
             AVFrame *picture;
             unsigned char*picture_buf;
             int size;
 
-            picture = avcodec_alloc_frame();
+            picture = av_frame_alloc();
             if (!picture)
                     return NULL;
             size        = avpicture_get_size(pix_fmt, width, height);
@@ -66,10 +67,10 @@ static AVFrame *alloc_picture(enum PixelFormat pix_fmt, int width, int height)
             return picture;
     }
 
-    static AVFrame *alloc_and_fill_picture(enum PixelFormat pix_fmt, int width, int height, void* buf)
+    static AVFrame *alloc_and_fill_picture(enum AVPixelFormat pix_fmt, int width, int height, void* buf)
     {
             AVFrame *picture;
-            picture = avcodec_alloc_frame();
+            picture = av_frame_alloc();
             if (!picture)
                     return NULL;
 
@@ -227,74 +228,74 @@ public:
 		int retval = 0;
 		switch(format){
 		case RGB1: //1 bit
-			retval = PIX_FMT_MONOBLACK;
+			retval = AV_PIX_FMT_MONOBLACK;
 			break;
 		case RGB4: //4 bit
-			retval = PIX_FMT_RGB4;
+			retval = AV_PIX_FMT_RGB4;
 			break;
 		case RGB8: //8 bit
-			retval = PIX_FMT_RGB8;
+			retval = AV_PIX_FMT_RGB8;
 			break;
 		case RGB555: //15 bit
-			retval = PIX_FMT_RGB555LE;
+			retval = AV_PIX_FMT_RGB555LE;
 			break;
 		case RGB565: //16 bit
-			retval = PIX_FMT_RGB565LE;
+			retval = AV_PIX_FMT_RGB565LE;
 			break;
 		case RGB24: //24 bit
 #ifdef __APPLE__
-                        retval = PIX_FMT_RGB24;
+                        retval = AV_PIX_FMT_RGB24;
 #else
-                        retval = PIX_FMT_BGR24;
+                        retval = AV_PIX_FMT_BGR24;
 #endif
 			break;
 		case RGB32: //32 bit
-			retval = PIX_FMT_ARGB;
+			retval = AV_PIX_FMT_ARGB;
 			break;
 		case ARGB32: //32 bit
-			retval = PIX_FMT_BGRA;
+			retval = AV_PIX_FMT_BGRA;
 			break;
 		case AYUV: //32 bit
-			retval = PIX_FMT_YUV422P16BE;
+			retval = AV_PIX_FMT_YUV422P16BE;
 			break;
 		case UYVY: //16 bit
-			retval = PIX_FMT_UYVY422;
+			retval = AV_PIX_FMT_UYVY422;
 			break;
 		case Y411: //12 bit
-			retval = PIX_FMT_UYYVYY411;
+			retval = AV_PIX_FMT_UYYVYY411;
 			break;
 		case Y41P: //12 bit
-			retval = PIX_FMT_YUV411P;
+			retval = AV_PIX_FMT_YUV411P;
 			break;
 		case Y211: //8 bit
-			retval = PIX_FMT_YUV410P;
+			retval = AV_PIX_FMT_YUV410P;
 			break;
 		case YUY2: //16 bit
-			retval = PIX_FMT_UYVY422;
+			retval = AV_PIX_FMT_UYVY422;
 			break;
 		case YVYU: //16 bit
-			retval = PIX_FMT_UYVY422;
+			retval = AV_PIX_FMT_UYVY422;
 			break;
 		case YUYV: //16 bit
-			retval = PIX_FMT_YUYV422;
+			retval = AV_PIX_FMT_YUYV422;
 			break;
 		case IF09: //9.5 bits
-			retval = PIX_FMT_YUV410P;
+			retval = AV_PIX_FMT_YUV410P;
 			break;
 		case IYUV: //12 bits
-			retval = PIX_FMT_YUV420P;
+			retval = AV_PIX_FMT_YUV420P;
 			break;
 		case YV12: //12 bits
-			retval = PIX_FMT_NV12;
+			retval = AV_PIX_FMT_NV12;
 			break;
 		case YVU9: //9 bits
-			retval = PIX_FMT_YUV410P;
+			retval = AV_PIX_FMT_YUV410P;
 			break;
 		case I420: //12 bits
-			retval = PIX_FMT_YUV420P;
+			retval = AV_PIX_FMT_YUV420P;
 			break;
                 case NV21: //12 bits
-                    retval = PIX_FMT_NV21;
+                    retval = AV_PIX_FMT_NV21;
                     break;
 		case UNKNOWN: //unknown pixel size.
 			retval = 0;
@@ -313,57 +314,57 @@ public:
         static VideoPixelFormat FromFFPixel(int ffpix){
 		VideoPixelFormat retval = ANY;
 		switch(ffpix){
-		case PIX_FMT_MONOBLACK: //1 bit
+		case AV_PIX_FMT_MONOBLACK: //1 bit
 			retval = RGB1;
 			break;
-		case PIX_FMT_RGB4: //4 bit
+		case AV_PIX_FMT_RGB4: //4 bit
 			retval = RGB4;
 			break;
-		case PIX_FMT_RGB8: //8 bit
+		case AV_PIX_FMT_RGB8: //8 bit
 			retval = RGB8;
 			break;
-		case PIX_FMT_RGB555LE: //15 bit
+		case AV_PIX_FMT_RGB555LE: //15 bit
 			retval = RGB555;
 			break;
-		case PIX_FMT_RGB565LE: //16 bit
+		case AV_PIX_FMT_RGB565LE: //16 bit
 			retval = RGB565;
 			break;
-		case PIX_FMT_BGR24: //24 bit
-        case PIX_FMT_RGB24:
+		case AV_PIX_FMT_BGR24: //24 bit
+        case AV_PIX_FMT_RGB24:
                         
 			retval = RGB24;
 			break;
-		case PIX_FMT_ARGB: //32 bit
+		case AV_PIX_FMT_ARGB: //32 bit
 			retval = RGB32;
 			break;
-		case PIX_FMT_BGRA: //32 bit
+		case AV_PIX_FMT_BGRA: //32 bit
 			retval = ARGB32;
 			break;
-		case PIX_FMT_YUV422P16BE: //32 bit
+		case AV_PIX_FMT_YUV422P16BE: //32 bit
 			retval = AYUV;
 			break;
-		case PIX_FMT_UYYVYY411: //12 bit
+		case AV_PIX_FMT_UYYVYY411: //12 bit
 			retval = Y411;
 			break;
-		case PIX_FMT_YUV411P: //12 bit
+		case AV_PIX_FMT_YUV411P: //12 bit
 			retval = Y41P;
 			break;
-		case PIX_FMT_YUV410P: //8 bit
+		case AV_PIX_FMT_YUV410P: //8 bit
 			retval = Y211;
 			break;
-		case PIX_FMT_UYVY422: //16 bit
+		case AV_PIX_FMT_UYVY422: //16 bit
 			retval = YUY2;
                         break;
-		case PIX_FMT_NV12: //12 bits YV12
+		case AV_PIX_FMT_NV12: //12 bits YV12
 			retval = YV12;
 			break;
-                    case PIX_FMT_YUV420P:
+                    case AV_PIX_FMT_YUV420P:
                         retval = I420;
                         break;
-                case PIX_FMT_NV21: //12 bits NV21
+                case AV_PIX_FMT_NV21: //12 bits NV21
                     retval = NV21;
                     break;
-                case PIX_FMT_YUYV422:
+                case AV_PIX_FMT_YUYV422:
 			retval = YUYV;
 			break;
                         

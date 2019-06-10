@@ -1,11 +1,11 @@
-prefix=./android/armv6
+prefix=/Users/nathanskipper/objectivemedia/ffmpeg-android/build
 exec_prefix=${prefix}
 libdir=${prefix}/lib
 includedir=${prefix}/include
 
 Name: libavutil
 Description: FFmpeg utility library
-Version: 52.77.100
+Version: 55.58.100
 Requires: 
 Requires.private: 
 Conflicts:

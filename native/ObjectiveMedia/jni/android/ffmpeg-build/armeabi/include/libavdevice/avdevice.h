@@ -28,19 +28,21 @@
  */
 
 /**
- * @defgroup lavd Special devices muxing/demuxing library
- * @{
+ * @defgroup lavd libavdevice
+ * Special devices muxing/demuxing library.
+ *
  * Libavdevice is a complementary library to @ref libavf "libavformat". It
  * provides various "special" platform-specific muxers and demuxers, e.g. for
  * grabbing devices, audio capture and playback etc. As a consequence, the
  * (de)muxers in libavdevice are of the AVFMT_NOFILE type (they use their own
  * I/O functions). The filename passed to avformat_open_input() often does not
  * refer to an actually existing file, but has some special device-specific
- * meaning - e.g. for x11grab it is the display name.
+ * meaning - e.g. for xcbgrab it is the display name.
  *
  * To use libavdevice, simply call avdevice_register_all() to register all
  * compiled muxers and demuxers. They all use standard libavformat API.
- * @}
+ *
+ * @{
  */
 
 #include "libavutil/log.h"
@@ -65,7 +67,6 @@ const char *avdevice_license(void);
 
 /**
  * Initialize libavdevice and register all the input and output devices.
- * @warning This function is not thread safe.
  */
 void avdevice_register_all(void);
 
@@ -135,7 +136,7 @@ enum AVAppToDevMessageType {
     /**
      * Repaint request message.
      *
-     * Message is sent to the device when window have to be rapainted.
+     * Message is sent to the device when window has to be repainted.
      *
      * data: AVDeviceRect: area required to be repainted.
      *       NULL: whole area is required to be repainted.
@@ -231,7 +232,7 @@ enum AVDevToAppMessageType {
      * Display window buffer message.
      *
      * Device requests to display a window buffer.
-     * Message is sent when new frame is ready to be displyed.
+     * Message is sent when new frame is ready to be displayed.
      * Usually buffers need to be swapped in handler of this message.
      *
      * data: NULL.
@@ -324,10 +325,10 @@ int avdevice_dev_to_app_control_message(struct AVFormatContext *s,
  * Following API allows user to probe device capabilities (supported codecs,
  * pixel formats, sample formats, resolutions, channel counts, etc).
  * It is build on top op AVOption API.
- * Queried capabilities allows to set up converters of video or audio
+ * Queried capabilities make it possible to set up converters of video or audio
  * parameters that fit to the device.
  *
- * List of capablities that can be queried:
+ * List of capabilities that can be queried:
  *  - Capabilities valid for both audio and video devices:
  *    - codec:          supported audio/video codecs.
  *                      type: AV_OPT_TYPE_INT (AVCodecID value)
@@ -391,9 +392,9 @@ int avdevice_dev_to_app_control_message(struct AVFormatContext *s,
  */
 
 /**
- * Structure describes device capabilites.
+ * Structure describes device capabilities.
  *
- * It is used by devices in conjuntion with av_device_capabilities AVOption table
+ * It is used by devices in conjunction with av_device_capabilities AVOption table
  * to implement capabilities probing API based on AVOption API. Should not be used directly.
  */
 typedef struct AVDeviceCapabilitiesQuery {
@@ -413,7 +414,7 @@ typedef struct AVDeviceCapabilitiesQuery {
 } AVDeviceCapabilitiesQuery;
 
 /**
- * AVOption table used by devices to implement device capabilites API. Should not be used by a user.
+ * AVOption table used by devices to implement device capabilities API. Should not be used by a user.
  */
 extern const AVOption av_device_capabilities[];
 
@@ -478,10 +479,36 @@ typedef struct AVDeviceInfoList {
 int avdevice_list_devices(struct AVFormatContext *s, AVDeviceInfoList **device_list);
 
 /**
- * Convinient function to free result of avdevice_list_devices().
+ * Convenient function to free result of avdevice_list_devices().
  *
  * @param devices device list to be freed.
  */
 void avdevice_free_list_devices(AVDeviceInfoList **device_list);
+
+/**
+ * List devices.
+ *
+ * Returns available device names and their parameters.
+ * These are convinient wrappers for avdevice_list_devices().
+ * Device context is allocated and deallocated internally.
+ *
+ * @param device           device format. May be NULL if device name is set.
+ * @param device_name      device name. May be NULL if device format is set.
+ * @param device_options   An AVDictionary filled with device-private options. May be NULL.
+ *                         The same options must be passed later to avformat_write_header() for output
+ *                         devices or avformat_open_input() for input devices, or at any other place
+ *                         that affects device-private options.
+ * @param[out] device_list list of autodetected devices
+ * @return count of autodetected devices, negative on error.
+ * @note device argument takes precedence over device_name when both are set.
+ */
+int avdevice_list_input_sources(struct AVInputFormat *device, const char *device_name,
+                                AVDictionary *device_options, AVDeviceInfoList **device_list);
+int avdevice_list_output_sinks(struct AVOutputFormat *device, const char *device_name,
+                               AVDictionary *device_options, AVDeviceInfoList **device_list);
+
+/**
+ * @}
+ */
 
 #endif /* AVDEVICE_AVDEVICE_H */

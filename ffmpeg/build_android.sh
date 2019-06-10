@@ -14,24 +14,26 @@
 # set $CPU and $OPTIMIZE_CFLAGS 
 # call build_one
 ######################################################
-SPEC_ONE=x86
+SPEC_ONE=arm
 GO_ARM=no
 GO_X86=yes
 GO_X64=no
-NDK=~/android-ndk-r10d
-PLATFORM=$NDK/platforms/android-14/arch-arm/
-PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64
+NDK=~/Library/Android/sdk/ndk-bundle
+PLATFORM=$NDK/platforms/android-21/arch-arm
+PREBUILT=$NDK/toolchains/llvm/prebuilt/darwin-x86_64
 LDEXTRAS="-Wl,-rpath-link=$PLATFORM/usr/lib -L$PLATFORM/usr/lib -nostdlib -lc -lm -ldl -llog"
 EXTRA_CXXFLAGS="-Wno-multichar -Wno-psabi -fno-exceptions -fno-rtti"
+CLANG=$PREBUILT/bin/clang
 function build_one
 {
+LDEXTRAS="-Wl,-rpath-link=$PLATFORM/usr/lib -L$PREBUILT/lib/gcc/$PREARCH/4.9.x -L$PLATFORM/usr/lib -nostdlib -lc -lm -ldl -llog"
 
 ./configure --target-os=linux \
     --prefix=$PREFIX \
     --enable-cross-compile \
     --extra-libs="-lgcc" \
     --arch=$ARCH \
-    --cc=$PREBUILT/bin/$PREARCH-gcc \
+    --cc=$CLANG \
     --cross-prefix=$PREBUILT/bin/$PREARCH- \
     --nm=$PREBUILT/bin/$PREARCH-nm \
     --sysroot=$PLATFORM \
@@ -67,9 +69,9 @@ make  -j4 install
 $PREBUILT/bin/$PREARCH-ar d libavcodec/libavcodec.a inverse.o
 if [ $ARCH == 'x86' ] || [ $ARCH == 'x86_64' ]
 then
-$PREBUILT/bin/$PREARCH-ld -rpath-link=$PLATFORM/usr/lib -L$PLATFORM/usr/lib  -soname libffmpeg.so -shared -Bsymbolic --whole-archive --no-undefined -o libavcodec/libavcodec.a libavformat/libavformat.a libavutil/libavutil.a libswscale/libswscale.a -lc -lm -lz -ldl -llog --dynamic-linker=/system/bin/linker $PREBUILT/lib/gcc/$PREARCH/4.6/libgcc.a;
+$PREBUILT/bin/$PREARCH-ld -rpath-link=$PLATFORM/usr/lib -L$PLATFORM/usr/lib  -soname libffmpeg.so -shared -Bsymbolic --whole-archive --no-undefined -o libavcodec/libavcodec.a libavformat/libavformat.a libavutil/libavutil.a libswscale/libswscale.a -lc -lm -lz -ldl -llog --dynamic-linker=/system/bin/linker $PREBUILT/lib/gcc/$PREARCH/4.9/libgcc.a;
 else
-$PREBUILT/bin/$PREARCH-ld -rpath-link=$PLATFORM/usr/lib -L$PLATFORM/usr/lib  -soname libffmpeg.so -shared -nostdlib  -z,noexecstack -Bsymbolic --whole-archive --no-undefined -o libavcodec/libavcodec.a libavformat/libavformat.a libavutil/libavutil.a libswscale/libswscale.a -lc -lm -lz -ldl -llog --dynamic-linker=/system/bin/linker $PREBUILT/lib/gcc/$PREARCH/4.6/libgcc.a;
+$PREBUILT/bin/$PREARCH-ld -rpath-link=$PLATFORM/usr/lib -L$PLATFORM/usr/lib  -soname libffmpeg.so -shared -nostdlib  -z,noexecstack -Bsymbolic --whole-archive --no-undefined -o libavcodec/libavcodec.a libavformat/libavformat.a libavutil/libavutil.a libswscale/libswscale.a -lc -lm -lz -ldl -llog --dynamic-linker=/system/bin/linker $PREBUILT/lib/gcc/$PREARCH/4.9/libgcc.a;
 fi
 }
 
@@ -77,12 +79,14 @@ if [ $SPEC_ONE != 'arm' ]
 then
 echo "ARM compile is not specified"
 GO_ARM=no;
+GO_X86=yes;
 fi
 
 if [ $SPEC_ONE != 'x86' ]
 then
 echo "X86 compile is not specified"
 GO_X86=no;
+GO_ARM=yes;
 fi
 
 if [ $GO_ARM == 'yes' ]
@@ -91,6 +95,7 @@ echo "ARM6 compiling"
 #arm v6
 ARCH=arm
 PREARCH=arm-linux-androideabi
+CLANG=$PREBUILT/bin/armv7a-linux-androideabi21-clang
 CPU=armv6
 OPTIMIZE_CFLAGS="-marm -march=$CPU"
 PREFIX=./android/$CPU 
@@ -104,7 +109,23 @@ echo "ARM7 compiling"
 #arm v7vfpv3
 ARCH=arm
 PREARCH=arm-linux-androideabi
+CLANG=$PREBUILT/bin/armv7a-linux-androideabi21-clang
 CPU=armv7-a
+OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfpv3-d16 -marm -march=$CPU "
+PREFIX=./android/$CPU
+ADDITIONAL_CONFIGURE_FLAG=
+build_one;
+fi
+
+if [ $GO_ARM == 'yes' ]
+then
+echo "ARM64 compiling"
+#arm v8a
+ARCH=arm
+PREARCH=arm-linux-androideabi
+PLATFORM=$NDK/platforms/android-21/arch-arm64
+CLANG=$PREBUILT/bin/armv7a-linux-androideabi21-clang
+CPU=armv64-v8a
 OPTIMIZE_CFLAGS="-mfloat-abi=softfp -mfpu=vfpv3-d16 -marm -march=$CPU "
 PREFIX=./android/$CPU
 ADDITIONAL_CONFIGURE_FLAG=
